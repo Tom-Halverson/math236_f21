@@ -1,0 +1,20 @@
+---
+title: "shoes and socks"
+author: "T. Halverson"
+date: "6/7/2021"
+output: html_document
+---
+
+```{r}
+A = cbind(c(1,1,1),c(1,2,1),c(3,2,1))
+solve(A)
+```
+
+```{r}
+B = cbind(c(1,2,2),c(-2,1,1),c(3,1,2))
+solve(B)
+```
+```{r}
+solve(A %*% B)
+solve(B) %*% solve(A)
+```

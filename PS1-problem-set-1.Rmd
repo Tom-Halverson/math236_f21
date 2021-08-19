@@ -1,0 +1,185 @@
+# (PART) Problem Sets {-}
+
+# Problem Set 1
+
+* Due: Tuesday May 25 by midnight CST. 
+* Upload your solutions to problems 1--4 by writing them out by hand, scanning them to pdf using a scanning software such as AdobeScan, assembling them into a single PDF, and uploading it to  Moodle. 
+* Problem 1.5 is to be done using RStudio. To solve it, create an Rmarkdown file, knit it to .html, and upload the .html on Moodle along with the PDF for questions 1-4. *There will be time to work on this problem in class on May 23-24.*
+
+## Characterize the Solution Set
+
+The following augmented matrices are in row echelon form. Decide whether the set of solutions  is a point, line, plane, or the empty set in 3-space. Briefly justify your answer.
+
+a.
+$\left[
+\begin{array}{ccc|c}
+1 & 3 & -1 & 4 \\
+0 & 1 & 4   & 0\\
+0 &  0 & 0  & 2 \\
+\end{array}
+\right]$
+
+b.
+$\left[
+\begin{array}{ccc|c}
+1 & 3 & -1 & 5 \\
+0 & 0 & 0 & 0 \\
+0 &  0 & 0 & 0 \\
+\end{array}
+\right]$
+
+c.
+$\left[
+\begin{array}{ccc|c}
+1 & -1 & 0  & -2 \\
+0 & 0 & 1  & 7\\
+0 &  0 & 0 & 1\\
+\end{array}
+\right]$
+
+d.
+$\left[ 
+\begin{array}{ccc|c}
+0 & 1 & 0 & 6 \\
+0 & 0 & 1 & -2 \\
+0 &  0 & 0 & 0 \\
+\end{array}
+\right]$
+
+
+## Find the General Solution
+
+Each of the following matrices is the reduced row echelon form of the augmented matrix of a system of linear equations. Give the general solution to each system. 
+
+a.
+$\left[
+\begin{array}{cccc|c}
+1 & 3 & 0 & -2 & 5\\
+0 & 0 & 1 & 4 & -2 \\
+\end{array}
+\right]$
+
+b.
+$\left[
+\begin{array}{ccccc|c}
+1 & 0 & 4 & 0 & 3 & 6\\
+0 & 1 & 1 & 0 & -2& -8 \\
+0 & 0 & 0 & 1 & -1 & 3 \\
+\end{array}
+\right]$
+
+c.
+$\left[
+\begin{array}{cccc|c}
+1 & 4 & 0 & 0 & -2 \\
+0 & 0 & 1 & 7  & 6\\
+0 & 0 & 0 & 0  & 0 \\
+\end{array}
+\right]$
+
+
+
+
+## Elementary row operations are reversible 
+In each case below, an elementary row operation turns the matrix $A$ into the  matrix $B$. For each of them,
+
+* Describe the row operation that turns $A$ into $B$, and 
+* Describe the row operation that turns $B$ into $A$. 
+
+Give your answers in the form: "scale $R_2$ by 3" or "swap $R_1$  and $R_4$" or "replace $R_3$ with $R_3 + \frac{1}{5} R_1$."
+
+a.
+$$A=\left[
+\begin{array}{cccc}
+ 1 & 1 & 1 & 3 \\
+ 1 & -2 & 2 & 1 \\
+ 2 & 8 & 2 & -4 \\
+ 3 & 1 & 6 & -1 \\
+\end{array}
+\right]\longrightarrow 
+B=\left[
+\begin{array}{cccc}
+ 1 & 1 & 1 & 3 \\
+ 1 & -2 & 2 & 1 \\
+ 2 & 8 & 2 & -4 \\
+ 0 & 7 & 0 & -4 \\
+\end{array}
+\right]$$
+
+b.
+$$A=\left[
+\begin{array}{cccc}
+ 1 & 1 & 1 & 3 \\
+ 1 & -2 & 2 & 1 \\
+ 2 & 8 & 2 & -4 \\
+ 3 & 1 & 6 & -1 \\
+\end{array}
+\right]\longrightarrow 
+B=\left[
+\begin{array}{cccc}
+1 & -2 & 2 & 1 \\
+ 1 & 1 & 1 & 3 \\
+ 2 & 8 & 2 & -4 \\
+ 3 & 1 & 6 & -1 \\
+\end{array}
+\right]$$
+
+c.
+$$A=\left[
+\begin{array}{cccc}
+ 1 & 1 & 1 & 3 \\
+ 1 & -2 & 2 & 1 \\
+ 2 & 8 & 2 & -4 \\
+ 3 & 1 & 6 & -1 \\
+\end{array}
+\right]\longrightarrow 
+B=\left[
+\begin{array}{cccc}
+ 1 & 1 & 1 & 3 \\
+ 1 & -2 & 2 & 1 \\
+ 1 & 4 & 1 & -2 \\
+ 3 & 1 & 6 & -1 \\
+\end{array}
+\right]$$
+
+## Designer Parabolas
+
+In each part below, set up and solve a linear system of equations to find **all** possible parabolas of the form
+$$
+f(x) = a + b x + c x^2
+$$ 
+that satisfy the given conditions. For full credit, please solve these by hand, doing all row reductions that bring the system of equations to Reduced Row Echelon Form. On future assignments, you can solve problems like this using either RStudio or WolframAlpha. You are welcome (and, in fact, encouraged) to check your answers using software. 
+
+a. $f(x)$ passes through the three points: $(1,3), (3,11),(2,4)$.
+
+b. $f(x)$ passes through the three points: $(1,3), (3,11),(3,10)$.
+
+c. $f(x)$ passes through the *two* points: $(1,3)$ and $(3,11)$.
+
+
+
+
+## Traffic Flow
+
+Below you find a section of one-way streets in downtown St Paul, where the arrows indicate traffic direction.  The traffic control center has installed electronic sensors that count the numbers of vehicles passing through the 6 streets that lead into and out of this area.  Assume that the total flow that enters each intersection equals the the total flow that leaves each intersection (we will ignore parking and staying). 
+
+
+<center>
+
+![](images/ps1-traffic.png){width=50%}
+
+</center>
+
+
+a. Create a system of linear equations to find the possible flow values for the inner streets $x_1, x_2, x_3, x_4$.
+
+b. Using RStudio, enter the augmented matrix of this system, and solve it using the rref command. Type out the general solution to this system of equations.  
+
+c. Your  answer to part b should be an infinite solution set. Give two distinct solutions that are realistic in terms of  **traffic flow**.
+
+d. Is it possible to close down the street labeled by $x_2$ for road construction? That is, is it possible to have $x_2 = 0$ and to meet the other conditions?
+
+
+
+
+
