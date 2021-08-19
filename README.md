@@ -1,3 +1,3 @@
 # math236_f21
 
-This is a line from RStudio
+This is a line from RStudiol
