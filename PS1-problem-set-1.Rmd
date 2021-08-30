@@ -2,7 +2,7 @@
 
 # Problem Set 1
 
-* Due: Tuesday May 25 by midnight CST. 
+* Due: Wednesday September 8 by midnight CST. 
 * Upload your solutions to problems 1--4 by writing them out by hand, scanning them to pdf using a scanning software such as AdobeScan, assembling them into a single PDF, and uploading it to  Moodle. 
 * Problem 1.5 is to be done using RStudio. To solve it, create an Rmarkdown file, knit it to .html, and upload the .html on Moodle along with the PDF for questions 1-4. *There will be time to work on this problem in class on May 23-24.*
 
@@ -13,34 +13,35 @@ The following augmented matrices are in row echelon form. Decide whether the set
 a.
 $\left[
 \begin{array}{ccc|c}
-1 & 3 & -1 & 4 \\
-0 & 1 & 4   & 0\\
-0 &  0 & 0  & 2 \\
+1 & 1 & -3 & 2 \\
+0 & 0 & 0 & 0 \\
+0 &  0 & 0 & 0 \\
 \end{array}
 \right]$
 
 b.
 $\left[
 \begin{array}{ccc|c}
-1 & 3 & -1 & 5 \\
-0 & 0 & 0 & 0 \\
-0 &  0 & 0 & 0 \\
+1 & 3 & -1 & 4 \\
+0 & 1 & 4   & 0\\
+0 &  0 & 0  & 1 \\
 \end{array}
 \right]$
+
 
 c.
 $\left[
 \begin{array}{ccc|c}
 1 & -1 & 0  & -2 \\
-0 & 0 & 1  & 7\\
-0 &  0 & 0 & 1\\
+0 & 1 & 1  & 7\\
+0 &  0 & 1 & 1\\
 \end{array}
 \right]$
 
 d.
 $\left[ 
 \begin{array}{ccc|c}
-0 & 1 & 0 & 6 \\
+1 & -1 & 0 & 6 \\
 0 & 0 & 1 & -2 \\
 0 &  0 & 0 & 0 \\
 \end{array}
