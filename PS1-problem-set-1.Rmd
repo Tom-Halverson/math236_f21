@@ -2,7 +2,7 @@
 
 # Problem Set 1
 
-* Due: Wednesday September 8 by midnight CST. 
+* Due: Friday September 10 by midnight CST. These will typically be due on Wednesday but this one is moved to Friday because we do not have class on Monday due to Labor Day.
 * Upload your solutions to problems 1--4 by writing them out by hand, scanning them to pdf using a scanning software such as AdobeScan, assembling them into a single PDF, and uploading it to  Moodle. 
 * Problem 1.5 is to be done using RStudio. To solve it, create an Rmarkdown file, knit it to .html, and upload the .html on Moodle along with the PDF for questions 1-4. *There will be time to work on this problem in class on May 23-24.*
 
