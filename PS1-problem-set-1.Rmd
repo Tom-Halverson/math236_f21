@@ -174,7 +174,7 @@ Below you find a section of one-way streets in downtown St Paul, where the arrow
 
 a. Create a system of linear equations to find the possible flow values for the inner streets $x_1, x_2, x_3, x_4$.
 
-b. Using RStudio, enter the augmented matrix of this system, and solve it using the rref command. Type out the general solution to this system of equations.  
+b. Using RStudio, enter the augmented matrix of this system, and solve it using the rref command. Type out the general solution to this system of equations.  There will be time to do this **in class** on Wednesday. 
 
 c. Your  answer to part b should be an infinite solution set. Give two distinct solutions that are realistic in terms of  **traffic flow**.
 
