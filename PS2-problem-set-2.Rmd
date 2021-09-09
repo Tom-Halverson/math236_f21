@@ -49,7 +49,7 @@ d = c(30,24,10,10)
 
 ## Matrix Equation
 
-Solve the matrix equation, A x = b, below and give your answer in **parametric vector form** (we will disccuss parametric form on Monday Sept 13).
+Solve the matrix equation, A x = b, below and give your answer in **parametric vector form** (we will disccuss parametric form on Monday Sept 13). Describe the solution set geometrically: e.g., "a line in $\mathbb{R}^4$" or "a plane in $\mathbb{R}^6$."
 $$
 \begin{bmatrix}
  1 & 1 & -1 & -1 & 2  \\
@@ -80,10 +80,9 @@ Here is the reduced row echelon form of a matrix $\mathsf{A}$ (you are not given
 $$
 \mathsf{A} \longrightarrow \left[
 \begin{array}{cccc}
- 1 & 0 & -2 & 0 & 2\\
- 0 & 1 & 3 & 0 & 1\\
- 0 & 0 & 0 & 1 & -1\\
-0 & 0 & 0 & 0 & 0\\
+ 1 & 0 & 0 & 5 & -2\\
+ 0 & 1 & 0 & -7 & 4\\
+ 0 & 0 & 1 & 2 & -3\\
 0 & 0 & 0 & 0 & 0\\
 \end{array}
 \right]
@@ -91,7 +90,7 @@ $$
 
   a. Give the solution to the homogeneous matrix equation $A x = \mathbf{0}$ in  **parametric vector form** and describe the geometry of the solution. For example, you answer should be something like: "it is a plane in $\mathbb{R}^3$" or "it is a line in $\mathbb{R}^7$" or "it is a point in $\mathbb{R}^4$."
   
-  c.  Suppose that we also know that $\mathsf{A}\begin{bmatrix} 4 \\ 1 \\ 3 \\ 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 6 \\  5 \\ 1 \\ 2 \\3  \end{bmatrix}$. Then give the general solution to 
+  c.  Suppose that we also know that $\mathsf{A}\begin{bmatrix} 4 \\ 1 \\ 3 \\ 2 \\ 1 \end{bmatrix} = \begin{bmatrix}  5 \\ 1 \\ 2 \\3  \end{bmatrix}$. Then give the general solution to 
 $\mathsf{A} \mathsf{x}= \begin{bmatrix} 6 \\ 5 \\ 1 \\ 2  \\ 3 \end{bmatrix}$ in parametric form.
 
 
