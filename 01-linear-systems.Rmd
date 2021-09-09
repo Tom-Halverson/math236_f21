@@ -165,42 +165,42 @@ and this is a "plane" in $\mathbb{R}^5$. It is in $\mathbb{R}^5$ because these v
 
 
 
-##  Appendix: Dimensionless Vectors  in R
+<!-- ##  Appendix: Dimensionless Vectors  in R -->
 
-Let's revisit the vector constructed by `cbind`. Above we called this  a "dimensionless" vector because it can be used as a column vector or a row vector.  In general, R will do its best to make sense of a dimensionless vector. In other words, it will promote `c()` to make an expression valid.
+<!-- Let's revisit the vector constructed by `cbind`. Above we called this  a "dimensionless" vector because it can be used as a column vector or a row vector.  In general, R will do its best to make sense of a dimensionless vector. In other words, it will promote `c()` to make an expression valid. -->
 
-For example, let $A$ be an $n \times  n$ matrix, and let $b$ be a vector.  The expression $Av$ is only defined when $v$ is a $n \times 1$ **column vector** and that $wA$  is only defined when  $w$ is a $1 \times n$ ** row vector**. But let's look at what happens when we use a dimensionless vector instead.
-
-
-```{r, echo=TRUE}
-A = cbind(c(1,1,1),c(-1,0,1), c(0,1,-1))
-A
-b = c(2,5,11)
-b
-
-# A times b
-A %*% b
-# b times A
-b %*% A
-
-```
+<!-- For example, let $A$ be an $n \times  n$ matrix, and let $b$ be a vector.  The expression $Av$ is only defined when $v$ is a $n \times 1$ **column vector** and that $wA$  is only defined when  $w$ is a $1 \times n$ ** row vector**. But let's look at what happens when we use a dimensionless vector instead. -->
 
 
-Both of these multiplications worked! So  R **treated `b` as a column vector** for the multiplication`A %*% b`. And then R **treated `b` as a row vector** for the multiplication `b %b% A`. 
+<!-- ```{r, echo=TRUE} -->
+<!-- A = cbind(c(1,1,1),c(-1,0,1), c(0,1,-1)) -->
+<!-- A -->
+<!-- b = c(2,5,11) -->
+<!-- b -->
 
-So how do you make a true **column vector** or a true **row vector**? The answer is to use `cbind` and  `rbind`! Here are some examples:
+<!-- # A times b -->
+<!-- A %*% b -->
+<!-- # b times A -->
+<!-- b %*% A -->
 
-```{r, echo=TRUE}
-#  dimensionless
-b = c(1,2,3,4)
-b
-# column vector
-b.col = cbind(b)
-b.col
-# row vector
-b.row = rbind(b)
-b.row
-```
+<!-- ``` -->
+
+
+<!-- Both of these multiplications worked! So  R **treated `b` as a column vector** for the multiplication`A %*% b`. And then R **treated `b` as a row vector** for the multiplication `b %b% A`.  -->
+
+<!-- So how do you make a true **column vector** or a true **row vector**? The answer is to use `cbind` and  `rbind`! Here are some examples: -->
+
+<!-- ```{r, echo=TRUE} -->
+<!-- #  dimensionless -->
+<!-- b = c(1,2,3,4) -->
+<!-- b -->
+<!-- # column vector -->
+<!-- b.col = cbind(b) -->
+<!-- b.col -->
+<!-- # row vector -->
+<!-- b.row = rbind(b) -->
+<!-- b.row -->
+<!-- ``` -->
 
 
 

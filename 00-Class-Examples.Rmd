@@ -2,74 +2,124 @@
 
 # Class Examples
 
-## Day 5: Tuesday May 25
+## Day 3: Wed Sep 8
+
+Remember that to use RREF we must include the `pracma` package.
 ```{r}
 require('pracma')
 ```
 
-
-Give the parametric solution to $A x = b$ if 
-$$
-A=\left[
-\begin{array}{ccccc}
- 1 & 1 & 1 & -1  \\
- 1 & 0 & 3 & -1  \\
- -1 & 1 & -5 & 1  \\
- 1 & 2 & -1 & 1  \\
+Our goal is to solve the following system of equations:
+$$ 
+\left\{\begin{array}{rrrrrrrrrr}
+x_1 &+& 2 x_2 &+&x_3 &+&  x_4 & = & 4 \\
+x_1 &+& 2x_2 &+& -x_3 &+& -3x_4& =& 6 \\
+ && x_2 &+&  x_3 &+&  x_4& =& 0 \\
+-x_1&+&  x_2 &+& -x_3&+&  -4x_4& =  &-1\\
 \end{array}
-\right] \qquad \hbox{and}\qquad  b = \begin{bmatrix} 2 \\ 4 \\ -6 \\ 4 \end{bmatrix}. \hskip.5in
+\right\}
 $$
+
+We enter the augmented matrix (and echo it back):
 ```{r,echo=TRUE}
-A = cbind(c(1,1,-1,1),c(1,0,1,2),c(1,3,-5,-1),c(-1,-1,1,1))
-b = c(2,4,-6,4)
-Ab = cbind(A,b)
+A = cbind(c(1,1,0,-1),c(2,2,1,1),c(1,-1,1,-1),c(1,-3,1,-4),c(4,6,0,-1))
 A
-Ab
-rref(Ab)
 ```
-a. Give the solution this $Ax=b$ problem in *parametric* form:
 
+And then we row reduce it using `rref`:
+```{r,echo=TRUE}
+rref(A)
+```
+
+The corresponding reduced set of equations is
+$$ 
+\left\{\begin{array}{rrrrrrrrrr}
+x_1 &&  && &+&  x_4 & = & 3 \\
+ && x_2 &&  &-& x_4& =& 1 \\
+ &&  &+&  x_3 &+&  2x_4& =& -1 \\
+\end{array}
+\right\}
 $$
-\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix}
-= 
-\begin{bmatrix}  6 \\ -2 \\ 0 \\ 2 \end{bmatrix}
-+ s \begin{bmatrix}  -3 \\ 2 \\ 1 \\ 0 \end{bmatrix}
+
+The **general** solution to this system of equations is
+$$
+\begin{align}
+x_1 &= 3 - x_4 \\
+x_2 &= 1 - x_5 \\
+x_3 &= -1 - 2 x_4 \\
+x_4 &= free
+\end{align}
 $$
 
-b. Let's make two different solutions. One with s = 0 and one with s = 1. They are
+## Day 4: Fri Sep 10
+```{r}
 
-```{r,echo=TRUE}
-x1 = c(6,-2,0,2)
-x2 = c(3,0,1,2)
 ```
 
-And we check to see that they are solutions. Observe that we use the unfortunate notation `%*%` to multply a matrix times a vector, but also that we get b in both cases:
-```{r,echo=TRUE}
-A %*% x1
-A %*% x2
-```
-Notice that we get b for both.
+## Day 5: Mon Sep 13
 
-c. Now we look at the difference. It is a solution to the *homogeneous* equations A x = 0 as we see here:
-```{r,echo=TRUE}
-xh = x1 - x2
-A %*% xh
-```
+<!-- Give the parametric solution to $A x = b$ if  -->
+<!-- $$ -->
+<!-- A=\left[ -->
+<!-- \begin{array}{ccccc} -->
+<!--  1 & 1 & 1 & -1  \\ -->
+<!--  1 & 0 & 3 & -1  \\ -->
+<!--  -1 & 1 & -5 & 1  \\ -->
+<!--  1 & 2 & -1 & 1  \\ -->
+<!-- \end{array} -->
+<!-- \right] \qquad \hbox{and}\qquad  b = \begin{bmatrix} 2 \\ 4 \\ -6 \\ 4 \end{bmatrix}. \hskip.5in -->
+<!-- $$ -->
+<!-- ```{r,echo=TRUE} -->
+<!-- A = cbind(c(1,1,-1,1),c(1,0,1,2),c(1,3,-5,-1),c(-1,-1,1,1)) -->
+<!-- b = c(2,4,-6,4) -->
+<!-- Ab = cbind(A,b) -->
+<!-- A -->
+<!-- Ab -->
+<!-- rref(Ab) -->
+<!-- ``` -->
+<!-- a. Give the solution this $Ax=b$ problem in *parametric* form: -->
 
-d. Are any of these vectors solutions to Ax=b?
+<!-- $$ -->
+<!-- \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix} -->
+<!-- =  -->
+<!-- \begin{bmatrix}  6 \\ -2 \\ 0 \\ 2 \end{bmatrix} -->
+<!-- + s \begin{bmatrix}  -3 \\ 2 \\ 1 \\ 0 \end{bmatrix} -->
+<!-- $$ -->
 
-```{r,echo=TRUE}
-A %*% (x1 + x2)
-```
-No! (this is 2b)
+<!-- b. Let's make two different solutions. One with s = 0 and one with s = 1. They are -->
 
-```{r,echo=TRUE}
-A %*% (1/2*x1 + 1/2* x2)
-```
+<!-- ```{r,echo=TRUE} -->
+<!-- x1 = c(6,-2,0,2) -->
+<!-- x2 = c(3,0,1,2) -->
+<!-- ``` -->
 
-Yes! This is b
+<!-- And we check to see that they are solutions. Observe that we use the unfortunate notation `%*%` to multply a matrix times a vector, but also that we get b in both cases: -->
+<!-- ```{r,echo=TRUE} -->
+<!-- A %*% x1 -->
+<!-- A %*% x2 -->
+<!-- ``` -->
+<!-- Notice that we get b for both. -->
 
-```{r,echo=TRUE}
-A %*% (x1 + 2021 * xh)
-```
-Yes! This is b.
+<!-- c. Now we look at the difference. It is a solution to the *homogeneous* equations A x = 0 as we see here: -->
+<!-- ```{r,echo=TRUE} -->
+<!-- xh = x1 - x2 -->
+<!-- A %*% xh -->
+<!-- ``` -->
+
+<!-- d. Are any of these vectors solutions to Ax=b? -->
+
+<!-- ```{r,echo=TRUE} -->
+<!-- A %*% (x1 + x2) -->
+<!-- ``` -->
+<!-- No! (this is 2b) -->
+
+<!-- ```{r,echo=TRUE} -->
+<!-- A %*% (1/2*x1 + 1/2* x2) -->
+<!-- ``` -->
+
+<!-- Yes! This is b -->
+
+<!-- ```{r,echo=TRUE} -->
+<!-- A %*% (x1 + 2021 * xh) -->
+<!-- ``` -->
+<!-- Yes! This is b. -->

@@ -2,7 +2,7 @@
 
 # Problem Set 2
 
-* Due: Tuesday June 1 by 11:59PM CST. 
+* Due: **Friday** September 17 by 11:59PM CST. 
 * Upload your solutions to Moodle in a PDF. 
 * Please feel free to **use RStudio for all row reductions.**
 * In problems where you use RStudio for row reduction and are not asked to turn in an R markdown file, you can write something like this:
@@ -21,34 +21,57 @@ opts_chunk$set(echo = FALSE,
 require(pracma)
 ```
 
-The Problem Set covers sections 1.3, 1.4, 1.5, and 1.7.
+The Problem Set covers sections 1.3 (vector equations), 1.4 (matrix equations), and 1.5 (parametric solutions and the relationship between homogeneous and nonhomogeneous equations).
 
-## Parametric Vector Form
+## Vector Equation
 
-
-Here is the augmented matrix for a system of linear equations $\mathsf{A} \mathsf{x} = \mathsf{b}$, and its RREF.
-Give the general solution to this  system in  **parametric vector form** and describe the geometry of the solution. For example, you answer should be something like: "it is a plane in $\mathbb{R}^3$" or "it is a line in $\mathbb{R}^7$" or "it is a point in $\mathbb{R}^4$."
+Decide if the vectors $\mathsf{b}$ and $\mathsf{d}$ are in the span of the vectors $\mathsf{v}_1$, $\mathsf{v}_2$, $\mathsf{v}_3$, $\mathsf{v}_4$. If the vector *is* in the span, then give a linear combination of the vectors that does it. If it is *not* in the span, demonstrate that it is not with an appropriate matrix computation.
 $$
-\left[
-\begin{array}{ccccc|c}
- 1 & 1 & -1 & -1 & 2 & 1 \\
- 1 & 0 & -2 & 1 & 1 & 3 \\
- -2 & 1 & 5 & 1 & -6 & 2 \\
- -3 & 0 & 6 & 2 & -8 & 1 \\
- 0 & 1 & 1 & 2 & -3 & 6 \\
- 1 & 0 & -2 & -1 & 3 & -1 \\
-\end{array}
-\right] \longrightarrow \left[
-\begin{array}{ccccc|c}
- 1 & 0 & -2 & 0 & 2 & 1 \\
- 0 & 1 & 1 & 0 & -1 & 2 \\
- 0 & 0 & 0 & 1 & -1 & 2 \\
- 0 & 0 & 0 & 0 & 0 & 0 \\
- 0 & 0 & 0 & 0 & 0 & 0 \\
- 0 & 0 & 0 & 0 & 0 & 0 \\
-\end{array}
-\right]
+\mathsf{v}_1 = \begin{bmatrix} 2 \\ 2 \\ 1 \\ 1 \end{bmatrix},\quad
+\mathsf{v}_2 = \begin{bmatrix} -1 \\ -1 \\ -1 \\ 3 \end{bmatrix},\quad
+\mathsf{v}_3 = \begin{bmatrix} -4 \\ -4 \\ -3 \\ 5 \end{bmatrix},\quad
+\mathsf{v}_4 = \begin{bmatrix} -1 \\ 2 \\ -2 \\ 1 \end{bmatrix}.
 $$
+$$
+\mathsf{b} = \begin{bmatrix} 36 \\ 48 \\ 19 \\ -25 \end{bmatrix},\qquad
+\mathsf{d} = \begin{bmatrix} 30 \\ 24 \\ 10 \\ 10 \end{bmatrix}.
+$$
+Here are the vectors for you:
+```{r,echo=TRUE}
+v1 = c(2,2,1,1)
+v2 = c(-1,-1,-1,3)
+v3 = c(-4,-4,-3,5)
+v4 = c(-1,2,-2,1)
+b = c(36,48,19,-25)
+d = c(30,24,10,10)
+```
+
+
+## Matrix Equation
+
+Solve the matrix equation, A x = b, below and give your answer in **parametric vector form** (we will disccuss parametric form on Monday Sept 13).
+$$
+\begin{bmatrix}
+ 1 & 1 & -1 & -1 & 2  \\
+ 1 & 0 & -2 & 1 & 1  \\
+ -2 & 1 & 5 & 1 & -6  \\
+ -3 & 0 & 6 & 2 & -8  \\
+ 0 & 1 & 1 & 2 & -3  \\
+ 1 & 0 & -2 & -1 & 3  \\
+\end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix}
+= 
+\begin{bmatrix} 1 \\ 3 \\ 2\\ 1 \\ 6 \\ -1 \end{bmatrix}
+$$
+Here is the matrix A and the vector b given in R syntax for you:
+```{r,echo=TRUE}
+A = cbind(c(1,1,-2,-3,0,1),c(1,0,1,0,1,0),c(-1,-2,5,6,1,-2),c(-1,1,1,2,2,-1),c(2,1,-6,-8,-3,3))
+b = c(1,3,2,1,6,-1)
+```
+
+
+
+
 
 
 ## RREF for a linear system
@@ -57,77 +80,19 @@ Here is the reduced row echelon form of a matrix $\mathsf{A}$ (you are not given
 $$
 \mathsf{A} \longrightarrow \left[
 \begin{array}{cccc}
- 1 & -2 & 0 & 4 \\
- 0 & 0 & 1 & -5 \\
- 0 & 0 & 0 & 0 \\
+ 1 & 0 & -2 & 0 & 2\\
+ 0 & 1 & 3 & 0 & 1\\
+ 0 & 0 & 0 & 1 & -1\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
 \end{array}
 \right]
 $$
 
   a. Give the solution to the homogeneous matrix equation $A x = \mathbf{0}$ in  **parametric vector form** and describe the geometry of the solution. For example, you answer should be something like: "it is a plane in $\mathbb{R}^3$" or "it is a line in $\mathbb{R}^7$" or "it is a point in $\mathbb{R}^4$."
   
-  c.  Suppose that we also know that $\mathsf{A}\begin{bmatrix} 4 \\ 1 \\ -3 \\ 2 \\ \end{bmatrix} = \begin{bmatrix} 22 \\ -13 \\ 7 \\ \end{bmatrix}$. Then give the general solution to 
-$\mathsf{A} \mathsf{x}= \begin{bmatrix} 22 \\ -13\\ 7 \\ \end{bmatrix}$ in parametric form.
-
-
-
-
-
-
-## RREF for a set of vectors
-
-Suppose that we have five vectors 
-$\mathsf{v}_1, \mathsf{v}_2,\mathsf{v}_3,\mathsf{v}_4,\mathsf{v}_5$ in $\mathbb{R}^4$ and that the matrix $A$ containing those vectors row reduces as follows
-$$
-A = \left[
-\begin{array}{ccc}
-\mid & \mid  & \mid & \mid & \mid \\
-\mathsf{v}_1 & \mathsf{v}_2 & \mathsf{v}_3 &\mathsf{v}_4 &\mathsf{v}_5  \\
-\mid & \mid  & \mid & \mid & \mid 
-\end{array}
-\right]
- \longrightarrow
-\begin{bmatrix}
-1 & 0 & -3 & 0 & 2  \\
-0 & 1 & 4 & 0 &  1  \\
-0 & 0 & 0 & 1 & 1  \\
-0 & 0 & 0 & 0 & 0 
-\end{bmatrix}.
-$$
-
-
-  a.  Do the vectors $\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3, \mathsf{v}_4, \mathsf{v}_5$ span $\mathbb{R}^4$? Justify your answer.
-  
-  b. Give the solution, in parametric form, to the homogeneous system of equations $A x = 0$ for this problem.
-  
-  c. Give a dependence relation among the vectors $\mathsf{v_1}, \mathsf{v_2},\mathsf{v_3},\mathsf{v_4}, \mathsf{v_5}$.
-
-  d. Is the vector $\mathsf{v}_3$  in $\mathrm{span}(\mathsf{v}_1,\mathsf{v}_2)$? Justify your answer.
-
-  e. Suppose that $\mathsf{b} = 5 \mathsf{v}_1  + \mathsf{v}_2 - 3 \mathsf{v}_3 +4 \mathsf{v}_4 - \mathsf{v}_5$. Use what you have done above to write $\mathsf{b}$ as a different linear combination  of $\mathsf{v_1}, \mathsf{v_2},\mathsf{v_3},\mathsf{v_4}, \mathsf{v_5}$ (i.e., with different weights).
-
-
-
-
-
-<!-- ## Removing free variable columns from a matrix -->
-
-<!-- Consider the matrix -->
-
-<!-- $$ -->
-<!-- A =\left[ -->
-<!-- \begin{array}{cccccc} -->
-<!--  6 & 5 & -3 & 4 & 2 & -9 \\ -->
-<!--  -7 & -6 & 4 & -5 & -7 & 16 \\ -->
-<!--  -4 & -3 & -1 & 0 & -8 & 9 \\ -->
-<!--  8 & 7 & -5 & 6 & 1 & -12  -->
-<!-- \end{array} -->
-<!-- \right]. -->
-<!-- $$ -->
-
-<!--   a. Use RStudio to show that the columns  of $\mathsf{A}$ span $\mathbb{R}^4$. You don't need to turn in an R file here, just report the reduced row echelon form that you get. -->
-<!--   b. Write down the new matrix $\mathsf{A}'$ gotten by removing the free variable columns from $\mathsf{A}$.  -->
-<!--   c. Without using additional calculations on RStudio, explain why the new system $\mathsf{A}' \mathsf{x} = \mathsf{b}$ is **consistent**  and has a **unique solution** for every choice of $\mathsf{b} \in  \mathbb{R}^4$. -->
+  c.  Suppose that we also know that $\mathsf{A}\begin{bmatrix} 4 \\ 1 \\ 3 \\ 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 6 \\  5 \\ 1 \\ 2 \\3  \end{bmatrix}$. Then give the general solution to 
+$\mathsf{A} \mathsf{x}= \begin{bmatrix} 6 \\ 5 \\ 1 \\ 2  \\ 3 \end{bmatrix}$ in parametric form.
 
 
 
@@ -140,13 +105,13 @@ $A\mathsf{x}=\mathsf{b}$ has a unique solution. Explain why the columns of $A$ m
 
 Suppose that $\mathsf{x}_1$ and $\mathsf{x}_2$ are solutions to $\mathsf{A} \mathsf{x} = \mathsf{b}$ (where $\mathsf{b} \not= \mathsf{0}$). 
 
-a. Decide if any of the following are also solutions to $\mathsf{A} \mathsf{x} = \mathsf{b}$.
+a. Decide if any of the following are also solutions to $\mathsf{A} \mathsf{x} = \mathsf{b}$. Justify your answers.
     i. $\mathsf{x}_1+ \mathsf{x}_2$
     ii. $\mathsf{x}_1 - \mathsf{x}_2$
     iii. $\frac{1}{2} ( \mathsf{x}_1 + \mathsf{x}_2)$
     iv. $\frac{5}{2} \mathsf{x}_1 - \frac{3}{2} \mathsf{x}_2$.
 
-b. Under what conditions on $c$ and $d$ is $\mathsf{x} = c \mathsf{x}_1 + d \mathsf{x}_2$ a solution to $\mathsf{A} \mathsf{x} = \mathsf{b}$? Justify your answer.
+b. Under what conditions on $c$ and $d$ is the linear combination $\mathsf{x} = c \mathsf{x}_1 + d \mathsf{x}_2$ a solution to $\mathsf{A} \mathsf{x} = \mathsf{b}$? Justify your answer.
 c. Let $\mathsf{u}$ be the vector that *points to* $1/3$ of the way from the tip of $\mathsf{v}$ to the tip of $\mathsf{w}$ as depicted below. 
     i. Write $\mathsf{u}$ as a linear combination of $\mathsf{v}$ and $\mathsf{w}$ (hint: think about $\mathsf{w} - \mathsf{v}$)
     ii. If $\mathsf{v}$ and $\mathsf{w}$ are solutions to $A x = \mathsf{b}$ then show that $\mathsf{u}$ is also a solution to $A \mathsf{x} = \mathsf{b}$.
@@ -171,7 +136,6 @@ c. Let $\mathsf{u}$ be the vector that *points to* $1/3$ of the way from the tip
 
 ## A Balanced Diet
   
-<!-- https://lvs.com.au/wp-content/uploads/2015/10/protein-fat-carb-counter.pdf -->
 
 An athlete wants to consume  a daily diet of 200 grams of carbohydrates, 60 grams of fats and 160 grams of  proteins. Here are some of their favorite foods.
 
@@ -190,56 +154,12 @@ knitr::kable(
 )
 ```
 
-Answer the following  questions, using RStudio for your calculations. Each response must use **two or more** of the following terms:  linear combination, span, linearly dependent, linearly independent. 
 
-
-1. Explain why they **cannot** achieve their daily goal by eating only almonds, milk and zucchini.
+1. Explain why they **cannot** achieve their daily goal by eating only almonds, milk and zucchini.Use the word **span** in your answer.
 
 2. Explain why they **cannot** achieve their daily goal by eating only almonds, beans and cheese.
 
 3. Find a valid one-day diet consisting of almonds, chicken, and zucchini. 
-
-## Missing Column
-
-The matrices below are supposed to be $3 \times 3$ but in each case the third column was accdentally deleted. In each case, add a third column, that has no 0s in it and is different from either the first or second column, so that the columns of  $A$ are linearly dependent and so that the columns of $B$ are linearly independent. Briefly describe your strategy.
-$$
-A=\left[
-\begin{matrix}
-1& 0 & \quad \\
-0& 1& \quad \\
-2& 2& \quad \\
-\end{matrix}\right]  \qquad\qquad  
-B=\left[
-\begin{matrix}
-1& 0 & \quad \\
-0& 1& \quad \\
-2& 2& \quad \\
-\end{matrix}\right] 
-$$
-
-## Linear System
-
-Use R to solve this problem. Do your computations in an R markdown file.  Knit the file to HTML and include it with your homework. Here you [can download a template for doing this problem](https://github.com/Tom-Halverson/math236_s21/blob/main/PS-2.9-template.Rmd) (including the matrix typed out for you!).
-$$
-A =\left[
-\begin{array}{cccccc}
- 12 & 10 & -6 & 8 & 4 & -18 \\
- -7 & -6 & 4 & -5 & -7 & 16 \\
- 9 & 9 & -9 & 9 & 9 & -27 \\
- -4 & -3 & -1 & 0 & -8 & 9 \\
- 8 & 7 & -5 & 6 & 1 & -12 \\
-\end{array}
-\right] \quad
-b = \begin{bmatrix} 14 \\ -12 \\ 9\\ -15 \\6 \end{bmatrix}
-$$
-
-a. Show that the columns of $A$ are linearly dependent by finding two different dependency relations among them. You can write your answer in a form  like $5 a1+ 4 a2 + 3 a3 + 2 a4 + a5 = 0$, where $a1, a2,$ etc are the columns of $A$. 
-
-b. Augment $A$ with $b$ and show that $A x = b$ is consistent and has infinitely many solutions.
-
-c. Remove the free-variable columns from $A$ to get a new, smaller matrix $A'$. Show that $A' x = b$ has a unique solution and say what that solution is.
-
-
 
 
 
