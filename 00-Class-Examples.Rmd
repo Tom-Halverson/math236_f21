@@ -52,9 +52,51 @@ x_4 &= free
 $$
 
 ## Day 4: Fri Sep 10
-```{r}
 
+**Question** Solve the following matrix equation using R:
+$$
+\begin{bmatrix}
+ 1 & -2 & 1 \\
+ 1 & 0 & 1 \\
+ -1 & 1 & ~0~ \\
+ 2 & 1 & 1  \\
+\end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}
+=
+\begin{bmatrix} 13 \\ 7 \\ -5 \\ 6  \end{bmatrix}
+$$
+
+Here we enter A and b separately to illustrate (below) how to augment a matrix with a vector.
+```{r}
+A = cbind(c(1,1,-1,2),c(-2,0,1,1),c(1,1,0,1))
+b = c(13,7,-5,6) # notice that b is a vector and not a matrix.
 ```
+
+Let's echo them back to see what they look like
+```{r}
+A
+b
+```
+Now I will augment A with b and call it Ab. The syntax is nice:
+
+```{r}
+Ab = cbind(A,b)
+Ab
+```
+
+And then row reduce.
+
+```{r}
+rref(Ab)
+```
+This tells me that there is a **unique** solution to Ax = b, and it is 
+$$
+\begin{bmatrix} x_1 \\ x_2 \\ x_3  \end{bmatrix} = 
+\begin{bmatrix} 2 \\ -3 \\ 5  \end{bmatrix}.
+$$
+**Question 2** Can we find a vector d for which A x = d has no solution?
+
+
 
 ## Day 5: Mon Sep 13
 

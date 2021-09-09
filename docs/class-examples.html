@@ -239,6 +239,44 @@ x_4 &amp;= free
 </div>
 <div id="day-4-fri-sep-10" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Day 4: Fri Sep 10</h2>
+<p><strong>Question</strong> Solve the following matrix equation using R:
+<span class="math display">\[
+\begin{bmatrix}
+ 1 &amp; -2 &amp; 1 \\
+ 1 &amp; 0 &amp; 1 \\
+ -1 &amp; 1 &amp; ~0~ \\
+ 2 &amp; 1 &amp; 1  \\
+\end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}
+=
+\begin{bmatrix} 13 \\ 7 \\ -5 \\ 6  \end{bmatrix}
+\]</span></p>
+<p>Here we enter A and b separately to illustrate (below) how to augment a matrix with a vector.</p>
+<p>Let’s echo them back to see what they look like</p>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1   -2    1
+## [2,]    1    0    1
+## [3,]   -1    1    0
+## [4,]    2    1    1</code></pre>
+<pre><code>## [1] 13  7 -5  6</code></pre>
+<p>Now I will augment A with b and call it Ab. The syntax is nice:</p>
+<pre><code>##               b
+## [1,]  1 -2 1 13
+## [2,]  1  0 1  7
+## [3,] -1  1 0 -5
+## [4,]  2  1 1  6</code></pre>
+<p>And then row reduce.</p>
+<pre><code>##             b
+## [1,] 1 0 0  2
+## [2,] 0 1 0 -3
+## [3,] 0 0 1  5
+## [4,] 0 0 0  0</code></pre>
+<p>This tells me that there is a <strong>unique</strong> solution to Ax = b, and it is
+<span class="math display">\[
+\begin{bmatrix} x_1 \\ x_2 \\ x_3  \end{bmatrix} = 
+\begin{bmatrix} 2 \\ -3 \\ 5  \end{bmatrix}.
+\]</span>
+<strong>Question 2</strong> Can we find a vector d for which A x = d has no solution?</p>
 </div>
 <div id="day-5-mon-sep-13" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Day 5: Mon Sep 13</h2>
