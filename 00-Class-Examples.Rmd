@@ -67,9 +67,9 @@ $$
 $$
 
 Here we enter A and b separately to illustrate (below) how to augment a matrix with a vector.
-```{r}
+```{r,echo=TRUE}
 A = cbind(c(1,1,-1,2),c(-2,0,1,1),c(1,1,0,1))
-b = c(13,7,-5,6) # notice that b is a vector and not a matrix.
+b = c(1,1,-1,2) # notice that b is a vector and not a matrix.
 ```
 
 Let's echo them back to see what they look like
@@ -79,14 +79,14 @@ b
 ```
 Now I will augment A with b and call it Ab. The syntax is nice:
 
-```{r}
+```{r,echo=TRUE}
 Ab = cbind(A,b)
 Ab
 ```
 
 And then row reduce.
 
-```{r}
+```{r,echo=TRUE}
 rref(Ab)
 ```
 This tells me that there is a **unique** solution to Ax = b, and it is 
@@ -96,7 +96,12 @@ $$
 $$
 **Question 2** Can we find a vector d for which A x = d has no solution?
 
-
+```{r,echo=TRUE}
+A = cbind(c(1,1,-1,2),c(-2,0,1,1),c(1,1,0,1))
+d = c(1,1,-1,2) # notice that b is a vector and not a matrix.
+Ad = cbind(A,d)
+rref(Ad)
+```
 
 ## Day 5: Mon Sep 13
 
