@@ -221,7 +221,30 @@ span(\mathsf{v}_1, \mathsf{v}_2, \ldots, \mathsf{v}_n) = \{ x_1 \mathsf{v}_1 + x
 x_1, x_2, \ldots, x_n \in \mathbb{R}\},
 \]</span></p>
 </dd>
+<dt>linear independence</dt>
+<dd>A set of vectors <span class="math inline">\(\mathsf{v}_1, \mathsf{v}_2,\ldots, \mathsf{v}_n\)</span> are
+<strong>linearly independent</strong> if the only way to write<br />
+<span class="math display">\[ 
+\mathsf{0} = c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + \cdots + c_n \mathsf{v}_n 
+\]</span>
+is with <span class="math inline">\(c_1 = c_2 = \cdots = c_n = 0\)</span>.
+</dd>
 </dl>
+<p><em>Connection to Matrices:</em> If <span class="math inline">\(A = [\mathsf{v}_1 \mathsf{v}_2 \cdots \mathsf{v}_n]\)</span> is the matrix with these vectors in the columns, then this is the
+same as saying that <span class="math inline">\(A x = \mathsf{0}\)</span> has only the trivial solution.</p>
+<dl>
+<dt>linear dependence</dt>
+<dd>Conversely, a set of vectors <span class="math inline">\(\mathsf{v}_1, \mathsf{v}_2, \ldots, \mathsf{v}_n\)</span> are <strong>linearly dependent</strong> if there exist scalars <span class="math inline">\(c_1, c_2,\ldots, c_n \in \mathbb{R}\)</span> that are <strong>not all equal to 0</strong> such that
+<span class="math display">\[ 
+\mathsf{0} = c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + \cdots + c_n
+\mathsf{v}_n 
+\]</span>
+This is called a <strong>dependence relation</strong> among
+the vectors.
+</dd>
+</dl>
+<p><em>Connection to Matrices:</em> If <span class="math inline">\(A = [\mathsf{v}_1 \mathsf{v}_2 \cdots \mathsf{v}_n]\)</span> is the matrix with these
+vectors in the columns, then this is the same as saying that <span class="math inline">\(\mathsf{x} = [c_1, c_2, \ldots, c_n]^{\top}\)</span> is a nontrivial solution to <span class="math inline">\(A \mathsf{x} = \mathsf{0}\)</span>.</p>
 <!-- ## Vector Spaces -->
 <!-- span  -->
 <!-- : A set of vectors $\mathsf{v}_1, \mathsf{v}_2, \ldots, \mathsf{v}_n$ **span** a vector space $V$ if for every $\mathsf{v} \in V$ there exist a set of scalars (weights) $c_1, c_2, \ldots, c_n \in \mathbb{R}$ such that  -->

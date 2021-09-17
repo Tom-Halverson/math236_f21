@@ -29,6 +29,36 @@ span(\v_1, \v_2, \ldots, \v_n) = \{ x_1 \v_1 + x_2 \v_2 + \cdots + x_n \v_n \mid
 x_1, x_2, \ldots, x_n \in \mathbb{R}\},
 $$
 
+linear independence
+: A set of vectors $\mathsf{v}_1, \mathsf{v}_2,\ldots, \mathsf{v}_n$ are
+**linearly independent** if the only way to write  
+$$ 
+\mathsf{0} = c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + \cdots + c_n \mathsf{v}_n 
+$$ 
+is with $c_1 = c_2 = \cdots = c_n = 0$.  
+
+*Connection to Matrices:* If $A = [\mathsf{v}_1 \mathsf{v}_2 \cdots
+\mathsf{v}_n]$ is the matrix with these vectors in the columns, then this is the
+same as saying that $A x = \mathsf{0}$ has only the trivial solution. 
+
+linear dependence
+: Conversely, a set of vectors $\mathsf{v}_1, \mathsf{v}_2, \ldots,
+\mathsf{v}_n$ are **linearly dependent** if there exist scalars $c_1,
+c_2,\ldots, c_n \in \mathbb{R}$ that are **not all equal to 0** such that
+$$ 
+\mathsf{0} = c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + \cdots + c_n
+\mathsf{v}_n 
+$$ 
+This is called a **dependence relation** among
+the vectors.  
+
+*Connection to Matrices:* If $A =
+[\mathsf{v}_1 \mathsf{v}_2 \cdots \mathsf{v}_n]$ is the matrix with these
+vectors in the columns, then this is the same as saying that $\mathsf{x} = [c_1,
+c_2, \ldots, c_n]^{\top}$ is a nontrivial solution to $A \mathsf{x} =
+\mathsf{0}$.
+
+
 <!-- ## Vector Spaces -->
 
 <!-- span  -->
