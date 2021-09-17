@@ -1,37 +1,85 @@
 
 # Problem Set 3
 
-* Due: Tuesday February 9 by noon CST. 
+* Due: **Wednesday** September 22 by midnight. 
+     * Free Extension: anything turned in by 5PM Friday will be considered on time. 
+     * After 5PM Friday, late assignments are subject to a 15% late penalty.
+     * After I post the solution on Monday, there is a 50% late penalty.
 * Upload your solutions to Moodle in a PDF. 
 * Please feel free to **use RStudio for all row reductions.**
 * You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f20/blob/main/PS3-problem-set-3.Rmd).
 
-The Problem Set covers sections 1.8, 1.9, 2.1, 2.2.
+The Problem Set covers sections 1.7 Linear Independence and 1.8 Linear Transformations.
 
+## RREF for a set of vectors
 
-## Linear Transformations
-
-In each case below, if the transformation is linear, then find is matrix.
-If it is not linear, then demonstrate that it is not linear by showing, with a specific example, that one of the properties of being linear is broken.  
-
-a. The transformation $T$ is given by:
-$$T \left( \begin{bmatrix}  x_1 \\ x_2 \\ \end{bmatrix}\right) = 
-\begin{bmatrix} x_1 + x_2 \\ 2 x_1 \\ -x_2 \\\end{bmatrix}.
+Suppose that we have five vectors 
+$\mathsf{v}_1, \mathsf{v}_2,\mathsf{v}_3,\mathsf{v}_4,\mathsf{v}_5$ in $\mathbb{R}^4$ and that the matrix $A$ containing those vectors row reduces as follows
+$$
+A = \left[
+\begin{array}{ccc}
+\mid & \mid  & \mid & \mid & \mid \\
+\mathsf{v}_1 & \mathsf{v}_2 & \mathsf{v}_3 &\mathsf{v}_4 &\mathsf{v}_5  \\
+\mid & \mid  & \mid & \mid & \mid 
+\end{array}
+\right]
+ \longrightarrow
+\begin{bmatrix}
+1 & 0 & -3 & 0 & 2  \\
+0 & 1 & 4 & 0 &  1  \\
+0 & 0 & 0 & 1 & 1  \\
+0 & 0 & 0 & 0 & 0 
+\end{bmatrix}.
 $$
 
-b. The transformation $T$ is given by:
-$$T \left( \begin{bmatrix}  x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)= 
-  \begin{bmatrix} x_1 + x_2 + x_3 \\  x_1 x_2 \\ -x_2 + 2 x_3 \end{bmatrix}.
+
+  a.  Do the vectors $\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3, \mathsf{v}_4, \mathsf{v}_5$ span $\mathbb{R}^4$? Justify your answer.
+  
+  b. Give the solution, in parametric form, to the homogeneous system of equations $A x = 0$ for this problem.
+  
+  c. Give a dependence relation among the vectors $\mathsf{v_1}, \mathsf{v_2},\mathsf{v_3},\mathsf{v_4}, \mathsf{v_5}$.
+
+  d. Is the vector $\mathsf{v}_3$  in $\mathrm{span}(\mathsf{v}_1,\mathsf{v}_2)$? Justify your answer.
+
+  e. Suppose that $\mathsf{b} = 5 \mathsf{v}_1  + \mathsf{v}_2 - 3 \mathsf{v}_3 +4 \mathsf{v}_4 - \mathsf{v}_5$. Use what you have done above to write $\mathsf{b}$ as a different linear combination  of $\mathsf{v_1}, \mathsf{v_2},\mathsf{v_3},\mathsf{v_4}, \mathsf{v_5}$ (i.e., with different weights).
+
+
+## Linear independence and unique expressions.
+
+It is an important fact that if a set of vectors $\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3, \ldots, \mathsf{v}_n$ is *linearly independent* then any vector in the span of these vectors can be written as a *unique* linear combination of those vectors. 
+
+a. This property has a fairly simple proof. Let's suppose that n = 4 for simplicity and that a vector v can be written in two ways as a combination of those vectors:
+$$
+\begin{array}{ccccccc}
+v &=& c_1 \mathsf{v}_1 &+&  c_2 \mathsf{v}_2 &+&  c_3 \mathsf{v}_3 &+&  c_4 \mathsf{v}_4 \\
+&=& d_1 \mathsf{v}_1 &+&  d_2 \mathsf{v}_2 &+&  d_3 \mathsf{v}_3 &+&  d_4 \mathsf{v}_4
+\end{array}
+$$
+Then use the definition of linear independence to prove that $c_1 = d_1$, $c_2 = d_2$, $c_3 = d_3$, and $c_4 = d_4$.
+
+
+## Is the transformation linear?
+There are three transformations below. If you believe that the transformation is linear, then show it is by showing that the three linear transformation rules apply for *arbitrary* vectors. If you believe that the transformation is not linear. Then show that one of the rules fails for *specific* vectors.
+
+(a)
+$$
+T \left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)
+=
+\begin{bmatrix} x_1 + x_2 + x_3 -1 \\ x_1 - x_2 + x_3 + 1  \end{bmatrix}
 $$
 
-c. The transformation $L: \mathbb{R}^2 \to \mathbb{R}^2$ sends the shaded region on the  left to the the shaded region on the right such that $A$ maps to $A$, $B$ maps to $B$, $C$ maps to $C$, and $D$ maps to $D$.
-
-![](images/q1-blockA.png){width=30%} $\qquad \qquad$ ![](images/q1-blockB.png){width=30%} 
-
-d. The transformation $R: \mathbb{R}^2 \to \mathbb{R}^2$ sends the shaded region on the  left to the the shaded region on the right such that $A$ maps to $A$, $B$ maps to $B$, $C$ maps to $C$, and $D$ maps to $D$.
-
-![](images/q1-blockA.png){width=30%} $\qquad \qquad$ ![](images/q1-blockD.png){width=30%}
-
+(b)
+$$
+T \left( \begin{bmatrix} x_1 \\ x_2  \end{bmatrix} \right)
+=
+\begin{bmatrix} 3 x_1 - 5 x_2 \\ 2 x_1 + x_2 \\ 2 x_1 + 3 x_2 \end{bmatrix}
+$$
+(c)
+$$
+T \left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)
+=
+\begin{bmatrix} x_1 + x_2^2 + x_3 \\ 2 x_2 + x_1 x_3 \\ 2 x_1 + 3 x_2 + x_3 \end{bmatrix}
+$$
 
 ## Partial Information about a Linear Transformation
 
@@ -43,134 +91,11 @@ T\left(\begin{bmatrix}~~2 \\ -1 \\ 0 \\ -1 \end{bmatrix} \right)=\begin{bmatrix}
 $$
 Use this information to compute the value of $T$ below? 
 $$T\left(\begin{bmatrix} 5 \\ 8 \\ ~3~ \\ 8 \end{bmatrix} \right) = \hskip5in$$
+Hint: express the third input vector as a linear combination of the first two.
 
+## One more problem is coming.
 
-
-## House Renovations
-
-Below are two linear transformations $T: \mathbb{R}^2 \to \mathbb{R}^2$ that transform my house as shown. Find the matrix of each of these transformations (hint: use the base, the doorway and the peak of the roof as a guide).
-
-a. Transformation \#1
-
-![](images/ps3-house1.png){width=40%} $\qquad \qquad$ ![](images/ps3-house2.png){width=40%}
-
-
-b. Transformation \#2
-
-![](images/ps3-house1.png){width=40%} $\qquad \qquad$ ![](images/ps3-house3.png){width=40%}
-
-
-
-## Matrix of a Nonlinear Transformation?
-
-This problem illustrates what happens if you try to make the matrix of a transformation that is not linear. Consider the transformation $T$ defined by
-$$
-T \left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)
-=
-\begin{bmatrix} x_1 + x_2^2 + x_3 \\ 2 x_2 + x_1 x_3 + 1 \\ 2 x_1 + 3 x_2 + x_3 \end{bmatrix}
-$$
-a. Show that this is not a linear transformation by demonstrating, with a specific example, that one of the rules of being linear is not true.
-
-b. Now. let's see what happens if we compute its matrix anyway. Compute $T(\mathbf{e}_1)$, $T(\mathbf{e}_2)$, and $T(\mathbf{e}_3)$, and put the vectors you get in the columns of a matrix $A$. Then compute the product below:
-$$
-\underbrace{\begin{bmatrix} 
-\cdot & \cdot & \cdot \\
-\cdot & \cdot & \cdot \\
-\cdot & \cdot & \cdot \\
-\end{bmatrix}}_{A}
-\begin{bmatrix} x_1 \\ x_ 2 \\ x_3 \end{bmatrix}
-= 
-$$
-Explain how the result of this computation demonstrates that $T$ is not linear.
-
-## A Proof 
-
-
-Let $T: \mathbb{R}^n \to \mathbb{R}^m$ be a linear transformation. Suppose that $\{v_1, v_2, v_3, v_4\}$ is a linearly independent set of vectors in $\mathbb{R}^n$ but the set of images $\{T(v_1), T(v_2), T(v_3), T(v_4)\}$ is a linearly dependent set in $\mathbb{R}^m$. In the following steps, you will prove that $T$ is not one-to-one.
-
-
-a. Write out clearly, using the definition, what it means for $\{v_1, v_2, v_3, v_4\}$ to be linearly independent. 
-
-b. Write out clearly, using the definition, what it means for $\{T(v_1), T(v_2), T(v_3), T(v_4)\}$ to be linearly dependent.
-
-c. Use the definition of linear transformation and parts (a) and (b) above to argue that $T(x) = \vec{0}$ for some nonzero vector $x \in \mathbb{R}^n$.
-
-d. Explain why this tells us that $T$ is not one-to-one.
-
-## Inner and Outer Products
-
-We can also think of vectors as matrix. A column vector is an $n \times 1$ matrix and a row vector is a $1 \times n$ matrix. 
-
-a. Compute the following products. These matrix products are called *inner products* (or dot products) of the vectors.
-
-
-$$
-\begin{bmatrix} 4 & -1 & 2 & 3\end{bmatrix}
-\begin{bmatrix} 1 \\ 2 \\1  \\3  \\\end{bmatrix} = \hskip3in
-$$
-$$
-\begin{bmatrix} 4 & -1 & 2 & 3\end{bmatrix}
-\begin{bmatrix} 1 \\ 1 \\1  \\1  \\\end{bmatrix} = \hskip3in
-$$
-$$
-\begin{bmatrix} 4 & -1 & 2 & 3\end{bmatrix}
-\begin{bmatrix} 2 \\ 5 \\ 0  \\ -1  \\\end{bmatrix} = \hskip3in
-$$
-b. Now compute the following products. These are called *outer products*.  
-
-$$
-\begin{bmatrix} 1 \\ 2 \\1  \\3  \\\end{bmatrix}
-\begin{bmatrix} 1 & -5 & 2 & 3\end{bmatrix} = \hskip3in
-$$
-
-$$
-\begin{bmatrix} 1 \\ 2 \\1  \\3  \\\end{bmatrix}
-\begin{bmatrix} 1 & 1 & 1 & 1\end{bmatrix} =\hskip3in
-$$
-
-c. Row reduce both of the matrices that you get in part b (this should be easy to do by hand,but you can use R if you want to). How many pivots do you get? Explain why you always get this number of pivots when you row reduce an outer product.
-
-
-## Archaeological Seriation
-
-The matrix $A$ below is used in  archaeological dating. Its rows correspond to four different grave sites $G_1, G_2, G_3, G_4$ and its columns correspond to five types of pottery$P_1, P_2, P_3, P_4, P_5$. There is a 1 in position $i$-$j$ if pottery type $P_j$ is found in grave $G_i$ (and a 0 otherwise).
-$$
-A=\begin{array}{c|ccccc}
-& P_1 & P_2 & P_3 & P_4 & P_5 \\
-\hline
- G_1 & 1 & 1 & 0 & 1 & 1 \\
-G_2 &  0 & 0 & 1 & 0 & 1 \\
-G_3 &  0 & 1 & 1 & 0 & 1 \\
-G_4  & 1 & 1 & 1 & 1 & 1 \\
-\end{array}
-$$
-
-1. Compute the matrix $\mathbf{G} = A A^T$, where $A^T$ is the *transpose* of $A$, meaning that the rows and columns have been interchanged.
-
-2. Give the meaning of the $i$-$j$ entry of $\mathbf{G}$ (the entry in row $i$ and column $j$). State clearly the meaning of this entry using complete sentences (or sentence) and explain why it has this meaning.
-
-## Rental Car
-
-Solve this problem using R and turn in a markdown file knitted to .html. 
-
-A group of Macalester alumni open a rental car company specializing in  renting electric cars. As a start, they have opened offices in St. Paul, Rochester, and Duluth. Through market research they find that of the cars rented in St. Paul, 85% will get returned in St. Paul, 9% will get returned in Rochester, and 6% will get returned in Duluth. Of the cars rented in Rochester, 30% will get returned in St. Paul, 60% will get returned in Rochester, and 10% in Duluth. Of the cars rented in Duluth, 35% will get returned in St. Paul, 5% in Rochester, and 60% in Duluth. This information is represented in the matrix below.
-
-```{r,echo=TRUE}
-StP = c(.85,.09,.06)
-Roch = c(.30,.60,.10)
-Dul = c(.35,.05,.60) 
-M = cbind(StP,Roch,Dul)
-M
-```
-Such a matrix is called a *probability* matrix or a *stochastic* matrix because it  contains numbers between 0 and 1 and each of its columns sum to 1.
-
-a. The owners are trying to use this data to estimate how much of their fleet will be at each location on average in the long run. Assume that initially they locate 20 cars in each city. This can be recorded by the vector `v0 = c(20,20,20)`. Apply, M to v0, call this vector v1, and explain, using how the matrix-vector product works, why v1 represents the number of cars at each location one day later (for simplicity, we assume that each rental is for 1 day).
-
-b. Now apply M to v1 and call it v2. This should represent the number of cars at each location 2 days later. Also compute the square of the matrix M and call it M2. Confirm that M2 times v0 is the same as M times v1. 
-
-c. Write a for loop that applies M over and over again to see what happens to the distribution of cars in the long-run (we will learn how to do this in class but you can also probably just google it). Does this sequence stabilize or does it keep changing after each application? If it does stabilize, how long does it take to stabilize (to within 0.1 cars at each location).
-
-d. Does the starting distribution matter? Try 4 different starting distributions (with a total of 60 cars) and see what the final distribution looks like in each case. For one of your 4 starting distributions, try all 60 cars at one of the locations.
+It will be here this weekend.
 
 
 

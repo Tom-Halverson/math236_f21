@@ -69,7 +69,7 @@ $$
 Here we enter A and b separately to illustrate (below) how to augment a matrix with a vector.
 ```{r,echo=TRUE}
 A = cbind(c(1,1,-1,2),c(-2,0,1,1),c(1,1,0,1))
-b = c(1,1,-1,2) # notice that b is a vector and not a matrix.
+b = c(13,7,-5,6) # notice that b is a vector and not a matrix.
 ```
 
 Let's echo them back to see what they look like

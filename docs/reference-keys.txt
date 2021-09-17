@@ -1,4 +1,4 @@
-tab:unnamed-chunk-24
+tab:unnamed-chunk-4
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -12,6 +12,12 @@ rref-for-a-linear-system
 a-square-matrix
 combining-solutions-to-a-mathsfx-mathsfb
 a-balanced-diet
+problem-set-3
+rref-for-a-set-of-vectors
+linear-independence-and-unique-expressions.
+is-the-transformation-linear
+partial-information-about-a-linear-transformation
+one-more-problem-is-coming.
 important-definitions
 systems-of-equations
 class-examples

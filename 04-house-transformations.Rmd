@@ -20,7 +20,7 @@ Here we explore linear transformations on the plane by looking at their effect o
 
 We give a series of examples of 2D linear transformations. After each example, it's your turn to play with variations from the same family of transformations. 
 
-## Rotations
+### Rotations
 
 Suppose that we wish to *rotate* my house by pi/3 radians. As we've seen, a 2D rotation matrix by $t$ radians, counter-clockwise, is given by
 $$A=\displaystyle{ \begin{bmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{bmatrix}}.$$
@@ -45,8 +45,13 @@ polygon(house2[1,], house2[2,], col = "pink", border = "black")
 Try changing the angle above to achieve different rotations. How can you rotate it clockwise?
 
 
-## Expansion and contraction
-Next, we scale the house by 2 in the $x$-direction and by 3 in the $y$-direction.
+### Expansion and contraction
+Next, we scale the house by 2 in the $x$-direction and by 3 in the $y$-direction. Notice that
+$$
+\begin{bmatrix} 2 & 0 \\ 0 & 3 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+= \begin{bmatrix} 2 x \\ 3 y \end{bmatrix}.
+$$
 
 ```{r,house3,fig.height=4,fig.width=4, echo=TRUE}
 # define the matrix A. This is the only part you should need to edit.
@@ -65,9 +70,16 @@ polygon(house2[1,], house2[2,], col = "pink", border = "black")
 Your turn: try some different scale factors. What if you use negative scale factors.
 
 
-## Reflection
+### Reflection
 
-Now we reflect over the line y = x. 
+Now we reflect over the line y = x. Notice that this is done by the matrix below
+$$
+\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+= \begin{bmatrix} y \\ x \end{bmatrix}.
+$$
+
+
 
 ```{r,house4,fig.height=4,fig.width=4, echo=TRUE}
 # define the matrix A. This is the only part you should need to edit.
@@ -83,7 +95,7 @@ polygon(house[1,], house[2,], col = "gray", border = "blue")
 polygon(house2[1,], house2[2,], col = "pink", border = "black")
 ```
 
-Your turn: try the reflections (1)  over the x-axis; (2) over the y-axis; and (3) through the origin, i.e., sending (x,y) to (-x,-y).
+Your turn: See if you can find the reflections (1)  over the x-axis; (2) over the y-axis; and (3) through the origin, i.e., sending (x,y) to (-x,-y).
 
 
 ## Shear Transformations
