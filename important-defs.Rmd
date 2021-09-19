@@ -39,7 +39,7 @@ is with $c_1 = c_2 = \cdots = c_n = 0$.
 
 *Connection to Matrices:* If $A = [\mathsf{v}_1 \mathsf{v}_2 \cdots
 \mathsf{v}_n]$ is the matrix with these vectors in the columns, then this is the
-same as saying that $A x = \mathsf{0}$ has only the trivial solution. 
+same as saying that $A x = \mathsf{0}$ has only the trivial solution. This is true if and only if $A$ has a **pivot in every column** so that there are no free variables. 
 
 linear dependence
 : Conversely, a set of vectors $\mathsf{v}_1, \mathsf{v}_2, \ldots,
@@ -57,6 +57,17 @@ the vectors.
 vectors in the columns, then this is the same as saying that $\mathsf{x} = [c_1,
 c_2, \ldots, c_n]^{\top}$ is a nontrivial solution to $A \mathsf{x} =
 \mathsf{0}$.
+
+## Linear Transformations
+
+linear transformation
+: A function $T: \mathbb{R}^n \to \mathbb{R}^m$ is a **linear transformation** if the following three properties hold:
+
+     a. $T({\bf 0}) = {\bf 0}$.
+     b. $T(\mathsf{u} + \mathsf{v}) = T(\mathsf{u}) + T(\mathsf{v})$ for all vectors $\mathsf{u},\mathsf{v} \in \mathbb{R}^n$.
+     c. $T(c \mathsf{u}) = c T(\mathsf{u})$ for all vectors $\mathsf{v} \in \mathbb{R}^n$ and all scalars $c \in \mathbb{R}$.
+     
+These properties say that $T$ sends 0 to 0 and is preserves addition and scalar multiplication.
 
 
 <!-- ## Vector Spaces -->

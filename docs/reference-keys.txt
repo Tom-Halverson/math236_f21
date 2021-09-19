@@ -20,6 +20,7 @@ partial-information-about-a-linear-transformation
 square-wide-and-tall-matrices
 important-definitions
 systems-of-equations
+linear-transformations
 class-examples
 day-3-wed-sep-8
 day-4-fri-sep-10
