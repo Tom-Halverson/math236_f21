@@ -155,7 +155,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.2" data-path="problem-set-3.html"><a href="problem-set-3.html#linear-independence-and-unique-expressions."><i class="fa fa-check"></i><b>3.2</b> Linear independence and unique expressions.</a></li>
 <li class="chapter" data-level="3.3" data-path="problem-set-3.html"><a href="problem-set-3.html#is-the-transformation-linear"><i class="fa fa-check"></i><b>3.3</b> Is the transformation linear?</a></li>
 <li class="chapter" data-level="3.4" data-path="problem-set-3.html"><a href="problem-set-3.html#partial-information-about-a-linear-transformation"><i class="fa fa-check"></i><b>3.4</b> Partial Information about a Linear Transformation</a></li>
-<li class="chapter" data-level="3.5" data-path="problem-set-3.html"><a href="problem-set-3.html#one-more-problem-is-coming."><i class="fa fa-check"></i><b>3.5</b> One more problem is coming.</a></li>
+<li class="chapter" data-level="3.5" data-path="problem-set-3.html"><a href="problem-set-3.html#square-wide-and-tall-matrices"><i class="fa fa-check"></i><b>3.5</b> Square, Wide, and Tall Matrices</a></li>
 </ul></li>
 <li class="part"><span><b>II Concepts of Linear Algebra</b></span></li>
 <li class="chapter" data-level="4" data-path="important-definitions.html"><a href="important-definitions.html"><i class="fa fa-check"></i><b>4</b> Important Definitions</a>
@@ -285,9 +285,82 @@ Use this information to compute the value of <span class="math inline">\(T\)</sp
 <span class="math display">\[T\left(\begin{bmatrix} 5 \\ 8 \\ ~3~ \\ 8 \end{bmatrix} \right) = \hskip5in\]</span>
 Hint: express the third input vector as a linear combination of the first two.</p>
 </div>
-<div id="one-more-problem-is-coming." class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> One more problem is coming.</h2>
-<p>It will be here this weekend.</p>
+<div id="square-wide-and-tall-matrices" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Square, Wide, and Tall Matrices</h2>
+<p>In each question below, choose all of the answers that apply, and give a succinct explanation of how you know that it is true.</p>
+<ol style="list-style-type: decimal">
+<li><p>[Wide] You are given a wide 5 x 8 matrix and you are studying the matrix equation <span class="math inline">\(A x = b\)</span>. These problems are said to be <strong>under constrained</strong> because there are fewer equations (constraints) than variables.
+<span class="math display">\[
+A=\begin{bmatrix} 
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>The vector that you are trying to get to is <span class="math inline">\(b \in \mathbb{R}^m\)</span> and the solution vectors are <span class="math inline">\(x \in \mathbb{R}^n\)</span>. What are <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>?</li>
+<li>Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation.
+<ol style="list-style-type: lower-roman">
+<li>The columns of <span class="math inline">\(A\)</span> must span <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> must be linearly dependent.</li>
+<li>There is a unique solution to <span class="math inline">\(A x = 0\)</span>.</li>
+<li>If the columns span <span class="math inline">\(\mathbb{R}^m\)</span> then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b\)</span>.</li>
+</ol></li>
+</ol></li>
+</ol>
+<p><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>[Tall] You are given a wide 7 x 4 matrix and you are studying the matrix equation <span class="math inline">\(A x = b\)</span>. These problems are said to be <strong>over constrained</strong> because there are more equations (constraints) than variables.
+<span class="math display">\[
+A=\begin{bmatrix} 
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>The vector that you are trying to get to is <span class="math inline">\(b \in \mathbb{R}^m\)</span> and the solution vectors are <span class="math inline">\(x \in \mathbb{R}^n\)</span>. What are <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>?</li>
+<li>Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation.
+<ol style="list-style-type: lower-roman">
+<li>The columns of <span class="math inline">\(A\)</span> might span <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> must be linearly dependent.</li>
+<li>There is a unique solution to <span class="math inline">\(A x = 0\)</span>.</li>
+<li>If the columns span <span class="math inline">\(\mathbb{R}^m\)</span> then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b\)</span>.</li>
+</ol></li>
+</ol></li>
+</ol>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>[Square] You are given a square 6 x 6 matrix and you are studying the matrix equation <span class="math inline">\(A x = b\)</span>.
+<span class="math display">\[
+A=\begin{bmatrix} 
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>The vector that you are trying to get to is <span class="math inline">\(b \in \mathbb{R}^m\)</span> and the solution vectors are <span class="math inline">\(x \in \mathbb{R}^n\)</span>. What are <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>?</li>
+<li>Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation.
+<ol style="list-style-type: lower-roman">
+<li>The columns of <span class="math inline">\(A\)</span> must span <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+<li>If the columns span <span class="math inline">\(\mathbb{R}^m\)</span> then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b\)</span>.</li>
+<li>If <span class="math inline">\({\bf 0}\)</span> is the only solution to <span class="math inline">\(A x = {\bf 0}\)</span>, then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b \in \mathbb{R}^m\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> span <span class="math inline">\(\mathbb{R}^m\)</span> if and only if the columns of <span class="math inline">\(A\)</span> are linearly independent.</li>
+</ol></li>
+</ol></li>
+</ol>
 
 </div>
 </div>

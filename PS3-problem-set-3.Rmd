@@ -93,9 +93,71 @@ Use this information to compute the value of $T$ below?
 $$T\left(\begin{bmatrix} 5 \\ 8 \\ ~3~ \\ 8 \end{bmatrix} \right) = \hskip5in$$
 Hint: express the third input vector as a linear combination of the first two.
 
-## One more problem is coming.
+## Square, Wide, and Tall Matrices
 
-It will be here this weekend.
+In each question below, choose all of the answers that apply, and give a succinct explanation of how you know that it is true. 
+
+1. [Wide] You are given a wide 5 x 8 matrix and you are studying the matrix equation $A x = b$. These problems are said to be **under constrained** because there are fewer equations (constraints) than variables. 
+$$
+A=\begin{bmatrix} 
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\end{bmatrix}
+$$
+
+     (a) The vector that you are trying to get to is $b \in \mathbb{R}^m$ and the solution vectors are $x \in \mathbb{R}^n$. What are $m$ and $n$?
+     (a) Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation. 
+          i. The columns of $A$ must span $\mathbb{R}^m$.
+          i. The columns of $A$ must be linearly dependent.
+          i. There is a unique solution to $A x = 0$.
+          i. If the columns span $\mathbb{R}^m$ then there is a unique solution to $A x = b$ for all $b$.
+
+\
+
+2. [Tall] You are given a wide 7 x 4 matrix and you are studying the matrix equation $A x = b$. These problems are said to be **over constrained** because there are more equations (constraints) than variables. 
+$$
+A=\begin{bmatrix} 
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\ \cdot & \cdot & \cdot & \cdot \ \\
+\end{bmatrix}
+$$
+
+     (a) The vector that you are trying to get to is $b \in \mathbb{R}^m$ and the solution vectors are $x \in \mathbb{R}^n$. What are $m$ and $n$?
+     (a) Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation. 
+          i. The columns of $A$ might span $\mathbb{R}^m$.
+          i. The columns of $A$ must be linearly dependent.
+          i. There is a unique solution to $A x = 0$.
+          i. If the columns span $\mathbb{R}^m$ then there is a unique solution to $A x = b$ for all $b$.
+
+\
+
+3. [Square] You are given a square 6 x 6 matrix and you are studying the matrix equation $A x = b$.
+$$
+A=\begin{bmatrix} 
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\  \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\  \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\  \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\  \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot\ \\
+\end{bmatrix}
+$$
+
+     (a) The vector that you are trying to get to is $b \in \mathbb{R}^m$ and the solution vectors are $x \in \mathbb{R}^n$. What are $m$ and $n$?
+     (a) Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation. 
+          i. The columns of $A$ must span $\mathbb{R}^m$.
+          iii. If the columns span $\mathbb{R}^m$ then there is a unique solution to $A x = b$ for all $b$.
+          iv. If ${\bf 0}$ is the only solution to $A x = {\bf 0}$, then there is a unique solution to $A x = b$ for all $b \in \mathbb{R}^m$.
+          v. The columns of $A$ span $\mathbb{R}^m$ if and only if the columns of $A$ are linearly independent.
+
 
 
 

@@ -17,7 +17,7 @@ rref-for-a-set-of-vectors
 linear-independence-and-unique-expressions.
 is-the-transformation-linear
 partial-information-about-a-linear-transformation
-one-more-problem-is-coming.
+square-wide-and-tall-matrices
 important-definitions
 systems-of-equations
 class-examples
