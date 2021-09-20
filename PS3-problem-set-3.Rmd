@@ -135,7 +135,6 @@ $$
           i. The columns of $A$ might span $\mathbb{R}^m$.
           i. The columns of $A$ must be linearly dependent.
           i. There is a unique solution to $A x = 0$.
-          i. If the columns span $\mathbb{R}^m$ then there is a unique solution to $A x = b$ for all $b$.
 
 \
 
