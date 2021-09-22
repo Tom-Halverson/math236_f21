@@ -18,6 +18,13 @@ linear-independence-and-unique-expressions.
 is-the-transformation-linear
 partial-information-about-a-linear-transformation
 square-wide-and-tall-matrices
+problem-set-4
+matrix-of-a-linear-transformation
+matrix-of-a-nonlinear-transformation
+inner-and-outer-products
+archaeological-seriation
+rental-car
+rainy-day-in-la
 important-definitions
 systems-of-equations
 linear-transformations

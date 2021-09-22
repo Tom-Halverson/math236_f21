@@ -132,12 +132,12 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path=""><a href="#linear-transformations-of-a-house"><i class="fa fa-check"></i><b>1</b> Linear Transformations of a House</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path=""><a href="#rotations"><i class="fa fa-check"></i><b>1.1</b> Rotations</a></li>
-<li class="chapter" data-level="1.2" data-path=""><a href="#expansion-and-contraction"><i class="fa fa-check"></i><b>1.2</b> Expansion and contraction</a></li>
-<li class="chapter" data-level="1.3" data-path=""><a href="#reflection"><i class="fa fa-check"></i><b>1.3</b> Reflection</a></li>
-<li class="chapter" data-level="1.4" data-path=""><a href="#shear-transformations"><i class="fa fa-check"></i><b>1.4</b> Shear Transformations</a></li>
-<li class="chapter" data-level="1.5" data-path=""><a href="#dimension-reduction"><i class="fa fa-check"></i><b>1.5</b> Dimension Reduction</a></li>
-<li class="chapter" data-level="1.6" data-path=""><a href="#your-turn"><i class="fa fa-check"></i><b>1.6</b> Your Turn</a></li>
+<li class="chapter" data-level="1.0.1" data-path=""><a href="#rotations"><i class="fa fa-check"></i><b>1.0.1</b> Rotations</a></li>
+<li class="chapter" data-level="1.0.2" data-path=""><a href="#expansion-and-contraction"><i class="fa fa-check"></i><b>1.0.2</b> Expansion and contraction</a></li>
+<li class="chapter" data-level="1.0.3" data-path=""><a href="#reflection"><i class="fa fa-check"></i><b>1.0.3</b> Reflection</a></li>
+<li class="chapter" data-level="1.1" data-path=""><a href="#shear-transformations"><i class="fa fa-check"></i><b>1.1</b> Shear Transformations</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#dimension-reduction"><i class="fa fa-check"></i><b>1.2</b> Dimension Reduction</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#your-turn"><i class="fa fa-check"></i><b>1.3</b> Your Turn</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -173,8 +173,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <p><img src="04-house-transformations_files/figure-html/house1-1.png" width="384" /></p>
 <p>Here we explore linear transformations on the plane by looking at their effect on my house.</p>
 <p>We give a series of examples of 2D linear transformations. After each example, it’s your turn to play with variations from the same family of transformations.</p>
-<div id="rotations" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Rotations</h2>
+<div id="rotations" class="section level3" number="1.0.1">
+<h3><span class="header-section-number">1.0.1</span> Rotations</h3>
 <p>Suppose that we wish to <em>rotate</em> my house by pi/3 radians. As we’ve seen, a 2D rotation matrix by <span class="math inline">\(t\)</span> radians, counter-clockwise, is given by
 <span class="math display">\[A=\displaystyle{ \begin{bmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{bmatrix}}.\]</span>
 Here is the code to display this transformation.
@@ -196,9 +196,14 @@ Observe that I apply the matrix <code>A</code> to the house, call it <code>house
 <p><img src="04-house-transformations_files/figure-html/house2-1.png" width="384" /></p>
 <p>Try changing the angle above to achieve different rotations. How can you rotate it clockwise?</p>
 </div>
-<div id="expansion-and-contraction" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Expansion and contraction</h2>
-<p>Next, we scale the house by 2 in the <span class="math inline">\(x\)</span>-direction and by 3 in the <span class="math inline">\(y\)</span>-direction.</p>
+<div id="expansion-and-contraction" class="section level3" number="1.0.2">
+<h3><span class="header-section-number">1.0.2</span> Expansion and contraction</h3>
+<p>Next, we scale the house by 2 in the <span class="math inline">\(x\)</span>-direction and by 3 in the <span class="math inline">\(y\)</span>-direction. Notice that
+<span class="math display">\[
+\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 3 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+= \begin{bmatrix} 2 x \\ 3 y \end{bmatrix}.
+\]</span></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the matrix A. This is the only part you should need to edit.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>A <span class="co"># display the matrix A</span></span></code></pre></div>
@@ -215,9 +220,14 @@ Observe that I apply the matrix <code>A</code> to the house, call it <code>house
 <p><img src="04-house-transformations_files/figure-html/house3-1.png" width="384" /></p>
 <p>Your turn: try some different scale factors. What if you use negative scale factors.</p>
 </div>
-<div id="reflection" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Reflection</h2>
-<p>Now we reflect over the line y = x.</p>
+<div id="reflection" class="section level3" number="1.0.3">
+<h3><span class="header-section-number">1.0.3</span> Reflection</h3>
+<p>Now we reflect over the line y = x. Notice that this is done by the matrix below
+<span class="math display">\[
+\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+= \begin{bmatrix} y \\ x \end{bmatrix}.
+\]</span></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the matrix A. This is the only part you should need to edit.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>A <span class="co"># display the matrix A</span></span></code></pre></div>
@@ -232,10 +242,10 @@ Observe that I apply the matrix <code>A</code> to the house, call it <code>house
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(house[<span class="dv">1</span>,], house[<span class="dv">2</span>,], <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(house2[<span class="dv">1</span>,], house2[<span class="dv">2</span>,], <span class="at">col =</span> <span class="st">&quot;pink&quot;</span>, <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <p><img src="04-house-transformations_files/figure-html/house4-1.png" width="384" /></p>
-<p>Your turn: try the reflections (1) over the x-axis; (2) over the y-axis; and (3) through the origin, i.e., sending (x,y) to (-x,-y).</p>
+<p>Your turn: See if you can find the reflections (1) over the x-axis; (2) over the y-axis; and (3) through the origin, i.e., sending (x,y) to (-x,-y).</p>
 </div>
-<div id="shear-transformations" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Shear Transformations</h2>
+<div id="shear-transformations" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Shear Transformations</h2>
 <p>A shear transformation is of the form
 <span class="math display">\[
 A=\displaystyle{ \begin{bmatrix} a &amp; b \\ 0 &amp; c \end{bmatrix}}
@@ -261,8 +271,8 @@ For example:</p>
 <p><img src="04-house-transformations_files/figure-html/house5-1.png" width="384" /></p>
 <p>You try: try to get the house to slant in the other direction.</p>
 </div>
-<div id="dimension-reduction" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Dimension Reduction</h2>
+<div id="dimension-reduction" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Dimension Reduction</h2>
 <p>Here we perform the transformation that sends <span class="math inline">\(\mathsf{e}_1\)</span> to <span class="math inline">\((-1,1/2)\)</span> and <span class="math inline">\(\mathsf{e}_2\)</span> to <span class="math inline">\((2,-1)\)</span>. Notice that they are the same line and the transformation projects the house onto this line.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the matrix A. This is the only part you should need to edit.</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>))</span>
@@ -279,8 +289,8 @@ For example:</p>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(house2[<span class="dv">1</span>,], house2[<span class="dv">2</span>,], <span class="at">col =</span> <span class="st">&quot;pink&quot;</span>, <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <p><img src="04-house-transformations_files/figure-html/house6-1.png" width="384" /></p>
 </div>
-<div id="your-turn" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Your Turn</h2>
+<div id="your-turn" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Your Turn</h2>
 <p>See if you can do the transformations in problem 3.3.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the matrix A. This is the only part you should need to edit.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>

@@ -1,21 +1,162 @@
 
 # Problem Set 4
 
-* Due: Tuesday June 15 by midnight CST. 
+* Due: Wednesday September 29 by midnight CST. 
 * Upload your solutions to Moodle in a PDF. 
 * Please feel free to **use RStudio for all row reductions.**
-* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_mod5/blob/main/PS4-problem-set-4.Rmd).
+* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f21/blob/main/PS4-problem-set-4.Rmd).
 
-
-
-The Problem Set covers sections 2.2-2.3 on Matrix Inverses and 4.1-4.3 on Subspaces and Bases.
+ 
+The Problem Set covers sections  1.9. The Matrix of a Linear Transformation and One-to-One and Onto, 2.1. Matrix Multiplication, and 2.2 Matrix Inverses.
 
 ```{r}
 require('pracma')
 ```
 
+## Matrix of a Linear Transformation
+
+In each example below, find the matrix of the given linear transformation (all of these transformations are linear). Do this by finding where the transformation sends the standard basis vectors $\mathsf{e}_1,\mathsf{e}_2,\mathsf{e}_3, \ldots$.
+
+In each case below, if the transformation is linear, then find is matrix.
+If it is not linear, then demonstrate that it is not linear by showing, with a specific example, that one of the properties of being linear is broken.  
+
+a. The transformation $T$ is given by:
+$$T \left( \begin{bmatrix}  x_1 \\ x_2 \\ x_3 \end{bmatrix}\right) =
+\begin{bmatrix} x_3 \\ x_1 \\ x_2 \\\end{bmatrix}.
+$$
+
+b. The transformation $T$ is given by:
+$$T \left( \begin{bmatrix}  x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)= 
+  \begin{bmatrix} x_1 \\ x_1 + x_2  \\ x_2 + x_3 \end{bmatrix} + 
+  \begin{bmatrix} x_3 \\ x_3 \\ x_1 \\\end{bmatrix}
+$$
+
+c. The transformation $L: \mathbb{R}^2 \to \mathbb{R}^2$ sends the shaded region on the  left to the the shaded region on the right such that $A$ maps to $A$, $B$ maps to $B$, $C$ maps to $C$, and $D$ maps to $D$.
+
+![](images/q1-blockA.png){width=30%} $\qquad \qquad$ ![](images/q1-blockB.png){width=30%} 
+
+d. The transformation $R: \mathbb{R}^2 \to \mathbb{R}^2$ sends the shaded region on the  left to the the shaded region on the right such that $A$ maps to $A$, $B$ maps to $B$, $C$ maps to $C$, and $D$ maps to $D$.
+
+![](images/q1-blockA.png){width=30%} $\qquad \qquad$ ![](images/q1-blockD.png){width=30%}
+
+e. Below are two linear transformations $T: \mathbb{R}^2 \to \mathbb{R}^2$ that transform my house as shown. Find the matrix of each of these transformations (hint: use the base, the doorway and the peak of the roof as a guide).
+
+
+![](images/ps3-house1.png){width=40%} $\qquad \qquad$ ![](images/ps3-house3.png){width=40%}
+
+
+
+## Matrix of a Nonlinear Transformation?
+
+This problem illustrates what happens if you try to make the matrix of a transformation that is not linear. Consider the transformation $T$ defined by
+$$
+T \left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)
+=
+\begin{bmatrix} x_1 + x_2^2 + x_3 \\ 2 x_2 + x_1 x_3 + 1 \\ 2 x_1 + 3 x_2 + x_3 \end{bmatrix}
+$$
+a. Show that this is not a linear transformation by demonstrating, with a specific example, that one of the rules of being linear is not true.
+
+b. Now. let's see what happens if we compute its matrix anyway. Compute $T(\mathbf{e}_1)$, $T(\mathbf{e}_2)$, and $T(\mathbf{e}_3)$, and put the vectors you get in the columns of a matrix $A$. Then compute the product below:
+$$
+\underbrace{\begin{bmatrix} 
+\cdot & \cdot & \cdot \\
+\cdot & \cdot & \cdot \\
+\cdot & \cdot & \cdot \\
+\end{bmatrix}}_{A}
+\begin{bmatrix} x_1 \\ x_ 2 \\ x_3 \end{bmatrix}
+= 
+$$
+Explain how the result of this computation demonstrates that $T$ is not linear.
+
+
+## Inner and Outer Products
+
+I hope to give you some time to discuss this in class on Friday Sep 24.
+
+We can also think of vectors as matrix. A column vector is an $n \times 1$ matrix and a row vector is a $1 \times n$ matrix. 
+
+a. Compute the following products. These matrix products are called *inner products* (or dot products) of the vectors.
+
+
+$$
+\begin{bmatrix} 4 & -1 & 2 & 3\end{bmatrix}
+\begin{bmatrix} 1 \\ 2 \\1  \\3  \\\end{bmatrix} = \hskip3in
+$$
+$$
+\begin{bmatrix} 4 & -1 & 2 & 3\end{bmatrix}
+\begin{bmatrix} 1 \\ 1 \\1  \\1  \\\end{bmatrix} = \hskip3in
+$$
+$$
+\begin{bmatrix} 4 & -1 & 2 & 3\end{bmatrix}
+\begin{bmatrix} 2 \\ 5 \\ 0  \\ -1  \\\end{bmatrix} = \hskip3in
+$$
+b. Now compute the following products. These are called *outer products*.  
+
+$$
+\begin{bmatrix} 1 \\ 2 \\1  \\3  \\\end{bmatrix}
+\begin{bmatrix} 1 & -5 & 2 & 3\end{bmatrix} = \hskip3in
+$$
+
+$$
+\begin{bmatrix} 1 \\ 2 \\1  \\3  \\\end{bmatrix}
+\begin{bmatrix} 1 & 1 & 1 & 1\end{bmatrix} =\hskip3in
+$$
+
+c. Row reduce both of the matrices that you get in part b (this should be easy to do by hand,but you can use R if you want to). How many pivots do you get? Explain why you always get this number of pivots when you row reduce an outer product.
+
+
+## Archaeological Seriation
+
+There may be time to discuss this in class on Friday Sep 24.
+
+
+The matrix $A$ below is used in  archaeological dating. Its rows correspond to four different grave sites $G_1, G_2, G_3, G_4$ and its columns correspond to five types of pottery$P_1, P_2, P_3, P_4, P_5$. There is a 1 in position $i$-$j$ if pottery type $P_j$ is found in grave $G_i$ (and a 0 otherwise).
+$$
+A=\begin{array}{c|ccccc}
+& P_1 & P_2 & P_3 & P_4 & P_5 \\
+\hline
+ G_1 & 1 & 1 & 0 & 1 & 1 \\
+G_2 &  0 & 0 & 1 & 0 & 1 \\
+G_3 &  0 & 1 & 1 & 0 & 1 \\
+G_4  & 1 & 1 & 1 & 1 & 1 \\
+\end{array}
+$$
+
+1. Compute the matrix $\mathbf{G} = A A^T$, where $A^T$ is the *transpose* of $A$, meaning that the rows and columns have been interchanged.
+
+2. Give the meaning of the $i$-$j$ entry of $\mathbf{G}$ (the entry in row $i$ and column $j$). State clearly the meaning of this entry using complete sentences (or sentence) and explain why it has this meaning.
+
+## Rental Car
+
+I hope to give you some time to work on this in class on Friday Sep 24.
+
+
+Solve this problem using R and turn in a markdown file knitted to .html. 
+
+A group of Macalester alumni open a rental car company specializing in  renting electric cars. As a start, they have opened offices in St. Paul, Rochester, and Duluth. Through market research they find that of the cars rented in St. Paul, 85% will get returned in St. Paul, 9% will get returned in Rochester, and 6% will get returned in Duluth. Of the cars rented in Rochester, 30% will get returned in St. Paul, 60% will get returned in Rochester, and 10% in Duluth. Of the cars rented in Duluth, 35% will get returned in St. Paul, 5% in Rochester, and 60% in Duluth. This information is represented in the matrix below.
+
+```{r,echo=TRUE}
+StP = c(.85,.09,.06)
+Roch = c(.30,.60,.10)
+Dul = c(.35,.05,.60) 
+M = cbind(StP,Roch,Dul)
+M
+```
+Such a matrix is called a *probability* matrix or a *stochastic* matrix because it  contains numbers between 0 and 1 and each of its columns sum to 1.
+
+a. The owners are trying to use this data to estimate how much of their fleet will be at each location on average in the long run. Assume that initially they locate 20 cars in each city. This can be recorded by the vector `v0 = c(20,20,20)`. Apply, M to v0, call this vector v1, and explain, using how the matrix-vector product works, why v1 represents the number of cars at each location one day later (for simplicity, we assume that each rental is for 1 day).
+
+b. Now apply M to v1 and call it v2. This should represent the number of cars at each location 2 days later. Also compute the square of the matrix M and call it M2. Confirm that M2 times v0 is the same as M times v1. 
+
+c. Write a for loop that applies M over and over again to see what happens to the distribution of cars in the long-run (we will learn how to do this in class but you can also probably just google it). Does this sequence stabilize or does it keep changing after each application? If it does stabilize, how long does it take to stabilize (to within 0.1 cars at each location).
+
+d. Does the starting distribution matter? Try 4 different starting distributions (with a total of 60 cars) and see what the final distribution looks like in each case. For one of your 4 starting distributions, try all 60 cars at one of the locations.
+
 
 ## Rainy Day in LA
+
+I hope to give you some time to discuss this in class on Monday Sep 24.
+
 
 In Los Angeles if it rains today, there is a 50% chance it will rain tomorrow, but it if is sunny today, there is a 90% chance it will be sunny tomorrow. This is modeled in the rain-sunshine probability matrix P. 
 $$
@@ -42,97 +183,5 @@ b. Compute $P^2$ and explain the meaning of each of the four entries in the matr
 
 c. Find $P^{-1}$ and   and use it find the rain-sunshine probability *yesterday* if the rain-sunshine probability today is (40, 60).
 
-## Fibonacci Vectors
 
-The Fibonacci vectors $F$ in $\mathbb{R}^5$ are defined below:
-$$
-F  = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix} ~\Bigg\vert~ \ x_3 = x_1 + x_2, x_4 = x_2 + x_3, x_5 = x_3 + x_4 \right\} \subseteq \mathbb{R}^5.   \hskip5in
-$$
-
-(a) Show that $F$ is a subspace.
-
-(b) Find a basis for $F$. Show that your vectors span $F$ and are linearly independent.
-
-
-## Vectors Rescaled
-
-If the function $T: \mathbb{R}^n \to \mathbb{R}^n$ is a linear transformation, then show that the set below is a subspace of $\mathbb{R}^n$
-$$
-E_{2021} = \{\ \vec{x} \in \mathbb{R}^n \mid T(\vec{x}) = 2021 \vec{x} \}.
-$$
-Is there anything special about 2021 in the definition? If it were replaced by another scalar, would it still be a subspace?
-
-
-## Column and Null Space
-
-Find a basis for the column space $Col(A)$ and the null space $Nul(A)$ of the matrix $A$ below
-```{r,echo=TRUE}
-(A = rbind(c(1, 2, 0, 2, 0, -1),c(1, 2, 1, 1, 0, -2),
-           c(2, 4, -2, 6, 1, 2),c(1, 2,  0, 2, -1, -3 )))
-```
-
-## Extend to a basis
-
-I am  interested in the vectors below. I know that they do not span $\mathbb{R}^5$, because there are not enough of them, but I want to extend this set to a basis of $\mathbb{R}^5$ by adding some vectors to the set. 
-$$
-\begin{bmatrix} 5\\ 4\\ 3\\ 1\\ 2 \end{bmatrix},
-\begin{bmatrix} 4\\ 4\\ 3\\ 1\\ 2 \end{bmatrix}, 
-\begin{bmatrix} 1\\ 1\\ 1\\ 1\\ 1\end{bmatrix}. 
-$$
-I searched online for ideas and one suggested that I make the matrix below and row reduce it.
-```{r,echo=TRUE}
-(A = cbind(c(5,4,3,1,2),c(4,4,3,1,2),c(1,1,1,1,1),diag(5)))
-```
-
-a. Row reduce this matrix.
-
-b. Use the result to come up with a basis for $\mathbb{R}^5$ that includes my original 3 vectors
-
-c. Explain why this method works.
-
-
-## Getting Into a Subspace
-
-Let $S \subset \mathbb{R}^n$ be a subspace and let $\mathsf{v}, \mathsf{w} \in \mathbb{R}^n$. For  each of the following statements, either give  a specific example  or explain why it cannot happen.
-
-
-a. If $\mathsf{v}$ is **not** in  $S$ and $c$ is a  nonzero constant, can $c\mathsf{v}$ be  in $S$?  
-
-
-b. If $\mathsf{v}$ is **not** in $S$ and $\mathsf{w}$ is **not** in $S$, can  $\mathsf{v} + \mathsf{w}$ be in $S$? 
-
-
-c. If $\mathsf{v}$ is in $S$ and $\mathsf{w}$ is **not** in $S$ can $\mathsf{v} + \mathsf{w}$ be in $S$?
-
-
-
-
-## A Vector in Both Col(A) and Nul(A)
-
-Give a $3 \times 3$ matrix $A$ for which the vector $\mathsf{v} = \begin{bmatrix}3 \\ -2 \\ 5   \end{bmatrix}$ is in both $\mathrm{Col}(A)$ and $\mathrm{Nul}(A)$. Be sure to demonstrate that $\mathsf{v} \in \mathrm{Col}(A)$ and $\mathsf{v} \in \mathrm{Nul}(A)$.
-
-
-## Adjacency Matrix
-
-You can do this problem in R or by hand. Consider the matrix $A$ defined here
-```{r,echo=TRUE}
-A = rbind(c( 0 , 1 , 0 , 1 , 1 ,0), c(1 , 0 , 1 , 1 , 0, 0 ),c( 0 , 1 , 0 , 1 , 1, 0 ),
-  c( 1 , 1 , 1 , 0 , 1, 0 ),c( 1 , 0 , 1 , 1 , 0, 1 ), c(0, 0, 0, 0, 1, 0))
-A
-```
-
-This matrix represents the connections in the network diagram below. There is a 1 in position $(i,j)$ of the matrix if there is a connection (an edge) between vertex $i$ and vertex $j$ and there is a 0 if there is not.
-
-```{r,echo=FALSE}
-suppressPackageStartupMessages(library(igraph))
-g=graph_from_adjacency_matrix(A,mode='undirected')
-V(g)$label = c(1,2,3,4,5,6)
-plot(g)
-```
-
-a. Compute $A v$ where $v$ is the vector of all 1's. Explain what this new vector tells us about the graph.
-
-b. Compute $A^2 = A A$, the square of the matrix $A$.
-
-c. Look at the $(2,5)$ entry of $A^2$. Explain what this entry says about connections in the network. Do the same for the $(2,3)$ and the $(2,6)$ entry of $A^2$.
 
