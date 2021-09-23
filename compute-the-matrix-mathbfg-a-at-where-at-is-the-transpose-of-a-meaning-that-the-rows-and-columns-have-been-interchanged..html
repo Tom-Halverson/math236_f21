@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 5 1. Compute the matrix \(\mathbf{G} = A A^T\), where \(A^T\) is the transpose of \(A\), meaning that the rows and columns have been interchanged. | MATH 236: Linear Algebra</title>
+  <meta name="description" content="This is the class activity manual for MATH 236 at Macalester College." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 5 1. Compute the matrix \(\mathbf{G} = A A^T\), where \(A^T\) is the transpose of \(A\), meaning that the rows and columns have been interchanged. | MATH 236: Linear Algebra" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class activity manual for MATH 236 at Macalester College." />
+  <meta name="github-repo" content="Tom-Halverson/math236_f21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 5 1. Compute the matrix \(\mathbf{G} = A A^T\), where \(A^T\) is the transpose of \(A\), meaning that the rows and columns have been interchanged. | MATH 236: Linear Algebra" />
+  
+  <meta name="twitter:description" content="This is the class activity manual for MATH 236 at Macalester College." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="problem-set-4.html"/>
+<link rel="next" href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="m236.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">MATH 236: Linear Algebra</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Problem Sets</b></span></li>
+<li class="chapter" data-level="1" data-path="problem-set-1.html"><a href="problem-set-1.html"><i class="fa fa-check"></i><b>1</b> Problem Set 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-set-1.html"><a href="problem-set-1.html#characterize-the-solution-set"><i class="fa fa-check"></i><b>1.1</b> Characterize the Solution Set</a></li>
+<li class="chapter" data-level="1.2" data-path="problem-set-1.html"><a href="problem-set-1.html#find-the-general-solution"><i class="fa fa-check"></i><b>1.2</b> Find the General Solution</a></li>
+<li class="chapter" data-level="1.3" data-path="problem-set-1.html"><a href="problem-set-1.html#elementary-row-operations-are-reversible"><i class="fa fa-check"></i><b>1.3</b> Elementary row operations are reversible</a></li>
+<li class="chapter" data-level="1.4" data-path="problem-set-1.html"><a href="problem-set-1.html#designer-parabolas"><i class="fa fa-check"></i><b>1.4</b> Designer Parabolas</a></li>
+<li class="chapter" data-level="1.5" data-path="problem-set-1.html"><a href="problem-set-1.html#traffic-flow"><i class="fa fa-check"></i><b>1.5</b> Traffic Flow</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="problem-set-2.html"><a href="problem-set-2.html"><i class="fa fa-check"></i><b>2</b> Problem Set 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="problem-set-2.html"><a href="problem-set-2.html#vector-equation"><i class="fa fa-check"></i><b>2.1</b> Vector Equation</a></li>
+<li class="chapter" data-level="2.2" data-path="problem-set-2.html"><a href="problem-set-2.html#matrix-equation"><i class="fa fa-check"></i><b>2.2</b> Matrix Equation</a></li>
+<li class="chapter" data-level="2.3" data-path="problem-set-2.html"><a href="problem-set-2.html#rref-for-a-linear-system"><i class="fa fa-check"></i><b>2.3</b> RREF for a linear system</a></li>
+<li class="chapter" data-level="2.4" data-path="problem-set-2.html"><a href="problem-set-2.html#a-square-matrix"><i class="fa fa-check"></i><b>2.4</b> A square matrix</a></li>
+<li class="chapter" data-level="2.5" data-path="problem-set-2.html"><a href="problem-set-2.html#combining-solutions-to-a-mathsfx-mathsfb"><i class="fa fa-check"></i><b>2.5</b> Combining solutions to <span class="math inline">\(A \mathsf{x} = \mathsf{b}\)</span></a></li>
+<li class="chapter" data-level="2.6" data-path="problem-set-2.html"><a href="problem-set-2.html#a-balanced-diet"><i class="fa fa-check"></i><b>2.6</b> A Balanced Diet</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="problem-set-3.html"><a href="problem-set-3.html"><i class="fa fa-check"></i><b>3</b> Problem Set 3</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="problem-set-3.html"><a href="problem-set-3.html#rref-for-a-set-of-vectors"><i class="fa fa-check"></i><b>3.1</b> RREF for a set of vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="problem-set-3.html"><a href="problem-set-3.html#linear-independence-and-unique-expressions."><i class="fa fa-check"></i><b>3.2</b> Linear independence and unique expressions.</a></li>
+<li class="chapter" data-level="3.3" data-path="problem-set-3.html"><a href="problem-set-3.html#is-the-transformation-linear"><i class="fa fa-check"></i><b>3.3</b> Is the transformation linear?</a></li>
+<li class="chapter" data-level="3.4" data-path="problem-set-3.html"><a href="problem-set-3.html#partial-information-about-a-linear-transformation"><i class="fa fa-check"></i><b>3.4</b> Partial Information about a Linear Transformation</a></li>
+<li class="chapter" data-level="3.5" data-path="problem-set-3.html"><a href="problem-set-3.html#square-wide-and-tall-matrices"><i class="fa fa-check"></i><b>3.5</b> Square, Wide, and Tall Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="problem-set-4.html"><a href="problem-set-4.html"><i class="fa fa-check"></i><b>4</b> Problem Set 4</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="problem-set-4.html"><a href="problem-set-4.html#matrix-of-a-linear-transformation"><i class="fa fa-check"></i><b>4.1</b> Matrix of a Linear Transformation</a></li>
+<li class="chapter" data-level="4.2" data-path="problem-set-4.html"><a href="problem-set-4.html#matrix-of-a-nonlinear-transformation"><i class="fa fa-check"></i><b>4.2</b> Matrix of a Nonlinear Transformation?</a></li>
+<li class="chapter" data-level="4.3" data-path="problem-set-4.html"><a href="problem-set-4.html#matrix-of-a-nonlinear-transformation-1"><i class="fa fa-check"></i><b>4.3</b> Matrix of a Nonlinear Transformation?</a></li>
+<li class="chapter" data-level="4.4" data-path="problem-set-4.html"><a href="problem-set-4.html#inner-and-outer-products"><i class="fa fa-check"></i><b>4.4</b> Inner and Outer Products</a></li>
+<li class="chapter" data-level="4.5" data-path="problem-set-4.html"><a href="problem-set-4.html#archaeological-seriation"><i class="fa fa-check"></i><b>4.5</b> Archaeological Seriation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html"><a href="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html"><i class="fa fa-check"></i><b>5</b> 1. Compute the matrix <span class="math inline">\(\mathbf{G} = A A^T\)</span>, where <span class="math inline">\(A^T\)</span> is the <em>transpose</em> of <span class="math inline">\(A\)</span>, meaning that the rows and columns have been interchanged.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html"><a href="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html#archaeological-seriation-1"><i class="fa fa-check"></i><b>5.1</b> Archaeological Seriation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><i class="fa fa-check"></i><b>6</b> A group of Macalester alumni open a rental car company specializing in renting electric cars. As a start, they have opened offices in St. Paul, Rochester, and Duluth. Through market research they find that of the cars rented in St. Paul, 85% will get returned in St. Paul, 9% will get returned in Rochester, and 6% will get returned in Duluth. Of the cars rented in Rochester, 30% will get returned in St. Paul, 60% will get returned in Rochester, and 10% in Duluth. Of the cars rented in Duluth, 35% will get returned in St. Paul, 5% in Rochester, and 60% in Duluth. This information is represented in the matrix below.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html#rental-car"><i class="fa fa-check"></i><b>6.1</b> Rental Car</a></li>
+<li class="chapter" data-level="6.2" data-path="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html#rainy-day-in-la"><i class="fa fa-check"></i><b>6.2</b> Rainy Day in LA</a></li>
+</ul></li>
+<li class="part"><span><b>II Concepts of Linear Algebra</b></span></li>
+<li class="chapter" data-level="7" data-path="important-definitions.html"><a href="important-definitions.html"><i class="fa fa-check"></i><b>7</b> Important Definitions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="important-definitions.html"><a href="important-definitions.html#systems-of-equations"><i class="fa fa-check"></i><b>7.1</b> Systems of Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="important-definitions.html"><a href="important-definitions.html#linear-transformations"><i class="fa fa-check"></i><b>7.2</b> Linear Transformations</a></li>
+</ul></li>
+<li class="part"><span><b>III Linear Algebra in R</b></span></li>
+<li class="chapter" data-level="8" data-path="class-examples.html"><a href="class-examples.html"><i class="fa fa-check"></i><b>8</b> Class Examples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="class-examples.html"><a href="class-examples.html#day-3-wed-sep-8"><i class="fa fa-check"></i><b>8.1</b> Day 3: Wed Sep 8</a></li>
+<li class="chapter" data-level="8.2" data-path="class-examples.html"><a href="class-examples.html#day-4-fri-sep-10"><i class="fa fa-check"></i><b>8.2</b> Day 4: Fri Sep 10</a></li>
+<li class="chapter" data-level="8.3" data-path="class-examples.html"><a href="class-examples.html#day-5-mon-sep-13"><i class="fa fa-check"></i><b>8.3</b> Day 5: Mon Sep 13</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html"><i class="fa fa-check"></i><b>9</b> Linear Systems in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#getting-started-with-r"><i class="fa fa-check"></i><b>9.1</b> Getting started with R</a></li>
+<li class="chapter" data-level="9.2" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#building-vectors-and-matrices"><i class="fa fa-check"></i><b>9.2</b> Building Vectors and Matrices</a></li>
+<li class="chapter" data-level="9.3" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#solving-a-linear-system"><i class="fa fa-check"></i><b>9.3</b> Solving a Linear System</a></li>
+<li class="chapter" data-level="9.4" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#solving-another-linear-system"><i class="fa fa-check"></i><b>9.4</b> Solving another Linear System</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH 236: Linear Algebra</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged." class="section level1" number="5">
+<h1><span class="header-section-number">Section 5</span> 1. Compute the matrix <span class="math inline">\(\mathbf{G} = A A^T\)</span>, where <span class="math inline">\(A^T\)</span> is the <em>transpose</em> of <span class="math inline">\(A\)</span>, meaning that the rows and columns have been interchanged.</h1>
+<div id="archaeological-seriation-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Archaeological Seriation</h2>
+<p>There may be time to discuss this in class on Friday Sep 24.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 8fc3c6c399298042bc58de2aeea8eb3ed79f757c</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Give the meaning of the <span class="math inline">\(i\)</span>-<span class="math inline">\(j\)</span> entry of <span class="math inline">\(\mathbf{G}\)</span> (the entry in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span>). State clearly the meaning of this entry using complete sentences (or sentence) and explain why it has this meaning.</li>
+</ol>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+## Rental Car</p>
+<p>I hope to give you some time to work on this in class on Friday Sep 24.</p>
+<p>Solve this problem using R and turn in a markdown file knitted to .html.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="problem-set-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 3 Problem Set 3 | MATH 236: Linear Algebra</title>
+  <meta name="description" content="This is the class activity manual for MATH 236 at Macalester College." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 3 Problem Set 3 | MATH 236: Linear Algebra" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the class activity manual for MATH 236 at Macalester College." />
+  <meta name="github-repo" content="Tom-Halverson/math236_f21" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 3 Problem Set 3 | MATH 236: Linear Algebra" />
+  
+  <meta name="twitter:description" content="This is the class activity manual for MATH 236 at Macalester College." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="problem-set-2.html"/>
+<link rel="next" href="problem-set-4.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="m236.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">MATH 236: Linear Algebra</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Problem Sets</b></span></li>
+<li class="chapter" data-level="1" data-path="problem-set-1.html"><a href="problem-set-1.html"><i class="fa fa-check"></i><b>1</b> Problem Set 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problem-set-1.html"><a href="problem-set-1.html#characterize-the-solution-set"><i class="fa fa-check"></i><b>1.1</b> Characterize the Solution Set</a></li>
+<li class="chapter" data-level="1.2" data-path="problem-set-1.html"><a href="problem-set-1.html#find-the-general-solution"><i class="fa fa-check"></i><b>1.2</b> Find the General Solution</a></li>
+<li class="chapter" data-level="1.3" data-path="problem-set-1.html"><a href="problem-set-1.html#elementary-row-operations-are-reversible"><i class="fa fa-check"></i><b>1.3</b> Elementary row operations are reversible</a></li>
+<li class="chapter" data-level="1.4" data-path="problem-set-1.html"><a href="problem-set-1.html#designer-parabolas"><i class="fa fa-check"></i><b>1.4</b> Designer Parabolas</a></li>
+<li class="chapter" data-level="1.5" data-path="problem-set-1.html"><a href="problem-set-1.html#traffic-flow"><i class="fa fa-check"></i><b>1.5</b> Traffic Flow</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="problem-set-2.html"><a href="problem-set-2.html"><i class="fa fa-check"></i><b>2</b> Problem Set 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="problem-set-2.html"><a href="problem-set-2.html#vector-equation"><i class="fa fa-check"></i><b>2.1</b> Vector Equation</a></li>
+<li class="chapter" data-level="2.2" data-path="problem-set-2.html"><a href="problem-set-2.html#matrix-equation"><i class="fa fa-check"></i><b>2.2</b> Matrix Equation</a></li>
+<li class="chapter" data-level="2.3" data-path="problem-set-2.html"><a href="problem-set-2.html#rref-for-a-linear-system"><i class="fa fa-check"></i><b>2.3</b> RREF for a linear system</a></li>
+<li class="chapter" data-level="2.4" data-path="problem-set-2.html"><a href="problem-set-2.html#a-square-matrix"><i class="fa fa-check"></i><b>2.4</b> A square matrix</a></li>
+<li class="chapter" data-level="2.5" data-path="problem-set-2.html"><a href="problem-set-2.html#combining-solutions-to-a-mathsfx-mathsfb"><i class="fa fa-check"></i><b>2.5</b> Combining solutions to <span class="math inline">\(A \mathsf{x} = \mathsf{b}\)</span></a></li>
+<li class="chapter" data-level="2.6" data-path="problem-set-2.html"><a href="problem-set-2.html#a-balanced-diet"><i class="fa fa-check"></i><b>2.6</b> A Balanced Diet</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="problem-set-3.html"><a href="problem-set-3.html"><i class="fa fa-check"></i><b>3</b> Problem Set 3</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="problem-set-3.html"><a href="problem-set-3.html#rref-for-a-set-of-vectors"><i class="fa fa-check"></i><b>3.1</b> RREF for a set of vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="problem-set-3.html"><a href="problem-set-3.html#linear-independence-and-unique-expressions."><i class="fa fa-check"></i><b>3.2</b> Linear independence and unique expressions.</a></li>
+<li class="chapter" data-level="3.3" data-path="problem-set-3.html"><a href="problem-set-3.html#is-the-transformation-linear"><i class="fa fa-check"></i><b>3.3</b> Is the transformation linear?</a></li>
+<li class="chapter" data-level="3.4" data-path="problem-set-3.html"><a href="problem-set-3.html#partial-information-about-a-linear-transformation"><i class="fa fa-check"></i><b>3.4</b> Partial Information about a Linear Transformation</a></li>
+<li class="chapter" data-level="3.5" data-path="problem-set-3.html"><a href="problem-set-3.html#square-wide-and-tall-matrices"><i class="fa fa-check"></i><b>3.5</b> Square, Wide, and Tall Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="problem-set-4.html"><a href="problem-set-4.html"><i class="fa fa-check"></i><b>4</b> Problem Set 4</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="problem-set-4.html"><a href="problem-set-4.html#matrix-of-a-linear-transformation"><i class="fa fa-check"></i><b>4.1</b> Matrix of a Linear Transformation</a></li>
+<li class="chapter" data-level="4.2" data-path="problem-set-4.html"><a href="problem-set-4.html#matrix-of-a-nonlinear-transformation"><i class="fa fa-check"></i><b>4.2</b> Matrix of a Nonlinear Transformation?</a></li>
+<li class="chapter" data-level="4.3" data-path="problem-set-4.html"><a href="problem-set-4.html#matrix-of-a-nonlinear-transformation-1"><i class="fa fa-check"></i><b>4.3</b> Matrix of a Nonlinear Transformation?</a></li>
+<li class="chapter" data-level="4.4" data-path="problem-set-4.html"><a href="problem-set-4.html#inner-and-outer-products"><i class="fa fa-check"></i><b>4.4</b> Inner and Outer Products</a></li>
+<li class="chapter" data-level="4.5" data-path="problem-set-4.html"><a href="problem-set-4.html#archaeological-seriation"><i class="fa fa-check"></i><b>4.5</b> Archaeological Seriation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html"><a href="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html"><i class="fa fa-check"></i><b>5</b> 1. Compute the matrix <span class="math inline">\(\mathbf{G} = A A^T\)</span>, where <span class="math inline">\(A^T\)</span> is the <em>transpose</em> of <span class="math inline">\(A\)</span>, meaning that the rows and columns have been interchanged.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html"><a href="compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged..html#archaeological-seriation-1"><i class="fa fa-check"></i><b>5.1</b> Archaeological Seriation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><i class="fa fa-check"></i><b>6</b> A group of Macalester alumni open a rental car company specializing in renting electric cars. As a start, they have opened offices in St. Paul, Rochester, and Duluth. Through market research they find that of the cars rented in St. Paul, 85% will get returned in St. Paul, 9% will get returned in Rochester, and 6% will get returned in Duluth. Of the cars rented in Rochester, 30% will get returned in St. Paul, 60% will get returned in Rochester, and 10% in Duluth. Of the cars rented in Duluth, 35% will get returned in St. Paul, 5% in Rochester, and 60% in Duluth. This information is represented in the matrix below.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html#rental-car"><i class="fa fa-check"></i><b>6.1</b> Rental Car</a></li>
+<li class="chapter" data-level="6.2" data-path="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html"><a href="a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below..html#rainy-day-in-la"><i class="fa fa-check"></i><b>6.2</b> Rainy Day in LA</a></li>
+</ul></li>
+<li class="part"><span><b>II Concepts of Linear Algebra</b></span></li>
+<li class="chapter" data-level="7" data-path="important-definitions.html"><a href="important-definitions.html"><i class="fa fa-check"></i><b>7</b> Important Definitions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="important-definitions.html"><a href="important-definitions.html#systems-of-equations"><i class="fa fa-check"></i><b>7.1</b> Systems of Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="important-definitions.html"><a href="important-definitions.html#linear-transformations"><i class="fa fa-check"></i><b>7.2</b> Linear Transformations</a></li>
+</ul></li>
+<li class="part"><span><b>III Linear Algebra in R</b></span></li>
+<li class="chapter" data-level="8" data-path="class-examples.html"><a href="class-examples.html"><i class="fa fa-check"></i><b>8</b> Class Examples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="class-examples.html"><a href="class-examples.html#day-3-wed-sep-8"><i class="fa fa-check"></i><b>8.1</b> Day 3: Wed Sep 8</a></li>
+<li class="chapter" data-level="8.2" data-path="class-examples.html"><a href="class-examples.html#day-4-fri-sep-10"><i class="fa fa-check"></i><b>8.2</b> Day 4: Fri Sep 10</a></li>
+<li class="chapter" data-level="8.3" data-path="class-examples.html"><a href="class-examples.html#day-5-mon-sep-13"><i class="fa fa-check"></i><b>8.3</b> Day 5: Mon Sep 13</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html"><i class="fa fa-check"></i><b>9</b> Linear Systems in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#getting-started-with-r"><i class="fa fa-check"></i><b>9.1</b> Getting started with R</a></li>
+<li class="chapter" data-level="9.2" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#building-vectors-and-matrices"><i class="fa fa-check"></i><b>9.2</b> Building Vectors and Matrices</a></li>
+<li class="chapter" data-level="9.3" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#solving-a-linear-system"><i class="fa fa-check"></i><b>9.3</b> Solving a Linear System</a></li>
+<li class="chapter" data-level="9.4" data-path="linear-systems-in-r.html"><a href="linear-systems-in-r.html#solving-another-linear-system"><i class="fa fa-check"></i><b>9.4</b> Solving another Linear System</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH 236: Linear Algebra</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="problem-set-3" class="section level1" number="3">
+<h1><span class="header-section-number">Section 3</span> Problem Set 3</h1>
+<ul>
+<li>Due: <strong>Wednesday</strong> September 22 by midnight.
+<ul>
+<li>Free Extension: anything turned in by 5PM Friday will be considered on time.</li>
+<li>After 5PM Friday, late assignments are subject to a 15% late penalty.</li>
+<li>After I post the solution on Monday, there is a 50% late penalty.</li>
+</ul></li>
+<li>Upload your solutions to Moodle in a PDF.</li>
+<li>Please feel free to <strong>use RStudio for all row reductions.</strong></li>
+<li>You can download the <a href="https://github.com/Tom-Halverson/math236_f21/blob/main/PS3-problem-set-3.Rmd">Rmd source file for this problem set</a>.</li>
+</ul>
+<p>The Problem Set covers sections 1.7 Linear Independence and 1.8 Linear Transformations.</p>
+<div id="rref-for-a-set-of-vectors" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> RREF for a set of vectors</h2>
+<p>Suppose that we have five vectors
+<span class="math inline">\(\mathsf{v}_1, \mathsf{v}_2,\mathsf{v}_3,\mathsf{v}_4,\mathsf{v}_5\)</span> in <span class="math inline">\(\mathbb{R}^4\)</span> and that the matrix <span class="math inline">\(A\)</span> containing those vectors row reduces as follows
+<span class="math display">\[
+A = \left[
+\begin{array}{ccc}
+\mid &amp; \mid  &amp; \mid &amp; \mid &amp; \mid \\
+\mathsf{v}_1 &amp; \mathsf{v}_2 &amp; \mathsf{v}_3 &amp;\mathsf{v}_4 &amp;\mathsf{v}_5  \\
+\mid &amp; \mid  &amp; \mid &amp; \mid &amp; \mid 
+\end{array}
+\right]
+ \longrightarrow
+\begin{bmatrix}
+1 &amp; 0 &amp; -3 &amp; 0 &amp; 2  \\
+0 &amp; 1 &amp; 4 &amp; 0 &amp;  1  \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1  \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 
+\end{bmatrix}.
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Do the vectors <span class="math inline">\(\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3, \mathsf{v}_4, \mathsf{v}_5\)</span> span <span class="math inline">\(\mathbb{R}^4\)</span>? Justify your answer.</p></li>
+<li><p>Give the solution, in parametric form, to the homogeneous system of equations <span class="math inline">\(A x = 0\)</span> for this problem.</p></li>
+<li><p>Give a dependence relation among the vectors <span class="math inline">\(\mathsf{v_1}, \mathsf{v_2},\mathsf{v_3},\mathsf{v_4}, \mathsf{v_5}\)</span>.</p></li>
+<li><p>Is the vector <span class="math inline">\(\mathsf{v}_3\)</span> in <span class="math inline">\(\mathrm{span}(\mathsf{v}_1,\mathsf{v}_2)\)</span>? Justify your answer.</p></li>
+<li><p>Suppose that <span class="math inline">\(\mathsf{b} = 5 \mathsf{v}_1 + \mathsf{v}_2 - 3 \mathsf{v}_3 +4 \mathsf{v}_4 - \mathsf{v}_5\)</span>. Use what you have done above to write <span class="math inline">\(\mathsf{b}\)</span> as a different linear combination of <span class="math inline">\(\mathsf{v_1}, \mathsf{v_2},\mathsf{v_3},\mathsf{v_4}, \mathsf{v_5}\)</span> (i.e., with different weights).</p></li>
+</ol>
+</div>
+<div id="linear-independence-and-unique-expressions." class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Linear independence and unique expressions.</h2>
+<p>It is an important fact that if a set of vectors <span class="math inline">\(\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3, \ldots, \mathsf{v}_n\)</span> is <em>linearly independent</em> then any vector in the span of these vectors can be written as a <em>unique</em> linear combination of those vectors.</p>
+<ol style="list-style-type: lower-alpha">
+<li>This property has a fairly simple proof. Let’s suppose that n = 4 for simplicity and that a vector v can be written in two ways as a combination of those vectors:
+<span class="math display">\[
+\begin{array}{ccccccc}
+v &amp;=&amp; c_1 \mathsf{v}_1 &amp;+&amp;  c_2 \mathsf{v}_2 &amp;+&amp;  c_3 \mathsf{v}_3 &amp;+&amp;  c_4 \mathsf{v}_4 \\
+&amp;=&amp; d_1 \mathsf{v}_1 &amp;+&amp;  d_2 \mathsf{v}_2 &amp;+&amp;  d_3 \mathsf{v}_3 &amp;+&amp;  d_4 \mathsf{v}_4
+\end{array}
+\]</span>
+Then use the definition of linear independence to prove that <span class="math inline">\(c_1 = d_1\)</span>, <span class="math inline">\(c_2 = d_2\)</span>, <span class="math inline">\(c_3 = d_3\)</span>, and <span class="math inline">\(c_4 = d_4\)</span>.</li>
+</ol>
+</div>
+<div id="is-the-transformation-linear" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Is the transformation linear?</h2>
+<p>There are three transformations below. If you believe that the transformation is linear, then show it is by showing that the three linear transformation rules apply for <em>arbitrary</em> vectors. If you believe that the transformation is not linear. Then show that one of the rules fails for <em>specific</em> vectors.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math display">\[
+T \left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)
+=
+\begin{bmatrix} x_1 + x_2 + x_3 -1 \\ x_1 - x_2 + x_3 + 1  \end{bmatrix}
+\]</span></p></li>
+<li><p><span class="math display">\[
+T \left( \begin{bmatrix} x_1 \\ x_2  \end{bmatrix} \right)
+=
+\begin{bmatrix} 3 x_1 - 5 x_2 \\ 2 x_1 + x_2 \\ 2 x_1 + 3 x_2 \end{bmatrix}
+\]</span></p></li>
+<li><p><span class="math display">\[
+T \left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)
+=
+\begin{bmatrix} x_1 + x_2^2 + x_3 \\ 2 x_2 + x_1 x_3 \\ 2 x_1 + 3 x_2 + x_3 \end{bmatrix}
+\]</span></p></li>
+</ol>
+</div>
+<div id="partial-information-about-a-linear-transformation" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Partial Information about a Linear Transformation</h2>
+<p>We are given that <span class="math inline">\(T: \mathbb{R}^4 \rightarrow \mathbb{R}^3\)</span> is a linear transformation such that:
+<span class="math display">\[
+T\left(\begin{bmatrix} 3 \\ ~2~ \\ 1 \\ 2 \end{bmatrix} \right)=\begin{bmatrix}  ~2~ \\ 3 \\ 6 \end{bmatrix}
+\qquad\hbox{and}\qquad
+T\left(\begin{bmatrix}~~2 \\ -1 \\ 0 \\ -1 \end{bmatrix} \right)=\begin{bmatrix} 2 \\ ~0~  \\ 1 \end{bmatrix}.
+\]</span>
+Use this information to compute the value of <span class="math inline">\(T\)</span> below?
+<span class="math display">\[T\left(\begin{bmatrix} 5 \\ 8 \\ ~3~ \\ 8 \end{bmatrix} \right) = \hskip5in\]</span>
+Hint: express the third input vector as a linear combination of the first two.</p>
+</div>
+<div id="square-wide-and-tall-matrices" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Square, Wide, and Tall Matrices</h2>
+<p>In each question below, choose all of the answers that apply, and give a succinct explanation of how you know that it is true.</p>
+<ol style="list-style-type: decimal">
+<li><p>[Wide] You are given a wide 5 x 8 matrix and you are studying the matrix equation <span class="math inline">\(A x = b\)</span>. These problems are said to be <strong>under constrained</strong> because there are fewer equations (constraints) than variables.
+<span class="math display">\[
+A=\begin{bmatrix} 
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>The vector that you are trying to get to is <span class="math inline">\(b \in \mathbb{R}^m\)</span> and the solution vectors are <span class="math inline">\(x \in \mathbb{R}^n\)</span>. What are <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>?</li>
+<li>Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation.
+<ol style="list-style-type: lower-roman">
+<li>The columns of <span class="math inline">\(A\)</span> must span <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> must be linearly dependent.</li>
+<li>There is a unique solution to <span class="math inline">\(A x = 0\)</span>.</li>
+<li>If the columns span <span class="math inline">\(\mathbb{R}^m\)</span> then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b\)</span>.</li>
+</ol></li>
+</ol></li>
+</ol>
+<p><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>[Tall] You are given a wide 7 x 4 matrix and you are studying the matrix equation <span class="math inline">\(A x = b\)</span>. These problems are said to be <strong>over constrained</strong> because there are more equations (constraints) than variables.
+<span class="math display">\[
+A=\begin{bmatrix} 
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot \ \\
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>The vector that you are trying to get to is <span class="math inline">\(b \in \mathbb{R}^m\)</span> and the solution vectors are <span class="math inline">\(x \in \mathbb{R}^n\)</span>. What are <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>?</li>
+<li>Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation.
+<ol style="list-style-type: lower-roman">
+<li>The columns of <span class="math inline">\(A\)</span> might span <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> must be linearly dependent.</li>
+<li>There is a unique solution to <span class="math inline">\(A x = 0\)</span>.</li>
+</ol></li>
+</ol></li>
+</ol>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>[Square] You are given a square 6 x 6 matrix and you are studying the matrix equation <span class="math inline">\(A x = b\)</span>.
+<span class="math display">\[
+A=\begin{bmatrix} 
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\  \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\ \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot\ \\
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>The vector that you are trying to get to is <span class="math inline">\(b \in \mathbb{R}^m\)</span> and the solution vectors are <span class="math inline">\(x \in \mathbb{R}^n\)</span>. What are <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>?</li>
+<li>Decide which of the following statements are true and give a short and succinct justification of your answer using complete sentences and good punctuation.
+<ol style="list-style-type: lower-roman">
+<li>The columns of <span class="math inline">\(A\)</span> must span <span class="math inline">\(\mathbb{R}^m\)</span>.</li>
+<li>If the columns span <span class="math inline">\(\mathbb{R}^m\)</span> then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b\)</span>.</li>
+<li>If <span class="math inline">\({\bf 0}\)</span> is the only solution to <span class="math inline">\(A x = {\bf 0}\)</span>, then there is a unique solution to <span class="math inline">\(A x = b\)</span> for all <span class="math inline">\(b \in \mathbb{R}^m\)</span>.</li>
+<li>The columns of <span class="math inline">\(A\)</span> span <span class="math inline">\(\mathbb{R}^m\)</span> if and only if the columns of <span class="math inline">\(A\)</span> are linearly independent.</li>
+</ol></li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="problem-set-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="problem-set-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

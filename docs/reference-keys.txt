@@ -21,8 +21,12 @@ square-wide-and-tall-matrices
 problem-set-4
 matrix-of-a-linear-transformation
 matrix-of-a-nonlinear-transformation
+matrix-of-a-nonlinear-transformation-1
 inner-and-outer-products
 archaeological-seriation
+compute-the-matrix-mathbfg-a-at-where-at-is-the-transpose-of-a-meaning-that-the-rows-and-columns-have-been-interchanged.
+archaeological-seriation-1
+a-group-of-macalester-alumni-open-a-rental-car-company-specializing-in-renting-electric-cars.-as-a-start-they-have-opened-offices-in-st.-paul-rochester-and-duluth.-through-market-research-they-find-that-of-the-cars-rented-in-st.-paul-85-will-get-returned-in-st.-paul-9-will-get-returned-in-rochester-and-6-will-get-returned-in-duluth.-of-the-cars-rented-in-rochester-30-will-get-returned-in-st.-paul-60-will-get-returned-in-rochester-and-10-in-duluth.-of-the-cars-rented-in-duluth-35-will-get-returned-in-st.-paul-5-in-rochester-and-60-in-duluth.-this-information-is-represented-in-the-matrix-below.
 rental-car
 rainy-day-in-la
 important-definitions
