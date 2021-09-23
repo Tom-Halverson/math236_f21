@@ -1,6 +1,7 @@
 # (PART) Concepts of Linear Algebra  {-}
 
 \newcommand{\v}{\mathsf{v}}
+\newcommand{\b}{\mathsf{b}}
 
 # Important Definitions
 
@@ -69,6 +70,24 @@ linear transformation
      
 These properties say that $T$ sends 0 to 0 and is preserves addition and scalar multiplication.
 
+
+onto
+: A linear transformation $T: \mathbb{R}^n \to \mathbb{R}^m$ with matrix $A$ is **onto** if 
+
+<center>
+for every $\b \in \mathbb{R}^m$ there is *at least* one 
+$\v \in \mathbb{R}^n$ so that $T(\v) = A  \v = \b$
+</center>
+The function is onto if $A$ has a pivot in every row.
+
+onee-to-one
+: A linear transformation $T: \mathbb{R}^n \to \mathbb{R}^m$ with matrix $A$ is **one-to-one** if 
+
+<center>
+for every $\b \in \mathbb{R}^m$ there is *at most* one 
+$\v \in \mathbb{R}^n$ so that $T(\v) = A  \v = \b$
+</center>
+The function is one-to-one if $A$ has a pivot in every column.
 
 <!-- ## Vector Spaces -->
 

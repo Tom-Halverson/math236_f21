@@ -1,11 +1,31 @@
 # (PART) Quiz Review {-}
 
-# Quiz 1 Review
+# Exam 1 Review
 
 
 ## Overview
 
-Our first quiz covers sections 1.1 - 1.8 and part of 1.9 in Lay's book. This corresponds to Problem Sets 1 and 2. In 1.8 and 1.9, it will cover the definition of a linear transformation as well as the matrix of a transformation, but it will not cover the one-to-one and onto (those ideas will be on quiz 2).
+Our first exam covers sections 1.1 - 2.3 in Lay's book.This corresponds to Problem Sets 1-4. 
+
+* I will hand it out right away, even one minute early, so you can start right on time.
+
+* You must turn it in by 9:35 (for the 8:30 class) and  10:45 for the 10:50 class). No exceptions. The next class needs to come in and get started.
+
+* No calculators are allowed, and none are needed.
+
+* If row reductions are needed, they will be easy (integer) calculations, and there will not be many.
+
+* It will be closed book but you can bring a 3" x 5" notecard with notes written on both sides. These notes should be hand written by you. You do not need to turn in the note card on the exam.
+
+* There will be some basic calculations, but the problems will focus more on the ideas than on the calculations.
+
+* I will ask some problems that are very similar to homework problems, Edfinity problems, and examples from class or the videos.
+
+* I will ask other problems that are somewhat different from things you have done. On these, you are to apply your knowledge in a slightly new setting to demonstrate an even higher mastery of the material.
+
+* You will be allowed to re-write one problem to earn back half of the points that you lost. This will be due the class period after I hand the exam back.
+
+* The exam is worth 12% of your course grade as outlined in the syllabus.
 
 
 ### Vocabulary and Concepts
@@ -13,8 +33,7 @@ Our first quiz covers sections 1.1 - 1.8 and part of 1.9 in Lay's book. This cor
 You should understand these concepts and be able to read and use these terms correctly:
 
 * elementary row operations 
-* REF and RREF
-* pivot position
+* REF and RREF and pivot positions
 * linear combination
 * span
 * linear independence
@@ -27,9 +46,12 @@ You should understand these concepts and be able to read and use these terms cor
     + $A$ has a pivot in every row.
 * The columns of $A$ are linearly independent if and only if $Ax=0$ only has the trivial solution
 * Understand Theorem 8 in Section 1.7: if you have more than $n$ vectors in $\mathbb{R}^n$ they must be linearly dependent.
-* linear transformation
+* linear transformations
 * the matrix of a linear transformation
-
+* One-to-one and onto
+* Matrix Multiplication
+* Matrix Inverses
+* [The Invertible Matrix Theorem](https://moodle.macalester.edu/pluginfile.php/59258/mod_resource/content/1/IVT.pdf)
 
 ### Skills
 
@@ -47,6 +69,8 @@ You should be able to perform these linear algebra tasks.
 * Manipulate matrix vector products using: $A(x + y) = Ax + Ay$ and $A(c x) = c A x$
 * Determine if a function $T: \mathbb{R}^n \to \mathbb{R}^m$ is linear.
 * Find the matrix of a linear transformation $T$.
+* find a matrix inverse
+* solve equations using matrix inverses
 
 ## Practice Problems
 
