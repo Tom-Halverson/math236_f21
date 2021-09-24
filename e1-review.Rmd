@@ -7,30 +7,21 @@
 
 Our first exam covers sections 1.1 - 2.3 in Lay's book.This corresponds to Problem Sets 1-4. 
 
-* I will hand it out right away, even one minute early, so you can start right on time.
-
+* I will hand it out right away, even a few minutes early, so you can start right on time.
 * You must turn it in by 9:35 (for the 8:30 class) and  10:45 for the 10:50 class). No exceptions. The next class needs to come in and get started.
-
 * No calculators are allowed, and none are needed.
-
 * If row reductions are needed, they will be easy (integer) calculations, and there will not be many.
-
-* It will be closed book but you can bring a 3" x 5" notecard with notes written on both sides. These notes should be hand written by you. You do not need to turn in the note card on the exam.
-
+* It will be closed book but you can bring a 3" x 5" notecard with notes written on both sides. These notes should be hand written by you. You do not need to turn in the note card with the exam.
 * There will be some basic calculations, but the problems will focus more on the ideas than on the calculations.
-
 * I will ask some problems that are very similar to homework problems, Edfinity problems, and examples from class or the videos.
-
 * I will ask other problems that are somewhat different from things you have done. On these, you are to apply your knowledge in a slightly new setting to demonstrate an even higher mastery of the material.
-
 * You will be allowed to re-write one problem to earn back half of the points that you lost. This will be due the class period after I hand the exam back.
-
-* The exam is worth 12% of your course grade as outlined in the syllabus.
+* The exam is worth 12% of your course grade as outlined in the [syllabus](https://docs.google.com/document/d/1uE95uWoV994QJ6YyrR7yBMV7MATzYO6XI4xd_q4-sqc).
 
 
 ### Vocabulary and Concepts
 
-You should understand these concepts and be able to read and use these terms correctly:
+You should understand these concepts and be able to read and use these terms correctly (see also the [important definitions]):
 
 * elementary row operations 
 * REF and RREF and pivot positions
@@ -164,13 +155,6 @@ $$T \left( \begin{bmatrix}  x_1 \\ x_2 \\ x_3 \end{bmatrix} \right)=
   \begin{bmatrix} x_1 + x_2 + x_3 \\  x_1 x_2 \\ -x_2 + 2 x_3 \end{bmatrix}.
 $$
 
-   c. The transformation $L: \mathbb{R}^2 \to \mathbb{R}^2$ sends the shaded region on the  left to the the shaded region on the right such that $A$ maps to $A$, $B$ maps to $B$, $C$ maps to $C$, and $D$ maps to $D$.
-
-![](images/q1-blockA.png){width=30%} $\qquad \qquad$ ![](images/q1-blockB.png){width=30%} 
-
-d. The transformation $R: \mathbb{R}^2 \to \mathbb{R}^2$ sends the shaded region on the  left to the the shaded region on the right such that $A$ maps to $A$, $B$ maps to $B$, $C$ maps to $C$, and $D$ maps to $D$.
-
-![](images/q1-blockA.png){width=30%} $\qquad \qquad$ ![](images/q1-blockD.png){width=30%} 
 
 
 
@@ -322,9 +306,6 @@ $$
 2 \, T \left( \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \right)= 2 \begin{bmatrix} 3 \\ 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 6 \\ 2 \\ 2 \end{bmatrix} \quad \mbox{while} \quad 
 T \left( \begin{bmatrix} 2 \\ 2 \\ 2 \end{bmatrix} \right)= 2 \begin{bmatrix} 6 \\ 4 \\ 2 \end{bmatrix}.
 $$
-c. $A= \begin{bmatrix} 1/2 & 1/2 \\ 1/2 & 1/2 \end{bmatrix}$
-
-d. $A= \begin{bmatrix} 0 & -1 \\ -1 & 0 \end{bmatrix}$
 
 ###
 
