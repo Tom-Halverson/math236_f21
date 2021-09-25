@@ -2,6 +2,8 @@
 
 # Exam 1 Review
 
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\A}{\mathsf{A}}
 
 ## Overview
 
@@ -98,9 +100,16 @@ B=
 1& 0& 0 \\ 0& 1& 0 \\ 0& 0& 1 \\ 0&0&0 \\ 0&0&0 \\
 \end{bmatrix} 
 $$
+
 a. Describe the solutions to the equation $B \mathsf{x} = {\bf 0}$.
 
-b. Fill in the boxes:   the transformation $T(\mathsf{x}) = B\mathsf{x}$ is a linear transformation from $\mathbb{R}^{\square}$ to $\mathbb{R}^{\square}$.
+b. Fill in the boxes: the transformation $T(\mathsf{x}) = B\mathsf{x}$ is a linear transformation from $\mathbb{R}^{\square}$ to $\mathbb{R}^{\square}$.
+
+c. Are the columns of $B$ linearly independent or dependent?
+
+d. Do the columns of $A$ span $\mathbb{R}^5$?
+
+e. Is the transformation $T$ one-to-one? Is it onto?
 
 ###
 
@@ -217,6 +226,67 @@ A =
 \end{bmatrix}
 $$
 
+### 
+
+Explain why it is *not* possible for a linear transformation $T: \mathbb{R}^2 \to \mathbb{R}^2$ to transform my hous as seen below:
+
+![](images/nonlinearhouse.png){width=90%}
+
+###
+
+Consider the following vectors in $\mathbb{R}^3$: 
+$$
+\v_1 = \begin{bmatrix} 1  \\-1  \\1  \\ \end{bmatrix},
+\v_2 = \begin{bmatrix} 0 \\ 1 \\ 1 \\ \end{bmatrix},
+\v_3 = \begin{bmatrix} 3 \\ -1 \\ 5 \\ \end{bmatrix}.
+$$
+
+a. Determine whether the set $\{\v_1, \v_2, \v_3\}$ is linearly independent or linearly dependent. If it is dependent, give a dependence relation. If it is independent show the work that justifies this conclusion.
+
+b. Find a vector $\b \in \RR^3$ that is *not* in $\mathsf{span}(\v_1,\v_2,\v_3)$. Justify your answer.
+
+c. If $T: \RR^3 \to \RR^3$ is a linear transformation such that $T(\v_1) = \v_2$ and $T(\v_2) = \v_3$ then compute $T(\v_3)$.
+
+###
+
+Below is the row reduction of the augmented matrix for the equation $\A x = \b$.
+$$
+[\A \mid \b ] =
+\left[\begin{array}{ccccc|c}
+ 1 & 1 & -1 & 1 & 4 & 2 \\
+ 2 & -1 & -5 & -3 & -3 & 2 \\
+ 1 & 1 & -1 & 0 & 3 & 1 \\
+ 1 & 1 & -1 & 1 & 4 & 2 \\
+\end{array}\right] 
+\longrightarrow 
+\left[\begin{array}{ccccc|c}
+ 1 & 0 & -2 & 0 & 1 & 2 \\
+ 0 & 1 & 1 & 0 & 2 & -1 \\
+ 0 & 0 & 0 & 1 & 1 & 1 \\
+ 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{array}\right] \hskip5in
+$$
+
+
+a. Give the general solution to $\A x = \b$ in parametric form.
+
+b. Describe geometrically the general solution you gave in part (a) ( e.g., a single point in $\RR^3$, a line in $\RR^2$, a plane in $\RR^4$, a three dimensional space in $\RR^9$).
+
+c. If $T$ is the linear transformation whose matrix is $\A$, then $T: \R^{\square} \to \R^{\square} $ (fill in the blanks).
+
+d. Determine if these statements are true **T**, false **F**, or that there is not enough information,  **I**,  to decide. No justification needed.
+
+
+    i. $T$ is one-to-one
+    i. $T$ is onto
+    i. $\A x = \b$ has a solution for all $\b$ in the codomain.
+    i. $\A x = \b$ has exactly one solution for some $\b$ in the
+    i. The columns of $\A$ are linearly independent.
+    i. The columns of $\A$  span $\RR^4$.
+    i. The 3rd column of $\A$ is in the span of the first 2 columns of $\A$.
+
+
+
 
 ## Solutions to Practice Problems
 
@@ -241,6 +311,9 @@ u \begin{bmatrix}
 
 a. There is one solution: $\mathsf{x} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}$.
 b. The transformation $T(\mathsf{x}) = B\mathsf{x}$ is a linear transformation from $\mathbb{R}^{3}$ to $\mathbb{R}^{5}$.
+c. Independent
+d. Do not span
+e. One-to-one but not onto.
   
 ###
 
@@ -355,4 +428,23 @@ $$77,083,679
 -1 \\ -1 \\ 0 \\ -2 \\ 1
 \end{bmatrix}.
 $$
+
+###
+
+Hint: Look at the relation of the peak of the house to $\mathsf{e}_1$ and $\mathsf{e}_2$.
+
+###
+
+This one might be too much row-reduction for an in-class exam. Not sure. But these ideas are important. 
+
+a. They are dependent. Find a nonzero solution to $A x = 0$ to get a dependence relation. 
+b. You can augment with a symbolic vector $[b_1,b_2,b_3]$ and row reduce. This will give you a formula telling you what conditions on $b_1,b_2,b_3$ are needed for the equation to be inconsistent. You could also guess a strange choice for $b$ and row reduce to show that it is not in the span. 
+c. Use the dependence relation.
+
+###
+
+a. 
+b. Two free variables, so it is a plane in $\mathbb{R}^5$.
+c. $\mathbb{R}^5 \to \mathbb{R}^4$.
+d. F, F, F, F, F, F, T. Not (col3) = -2(col1) + (col2), which can be seen from the RREF.
 
