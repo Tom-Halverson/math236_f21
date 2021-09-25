@@ -374,7 +374,19 @@ P =
 \text{sun}&amp;1/2&amp;9/10\\
 \hline
 \end{array}
+\]</span>
+This matrix works as follows: if the rain-sunshine probability today is (40, 60) (that is, 40% chance rain and 60% chance sunshine), then the rain-sunshine probability tomorrow is (26, 74) as seen by the calculation below.
+<span class="math display">\[
+\begin{bmatrix}
+1/2 &amp; 1/10 \\
+1/2 &amp; 9/10 \\
+\end{bmatrix} \begin{bmatrix} 40 \\ 60 \end{bmatrix} = \begin{bmatrix} 26 \\ 74 \end{bmatrix}
 \]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the rain-sunshine probability the day after tomorrow.</p></li>
+<li><p>Compute <span class="math inline">\(P^2\)</span> and explain the meaning of each of the four entries in the matrix.</p></li>
+<li><p>Find <span class="math inline">\(P^{-1}\)</span> and and use it find the rain-sunshine probability <em>yesterday</em> if the rain-sunshine probability today is (40, 60).</p></li>
+</ol>
 
 </div>
 </div>
