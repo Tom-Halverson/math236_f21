@@ -134,7 +134,7 @@ a. The owners are trying to use this data to estimate how much of their fleet wi
 
 b. Now apply M to v1 and call it v2. This should represent the number of cars at each location 2 days later. Also compute the square of the matrix M and call it M2. Confirm that M2 times v0 is the same as M times v1. 
 
-c. Write a for loop that applies M over and over again to see what happens to the distribution of cars in the long-run (we will learn how to do this in class but you can also probably just google it). Does this sequence stabilize or does it keep changing after each application? If it does stabilize, how long does it take to stabilize (to within 0.1 cars at each location).
+c. Write a for loop that applies M over and over again to see what happens to the distribution of cars in the long-run. Does this sequence stabilize or does it keep changing after each application? If it does stabilize, how long does it take to stabilize (to within 0.1 cars at each location). See the [MatrixMultiplication.Rmd](https://drive.google.com/file/d/1JvlLvHyAvK3a1r2vdYBjs_WAxYf_wv64/view) activity we did in class as well as [Writing Loops].
 
 d. Does the starting distribution matter? Try 4 different starting distributions (with a total of 60 cars) and see what the final distribution looks like in each case. For one of your 4 starting distributions, try all 60 cars at one of the locations.
 
