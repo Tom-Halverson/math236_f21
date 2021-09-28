@@ -293,6 +293,53 @@ $$
 C (A  + X) B^{-1} = I 
 $$
 
+###
+
+We've seen a few problems that ask you to interpret the meaning of matrix multiplication: the rental car problem, the rain-sunshine matrix, and the graves and pottery matrix. Here is another problem in which the goal is to interpret the meaning of matrix multiplication. 
+
+Here is a graph of the network of domestic airline flights in Korea. They are not located geographically in the plane, but there is a connection if there is a direct flight from one airport to the other.
+
+
+```{r,message=FALSE,echo=FALSE,fig.height=8, fig.width=8}
+library(igraph)
+airports = c("1-Seoul-ICN","2-Busan","3-Seoul-GMP","4-Yangyang","5-Daegu","6-Jeju","7-Gwangju","8-Yeosu","9-Sacheon","10-Ulsan","11-Pohang","12-Gunsan")
+A = rbind(c(0,1,0,0,1,0,0,0,0,0,0,0),
+c(1,0,1,1,0,1,0,0,0,0,0,0),
+c(0,1,0,0,1,0,1,1,1,1,1,0),
+c(0,1,0,0,0,1,0,0,0,0,0,0),
+c(1,0,1,0,0,1,0,0,0,0,0,0),
+c(0,1,0,1,1,0,1,1,1,1,0,1),
+c(0,0,1,0,0,1,0,0,0,0,0,0),
+c(0,0,1,0,0,1,0,0,0,0,0,0),
+c(0,0,1,0,0,1,0,0,0,0,0,0),
+c(0,0,1,0,0,1,0,0,0,0,0,0),
+c(0,0,1,0,0,0,0,0,0,0,0,0),
+c(0,0,0,0,0,1,0,0,0,0,0,0))
+g=graph_from_adjacency_matrix(A,mode='undirected')
+coords = layout_with_fr(g)
+V(g)$label = airports
+plot(g, vertex.color='gray', layout=coords,vertex.frame.color="dodgerblue")
+```
+It is common to study these networks using a matrix called the **adjacency matrix**. Here is the adjacency matrix of this network.
+
+```{r,echo=TRUE}
+A = rbind(c(0,1,0,0,1,0,0,0,0,0,0,0),c(1,0,1,1,0,1,0,0,0,0,0,0),
+c(0,1,0,0,1,0,1,1,1,1,1,0),c(0,1,0,0,0,1,0,0,0,0,0,0),
+c(1,0,1,0,0,1,0,0,0,0,0,0),c(0,1,0,1,1,0,1,1,1,1,0,1),
+c(0,0,1,0,0,1,0,0,0,0,0,0),c(0,0,1,0,0,1,0,0,0,0,0,0),
+c(0,0,1,0,0,1,0,0,0,0,0,0),c(0,0,1,0,0,1,0,0,0,0,0,0),
+c(0,0,1,0,0,0,0,0,0,0,0,0),c(0,0,0,0,0,1,0,0,0,0,0,0))
+A
+```
+
+a. Look at the location of the 0s and 1s in this matrix in the context of the network and decide when there is a 1 in the matrix.
+b. Let $v$ be the vector in $\mathbb{R}^{12}$ consisting of all 1s. Multiply $Av$ and decide what the entries of this vectors means in terms of this problem.
+c. Square the matrix, i.e., compute $A^2$. This amounts to dotting the rows of $A$ with the columns of $A$. Decide what the entries of $A^2$ mean in terms of the network.
+d. Multiply $A^2$ by the all 1s vector $v$. What do the entries of that vector mean.
+
+
+
+
 ## Solutions to Practice Problems
 
 ###
@@ -455,4 +502,8 @@ d. F, F, F, F, F, F, T. Not (col3) = -2(col1) + (col2), which can be seen from t
 ###
 
 Will do it in class on Wednesday.
+
+###
+
+Will discuss it in class on Wednesday.
 

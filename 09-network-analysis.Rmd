@@ -35,7 +35,7 @@ Observe that there is an edge from vertex $i$ to vertex $j$ if and only if there
 
 This network is the route map of a small airline. Here we will add the locations of the vertices, add vertex labels, and change the vertex size:
 
-```{r, network2, fig.height=6, fig.width=6, echo=TRUE}
+```{r, network2, fig.height=6, fig.width=6, echo=FALSE}
 locations = rbind(c(20,0),c(-10,0),c(11,7),c(10,15),c(3,12),c(25,10),c(-10,10),c(-12,15),c(20,6),c(-15,12),c(12,4),c(25,13))
 airports = c("ATL","LAX","ORD","MSP","DEN","JFK","SFO","SEA","PHL","PDX","MDW","LGA")
 V(g)$label = airports
