@@ -1,0 +1,43 @@
+---
+title: "Korean Domestic Airlines"
+author: "T. Halverson"
+date: "9/28/2021"
+output: html_document
+---
+
+```{r,message=FALSE, echo=TRUE}
+library(igraph)
+```
+
+
+```{r}
+airports = c(
+  "1-Seoul-ICN",
+  "2-Busan",
+  "3-Seoul-GMP",
+  "4-Yangyang",
+  "5-Daegu",
+  "6-Jeju",
+  "7-Gwangju",
+  "8-Yeosu",
+  "9-Sacheon",
+  "10-Ulsan",
+  "11-Pohang",
+  "12-Gunsan"
+  )
+airports
+```
+
+```{r}
+edges = cbind(c(1, 5),c(1, 2),c(2, 3),c(2, 4),c(5, 3),c(5, 6),c(3, 7),c(3, 8),c(3, 9),c(3, 10),c(3, 11),c(6, 7),c(6, 12),c(6, 4),c(6, 8),c(6, 9),c(6, 10),c(6, 2))
+A = matrix(0,nrow=12,ncol=12) #
+for (i in 1:ncol(edges)){ A[edges[1,i],edges[2,i]] = 1}
+A = A + t(A)
+A
+```
+```{r, network1, fig.height=6, fig.width=6, echo=TRUE}
+g=graph_from_adjacency_matrix(A,mode='undirected')
+coords = layout_with_fr(g)
+V(g)$label = airports
+plot(g, vertex.color='gray', layout=coords,vertex.frame.color="dodgerblue")
+```

@@ -286,7 +286,12 @@ d. Determine if these statements are true **T**, false **F**, or that there is n
     i. The 3rd column of $\A$ is in the span of the first 2 columns of $\A$.
 
 
+###
 
+Given that $A,B,C$ are invertible matrices, solve the following matrix equation for $X$ 
+$$
+C (A  + X) B^{-1} = I 
+$$
 
 ## Solutions to Practice Problems
 
@@ -366,8 +371,7 @@ $$
 
 ###
 
-This is on PS2.
-
+In the first case, add a vector that is in the span of the first two vectors. For example, you might add the sum of the two vectors. In the second case, add a vector that is not in the span of the two vectors. Add something that row reduces to the identity.
 
 
 ###
@@ -447,4 +451,8 @@ a.
 b. Two free variables, so it is a plane in $\mathbb{R}^5$.
 c. $\mathbb{R}^5 \to \mathbb{R}^4$.
 d. F, F, F, F, F, F, T. Not (col3) = -2(col1) + (col2), which can be seen from the RREF.
+
+###
+
+Will do it in class on Wednesday.
 
