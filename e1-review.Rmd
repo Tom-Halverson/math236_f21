@@ -333,11 +333,22 @@ A
 ```
 
 a. Look at the location of the 0s and 1s in this matrix in the context of the network and decide when there is a 1 in the matrix.
-b. Let $v$ be the vector in $\mathbb{R}^{12}$ consisting of all 1s. Multiply $Av$ and decide what the entries of this vectors means in terms of this problem.
+b. Let $v$ be the vector in $\mathbb{R}^{12}$ consisting of all 1s. Multiply $Av$ and decide what the entries of this vectors tell us about the network.
 c. Square the matrix, i.e., compute $A^2$. This amounts to dotting the rows of $A$ with the columns of $A$. Decide what the entries of $A^2$ mean in terms of the network.
 d. Multiply $A^2$ by the all 1s vector $v$. What do the entries of that vector mean.
 
+###
 
+Suppose that you are given four linearly dependent vectors, $\v_1, \v_2, \v_3, \v_4$, in $\RR^n$. And suppose that you have a linear transformation $T: \RR^n \to\RR^m$.
+
+a. State precisely what it means for $\v_1, \v_2, \v_3, \v_4$  to be linearly dependent.
+b. Apply $T$ to your answer to a and use it to show that $T(\v_1), T(\v_2), T(\v_3), T(\v_4)$ must also be linearly dependent in $\RR^m$. This problem shows that linear transformations send dependent vectors to dependent vectors.
+
+### Challenge
+
+Prove that if $\v_1, \v_2, \v_3, \v_4$ are linearly independent in $\RR^n$ and $T: \RR^n \to \RR^m$ is one-to-one, then $T(\v_1), T(\v_2), T(\v_3), T(\v_4)$ are linearly independent in $\RR^m$
+
+Note: I won't ask anything this hard on the exam but we are going to start doing proofs like this after exam 1.
 
 
 ## Solutions to Practice Problems

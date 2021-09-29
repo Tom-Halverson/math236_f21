@@ -1,4 +1,4 @@
-tab:unnamed-chunk-6
+tab:unnamed-chunk-10
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -69,8 +69,9 @@ section-10
 section-11
 section-12
 section-13
-solutions-to-practice-problems
 section-14
+challenge
+solutions-to-practice-problems
 section-15
 section-16
 section-17
@@ -84,3 +85,4 @@ section-24
 section-25
 section-26
 section-27
+section-28
