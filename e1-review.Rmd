@@ -228,7 +228,7 @@ $$
 
 ### 
 
-**oops!** sorry! I uploaded the wrong house. I will fix it tonight!
+**fixed!** in an earlier version the image was from a linear transformation, this one is not. 
 
 Explain why it is *not* possible for a linear transformation $T: \mathbb{R}^2 \to \mathbb{R}^2$ to transform my hous as seen below:
 
