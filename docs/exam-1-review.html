@@ -553,7 +553,7 @@ C (A  + X) B^{-1} = I
 <h3><span class="header-section-number">10.2.14</span> </h3>
 <p>We’ve seen a few problems that ask you to interpret the meaning of matrix multiplication: the rental car problem, the rain-sunshine matrix, and the graves and pottery matrix. Here is another problem in which the goal is to interpret the meaning of matrix multiplication.</p>
 <p>Here is a graph of the network of domestic airline flights in Korea. They are not located geographically in the plane, but there is a connection if there is a direct flight from one airport to the other.</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-57-1.png" width="75%" style="display: block; margin: auto;" />
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-54-1.png" width="75%" style="display: block; margin: auto;" />
 It is common to study these networks using a matrix called the <strong>adjacency matrix</strong>. Here is the adjacency matrix of this network.</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="exam-1-review.html#cb116-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
 <span id="cb116-2"><a href="exam-1-review.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
@@ -562,32 +562,19 @@ It is common to study these networks using a matrix called the <strong>adjacency
 <span id="cb116-5"><a href="exam-1-review.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
 <span id="cb116-6"><a href="exam-1-review.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
 <span id="cb116-7"><a href="exam-1-review.html#cb116-7" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
-##  [1,]    0    1    0    0    1    0    0    0
-##  [2,]    1    0    1    1    0    1    0    0
-##  [3,]    0    1    0    0    1    0    1    1
-##  [4,]    0    1    0    0    0    1    0    0
-##  [5,]    1    0    1    0    0    1    0    0
-##  [6,]    0    1    0    1    1    0    1    1
-##  [7,]    0    0    1    0    0    1    0    0
-##  [8,]    0    0    1    0    0    1    0    0
-##  [9,]    0    0    1    0    0    1    0    0
-## [10,]    0    0    1    0    0    1    0    0
-## [11,]    0    0    1    0    0    0    0    0
-## [12,]    0    0    0    0    0    1    0    0
-##       [,9] [,10] [,11] [,12]
-##  [1,]    0     0     0     0
-##  [2,]    0     0     0     0
-##  [3,]    1     1     1     0
-##  [4,]    0     0     0     0
-##  [5,]    0     0     0     0
-##  [6,]    1     1     0     1
-##  [7,]    0     0     0     0
-##  [8,]    0     0     0     0
-##  [9,]    0     0     0     0
-## [10,]    0     0     0     0
-## [11,]    0     0     0     0
-## [12,]    0     0     0     0</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+##  [1,]    0    1    0    0    1    0    0    0    0     0     0     0
+##  [2,]    1    0    1    1    0    1    0    0    0     0     0     0
+##  [3,]    0    1    0    0    1    0    1    1    1     1     1     0
+##  [4,]    0    1    0    0    0    1    0    0    0     0     0     0
+##  [5,]    1    0    1    0    0    1    0    0    0     0     0     0
+##  [6,]    0    1    0    1    1    0    1    1    1     1     0     1
+##  [7,]    0    0    1    0    0    1    0    0    0     0     0     0
+##  [8,]    0    0    1    0    0    1    0    0    0     0     0     0
+##  [9,]    0    0    1    0    0    1    0    0    0     0     0     0
+## [10,]    0    0    1    0    0    1    0    0    0     0     0     0
+## [11,]    0    0    1    0    0    0    0    0    0     0     0     0
+## [12,]    0    0    0    0    0    1    0    0    0     0     0     0</code></pre>
 <ol style="list-style-type: lower-alpha">
 <li>Look at the location of the 0s and 1s in this matrix in the context of the network and decide when there is a 1 in the matrix.</li>
 <li>Let <span class="math inline">\(v\)</span> be the vector in <span class="math inline">\(\mathbb{R}^{12}\)</span> consisting of all 1s. Multiply <span class="math inline">\(Av\)</span> and decide what the entries of this vectors tell us about the network.</li>
@@ -776,12 +763,41 @@ My solution is
 </div>
 <div id="section-27" class="section level3" number="10.3.13">
 <h3><span class="header-section-number">10.3.13</span> </h3>
-<p>Will do it in class on Wednesday.</p>
+<p>Multiply on the left by <span class="math inline">\(C^{-1}\)</span> and on the right by <span class="math inline">\(B\)</span>:
+<span class="math display">\[
+\begin{array}{rcl}
+C (A  + X) B^{-1} &amp;=&amp; I \\
+C^{-1}C (A  + X) B^{-1} &amp;=&amp; C^{-1} I \\
+I (A  + X) B^{-1} &amp;=&amp; C^{-1} \\
+ (A  + X) B^{-1} &amp;=&amp; C^{-1} \\
+ (A  + X) B^{-1} B &amp;=&amp; C^{-1}B \\
+  (A  + X) I &amp;=&amp; C^{-1}B \\
+    A  + X  &amp;=&amp; C^{-1}B \\
+ X  &amp;=&amp; C^{-1}B - A \\
+\end{array}
+\]</span></p>
 </div>
 <div id="section-28" class="section level3" number="10.3.14">
 <h3><span class="header-section-number">10.3.14</span> </h3>
 <p>Will discuss it in class on Wednesday.</p>
+<div id="section-29" class="section level4" number="10.3.14.1">
+<h4><span class="header-section-number">10.3.14.1</span> </h4>
+<ol style="list-style-type: lower-alpha">
+<li><p>There exists scalars <span class="math inline">\(c_1, c_2, c_3, c_4\)</span>, not all equal to 0, so that
+<span class="math display">\[
+c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + c_3 \mathsf{v}_3 + c_4 \mathsf{v}_4 = {\bf 0}.
+\]</span></p></li>
+<li><p>Apply <span class="math inline">\(T\)</span> to both sides of this equation and use the linearity properties:
+<span class="math display">\[
+\begin{array}{rcl}
+T(c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + c_3 \mathsf{v}_3 + c_4 \mathsf{v}_4) &amp;=&amp; T({\bf 0}) \\
+c_1 T(\mathsf{v}_1) + c_2 T(\mathsf{v}_2) + c_3 T(\mathsf{v}_3) + c_4 T(\mathsf{v}_4) &amp;=&amp; {\bf 0} \\
+\end{array}
+\]</span>
+This is a dependence relation for <span class="math inline">\(T(\mathsf{v}_1), T(\mathsf{v}_2), T(\mathsf{v}_3), T(\mathsf{v}_4)\)</span> using the same scalars, which we know are not all 0, so these vectors are also linearly depedent. Note that we used the fact that <span class="math inline">\(T({\bf 0}) = {\bf 0}.\)</span></p></li>
+</ol>
 
+</div>
 </div>
 </div>
 </div>

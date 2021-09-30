@@ -514,9 +514,36 @@ d. F, F, F, F, F, F, T. Not (col3) = -2(col1) + (col2), which can be seen from t
 
 ###
 
-Will do it in class on Wednesday.
+Multiply on the left by $C^{-1}$ and on the right by $B$:
+$$
+\begin{array}{rcl}
+C (A  + X) B^{-1} &=& I \\
+C^{-1}C (A  + X) B^{-1} &=& C^{-1} I \\
+I (A  + X) B^{-1} &=& C^{-1} \\
+ (A  + X) B^{-1} &=& C^{-1} \\
+ (A  + X) B^{-1} B &=& C^{-1}B \\
+  (A  + X) I &=& C^{-1}B \\
+    A  + X  &=& C^{-1}B \\
+ X  &=& C^{-1}B - A \\
+\end{array}
+$$
 
 ###
 
 Will discuss it in class on Wednesday.
 
+####
+
+a. There exists scalars $c_1, c_2, c_3, c_4$, not all equal to 0, so that
+$$
+c_1 \v_1 + c_2 \v_2 + c_3 \v_3 + c_4 \v_4 = {\bf 0}.
+$$
+
+b. Apply $T$ to both sides of this equation and use the linearity properties:
+$$
+\begin{array}{rcl}
+T(c_1 \v_1 + c_2 \v_2 + c_3 \v_3 + c_4 \v_4) &=& T({\bf 0}) \\
+c_1 T(\v_1) + c_2 T(\v_2) + c_3 T(\v_3) + c_4 T(\v_4) &=& {\bf 0} \\
+\end{array}
+$$
+This is a dependence relation for $T(\v_1), T(\v_2), T(\v_3), T(\v_4)$ using the same scalars, which we know are not all 0, so these vectors are also linearly depedent. Note that we used the fact that $T({\bf 0}) = {\bf 0}.$
