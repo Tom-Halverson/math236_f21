@@ -25,6 +25,15 @@ inner-and-outer-products
 archaeological-seriation
 rental-car
 rainy-day-in-la
+problem-set-5
+fibonacci-vectors
+vectors-rescaled
+getting-into-a-subspace
+a-vector-in-both-cola-and-nula
+column-and-null-space
+shrink-to-a-basis
+extend-to-a-basis
+section
 important-definitions
 systems-of-equations
 linear-transformations
@@ -55,7 +64,6 @@ overview
 vocabulary-and-concepts
 skills
 practice-problems
-section
 section-1
 section-2
 section-3
@@ -70,9 +78,9 @@ section-11
 section-12
 section-13
 section-14
+section-15
 challenge
 solutions-to-practice-problems
-section-15
 section-16
 section-17
 section-18
@@ -87,3 +95,4 @@ section-26
 section-27
 section-28
 section-29
+section-30
