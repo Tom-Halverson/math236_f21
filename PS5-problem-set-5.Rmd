@@ -18,9 +18,7 @@ $$
 
 a. Show that $F$ is a subspace by showing that it is closed under addition and scalar multiplication
 
-a. Show that $F$ is a subspace by finding a matrix $A$ such that $F = Nul(A)$.
-
-a. Show that $F$ is a subspace by writing it as the span of a set of vectors (hint: "bake" the subspace conditions into the vectors as we do in class for the zero-sum subspace).
+a. Write $F$ as the span of a set of vectors (hint: "bake" the subspace conditions into the vectors as we do in class for the zero-sum subspace).
 
 a. Find a basis for $F$ from among your spanning vectors in the previous part. The previous part gives  you spanning. Now you need to argue that the vectors are linearly independent.
 
