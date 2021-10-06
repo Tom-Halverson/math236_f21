@@ -26,11 +26,11 @@ archaeological-seriation
 rental-car
 rainy-day-in-la
 problem-set-5
-fibonacci-vectors
+column-and-null-space
 vectors-rescaled
+fibonacci-vectors
 getting-into-a-subspace
 a-vector-in-both-cola-and-nula
-column-and-null-space
 shrink-to-a-basis
 extend-to-a-basis
 section

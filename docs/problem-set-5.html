@@ -168,11 +168,11 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="5" data-path="problem-set-5.html"><a href="problem-set-5.html"><i class="fa fa-check"></i><b>5</b> Problem Set 5</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="problem-set-5.html"><a href="problem-set-5.html#fibonacci-vectors"><i class="fa fa-check"></i><b>5.1</b> Fibonacci Vectors</a></li>
+<li class="chapter" data-level="5.1" data-path="problem-set-5.html"><a href="problem-set-5.html#column-and-null-space"><i class="fa fa-check"></i><b>5.1</b> Column and Null Space</a></li>
 <li class="chapter" data-level="5.2" data-path="problem-set-5.html"><a href="problem-set-5.html#vectors-rescaled"><i class="fa fa-check"></i><b>5.2</b> Vectors Rescaled</a></li>
-<li class="chapter" data-level="5.3" data-path="problem-set-5.html"><a href="problem-set-5.html#getting-into-a-subspace"><i class="fa fa-check"></i><b>5.3</b> Getting Into a Subspace</a></li>
-<li class="chapter" data-level="5.4" data-path="problem-set-5.html"><a href="problem-set-5.html#a-vector-in-both-cola-and-nula"><i class="fa fa-check"></i><b>5.4</b> A Vector in Both Col(A) and Nul(A)</a></li>
-<li class="chapter" data-level="5.5" data-path="problem-set-5.html"><a href="problem-set-5.html#column-and-null-space"><i class="fa fa-check"></i><b>5.5</b> Column and Null Space</a></li>
+<li class="chapter" data-level="5.3" data-path="problem-set-5.html"><a href="problem-set-5.html#fibonacci-vectors"><i class="fa fa-check"></i><b>5.3</b> Fibonacci Vectors</a></li>
+<li class="chapter" data-level="5.4" data-path="problem-set-5.html"><a href="problem-set-5.html#getting-into-a-subspace"><i class="fa fa-check"></i><b>5.4</b> Getting Into a Subspace</a></li>
+<li class="chapter" data-level="5.5" data-path="problem-set-5.html"><a href="problem-set-5.html#a-vector-in-both-cola-and-nula"><i class="fa fa-check"></i><b>5.5</b> A Vector in Both Col(A) and Nul(A)</a></li>
 <li class="chapter" data-level="5.6" data-path="problem-set-5.html"><a href="problem-set-5.html#shrink-to-a-basis"><i class="fa fa-check"></i><b>5.6</b> Shrink to a basis</a></li>
 <li class="chapter" data-level="5.7" data-path="problem-set-5.html"><a href="problem-set-5.html#extend-to-a-basis"><i class="fa fa-check"></i><b>5.7</b> Extend to a basis</a></li>
 <li class="chapter" data-level="5.8" data-path="problem-set-5.html"><a href="problem-set-5.html#section"><i class="fa fa-check"></i><b>5.8</b> </a></li>
@@ -291,19 +291,16 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li>Please feel free to <strong>use RStudio for all row reductions.</strong></li>
 <li>You can download the <a href="https://github.com/Tom-Halverson/math236_f21/blob/main/PS5-problem-set-5.Rmd">Rmd source file for this problem set</a>.</li>
 </ul>
-<div id="fibonacci-vectors" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Fibonacci Vectors</h2>
-<p>The Fibonacci vectors <span class="math inline">\(F\)</span> in <span class="math inline">\(\mathbb{R}^5\)</span> are defined below:
-<span class="math display">\[
-F  = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix} ~\Bigg\vert~ \ x_3 = x_1 + x_2, x_4 = x_2 + x_3, x_5 = x_3 + x_4 \right\} \subseteq \mathbb{R}^5.   \hskip5in
-\]</span></p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Show that <span class="math inline">\(F\)</span> is a subspace by showing that it is closed under addition and scalar multiplication</p></li>
-<li><p>Show that <span class="math inline">\(F\)</span> is a subspace by finding a matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(F = Nul(A)\)</span>.</p></li>
-<li><p>Show that <span class="math inline">\(F\)</span> is a subspace by writing it as the span of a set of vectors (hint: “bake” the subspace conditions into the vectors as we do in class for the zero-sum subspace).</p></li>
-<li><p>Find a basis for <span class="math inline">\(F\)</span> from among your spanning vectors in the previous part. The previous part gives you spanning. Now you need to argue that the vectors are linearly independent.</p></li>
-<li><p>The dimension of a vector space is the number of vectors in a basis for the vector space. What is the dimension of <span class="math inline">\(F\)</span>.</p></li>
-</ol>
+<div id="column-and-null-space" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Column and Null Space</h2>
+<p>Find a basis for the column space <span class="math inline">\(Col(A)\)</span> and the null space <span class="math inline">\(Nul(A)\)</span> of the matrix <span class="math inline">\(A\)</span> below</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="problem-set-5.html#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>),</span>
+<span id="cb6-2"><a href="problem-set-5.html#cb6-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>,  <span class="dv">0</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span> )))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    2    0    2    0   -1
+## [2,]    1    2    1    1    0   -2
+## [3,]    2    4   -2    6    1    2
+## [4,]    1    2    0    2   -1   -3</code></pre>
 </div>
 <div id="vectors-rescaled" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Vectors Rescaled</h2>
@@ -313,8 +310,21 @@ E_{2021} = \{\ \vec{x} \in \mathbb{R}^n \mid T(\vec{x}) = 2021 \vec{x} \}.
 \]</span>
 Is there anything special about 2021 in the definition? If it were replaced by another scalar, would it still be a subspace?</p>
 </div>
-<div id="getting-into-a-subspace" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Getting Into a Subspace</h2>
+<div id="fibonacci-vectors" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Fibonacci Vectors</h2>
+<p>The Fibonacci vectors <span class="math inline">\(F\)</span> in <span class="math inline">\(\mathbb{R}^5\)</span> are defined below:
+<span class="math display">\[
+F  = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix} ~\Bigg\vert~ \ x_3 = x_1 + x_2, x_4 = x_2 + x_3, x_5 = x_3 + x_4 \right\} \subseteq \mathbb{R}^5.   \hskip5in
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that <span class="math inline">\(F\)</span> is a subspace by showing that it is closed under addition and scalar multiplication</p></li>
+<li><p>Write <span class="math inline">\(F\)</span> as the span of a set of vectors (hint: “bake” the subspace conditions into the vectors as we do in class for the zero-sum subspace).</p></li>
+<li><p>Find a basis for <span class="math inline">\(F\)</span> from among your spanning vectors in the previous part. The previous part gives you spanning. Now you need to argue that the vectors are linearly independent.</p></li>
+<li><p>The dimension of a vector space is the number of vectors in a basis for the vector space. What is the dimension of <span class="math inline">\(F\)</span>.</p></li>
+</ol>
+</div>
+<div id="getting-into-a-subspace" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Getting Into a Subspace</h2>
 <p>Let <span class="math inline">\(S \subseteq \mathbb{R}^n\)</span> be a subspace and let <span class="math inline">\(\mathsf{v}, \mathsf{w} \in \mathbb{R}^n\)</span>. For each of the following statements, either give a specific example or explain why it cannot happen.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>If <span class="math inline">\(\mathsf{v}\)</span> is <strong>not</strong> in <span class="math inline">\(S\)</span> and <span class="math inline">\(c\)</span> is a nonzero constant, can <span class="math inline">\(c\mathsf{v}\)</span> be in <span class="math inline">\(S\)</span>?</p></li>
@@ -322,20 +332,9 @@ Is there anything special about 2021 in the definition? If it were replaced by a
 <li><p>If <span class="math inline">\(\mathsf{v}\)</span> is in <span class="math inline">\(S\)</span> and <span class="math inline">\(\mathsf{w}\)</span> is <strong>not</strong> in <span class="math inline">\(S\)</span> can <span class="math inline">\(\mathsf{v} + \mathsf{w}\)</span> be in <span class="math inline">\(S\)</span>?</p></li>
 </ol>
 </div>
-<div id="a-vector-in-both-cola-and-nula" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> A Vector in Both Col(A) and Nul(A)</h2>
+<div id="a-vector-in-both-cola-and-nula" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> A Vector in Both Col(A) and Nul(A)</h2>
 <p>Give a <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(A\)</span> for which the vector <span class="math inline">\(\mathsf{v} = \begin{bmatrix}3 \\ -2 \\ 5 \end{bmatrix}\)</span> is in both <span class="math inline">\(\mathrm{Col}(A)\)</span> and <span class="math inline">\(\mathrm{Nul}(A)\)</span>. Be sure to demonstrate that <span class="math inline">\(\mathsf{v} \in \mathrm{Col}(A)\)</span> and <span class="math inline">\(\mathsf{v} \in \mathrm{Nul}(A)\)</span>.</p>
-</div>
-<div id="column-and-null-space" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Column and Null Space</h2>
-<p>Find a basis for the column space <span class="math inline">\(Col(A)\)</span> and the null space <span class="math inline">\(Nul(A)\)</span> of the matrix <span class="math inline">\(A\)</span> below</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="problem-set-5.html#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>),</span>
-<span id="cb6-2"><a href="problem-set-5.html#cb6-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>,  <span class="dv">0</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span> )))</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]    1    2    0    2    0   -1
-## [2,]    1    2    1    1    0   -2
-## [3,]    2    4   -2    6    1    2
-## [4,]    1    2    0    2   -1   -3</code></pre>
 </div>
 <div id="shrink-to-a-basis" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Shrink to a basis</h2>

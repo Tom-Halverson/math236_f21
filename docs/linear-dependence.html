@@ -168,11 +168,11 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="5" data-path="problem-set-5.html"><a href="problem-set-5.html"><i class="fa fa-check"></i><b>5</b> Problem Set 5</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="problem-set-5.html"><a href="problem-set-5.html#fibonacci-vectors"><i class="fa fa-check"></i><b>5.1</b> Fibonacci Vectors</a></li>
+<li class="chapter" data-level="5.1" data-path="problem-set-5.html"><a href="problem-set-5.html#column-and-null-space"><i class="fa fa-check"></i><b>5.1</b> Column and Null Space</a></li>
 <li class="chapter" data-level="5.2" data-path="problem-set-5.html"><a href="problem-set-5.html#vectors-rescaled"><i class="fa fa-check"></i><b>5.2</b> Vectors Rescaled</a></li>
-<li class="chapter" data-level="5.3" data-path="problem-set-5.html"><a href="problem-set-5.html#getting-into-a-subspace"><i class="fa fa-check"></i><b>5.3</b> Getting Into a Subspace</a></li>
-<li class="chapter" data-level="5.4" data-path="problem-set-5.html"><a href="problem-set-5.html#a-vector-in-both-cola-and-nula"><i class="fa fa-check"></i><b>5.4</b> A Vector in Both Col(A) and Nul(A)</a></li>
-<li class="chapter" data-level="5.5" data-path="problem-set-5.html"><a href="problem-set-5.html#column-and-null-space"><i class="fa fa-check"></i><b>5.5</b> Column and Null Space</a></li>
+<li class="chapter" data-level="5.3" data-path="problem-set-5.html"><a href="problem-set-5.html#fibonacci-vectors"><i class="fa fa-check"></i><b>5.3</b> Fibonacci Vectors</a></li>
+<li class="chapter" data-level="5.4" data-path="problem-set-5.html"><a href="problem-set-5.html#getting-into-a-subspace"><i class="fa fa-check"></i><b>5.4</b> Getting Into a Subspace</a></li>
+<li class="chapter" data-level="5.5" data-path="problem-set-5.html"><a href="problem-set-5.html#a-vector-in-both-cola-and-nula"><i class="fa fa-check"></i><b>5.5</b> A Vector in Both Col(A) and Nul(A)</a></li>
 <li class="chapter" data-level="5.6" data-path="problem-set-5.html"><a href="problem-set-5.html#shrink-to-a-basis"><i class="fa fa-check"></i><b>5.6</b> Shrink to a basis</a></li>
 <li class="chapter" data-level="5.7" data-path="problem-set-5.html"><a href="problem-set-5.html#extend-to-a-basis"><i class="fa fa-check"></i><b>5.7</b> Extend to a basis</a></li>
 <li class="chapter" data-level="5.8" data-path="problem-set-5.html"><a href="problem-set-5.html#section"><i class="fa fa-check"></i><b>5.8</b> </a></li>
@@ -471,30 +471,30 @@ c_9 \vec{a}_9.
 <p>The following code generates a random 5 x 5 matrix. Every time you enter it, it will give you a new matrix. Use this to try to figure out how likely it is that a random square matrix has linearly dependent columns.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="linear-dependence.html#cb67-1" aria-hidden="true" tabindex="-1"></a>R1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
 <span id="cb67-2"><a href="linear-dependence.html#cb67-2" aria-hidden="true" tabindex="-1"></a>R1</span></code></pre></div>
-<pre><code>##           [,1]      [,2]      [,3]       [,4]       [,5]
-## [1,] 0.9761557 0.6150734 0.6378307 0.01039382 0.02689834
-## [2,] 0.3588244 0.5154265 0.3413349 0.14301793 0.90923771
-## [3,] 0.6418135 0.5528740 0.1409854 0.72941768 0.49326953
-## [4,] 0.1595319 0.7988982 0.3922553 0.07730379 0.43186746
-## [5,] 0.1467295 0.1091640 0.6967068 0.55227678 0.02811277</code></pre>
+<pre><code>##           [,1]       [,2]       [,3]      [,4]       [,5]
+## [1,] 0.6812751 0.40322023 0.76906893 0.3515119 0.30456878
+## [2,] 0.8093864 0.97748052 0.03365111 0.2311569 0.39949521
+## [3,] 0.6027357 0.19459599 0.09595780 0.7813837 0.87519876
+## [4,] 0.6134941 0.01577442 0.79740532 0.1702751 0.01711982
+## [5,] 0.9279215 0.66594686 0.57393088 0.3196894 0.51081894</code></pre>
 <p>Try the same using the following code that generates a random 5 x 6 matrix.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="linear-dependence.html#cb69-1" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">6</span>)</span>
 <span id="cb69-2"><a href="linear-dependence.html#cb69-2" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
-<pre><code>##           [,1]      [,2]       [,3]      [,4]      [,5]      [,6]
-## [1,] 0.6215932 0.2860050 0.66251060 0.2935060 0.9355539 0.9286905
-## [2,] 0.2211119 0.3725827 0.51775578 0.7084966 0.2169390 0.6716009
-## [3,] 0.2331097 0.9566274 0.09533933 0.4666710 0.8607128 0.6314548
-## [4,] 0.4715932 0.9537737 0.29032649 0.8993332 0.4963872 0.5881860
-## [5,] 0.7752189 0.7452808 0.66058632 0.9636931 0.8873885 0.4607207</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]      [,4]       [,5]      [,6]
+## [1,] 0.90750872 0.20706445 0.61325897 0.7709307 0.60163481 0.2099719
+## [2,] 0.05048606 0.69401558 0.23712019 0.8029945 0.18632404 0.3186299
+## [3,] 0.06112695 0.85592929 0.41706064 0.6239069 0.09520528 0.8728157
+## [4,] 0.16985509 0.15564461 0.06626441 0.4753870 0.01921461 0.3120869
+## [5,] 0.49764719 0.08297478 0.51523250 0.7631112 0.32676055 0.1077578</code></pre>
 <p>Try the same using the following code that generates a random 5 x 4 matrix.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="linear-dependence.html#cb71-1" aria-hidden="true" tabindex="-1"></a>R3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
 <span id="cb71-2"><a href="linear-dependence.html#cb71-2" aria-hidden="true" tabindex="-1"></a>R3</span></code></pre></div>
-<pre><code>##           [,1]      [,2]       [,3]      [,4]
-## [1,] 0.6758442 0.7871289 0.51997006 0.3920104
-## [2,] 0.3731320 0.6686414 0.67777401 0.9804252
-## [3,] 0.3922893 0.9752861 0.07278097 0.4787112
-## [4,] 0.2507220 0.2449983 0.51676761 0.1434980
-## [5,] 0.8541938 0.7938887 0.90087904 0.2985087</code></pre>
+<pre><code>##            [,1]       [,2]      [,3]       [,4]
+## [1,] 0.88087919 0.87794474 0.9026926 0.40613822
+## [2,] 0.26535718 0.81570126 0.2158707 0.45431204
+## [3,] 0.09343051 0.04659016 0.2660587 0.65659607
+## [4,] 0.61855446 0.84630906 0.1053950 0.01866405
+## [5,] 0.95003469 0.98783041 0.4104472 0.36474598</code></pre>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="linear-dependence.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(R3)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0

@@ -7,6 +7,21 @@
 * Please feel free to **use RStudio for all row reductions.**
 * You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f21/blob/main/PS5-problem-set-5.Rmd).
 
+## Column and Null Space
+
+Find a basis for the column space $Col(A)$ and the null space $Nul(A)$ of the matrix $A$ below
+```{r,echo=TRUE}
+(A = rbind(c(1, 2, 0, 2, 0, -1),c(1, 2, 1, 1, 0, -2),
+           c(2, 4, -2, 6, 1, 2),c(1, 2,  0, 2, -1, -3 )))
+```
+
+## Vectors Rescaled
+
+If the function $T: \mathbb{R}^n \to \mathbb{R}^n$ is a linear transformation, then show that the set below is a subspace of $\mathbb{R}^n$
+$$
+E_{2021} = \{\ \vec{x} \in \mathbb{R}^n \mid T(\vec{x}) = 2021 \vec{x} \}.
+$$
+Is there anything special about 2021 in the definition? If it were replaced by another scalar, would it still be a subspace?
 
 
 ## Fibonacci Vectors
@@ -24,14 +39,11 @@ a. Find a basis for $F$ from among your spanning vectors in the previous part. T
 
 a. The dimension of a vector space is the number of vectors in a basis for the vector space. What is the dimension of $F$.
 
+## A Vector in Both Col(A) and Nul(A)
 
-## Vectors Rescaled
+Give a $3 \times 3$ matrix $A$ for which the vector $\mathsf{v} = \begin{bmatrix}3 \\ -2 \\ 5   \end{bmatrix}$ is in both $\mathrm{Col}(A)$ and $\mathrm{Nul}(A)$. Be sure to demonstrate that $\mathsf{v} \in \mathrm{Col}(A)$ and $\mathsf{v} \in \mathrm{Nul}(A)$.
 
-If the function $T: \mathbb{R}^n \to \mathbb{R}^n$ is a linear transformation, then show that the set below is a subspace of $\mathbb{R}^n$
-$$
-E_{2021} = \{\ \vec{x} \in \mathbb{R}^n \mid T(\vec{x}) = 2021 \vec{x} \}.
-$$
-Is there anything special about 2021 in the definition? If it were replaced by another scalar, would it still be a subspace?
+
 
 ## Getting Into a Subspace
 
@@ -49,19 +61,9 @@ c. If $\mathsf{v}$ is in $S$ and $\mathsf{w}$ is **not** in $S$ can $\mathsf{v} 
 
 
 
-## A Vector in Both Col(A) and Nul(A)
-
-Give a $3 \times 3$ matrix $A$ for which the vector $\mathsf{v} = \begin{bmatrix}3 \\ -2 \\ 5   \end{bmatrix}$ is in both $\mathrm{Col}(A)$ and $\mathrm{Nul}(A)$. Be sure to demonstrate that $\mathsf{v} \in \mathrm{Col}(A)$ and $\mathsf{v} \in \mathrm{Nul}(A)$.
 
 
 
-## Column and Null Space
-
-Find a basis for the column space $Col(A)$ and the null space $Nul(A)$ of the matrix $A$ below
-```{r,echo=TRUE}
-(A = rbind(c(1, 2, 0, 2, 0, -1),c(1, 2, 1, 1, 0, -2),
-           c(2, 4, -2, 6, 1, 2),c(1, 2,  0, 2, -1, -3 )))
-```
 
 ## Shrink to a basis
 
