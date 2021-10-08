@@ -37,7 +37,7 @@ a. Write $F$ as the span of a set of vectors (hint: "bake" the subspace conditio
 
 a. Find a basis for $F$ from among your spanning vectors in the previous part. The previous part gives  you spanning. Now you need to argue that the vectors are linearly independent.
 
-a. The dimension of a vector space is the number of vectors in a basis for the vector space. What is the dimension of $F$.
+a. The dimension of a vector space is the number of vectors in a basis for the vector space. What is the dimension of $F$?
 
 ## A Vector in Both Col(A) and Nul(A)
 
