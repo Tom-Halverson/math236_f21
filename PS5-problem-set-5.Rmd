@@ -61,10 +61,6 @@ c. If $\mathsf{v}$ is in $S$ and $\mathsf{w}$ is **not** in $S$ can $\mathsf{v} 
 
 
 
-
-
-
-
 ## Shrink to a basis
 
 Let $S$ be the subspace of $\mathbb{R}^5$ spanned by the vectors below. Find a basis for $S$ and find the dimension of $S$ (the number of vectors in a basis).
@@ -100,7 +96,5 @@ b. Use the result to come up with a basis for $\mathbb{R}^5$ that includes my or
 c. Explain why this method works.
 
 
-## 
 
-Problem 8 is coming
 
