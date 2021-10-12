@@ -3,47 +3,37 @@
 # Quiz 2 Review
 
 
+```{r}
+require('pracma')
+```
 
 
 ## Overview
 
-Our second quiz covers the following sections:
-
-* Linear Transformations
-    + 1.9: One-to-one and onto
-    + 2.1: Matrix Multiplication
-    + 2.2: Matrix Inverses
-    + 2.3: [The Invertible Matrix Theorem](https://moodle.macalester.edu/pluginfile.php/59258/mod_resource/content/1/IVT.pdf)
 
 * Subspaces
     + 4.1: Subspaces of $\mathbb{R}^n$
     + 4.2: Null Space and Column Space
     + 4.3: Bases
     + 4.4: Coordinates 
+    + 4.5: Dimension
+    + 4.6: Row Space and Rank
 
-This corresponds to Problem Sets 3 and 4.
+This corresponds to Problem Sets 5 and 6.
 
-The best way to study is to do practice problems. The Quiz will have calculation problems (like Edfinity) and more conceptual problems (like the problem sets). Here are some ways to practice:
+The best way to study is to do practice problems. The Exam will have some calculation problems (like Edfinity) and more conceptual problems (like the problem sets). Here are some ways to practice:
 
 * Make sure that you have mastered the Vocabulary, Skills and Concepts  listed below.
-* Look over the Edfinity homework assingments
-* Do practice problems from the Edfinity Practice assignments. These allow you to "Practice Similar" by generating new variations of the same problem.
-* Redo the Jamboard problems
+* Look over the Edfinity homework assignments
+* Redo the class exercises problems
 * Try to resolve the Problem Sets and compare your answers to the solutions.
 * Do the practice problems below. Compare your answers to the solutions.
 
 ### Vocabulary and Concepts
 
-
-
 You should understand these concepts and be able to read and use these terms correctly:
 
 * all of the [Important Definitions found here][Important Definitions].
-* matrix multiplication
-* matrix inverses
-* one-to-one linear transformation
-* onto linear transformation
-* the Invertible Matrix Theorem
 * subspaces
 * null space and column space of a matrix
 * kernel and image of a linear transformation
@@ -51,6 +41,8 @@ You should understand these concepts and be able to read and use these terms cor
 * coordinate vector with respect to a basis $\mathcal{B}$
 * change-of-coordinates matrix
 * dimension
+* rank
+* row space
 
 
 
@@ -58,12 +50,10 @@ You should understand these concepts and be able to read and use these terms cor
 
 You should be able to perform these linear algebra tasks.
 
-* solve matrix algebra equations
-* find a matrix inverse
 * show that a subset is a subspace or demonstrate that it is not a subspace
 * describe the null space and the column space
 * determine if a vector is in a null space or column space
-* find a basis of a subspace
+* find a basis of a subspace, including the null space and column space
 * answer questions about the connections between all these ideas
 * write short proofs of basic statements using the [Important Definitions][Important Definitions]
 
@@ -90,9 +80,9 @@ In each case, if $T_M$ is the linear transformation given by the matrix product 
 
 Determine the appropriate values for $n$ and $m$, and decide whether $T_M$ is one-to-one and/or onto. Submit your answers in table form, as shown below.
 $$
-\begin{array} {|c|c|c|c|c|} 
+\begin{array} {|c|c|c|c|c|c|} 
 \hline
-\text{transformation}  &  n  &  m & \text{one-to-one?} & \text{onto?} \\ \hline
+ &  n  &  m & \text{one-to-one?} & \text{onto?} & \text{rank}=dim(Col(A)) & \text{nullity}=dim(Nul(A)) \\ \hline
 T_A &\phantom{\Big\vert XX}&\phantom{\Big\vert XX}&& \\ \hline
 T_B &\phantom{\Big\vert XX}&&& \\ \hline
 T_C &\phantom{\Big\vert XX}&&& \\ \hline
@@ -100,27 +90,15 @@ T_D &\phantom{\Big\vert XX}&&& \\ \hline
 \end{array} \hskip5in
 $$
 
-
-
 ###
 
-Find the inverse of the matrix
-$$
-\left[
-\begin{array}{rrr}
-1 & -2 & 2  \\
-1 & 0 & 0 \\
-2 &-4 & 5
-\end{array}
-\right]
-$$
+Suppose that $A$ is an $n \times n$ matrix with the property that 
+$A \mathsf{u} = A\mathsf{v}$ for $\mathsf{u}, \mathsf{v} \in \mathbb{R}^n$ with $\mathsf{u} \not= \mathsf{v}$. Decide if the following are true or false. Justify each answer, briefly.
 
-
-
-###
-
-Suppose that a linear transformation $T: \mathbb{R}^n \rightarrow \mathbb{R}^n$ has the property that 
-$T(\mathsf{u}) = T(\mathsf{v})$ for some pair of distinct vectors $\mathsf{u}, \mathsf{v} \in \mathbb{R}^n$. Can $T$ map $\mathbb{R}^n$ onto $\mathbb{R}^n$? Why or why not?
+a. $Nul(A) = \{0\}$
+b. $Col(A) = \mathbb{R}^n$.
+c. The columns of $A$ are linearly independent.
+d. The columns of $A$ form a basis of $\mathbb{R}^n$.
 
 ###
 
@@ -152,17 +130,6 @@ c. $U+W = \{\mathsf{u} + \mathsf{w} \mid \mathsf{u} \in U \mbox{ and } \mathsf{w
 
 
 
-
-
-###
-
-Let $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$ be a linear transformation. 
-
-a. Suppose that $T: \mathbb{R}^n \to \mathbb{R}^m$ is one-to-one. Prove that if $\mathsf{v}_1,  \mathsf{v}_2,  \mathsf{v}_3$ are linearly independent, then $T(\mathsf{v}_1), T(\mathsf{v}_2), T(\mathsf{v}_3)$ are linearly independent.
-
-b. Suppose that $T: \mathbb{R}^n \to \mathbb{R}^m$ is onto. Prove that if $\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3$ span $\mathbb{R}^n$ then $T(\mathsf{v}_1), T(\mathsf{v}_2), T(\mathsf{v}_3)$ span $\mathbb{R}^m$.
-
-
 ###
 
 I have performed some row operations below for you on a matrix $A$. Find a basis for the column space and the null space of $A$. 
@@ -187,8 +154,6 @@ $$
 
 
 
-
-
 ###
 
 Consider the matrix 
@@ -208,39 +173,12 @@ Find a basis for $\mathrm{Col}(A)$. Find a basis for $\mathrm{Nul}(A)$.
 
 ###
 
-Are the vectors in ${\mathcal B}$ a basis of $\mathbb{R}^3$? If not, find a basis of $\mathbb{R}^3$ that consists of as many of the vectors from ${\mathcal B}$ as is possible. Explain your reasoning.
+Are the vectors in ${\mathcal B}$ a basis of $\mathbb{R}^3$? If not, find a basis of the span of those vectors. Explain your reasoning.
 $$
 \mathcal{B}=\left\{ \begin{bmatrix} 1 \\ -1 \\ -2 \end{bmatrix},\begin{bmatrix} 2 \\ -1 \\ 1 \end{bmatrix},\begin{bmatrix} -1 \\ -1 \\ -8 \end{bmatrix}
 \right\}
 $$
 
-
-<!-- ### -->
-
-<!-- I have the vectors below:  -->
-<!-- $$ -->
-<!-- \begin{bmatrix} 5\\ 4\\ 3\\ 1\\ 2 \end{bmatrix}, \begin{bmatrix} 4\\ 4\\ 3\\ 1\\ 2 \end{bmatrix}, \begin{bmatrix} 1\\ 1\\ 1\\ 1\\ 1\end{bmatrix}.  -->
-<!-- $$ -->
-<!-- I know that they do not span $\mathbb{R}^5$, but  I want to extend them to a basis of $\mathbb{R}^5$ by adding some vectors to the set. I created the  matrix below and row reduced. Give a basis for $\mathbb{R}^5$ that uses my three vectors and explain why this method works in general. -->
-<!-- $$ -->
-<!-- \left[ -->
-<!-- \begin{array}{cccccccc} -->
-<!--  5 & 4 & 1 & 1 & 0 & 0 & 0 & 0 \\ -->
-<!--  4 & 4 & 1 & 0 & 1 & 0 & 0 & 0 \\ -->
-<!--  3 & 3 & 1 & 0 & 0 & 1 & 0 & 0 \\ -->
-<!--  1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 \\ -->
-<!--  2 & 2 & 1 & 0 & 0 & 0 & 0 & 1 \\ -->
-<!-- \end{array} -->
-<!-- \right] \rightarrow \left[ -->
-<!-- \begin{array}{cccccccc} -->
-<!--  1 & 0 & 0 & 1 & 0 & 0 & 2 & -3 \\ -->
-<!--  0 & 1 & 0 & -1 & 0 & 0 & -3 & 4 \\ -->
-<!--  0 & 0 & 1 & 0 & 0 & 0 & 2 & -1 \\ -->
-<!--  0 & 0 & 0 & 0 & 1 & 0 & 2 & -3 \\ -->
-<!--  0 & 0 & 0 & 0 & 0 & 1 & 1 & -2 \\ -->
-<!-- \end{array} -->
-<!-- \right] -->
-<!-- $$ -->
 
 
 ###
@@ -297,32 +235,59 @@ A=\left[
 \right]
 $$
 
-a. Find a basis for $\mathrm{Nul}(A)$. What is the dimension of this nullspace?
+a. Find a basis for $\mathrm{Nul}(A)$. What is the dimension of this null space?
 
 
 ###
 
-A $6 \times 8$ matrix $A$ contains 5 pivots. For each of  $\mathrm{Col}(A)$ and $\mathrm{Nul}(A)$,
+A $6 \times 8$ matrix $A$ has rank 5. For each of  $\mathrm{Col}(A)$ and $\mathrm{Nul}(A)$,
 
 * Determine the dimension of the subspace,
 * Indicate whether it is  subspace of $\mathbb{R}^6$ or $\mathbb{R}^8$, and 
-* Decide how you would find a basis of the subspace.  
+* Describe how you would find a basis of the subspace.  
 
 
 
+###
 
+Here is a matrix $A$ and $rref(A)$.
 
+```{r,echo=FALSE}
+(A = cbind(
+    c(1,1,0,1,-1,2),
+    c(1,2,1,2,1,2),
+    c(1,-1,1,-1,1,-1),
+    c(1,-2,0,-2,-1,-1),
+    c(6,6,3,6,0,9),
+    c(3,2,2,2,1,3)
+    ))
+rref(A)
+```
 
+Here is $A^T$ and $rref(A^T)$.
+
+```{r,echo=FALSE}
+t(A)
+rref(t(A))
+```
+
+a. Give two bases of $Col(A)$. 
+a. One of the vectors below is in $Col(A)$ and one is not. For the vector that is in $Col(A)$ give the coordinates of the vector with respect to *one* of your bases.
+
+$$
+\mathsf{u} = \begin{bmatrix}  5\\ 7\\ 4\\ 7 \\ 3\\  8 \end{bmatrix}, \qquad
+\mathsf{v} = \begin{bmatrix}  5\\ 4\\ 3\\ 2 \\ 1\\  1 \end{bmatrix}.
+$$
 
 
 ## Solutions to Practice Problems
 
-### ## Properties of Linear Transformations
+### 
 
 $$
 \begin{array} {|c|c|c|c|c|} 
 \hline
-\text{transformation}  &  n  &  m & \text{one-to-one?} & \text{onto?} \\ \hline
+ &  n  &  m & \text{one-to-one?} & \text{onto?} & \text{onto?} & \text{rank}=dim(Col(A)) & \text{nullity}=dim(Nul(A)) \\ \hline
 T_A &5&5& No & No \\ \hline
 T_B &4&5&Yes& No\\ \hline
 T_C &4&4&Yes&Yes \\ \hline
@@ -330,27 +295,11 @@ T_D &4&3&No&Yes\\ \hline
 \end{array} \hskip5in
 $$
 
-###
-
-The inverse is
-$$
-\begin{bmatrix}
-0 & 1 & 0 \\ 
--5/2  & 1/2 &1 \\
--2 & 0 & 1
-\end{bmatrix}
-$$
-
-
-```{r, echo=FALSE}
-require(pracma)
-```
-
 
 
 ###
 
-No $T$ cannot be an onto mapping by the Invertible Matrix Theorem.  Since  $T$ is not  one-to-one,  the mapping cannot be onto.
+All are false!
 
 ###
 Hint: subtract the two representations of $\mathsf{v}$.
@@ -391,29 +340,6 @@ and $\mathsf{u}_3 = (\mathsf{u}_1 + \mathsf{u}_2) \in U$ (because $U$ is a subsp
 $c(\mathsf{u} + \mathsf{w}) = c \mathsf{u} + c \mathsf{w}$. We know that $c \mathsf{u} \in U$ (since $U$ is a subspace) and $c \mathsf{w} \in W$ (since $W$ is a subspace). Therefore $c(\mathsf{u} + \mathsf{w}) = c \mathsf{u} + c \mathsf{w} \in U+W$.
 
 
-###
-
-
-a. Suppose that $c_1 T(\mathsf{v}_1) + c_2 T(\mathsf{v}_2) +  c_3 T(\mathsf{v}_3) = 0$. We must show that $c_1 = c_2 = c_3 = 0$. 
-
-+ Since $T$ is a linear transformation, this means that  $T(c_1 \mathsf{v}_1+ c_2 \mathsf{v}_2 + c_3 \mathsf{v}_3 )= 0$.
-+ Since $T$ is one-to-one and $T(\mathbf{0}) = \mathbf{0}$, we must have $c_1 \mathsf{v}_1+ c_2 \mathsf{v}_2 + c_3 \mathsf{v}_3 = \mathbf{0}$.
-+ Because $\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3$ are linearly independent, this means that $c_1 = c_2 = c_3 = 0$.
-    
-This proves that $T(\mathsf{v}_1), T(\mathsf{v}_2), T(\mathsf{v}_3)$ are linearly independent.
-
-b. Given $\mathsf{w} \in W$. We must show that there exist constants $c_1, c_2, c_3$ such that
-$\mathsf{w} =  c_1 T(\mathsf{v}_1) + c_2 T(\mathsf{v}_2) + c_3 T(\mathsf{v}_3)$. Here we go!
-
-+ Since $T$ is onto, we know that there exists $\mathsf{v} \in \mathbb{R}^n$ such that $T(\mathsf{v}) = \mathsf{w}$.
-+ Since $\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3$ span $\mathbb{R}^n$, we know that there exist constants 
-$c_1, c_2, c_3$ such that $\mathsf{v}=  c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + c_3 \mathsf{v}_k$
-+  Therefore
-$$
-\mathsf{w} = T(\mathsf{v})=  T(c_1 \mathsf{v}_1 + c_2 \mathsf{v}_2 + c_3 \mathsf{v}_k) = c_1 T(\mathsf{v}_1) + c_2 T(\mathsf{v}_2) + c_3 T(\mathsf{v}_k)
-$$
-because $T$ is a linear transformation.
-This proves that $T(\mathsf{v}_1), T(\mathsf{v}_2), T(\mathsf{v}_3)$ span $W$.
 
 
 
@@ -448,7 +374,7 @@ $$
 
 ###
 
-Using RStudio we find:
+Using R we find:
 
 ```{r}
 A =  cbind(c(1,3,4),c(5,10,15),c(2,2,4),c(-4,8,4))
@@ -512,17 +438,6 @@ $$
 $$
 are  linearly independent because they correspond to the basis columns of $B$.
 
-
-
-<!-- ### -->
-
-<!-- A basis for $\mathbb{R}^5$ is -->
-<!-- $$ -->
-<!-- \begin{bmatrix} 5\\ 4\\ 3\\ 1\\ 2 \end{bmatrix}, \begin{bmatrix} 4\\ 4\\ 3\\ 1\\ 2 \end{bmatrix}, \begin{bmatrix} 1\\ 1\\ 1\\ 1\\ 1\end{bmatrix}, -->
-<!-- \begin{bmatrix} 0\\ 1\\ 0\\ 0\\ 0\end{bmatrix}, \begin{bmatrix} 0\\ 0\\ 1\\ 0\\ 0 \end{bmatrix} -->
-<!-- $$ -->
-
-<!-- because these are basic columns in the given matrix. This  will always work: place your desired vectors in the first columns.  Since they are linearly independent,  they will be basic  columns. The remaining $n$ elementary basis vectors span  $\mathbb{R}. So the columns of the matrix span  $\mathbb{R}^n$ and Gaussian Elimination will identify $n$ pivots. The corresponding columns are a basis. -->
 
 
 ###
