@@ -1,6 +1,6 @@
 
 
-# Quiz 2 Review
+# Exam 2 Review
 
 
 ```{r}
