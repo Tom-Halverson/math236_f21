@@ -507,6 +507,7 @@ c_9 \vec{a}_9.
 <p>The following code generates a random 5 x 5 matrix. Every time you enter it, it will give you a new matrix. Use this to try to figure out how likely it is that a random square matrix has linearly dependent columns.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="linear-dependence.html#cb66-1" aria-hidden="true" tabindex="-1"></a>R1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
 <span id="cb66-2"><a href="linear-dependence.html#cb66-2" aria-hidden="true" tabindex="-1"></a>R1</span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>##            [,1]      [,2]      [,3]      [,4]       [,5]
 ## [1,] 0.22423001 0.6993015 0.7633204 0.8693462 0.22969476
 ## [2,] 0.06798613 0.1697748 0.9881523 0.1338335 0.67949356
@@ -531,6 +532,32 @@ c_9 \vec{a}_9.
 ## [3,] 0.4271734 0.3035440 0.9339787 0.83402307
 ## [4,] 0.5335321 0.1267544 0.9302784 0.46270435
 ## [5,] 0.6544392 0.6615107 0.2465828 0.99817303</code></pre>
+=======
+<pre><code>##           [,1]       [,2]      [,3]       [,4]       [,5]
+## [1,] 0.3707934 0.37999010 0.2130137 0.88744031 0.25124277
+## [2,] 0.5082714 0.86855094 0.1503259 0.35178596 0.15069011
+## [3,] 0.8322093 0.08711561 0.5667664 0.04254737 0.04723111
+## [4,] 0.0925520 0.52217597 0.2333119 0.84262853 0.87494828
+## [5,] 0.1524491 0.33781185 0.5668655 0.22357782 0.92705684</code></pre>
+<p>Try the same using the following code that generates a random 5 x 6 matrix.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="linear-dependence.html#cb68-1" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">6</span>)</span>
+<span id="cb68-2"><a href="linear-dependence.html#cb68-2" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
+<pre><code>##            [,1]      [,2]      [,3]      [,4]      [,5]       [,6]
+## [1,] 0.04644813 0.1400510 0.2627554 0.6599987 0.6965977 0.70502632
+## [2,] 0.57215903 0.5156569 0.5541726 0.6471185 0.6583902 0.57242949
+## [3,] 0.88983017 0.2885755 0.8689032 0.9829977 0.8028201 0.09097858
+## [4,] 0.75165429 0.5651804 0.7746126 0.7025457 0.2267002 0.03645854
+## [5,] 0.61032169 0.8471174 0.3536202 0.7512382 0.1372150 0.30882442</code></pre>
+<p>Try the same using the following code that generates a random 5 x 4 matrix.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="linear-dependence.html#cb70-1" aria-hidden="true" tabindex="-1"></a>R3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb70-2"><a href="linear-dependence.html#cb70-2" aria-hidden="true" tabindex="-1"></a>R3</span></code></pre></div>
+<pre><code>##            [,1]      [,2]       [,3]      [,4]
+## [1,] 0.02264625 0.4405041 0.01462418 0.2132537
+## [2,] 0.12360484 0.3613001 0.25997235 0.9353336
+## [3,] 0.37868771 0.6219069 0.86794061 0.3855532
+## [4,] 0.01966707 0.2844887 0.22573038 0.6262340
+## [5,] 0.87545803 0.1335731 0.68726453 0.3013637</code></pre>
+>>>>>>> b89afaf44345162d849d7ae48522bfe832f8ec03
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="linear-dependence.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(R3)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
