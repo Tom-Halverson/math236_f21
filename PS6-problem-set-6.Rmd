@@ -43,6 +43,8 @@ b. We can see visually that the set $\mathcal{M} = \{ \mathsf{H}_1, \mathsf{H}_2
 
 c. In chemistry and physics, we are interested in symmetry operations. These are linear transformations such that the atom looks the same after the transformation as it did before. For example one such operation is rotation $r$ by 120$^o$ around the  $\mathsf{H}_4$ axis. This rotation sends $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_2$, and $\mathsf{H}_2$ to $\mathsf{H}_1$. Give the matrix of $r$  in the $\mathcal{M}$ basis. The columns should be the result of applying the symmetry operation to each of the basis vectors and then expressing the answer in the $\mathcal{M}$ basis.
 
+![](images/MatrixInMBasis.png){width=30%}
+
 d. Show, by multiplying by hand, that your matrix $r$ sends $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_2$, $\mathsf{H}_2$ to $\mathsf{H}_1$, *and* $\mathsf{H}_4$ to $\mathsf{H}_4$.
 
 e. Another symmetry operation is a rotation $s$ by $180^o$ around the axis that passes through the midpoing between $\mathsf{H}_1$ and $\mathsf{H}_2$ and the midpoint between $\mathsf{H}_3$ and $\mathsf{H}_4$. This rotation exchanges $\mathsf{H}_1$ and $\mathsf{H}_2$ and exchanges $\mathsf{H}_3$ and $\mathsf{H}_4$. Find the matrix of $s$ in the $\mathcal{M}$ basis. By hand, apply it to each of the four hydrogen atoms and show that they go to the right place. 
@@ -193,4 +195,10 @@ $$
 \mathbf{v} = \begin{bmatrix} 3 \\ 3 \\ 3 \\ 1 \\ 1 \end{bmatrix}.
 $$
 
+<<<<<<< HEAD
 
+=======
+## Homogeneous Coordinates
+
+This will not be on the exam, and we will do it in class on Monday after break.
+>>>>>>> f2f2d779db594cfac6055f3c408d981625cbfe95
