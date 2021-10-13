@@ -38,6 +38,7 @@ dimension
 a-tetrahedral-basis
 matrix-rank
 a-tale-of-two-bases
+homogeneous-coordinates
 important-definitions
 systems-of-equations
 linear-transformations
