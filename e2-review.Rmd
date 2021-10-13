@@ -16,8 +16,8 @@ require('pracma')
     + 4.2: Null Space and Column Space
     + 4.3: Bases
     + 4.4: Coordinates 
-    + 4.5: Dimension
-    + 4.6: Row Space and Rank
+    + 4.5: Dimension, Rank, and Nullity
+    + 4.6: Row Space
 
 This corresponds to Problem Sets 5 and 6.
 
