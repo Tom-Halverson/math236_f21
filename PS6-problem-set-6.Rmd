@@ -37,9 +37,17 @@ $$
 
 ![](images/ps5-methane.png){width=35%}
 
-Let $\mathcal{M} = \{ \mathsf{H}_1, \mathsf{H}_2, \mathsf{H_3} \}$. Then $\mathcal{M}$ is a basis of $\mathbb{R}^3$, which we will call the **tetrahedral basis.** You can see from the plot that these vectors are linearly independent (not all on the same plane)
+a. Find a dependence relation among the vectors $\mathsf{H}_1, \mathsf{H}_2, \mathsf{H_3}, \mathsf{H_4}.$ Hint: add them together (you can do it "by hand" by just looking at the sum).
 
-a. Express $\mathsf{H}_4$ in the tetrahedral basis. Hint: first compute $\mathsf{H}_1+\mathsf{H}_2+\mathsf{H}_3+\mathsf{H}_4$ using the coordinates above. You do not need to do any row reductions for this question (but you can).
+b. We can see visually that the set $\mathcal{M} = \{ \mathsf{H}_1, \mathsf{H}_2, \mathsf{H_3} \}$ is a basis of $\mathbb{R}^3$, which we will call the **tetrahedral basis.** You can see from the plot that these vectors are linearly independent (not all on the same plane). Give the coordinates of each of the vectors $\mathsf{H}_1, \mathsf{H}_2,\mathsf{H}_3,\mathsf{H}_4$ in the $\mathcal{M}$ basis (for $\mathsf{H}_4$ you will need to use part a).
+
+c. In chemistry and physics, we are interested in symmetry operations. These are linear transformations such that the atom looks the same after the transformation as it did before. For example one such operation is rotation $r$ by 120$^o$ around the  $\mathsf{H}_4$ axis. This rotation sends $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_2$, and $\mathsf{H}_2$ to $\mathsf{H}_1$. Give the matrix of $r$  in the $\mathcal{M}$ basis. The columns should be the result of applying the symmetry operation to each of the basis vectors and then expressing the answer in the $\mathcal{M}$ basis.
+
+d. Show, by multiplying by hand, that your matrix $r$ sends $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_2$, $\mathsf{H}_2$ to $\mathsf{H}_1$, *and* $\mathsf{H}_4$ to $\mathsf{H}_4$.
+
+e. Another symmetry operation is a rotation $s$ by $180^o$ around the axis that passes through the midpoing between $\mathsf{H}_1$ and $\mathsf{H}_2$ and the midpoint between $\mathsf{H}_3$ and $\mathsf{H}_4$. This rotation exchanges $\mathsf{H}_1$ and $\mathsf{H}_2$ and exchanges $\mathsf{H}_3$ and $\mathsf{H}_4$. Find the matrix of $s$ in the $\mathcal{M}$ basis. By hand, apply it to each of the four hydrogen atoms and show that they go to the right place. 
+
+f. Now we will convert our matrix for $r$ to standard coordinates.  Here is the recipe. First, enter the change of basis give the change of basis matrix $T$ that converts from the tetrahedral basis $\mathcal{M}$ to the standard basis $\mathcal{S}$ and compute its inverse that converts from the standard basis back to $\mathcal{M}$. Here are the atoms for you.
 
 ```{r,echo=TRUE}
 H1 = c(0,0,3/(2*sqrt(6)))
@@ -49,22 +57,20 @@ H4 = c(1/sqrt(3),0,-1/(2*sqrt(6)))
 ```
 
 
-b. Give the change of basis matrix $T$ that converts from the tetrahedral basis $\mathcal{M}$ to the standard basis $\mathcal{S}$ and compute its inverse that converts from the standard basis back to $\mathcal{M}$.
-
-c. Chemists are interested in symmetry operations. These are linear transformations such that the atom looks the same after the transformation as it did before. For example one such operation is rotation $r_4$ by 120$^o$ around the  $\mathsf{H}_4$ axis. This rotation sends $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_2$, and $\mathsf{H}_2$ to $\mathsf{H}_1$. Give the matrix of $r_4$  in the $\mathcal{M}$ basis.
+g. Now, enter the matrix of the rotation $r$ from part c above. It is entered as the all 0s matrix right now. You need to enter your correct entries.
 
 ```{r,echo=TRUE}
-r4.M = cbind(c(0,0,0),c(0,0,0),c(0,0,0))
-rownames(r4.M) <- c("H1","H2","H3")
-colnames(r4.M) <- c("H1","H2","H3")
-r4.M
+r.M = cbind(c(0,0,0),c(0,0,0),c(0,0,0))
+rownames(r.M) <- c("H1","H2","H3")
+colnames(r.M) <- c("H1","H2","H3")
+r.M
 ```
 
-d. It is a pain to describe these transformations in the standard basis, but it is easy and elegant to do so in the methane basis. We can now use the change-of-basis matrix to get the matrix in the standard basis. Compute the rotation in the standard basis by multiplying out these matrices in R. Use your matrices from parts b and c.
+h. Compute the matrix of $[r]_\mathcal{S}$ in the standard basis by computing the matrix product below. Notice that, working from right to left, it first converts from standard coordinates to $\mathcal{M}$ coordinates. Then it does the rotation in $\mathcal{M}$ coordinates. Then it converts the answer back to standard coordinates. 
 
 ![](images/ps5-change-basis-methane.png){width=100%}
 
-e. Give the matrix in the $\mathcal{M}$-basis for the following symmetry transformations: (ii) The rotation $r_2$ around the $\mathsf{H}_2$ axis sending $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_4$, and $\mathsf{H}_4$ to $\mathsf{H}_1$. (iii) The reflection $\sigma_{1,2}$  across the plane containing $\mathsf{H}_1, \mathsf{H}_2,$ and $\mathsf{C}$. You do not need to give these in standard coordinates.
+i. Multiply this matrix (using R) by each of the hydrogen atoms (but now in standard coordinates) and see that they go to the right place. The point of this exercise is that the problem is much easier and nicer in the $\mathcal{M}$ basis, which is well-suited to the problem.
 
 
 ## Matrix Rank
