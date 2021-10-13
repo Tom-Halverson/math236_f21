@@ -195,10 +195,3 @@ $$
 \mathbf{v} = \begin{bmatrix} 3 \\ 3 \\ 3 \\ 1 \\ 1 \end{bmatrix}.
 $$
 
-<<<<<<< HEAD
-
-=======
-## Homogeneous Coordinates
-
-This will not be on the exam, and we will do it in class on Monday after break.
->>>>>>> f2f2d779db594cfac6055f3c408d981625cbfe95
