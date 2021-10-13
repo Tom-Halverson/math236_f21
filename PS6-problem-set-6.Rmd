@@ -1,247 +1,188 @@
 
-#  Problem Set 6
+# Problem Set 6
 
-* Due: Tuesday June 29 by 11:59pm CST 
+* Due: Wednesday October 27 by 11:59pm CST. This is the Wednesday after Fall break. However, these problems cover topics that are on Exam 2. I will have you work on and discuss them before the exam. I hope that you can get it all done before break, but to take the pressure off writing it up, I will not have you turn it in until after break. There will be time in class to discuss and work on these. 
 * Upload your solutions to Moodle in a PDF. 
-* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_mod5/blob/main/PS6-problem-set-6.Rmd).
+* Please feel free to **use RStudio for all row reductions.**
+* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f21/blob/main/PS6-problem-set-6.Rmd).
 
 
-The Problem Set covers sections 5.1, 5.2, 5.3, 5.6.
+## Dimension
 
-
-
-## Rain and Sunshine Revisited
-
-On PS4, we encountered the rain-sunshine matrix $A$ below
+Find the dimension of the subspace $Z$ of $\mathbb{R}^5$ of vectors below. Either use the method of "baking in" the conditions or turn it in to a null space and use our methods of finding a null space basis.
 $$
-A = \begin{bmatrix}
-1/2 & 1/10 \\
-1/2 & 9/10 \\
-\end{bmatrix}.
-$$
-Perform the following calculations **by hand** and show your work.
-
-a. Find the characteristic polynomial of $A$ and find its eigenvalues.
-
-a. Find an eigenvector for each eigenvalue and describe the eigenspaces.
-
-a. Diagonalize $A$.
-
-a.  Use your answer to (c) to give a formula for $A^n$ and use this formula to compute $\displaystyle{\lim_{n\to \infty}} A^n$.
-
-a. Write a loop in `R` that computes $A^{100}$. Do this as follows:
-     i. Start with B = A
-     ii. Loop 100 times: at each step in the loop, let B = A %*% B.
-
-Compare the answer that you get to your answer to part (d).
-
-
-
-
-## The Square Root of a Matrix?
-
-The matrix $A  =\begin{bmatrix} 7 & 2 \\ -4 & 1 \end{bmatrix}$ has characteristic polynomial $c(\lambda) = \lambda^2 - 8 \lambda + 15 = (\lambda -3)(\lambda - 5).$
-
-
-a. Describe the eigenspaces of $A$.
-a. Diagonalize $A$.
-a. Find a matrix that makes sense to call $\sqrt{A}$. Then show that when you square this matrix, you really do get matrix $A$.
-
-## Matrix Reconstruction
-
-An unknown $3 \times 3$ matrix $M$ has eigenvectors and corresponding eigenvalues:
-$$
-\mathsf{v}_1 = \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}, \  \lambda_1 = 1;
-\qquad
-\mathsf{v}_2 = \begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix},\  \lambda_2 = \frac{9}{10};
-\qquad
-\mathsf{v}_3 = \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix},\  \lambda_3 = 0.
+Z = \left\{
+\begin{bmatrix}x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix}
+\ \Bigg\vert\ \  x_1 + x_2 + x_3 + x_4 + x_5 = 0, x_4 = 2 x_2 \ 
+\right\}.
 $$
 
-a. Without using the matrix $M$, compute $M^{10} \mathsf{v}$ where $\mathsf{v} = \begin{bmatrix}7\\3\\4\end{bmatrix}$. (That is, use only the eigen-information.)
+## A Tetrahedral Basis
 
-a. Describe all vectors $\mathsf{v}$, if there are any, such that $M^{n} \mathsf{v}  \to {\bf 0}$ as $n \to \infty$.
+In practice, we change bases because problems are computationally easier in another coordinate system or because we learn something by looking at a problem from the point of view of a different coordinate system. The following example illustrates this with ideas that arises both in chemistry and computer graphics. Below is the tetrahedral molecule methane, $\mathsf{CH}_4$. Its coordinates can be described in 3-dimensional space by the vectors below.
 
-a. Reconstruct $M$ from the information given.
-
-## Coyotes and Roadrunners
-
-This summer, Macalester's Ordway Natural History Study Area will  be stocked with a population of coyotes and roadrunners so that Math 236 students can study real-life predator-prey dynamics. From similar experiments, we expect the predator-prey dynamics to be governed by linear model below. The eigenvalues of the matrix are also given.
 $$
-\begin{bmatrix} \phantom{\Big\vert} r_{t+1}\phantom{\Big\vert}  \\ \phantom{\Big\vert} c_{t+1}\phantom{\Big\vert}  \phantom{\Big\vert} \end{bmatrix}
-=\left[
-\begin{array}{cc}
-\phantom{\Big\vert} \frac{57}{50} & -\frac{6}{50} \\
-\phantom{\Big\vert} \frac{4}{50} & \frac{43}{50} \\
+\mathsf{C}=\begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix},
+\mathsf{H}_1=\begin{bmatrix} 0 \\ 0 \\ \frac{3}{2\sqrt{6}} \end{bmatrix},
+\mathsf{H}_2=\begin{bmatrix}
+ -\frac{1}{2 \sqrt{3}} \\ -\frac{1}{2} \\ -\frac{1}{2 \sqrt{6}}
+\end{bmatrix},
+\mathsf{H}_3=\begin{bmatrix}
+ -\frac{1}{2 \sqrt{3}} \\ \frac{1}{2} \\ -\frac{1}{2 \sqrt{6}} 
+ \end{bmatrix},
+\mathsf{H}_4=\begin{bmatrix}
+ \frac{1}{\sqrt{3}} \\0 \\-\frac{1}{2 \sqrt{6}}
+ \end{bmatrix}
+$$
+
+![](images/ps5-methane.png){width=35%}
+
+Let $\mathcal{M} = \{ \mathsf{H}_1, \mathsf{H}_2, \mathsf{H_3} \}$. Then $\mathcal{M}$ is a basis of $\mathbb{R}^3$, which we will call the **tetrahedral basis.** You can see from the plot that these vectors are linearly independent (not all on the same plane)
+
+a. Express $\mathsf{H}_4$ in the tetrahedral basis. Hint: first compute $\mathsf{H}_1+\mathsf{H}_2+\mathsf{H}_3+\mathsf{H}_4$ using the coordinates above. You do not need to do any row reductions for this question (but you can).
+
+```{r,echo=TRUE}
+H1 = c(0,0,3/(2*sqrt(6)))
+H2 = c(-1/(2*sqrt(3)),-1/2,-1/(2*sqrt(6)))
+H3 = c(-1/(2*sqrt(3)),1/2,-1/(2*sqrt(6)))
+H4 = c(1/sqrt(3),0,-1/(2*sqrt(6)))
+```
+
+
+b. Give the change of basis matrix $T$ that converts from the tetrahedral basis $\mathcal{M}$ to the standard basis $\mathcal{S}$ and compute its inverse that converts from the standard basis back to $\mathcal{M}$.
+
+c. Chemists are interested in symmetry operations. These are linear transformations such that the atom looks the same after the transformation as it did before. For example one such operation is rotation $r_4$ by 120$^o$ around the  $\mathsf{H}_4$ axis. This rotation sends $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_2$, and $\mathsf{H}_2$ to $\mathsf{H}_1$. Give the matrix of $r_4$  in the $\mathcal{M}$ basis.
+
+```{r,echo=TRUE}
+r4.M = cbind(c(0,0,0),c(0,0,0),c(0,0,0))
+rownames(r4.M) <- c("H1","H2","H3")
+colnames(r4.M) <- c("H1","H2","H3")
+r4.M
+```
+
+d. It is a pain to describe these transformations in the standard basis, but it is easy and elegant to do so in the methane basis. We can now use the change-of-basis matrix to get the matrix in the standard basis. Compute the rotation in the standard basis by multiplying out these matrices in R. Use your matrices from parts b and c.
+
+![](images/ps5-change-basis-methane.png){width=100%}
+
+e. Give the matrix in the $\mathcal{M}$-basis for the following symmetry transformations: (ii) The rotation $r_2$ around the $\mathsf{H}_2$ axis sending $\mathsf{H}_1$ to $\mathsf{H}_3$, $\mathsf{H}_3$ to $\mathsf{H}_4$, and $\mathsf{H}_4$ to $\mathsf{H}_1$. (iii) The reflection $\sigma_{1,2}$  across the plane containing $\mathsf{H}_1, \mathsf{H}_2,$ and $\mathsf{C}$. You do not need to give these in standard coordinates.
+
+
+## Matrix Rank
+
+Fill in the entries of the table  with **T** = true or **F** = false or I** = not enough information to know. (Hint: draw a "picture" of the RREF of $\mathsf{A}$ in each case).  
+
+**(a)** $\mathsf{A}$ is invertible
+
+**(b)** $\mathsf{rref}(\mathsf{A}) = I$
+
+**(c)** $\mathsf{A}$ has 8 pivots
+
+**(d)** $\mathsf{A} \mathbf{0} = \mathbf{0}$ 
+
+**(e)** $\mathsf{A} \mathsf{x} = \mathbf{0}$ has more than one solution.
+
+**(f)** $T$ is one-to-one
+
+**(g)** $T$ is onto
+
+**(h)** $\mathsf{A} \mathsf{x} = \mathsf{b}$ has at least one solution for all $\mathsf{b} \in \mathbb{R}^8$.
+
+**(i)** The columns of $\mathsf{A}$ span $\mathbb{R}^8$.
+
+**(j)** There is a vector $\mathsf{b} \in \mathbb{R}^8$ such that $\mathsf{A} \mathsf{x} = \mathsf{b}$ has no solutions.
+
+**(k)** There is a vector  $\mathsf{b} \in \mathbb{R}^8$ such that $\mathsf{A} \mathsf{x} = \mathsf{b}$ has infinitely many solutions.
+
+**(l)** There is a vector $\mathsf{b} \in \mathbb{R}^8$ such that $\mathsf{A} \mathsf{x} = \mathsf{b}$ has exactly 17 solutions.
+
+**(m)** There is a vector $b \in \mathbb{R}^8$ that can be written as a linear combination of the columns of $\mathsf{A}$ in more than one way.
+
+**(n)** The rows of $\mathsf{A}$ span a 7 dimensional subspace of $\mathbb{R}^8$.
+
+**(o)** The columns of $\mathsf{A}$ are linearly independent.
+
+**(p)** The rows of $\mathsf{A}$ are linearly independent 
+
+
+
+$$
+\begin{array}{|c|c|c|c|c|}
+\hline
+& T: \mathbb{R}^8 \to \mathbb{R}^8  & T: \mathbb{R}^8 \to \mathbb{R}^8 & T: \mathbb{R}^7 \to \mathbb{R}^8  & T: \mathbb{R}^9 \to \mathbb{R}^8  \\
+&  \text{$\mathsf{A}$  has rank 7} & \text{$\mathsf{A}$ has rank 8} & \text{$\mathsf{A}$  has rank 7} &  \text{$\mathsf{A}$  has rank 8} \\
+\hline
+(a) & & & & \\ \hline
+(b) & & & & \\ \hline
+(c) & & & & \\ \hline
+(d) & & & & \\ \hline
+(e) & & & & \\ \hline
+(f) & & & & \\ \hline
+(g) & & & & \\ \hline
+(h) & & & & \\ \hline
+(i) & & & & \\ \hline
+(j) & & & & \\ \hline
+(k) & & & & \\ \hline
+(l) & & & & \\ \hline
+(m) & & & & \\ \hline
+(n) & & & & \\ \hline
+(o) & & & & \\ \hline
+(p) & & & & \\ \hline
 \end{array}
-\right] \begin{bmatrix} \phantom{\Big\vert} r_t \phantom{\Big\vert}  \\ \phantom{\Big\vert} c_t \phantom{\Big\vert} \end{bmatrix}
-=
- \begin{bmatrix} \phantom{\Big\vert} 
-\frac{57}{50} r_t -  \frac{6}{50}  c_t \\ \phantom{\Big\vert} \frac{4}{50} r_t +  \frac{43}{50} c_t \end{bmatrix},
-$$
-The eigenvalues and eigenvectors of this matrix are:
-$$
-\begin{array}{lcl}
-\lambda_1 =  \frac{11}{10} =  1.1, & \qquad & \lambda_2 =  \frac{9}{10} = 0.9 \\
-\mathsf{v}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix} &&
-\mathsf{v}_2 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}
-\end{array}
 $$
 
-```{r,echo=TRUE}
-A = cbind(c(57/50,4/50),c(-6/50,43/50))
-eigen(A)
-```
+## A Tale of Two Bases
 
 
-a. If $r_0 =  10$ roadrunners and $c_0 = 15$ coyotes are introduced to the area, then give **closed formulas** for the population of coyotes $c_t$ and roadrunners $r_t$ after $t$ years.
-
-a.  In the long-term, in this model, what is the ratio of roadrunners to coyotes?
-
-a. When another college tried the same experiment in their Arboretum, they introduced $r_0 =  5$ roadrunners and $c_0 = 10$ coyotes and both populations died off (as is verified in the computation below). Explain why this happens using the eigenvalues and eigenvectors.
-
-
-```{r,echo=TRUE}
-A = cbind(c(57/50,4/50),c(-6/50,43/50))
-v = c(5,10)
-for (i in 1:100) {v = A %*% v}
-v
-```
-
-## Same Eigenvectors
-
-Here are two matrices
-```{r,echo=TRUE}
-(A = cbind(c(-8, 3, 29), c(-40, 24, 46), c(10, 3, 11)))
-(B = cbind(c(4, 3, 35), c(-49, 42, 55), c(13, 3, 26)))
-```
-
-
-
-a. Use R to show that they have the same eigenvectors but different eigenvalues.
-
-a. Show that $A B = B A$ (even though we know that, in general, matrices do not commute).
-
-a. Now let $A$ and $B$ be any $n \times n$ matrices which have the same eigenvectors. Prove that $AB = BA$. Hint: use the diagonalization of these two matrices. 
-
-
-## Hunt Creek
-
-Age-structured population models like we saw in the [Spotted Owl Example](https://tom-halverson.github.io/math236_s21/eigenvectors.html#northern-spotted-owl) are often called **Leslie Matrices**, named after the British ecologist P.H. Leslie. Here is the Leslie Matrix of a population of brook trout in Hunt Creek in Michigan. The population is categorized into 5 age categories: fingerlings (0,1), yearlings (1-2), young adults (2-3), adults (3-4), and adults (4-5). Right now the population is seen to be dying off. 
-
-The vector $p(t)$ denotes the population at year $t$ broken into the 5 age categories: $$p(t) =  (f (t), y(t), ya(t), a_1(t), a_2(t))^T$$ and the matrix $L$ gives next year's population from this year's population:  $p_{t+1} = L p_t$.  Below is the Leslie matrix for this example.
-
+I recommend using R on this problem. Consider the subspace $S$ of $\mathbb{R}^5$ below.
 $$
+S = \textsf{span}\left(
 \begin{bmatrix}
-f (t+1) \\
-y(t+1) \\
-ya(t+1) \\
-a_1(t+1) \\
-a_2(t+1)
-\end{bmatrix}
-= \begin{bmatrix}
-0 & 0 & 37 & 64 & 82 \\
-0.06 & 0 & 0 & 0 & 0 \\
-0&0.28 & 0 & 0 & 0  \\
-0&0&0.16& 0 & 0   \\
-0&0&0&0.08& 0    \\
-\end{bmatrix}
+ 1  \\
+ 1  \\
+ 1  \\
+ 1  \\
+ 2  \\
+\end{bmatrix},
 \begin{bmatrix}
-f (t) \\
-y(t) \\
-ya(t) \\
-a_1(t) \\
-a_2(t)
-\end{bmatrix}
-=
+1  \\
+2  \\
+3  \\
+0  \\
+-1 \\
+\end{bmatrix},
 \begin{bmatrix}
-37 ya(t) + 64 a_1(t) + 82 a_2(t) \\
-0.06 f(t) \\
-0.28y(t) \\
-0.16 ya(t) \\
-0.08 a_1(t)
+0  \\
+0  \\
+0 \\
+1  \\
+ 2  \\
+\end{bmatrix},
+\begin{bmatrix}
+ -1  \\
+ 1  \\
+ 3  \\
+ 0  \\
+ -2  \\
+\end{bmatrix},
+\begin{bmatrix}
+2 \\
+1 \\
+ 0 \\
+  1 \\
+ 3 \\
 \end{bmatrix}
+\right)
 $$
-
 ```{r,echo=TRUE}
-L = cbind(c(0,.06,0,0,0),c(0,0,.28,0,0),c(37,0,0,.16,0),c(64,0,0,0,.08),c(82,0,0,0,0.00))
+A = cbind(c(1,1,1,1,2),c(1, 2, 3, 0, -1),c(0, 0, 0, 1, 2), c(-1, 1, 3, 0, -2),c(2, 1, 0, 1, 3))
 ```
 
-The trout population in the creek is known to be dying off largely due to poisoning by the insecticide rotenone. The model demonstrates this behavior here, as can be seen in the folowing plot, which starts with 200 trout in each age group. *You shouldn't need to edit this plot.*
+a. Give a basis of $S$ consisting of some or all of the vectors used to define $S$ above. 
 
-```{r,echo=TRUE}
-start = c(200,200,200,200,200)  # the starting distribution
-N = 35              # N is the number of iterations
-X = matrix(0,nrow=5,ncol=N)  #  Store the results in a 3 x N matrix called X
-X[,1] = start  # put start in the first column of X
-# loop N times and put your results in X
-for (i in 2:N) {X[,i] = L %*% X[,i-1]}
-# Then plot the results
-t = seq(1,N)  # time
-plot(t,X[1,],type='l',col=1,ylim=c(0,8000),ylab="population",xlab="time (year)",
-     main="Population in Age Group")
-for (i in 1:5) {
-  lines(t,X[i,],col=i)
-  points(t,X[i,],col=i,pch=20,cex=.8)}
-legend(22, 7600, legend=c("Fingerlings (0-1)", "Yearlings  (1-2)", "Young Adults (2-3)","Adults (3-4)","Adults (4-5)"), col=1:5, lty=1)
-```
+b. Give a basis of $S$ that has the nice standard basis property (i.e., the 0s and 1s property).
 
-a. Give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.
-
-b. Compute the eigenvectors and eigenvalues of $L$ and relate what you find to population dynamics. In particular, use the eigen-information to
-
-* Give the overall population growth rate.
-* Give the limiting age distribution: that is, the long-run distribution of the population into the different age categories. Give your answer as proportions which sum to 1.
-
-c. You are seeking funding from the Michigan DNR to support a cleanup effort. As part of your proposal, you argue that you believe that such a cleanup will most impact the youngest fish and will improve the survival rate of fingerlings to yearlings. Figure out (by trial and error) how high this survival rate will need to grow in order for the population to stop dying off. Justify your answer with eigenvalues and a plot. You should just be able to duplicate the code for the plot above (after changing the matrix).
-
-## Glucose-Insulin
-
-**This problem involves [Complex Eigenvalues]. There is a video for this for this coming Monday's class (see Moodle), and there will be time for you to discuss this in breakout rooms on Monday.**
-
-The hormone insulin helps regulate glucose metabolism in your blood. The presene of insulin helps your body absorb excess glucose. Here $G_t$ (glucose) and $H_t$ (insulin) are measured as excess values (in mg per 100 ml of blood) above the steady state. 
+c. For the two vectors below, decide if they are in $S$. If the vector is in $S$ then give its coordinates in each of your bases from parts (a) and (b). If you can do one of these "by hand" then explain how.
 $$
-\begin{bmatrix} G_{t+1} \\ H_{t+1} \end{bmatrix}
-=
-\begin{bmatrix}
-0.9 & -0.4 \\
-0.1 & 0.9 \\
-\end{bmatrix}
-\begin{bmatrix} G_t \\ H_t \end{bmatrix}= 
-\begin{bmatrix} 0.9 G_t - 0.4 H_t \\ 0.1 G_t + 0.9 H_t \end{bmatrix}
+\mathbf{w} = \begin{bmatrix} 8 \\ 11 \\ 14 \\ 7 \\ 11 \end{bmatrix}, \qquad 
+\mathbf{v} = \begin{bmatrix} 3 \\ 3 \\ 3 \\ 1 \\ 1 \end{bmatrix}.
 $$
-
-Here is what happens if we start at $(1,0)$ and iterate. That is we start with 1 unit excess glucose. Observe that the system spirals back to the steady state of $(0,0)$.
-```{r,fig.width=6, fig.height=6}
-A = cbind(c(.9,.1),c(-.4,.9))
-start = c(1,0)
-N = 50
-
-X = matrix(0,nrow=2,ncol=N)
-X[,1] = start
-
-for (i in 2:N) {X[,i] = A %*% X[,i-1]}
-plot(X[1,],X[2,],col='blue',xlim=c(-0.4,1.0),ylim=c(-0.4,0.4),xlab='glucose',ylab='insulin',pch=20,cex=1)
-points(start[1],start[2],col="red")
-grid(nx=10,ny=10)
-```
-
-
-
-We can plot the indivdual glucose and insulin coordinates over time. These are the x and y coordinates of the points in the above plot. You see the insulin responding to the excess glucose, and then the glucose being absorbed by the presence of insulin, and so on ...
-
-```{r}
-t = seq(1,N)
-plot(t,X[1,],type='l',col='blue',ylim=c(-1,1),ylab="concentration (mg/ml)",xlab="time(hours)",main="Glucose-Insulin Over Time")
-lines(t,X[2,],col='darkorange')
-legend(10, 0.7, legend=c("Glucose", "Insulin"), col=c("blue", "darkorange"), lty=1)
-```
-
-The key point here is that the spiraling in the (x,y) plane or oscillating in the (x,t) plane corresponds to the presence of *complex eigenvalues*.  Your job is to perform an eigen-analysis of this problem:
-
-a. Use R to find the eigenvalues and eigenvectors.
-
-a. Write out the eigenvalues in the form $\lambda = a \pm b i$ and the eigenvectors in the form $\vec{v} = \vec{u} \pm \vec{w} i.$
-
-a. Use this information to find the scaling factor $|\lambda|$ for this matrix and the angle of rotation $\arctan(b/a)$. Give your answer in degrees. Compare your answers from part (c) to the plots above to confirm that the system is doing what the eigenvalues predict.
-

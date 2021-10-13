@@ -279,6 +279,15 @@ $$
 \mathsf{v} = \begin{bmatrix}  5\\ 4\\ 3\\ 2 \\ 1\\  1 \end{bmatrix}.
 $$
 
+###
+
+Suppose  that $T: \mathbb{R}^n \to \mathbb{R}^m$ and  $S: \mathbb{R}^n \to \mathbb{R}^m$ are linear transformations. 
+Let $V  \subset  \mathbb{R}^n$ be  the set 
+$$
+V = \{ \mathsf{v}  \in \mathbb{R}^n\mid T(\mathsf{v})  = S(\mathsf{v}) \}.
+$$
+Prove that the set $V$ is a subspace.
+
 
 ## Solutions to Practice Problems
 

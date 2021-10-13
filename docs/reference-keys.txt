@@ -1,4 +1,4 @@
-tab:unnamed-chunk-28
+tab:unnamed-chunk-4
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -33,6 +33,11 @@ a-vector-in-both-cola-and-nula
 getting-into-a-subspace
 shrink-to-a-basis
 extend-to-a-basis
+problem-set-6
+dimension
+a-tetrahedral-basis
+matrix-rank
+a-tale-of-two-bases
 important-definitions
 systems-of-equations
 linear-transformations
@@ -97,7 +102,7 @@ section-26
 section-27
 section-28
 section-29
-quiz-2-review
+exam-2-review
 overview-1
 vocabulary-and-concepts-1
 skills-1
@@ -113,8 +118,8 @@ section-37
 section-38
 section-39
 section-40
-solutions-to-practice-problems-1
 section-41
+solutions-to-practice-problems-1
 section-42
 section-43
 section-44
@@ -124,3 +129,4 @@ section-47
 section-48
 section-49
 section-50
+section-51
