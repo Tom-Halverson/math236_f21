@@ -372,17 +372,17 @@ Z = \left\{
 <li><p>Another symmetry operation is a rotation <span class="math inline">\(s\)</span> by <span class="math inline">\(180^o\)</span> around the axis that passes through the midpoing between <span class="math inline">\(\mathsf{H}_1\)</span> and <span class="math inline">\(\mathsf{H}_2\)</span> and the midpoint between <span class="math inline">\(\mathsf{H}_3\)</span> and <span class="math inline">\(\mathsf{H}_4\)</span>. This rotation exchanges <span class="math inline">\(\mathsf{H}_1\)</span> and <span class="math inline">\(\mathsf{H}_2\)</span> and exchanges <span class="math inline">\(\mathsf{H}_3\)</span> and <span class="math inline">\(\mathsf{H}_4\)</span>. Find the matrix of <span class="math inline">\(s\)</span> in the <span class="math inline">\(\mathcal{M}\)</span> basis. By hand, apply it to each of the four hydrogen atoms and show that they go to the right place.</p></li>
 <li><p>Now we will convert our matrix for <span class="math inline">\(r\)</span> to standard coordinates. Here is the recipe. First, enter the change of basis give the change of basis matrix <span class="math inline">\(T\)</span> that converts from the tetrahedral basis <span class="math inline">\(\mathcal{M}\)</span> to the standard basis <span class="math inline">\(\mathcal{S}\)</span> and compute its inverse that converts from the standard basis back to <span class="math inline">\(\mathcal{M}\)</span>. Here are the atoms for you.</p></li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="problem-set-6.html#cb11-1" aria-hidden="true" tabindex="-1"></a>H1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span>
-<span id="cb11-2"><a href="problem-set-6.html#cb11-2" aria-hidden="true" tabindex="-1"></a>H2 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span>)),<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span>
-<span id="cb11-3"><a href="problem-set-6.html#cb11-3" aria-hidden="true" tabindex="-1"></a>H3 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span>)),<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span>
-<span id="cb11-4"><a href="problem-set-6.html#cb11-4" aria-hidden="true" tabindex="-1"></a>H4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">3</span>),<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="problem-set-6.html#cb12-1" aria-hidden="true" tabindex="-1"></a>H1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span>
+<span id="cb12-2"><a href="problem-set-6.html#cb12-2" aria-hidden="true" tabindex="-1"></a>H2 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span>)),<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span>
+<span id="cb12-3"><a href="problem-set-6.html#cb12-3" aria-hidden="true" tabindex="-1"></a>H3 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span>)),<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span>
+<span id="cb12-4"><a href="problem-set-6.html#cb12-4" aria-hidden="true" tabindex="-1"></a>H4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">3</span>),<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">6</span>)))</span></code></pre></div>
 <ol start="7" style="list-style-type: lower-alpha">
 <li>Now, enter the matrix of the rotation <span class="math inline">\(r\)</span> from part c above. It is entered as the all 0s matrix right now. You need to enter your correct entries.</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="problem-set-6.html#cb12-1" aria-hidden="true" tabindex="-1"></a>r.M <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb12-2"><a href="problem-set-6.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(r.M) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H1&quot;</span>,<span class="st">&quot;H2&quot;</span>,<span class="st">&quot;H3&quot;</span>)</span>
-<span id="cb12-3"><a href="problem-set-6.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(r.M) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H1&quot;</span>,<span class="st">&quot;H2&quot;</span>,<span class="st">&quot;H3&quot;</span>)</span>
-<span id="cb12-4"><a href="problem-set-6.html#cb12-4" aria-hidden="true" tabindex="-1"></a>r.M</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="problem-set-6.html#cb13-1" aria-hidden="true" tabindex="-1"></a>r.M <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb13-2"><a href="problem-set-6.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(r.M) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H1&quot;</span>,<span class="st">&quot;H2&quot;</span>,<span class="st">&quot;H3&quot;</span>)</span>
+<span id="cb13-3"><a href="problem-set-6.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(r.M) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H1&quot;</span>,<span class="st">&quot;H2&quot;</span>,<span class="st">&quot;H3&quot;</span>)</span>
+<span id="cb13-4"><a href="problem-set-6.html#cb13-4" aria-hidden="true" tabindex="-1"></a>r.M</span></code></pre></div>
 <pre><code>##    H1 H2 H3
 ## H1  0  0  0
 ## H2  0  0  0
@@ -397,7 +397,21 @@ Z = \left\{
 </div>
 <div id="matrix-rank" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Matrix Rank</h2>
-<p>Fill in the entries of the table with <strong>T</strong> = true or <strong>F</strong> = false or I** = not enough information to know. (Hint: draw a “picture” of the RREF of <span class="math inline">\(\mathsf{A}\)</span> in each case).</p>
+<p>In the table below, each column corresponds to a linear transformation <span class="math inline">\(T_\mathsf{M}: \mathbb{R}^n \to \mathbb{R}^m\)</span> with a matrix <span class="math inline">\(\mathsf{M}\)</span>. At the top of the column I tell you the values of <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> and the rank of the matrix.</p>
+<p>Fill in the entries of the table with <strong>T</strong> = true or <strong>F</strong> = false or <strong>I</strong> = not enough information to know. (Hint: draw a “picture” of the RREF of <span class="math inline">\(\mathsf{A}\)</span> in each case).</p>
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+<div class="col3">
 <p><strong>(a)</strong> <span class="math inline">\(\mathsf{A}\)</span> is invertible</p>
 <p><strong>(b)</strong> <span class="math inline">\(\mathsf{rref}(\mathsf{A}) = I\)</span></p>
 <p><strong>(c)</strong> <span class="math inline">\(\mathsf{A}\)</span> has 8 pivots</p>
@@ -414,11 +428,12 @@ Z = \left\{
 <p><strong>(n)</strong> The rows of <span class="math inline">\(\mathsf{A}\)</span> span a 7 dimensional subspace of <span class="math inline">\(\mathbb{R}^8\)</span>.</p>
 <p><strong>(o)</strong> The columns of <span class="math inline">\(\mathsf{A}\)</span> are linearly independent.</p>
 <p><strong>(p)</strong> The rows of <span class="math inline">\(\mathsf{A}\)</span> are linearly independent</p>
+</div>
 <p><span class="math display">\[
 \begin{array}{|c|c|c|c|c|}
 \hline
-&amp; T: \mathbb{R}^8 \to \mathbb{R}^8  &amp; T: \mathbb{R}^8 \to \mathbb{R}^8 &amp; T: \mathbb{R}^7 \to \mathbb{R}^8  &amp; T: \mathbb{R}^9 \to \mathbb{R}^8  \\
-&amp;  \text{$\mathsf{A}$  has rank 7} &amp; \text{$\mathsf{A}$ has rank 8} &amp; \text{$\mathsf{A}$  has rank 7} &amp;  \text{$\mathsf{A}$  has rank 8} \\
+&amp; T_\mathsf{A}: \mathbb{R}^8 \to \mathbb{R}^8  &amp; T_\mathsf{B}: \mathbb{R}^8 \to \mathbb{R}^8 &amp; T_\mathsf{C}: \mathbb{R}^7 \to \mathbb{R}^8  &amp; T_\mathsf{D}: \mathbb{R}^9 \to \mathbb{R}^8  \\
+&amp;  \text{$\mathsf{A}$  has rank 7} &amp; \text{$\mathsf{B}$ has rank 8} &amp; \text{$\mathsf{C}$  has rank 7} &amp;  \text{$\mathsf{D}$  has rank 8} \\
 \hline
 (a) &amp; &amp; &amp; &amp; \\ \hline
 (b) &amp; &amp; &amp; &amp; \\ \hline
@@ -481,7 +496,7 @@ S = \textsf{span}\left(
 \end{bmatrix}
 \right)
 \]</span></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="problem-set-6.html#cb14-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="problem-set-6.html#cb15-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Give a basis of <span class="math inline">\(S\)</span> consisting of some or all of the vectors used to define <span class="math inline">\(S\)</span> above.</p></li>
 <li><p>Give a basis of <span class="math inline">\(S\)</span> that has the nice standard basis property (i.e., the 0s and 1s property).</p></li>

@@ -77,8 +77,25 @@ i. Multiply this matrix (using R) by each of the hydrogen atoms (but now in stan
 
 ## Matrix Rank
 
-Fill in the entries of the table  with **T** = true or **F** = false or I** = not enough information to know. (Hint: draw a "picture" of the RREF of $\mathsf{A}$ in each case).  
+In the table below, each column corresponds to a linear transformation $T_\mathsf{M}: \mathbb{R}^n \to \mathbb{R}^m$ with a  matrix $\mathsf{M}$. At the top of the column I tell you the values of $m$ and $n$ and the rank of the matrix.
 
+Fill in the entries of the table  with **T** = true or **F** = false or **I** = not enough information to know. (Hint: draw a "picture" of the RREF of $\mathsf{A}$ in each case).  
+
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+
+
+<div class="col3">
 **(a)** $\mathsf{A}$ is invertible
 
 **(b)** $\mathsf{rref}(\mathsf{A}) = I$
@@ -111,13 +128,15 @@ Fill in the entries of the table  with **T** = true or **F** = false or I** = no
 
 **(p)** The rows of $\mathsf{A}$ are linearly independent 
 
+</div>
+
 
 
 $$
 \begin{array}{|c|c|c|c|c|}
 \hline
-& T: \mathbb{R}^8 \to \mathbb{R}^8  & T: \mathbb{R}^8 \to \mathbb{R}^8 & T: \mathbb{R}^7 \to \mathbb{R}^8  & T: \mathbb{R}^9 \to \mathbb{R}^8  \\
-&  \text{$\mathsf{A}$  has rank 7} & \text{$\mathsf{A}$ has rank 8} & \text{$\mathsf{A}$  has rank 7} &  \text{$\mathsf{A}$  has rank 8} \\
+& T_\mathsf{A}: \mathbb{R}^8 \to \mathbb{R}^8  & T_\mathsf{B}: \mathbb{R}^8 \to \mathbb{R}^8 & T_\mathsf{C}: \mathbb{R}^7 \to \mathbb{R}^8  & T_\mathsf{D}: \mathbb{R}^9 \to \mathbb{R}^8  \\
+&  \text{$\mathsf{A}$  has rank 7} & \text{$\mathsf{B}$ has rank 8} & \text{$\mathsf{C}$  has rank 7} &  \text{$\mathsf{D}$  has rank 8} \\
 \hline
 (a) & & & & \\ \hline
 (b) & & & & \\ \hline
