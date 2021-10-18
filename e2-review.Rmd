@@ -22,6 +22,7 @@ require('pracma')
 * You will be allowed to re-write one problem to earn back half of the points that you lost. This will be due the class period after I hand the exam back.
 * The exam is worth 12% of your course grade as outlined in the [syllabus](https://docs.google.com/document/d/1uE95uWoV994QJ6YyrR7yBMV7MATzYO6XI4xd_q4-sqc).
 
+### Vocabulary and Concepts
 
 * Subspaces
     + 4.1: Subspaces of $\mathbb{R}^n$
