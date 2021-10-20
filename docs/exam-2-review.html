@@ -752,33 +752,7 @@ and a basis for <span class="math inline">\(\mathrm{Nul}(A)\)</span> is
 ## [1,]    1    0    3
 ## [2,]    0    1   -2
 ## [3,]    0    0    0</code></pre>
-<p>No they are not a basis. The corresponding matrix only has two pivots. Let’s add the three elementary vectors to create matrix <span class="math inline">\(B\)</span> and then row reduce.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="exam-2-review.html#cb138-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span>  <span class="fu">cbind</span>(A, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb138-2"><a href="exam-2-review.html#cb138-2" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]    1    2   -1    1    0    0
-## [2,]   -1   -1   -1    0    1    0
-## [3,]   -2    1   -8    0    0    1</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="exam-2-review.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(B)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]       [,5]       [,6]
-## [1,]    1    0    3    0 -0.3333333 -0.3333333
-## [2,]    0    1   -2    0 -0.6666667  0.3333333
-## [3,]    0    0    0    1  1.6666667 -0.3333333</code></pre>
-<p>From this matrix, we can see that the vectors
-<span class="math display">\[
-\begin{bmatrix}
-1 \\ -1 \\ -2 
-\end{bmatrix},
-\quad
-\begin{bmatrix}
-2 \\ -1 \\ 1 
-\end{bmatrix},
-\quad
-\begin{bmatrix}
-1 \\ 0 \\ 0 
-\end{bmatrix}.
-\]</span>
-are linearly independent because they correspond to the basis columns of <span class="math inline">\(B\)</span>.</p>
+<p>The vectors are linearly dependent. If we choose the first two vectors <span class="math inline">\(\mathcal{B} = \{ \mathsf{v}_1, \mathsf{v}_2\}\)</span>, then <span class="math inline">\(\mathcal{B}\)</span> is a basis for <span class="math inline">\(S = \mathsf{span}(\mathsf{v}_1, \mathsf{v}_2, \mathsf{v}_3)\)</span>.</p>
 </div>
 <div id="section-49" class="section level3" number="13.3.8">
 <h3><span class="header-section-number">13.3.8</span> </h3>
@@ -801,17 +775,17 @@ Then, the desired coordinate vectors are
 \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}_{\mathcal{B}}
 \]</span>
 You can find these vectors by multiplying by <span class="math inline">\(P_\mathcal{B}\)</span> and by augmenting and row reducing as seen here.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="exam-2-review.html#cb142-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb142-2"><a href="exam-2-review.html#cb142-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb142-3"><a href="exam-2-review.html#cb142-3" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">4</span>)</span>
-<span id="cb142-4"><a href="exam-2-review.html#cb142-4" aria-hidden="true" tabindex="-1"></a>A  <span class="sc">%*%</span> w</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="exam-2-review.html#cb138-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb138-2"><a href="exam-2-review.html#cb138-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb138-3"><a href="exam-2-review.html#cb138-3" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">4</span>)</span>
+<span id="cb138-4"><a href="exam-2-review.html#cb138-4" aria-hidden="true" tabindex="-1"></a>A  <span class="sc">%*%</span> w</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    0
 ## [2,]   -3
 ## [3,]   -1
 ## [4,]   -1</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="exam-2-review.html#cb144-1" aria-hidden="true" tabindex="-1"></a>Av <span class="ot">=</span> <span class="fu">cbind</span>(A,v)</span>
-<span id="cb144-2"><a href="exam-2-review.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Av)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="exam-2-review.html#cb140-1" aria-hidden="true" tabindex="-1"></a>Av <span class="ot">=</span> <span class="fu">cbind</span>(A,v)</span>
+<span id="cb140-2"><a href="exam-2-review.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Av)</span></code></pre></div>
 <pre><code>##              v
 ## [1,] 1 0 0 0 1
 ## [2,] 0 1 0 0 2
@@ -827,8 +801,8 @@ P_{\cal  B}^{-1} =
 0 &amp; 0 &amp; 0 &amp; 1
 \end{bmatrix}
 \]</span></p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="exam-2-review.html#cb146-1" aria-hidden="true" tabindex="-1"></a>Ainv <span class="ot">=</span> <span class="fu">solve</span>(A)</span>
-<span id="cb146-2"><a href="exam-2-review.html#cb146-2" aria-hidden="true" tabindex="-1"></a>Ainv <span class="sc">%*%</span> v</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="exam-2-review.html#cb142-1" aria-hidden="true" tabindex="-1"></a>Ainv <span class="ot">=</span> <span class="fu">solve</span>(A)</span>
+<span id="cb142-2"><a href="exam-2-review.html#cb142-2" aria-hidden="true" tabindex="-1"></a>Ainv <span class="sc">%*%</span> v</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    1
 ## [2,]    2
