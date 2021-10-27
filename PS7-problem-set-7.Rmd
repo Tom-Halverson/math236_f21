@@ -1,313 +1,95 @@
 
 # Problem Set 7
 
-* Last one! You can drop your lowest problem set, so if you are happy with 6 problem set scores you can drop this one. However, I recommend you work on and think about these problems, since these ideas will be on the final quiz.
-* Due: Wednesday July 07 by 11:59am CST (last day of class).
+* Due: Wednesday November 3 by 11:59pm CST. This problem set covers the material from 
+
+     + 5.1. Eigenvectors
+     + 5.2. Eigenvalues
+     + 5.3. Eigenbasis
+
 * Upload your solutions to Moodle in a PDF. 
-* Please feel free to **use RStudio for all calculations, including row reduction, matrix multiplication, eigenvector calculation and inverse matrices.**
-* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_mod5/blob/main/PS7-problem-set-7.Rmd).
+* Please feel free to **use RStudio for all row reductions.**
+* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f21/blob/main/PS7-problem-set-7.Rmd).
 
-This problem set covers [Network Centralities] and Sections 6.1, 6.2, 6.3, 6.5 on Orthogonal Projections.
+## Rental Cars Revisited
 
+Below is the rental car matrix from PS4.5. 
 
+```{r}
+StP = c(.85,.09,.06)
+Roch = c(.30,.60,.10)
+Dul = c(.35,.05,.60) 
+(M = cbind(StP,Roch,Dul))
+```
 
+a. Find its eigenvectors and eigenvalues. You should see that one of the eigenvalues is 1. This always happens when the columns sum to 1 (we will prove this later). An eigenvector of eigenvalue 1 is called a **steady state** vector because we have A v = v. There are also two complex eigenvalues and eigenvectors (we will talk about these next week).
 
-## Orthogonal Complements
+b. Extract the eigenvector corresponding to eigenvalue 1. You will see that it has a 0 imaginary part. You can get rid of the imaginary part of a vector v by using w = Re(v). This gives the real part of v. Demonstrate that A w = w.
 
-(Work on in class on Tuesday June 29)
+c. Rescale the eigenvector so that it sums to 1. By using sum(w) you can sum the components of the vector. When the vector sums to 1, you can think of the components as the *proportion* of cars at each rental company. 
 
-Here are two subspaces of $\mathbb{R}^5$ that we have seen before. (See PS4.2 and PS5.2)
-$$
-\begin{align}
-\mathsf{Z} & = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix} \ \bigg\vert \ x_1 + x_2 + x_3 + x_4 + x_5 = 0,  x_4 = 2 x_2 \right\}.
-\\
-\mathsf{F} & = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix} \ \bigg\vert \  x_3 =  x_1 + x_2, x_4 = x_2 + x_3, x_5 = x_3 + x_4 \right\}.
-\end{align}
-$$
-Find the orthogonal complement of each subspace in $\mathbb{R}^5$. For each example, compute $\dim(W) + \dim(W^\perp)$.
+d. Compare this with the steady state you found by looping when you worked on this in problem set 4.
 
-
-
-## Cosine Similarity 
-
-(Work on in class on Tuesday June 29)
-
-In high dimensional space $\mathbb{R}^n$ a common measure of similarity between two vectors  is  **cosine similarity**:  the cosine of the angle $\theta$ between the vectors. We calculate this value as shown below. This formula was derived in the [video](https://drive.google.com/file/d/1L0hs5mHHw8YJYUFgqPqii0uGxgy-Rx31/view) for 5.1.
-$$
-\cos(\theta) = \frac{ \mathsf{u} \cdot \mathsf{v}} {\| \mathsf{u}\| \, \|\mathsf{v}\|} = \frac{ \mathsf{u} \cdot \mathsf{v}} {\sqrt{\mathsf{u} \cdot \mathsf{u}} \sqrt{\mathsf{v} \cdot \mathsf{v}}}.
-$$
-This measure has the following nice properties:
-
-* $-1 \le \cos(\theta) \le 1$,
-* $\cos(\theta)$ is close to 1 if $\mathsf{u}$ and $\mathsf{v}$ are closely aligned,
-* $\cos(\theta)$ is close to 0 if  $\mathsf{u}$ and $\mathsf{v}$ are are orthogonal, 
-* $\cos(\theta)$ is close to $-1$ if $\mathsf{u}$ and $\mathsf{v}$ are polar opposites.
-* $\cos(\theta)$ is positive if $\theta$ is acute (less than $90^o$).
-* $\cos(\theta)$ is negative if $\theta$ is obtuse (greater than $90^o$).
+```{r,echo=TRUE,eval=FALSE}
+x = c(40,35,25)
+for (i in 1:100) {x = M %*% x}
+x
+```
 
 
+## Same Eigenvectors
 
-a. Write a function `cosine_similarity` that takes as input two vectors $\mathsf{u}$ and $\mathsf{v}$ and returns the value of $\cos(\theta)$ for the angle $\theta$ between $\mathsf{u}$ and $\mathsf{v}$. Below is a shell of the code that you need. Right now it always just returns 1.You need to fix that up. Demonstrate that your code works on some vectors in $\mathbb{R}^5$. Use vectors that are orthogonal, closely aligned, and close to polar opposites.
-
+Here are two matrices
 ```{r,echo=TRUE}
-cosine_similarity <- function(u, v) {
-  # your code goes here!
-  # find the cosine of the angle between u and v
-  cosine = 1
-  return (cosine)
-}
+(A = cbind(c(-8, 3, 29), c(-40, 24, 46), c(10, 3, 11)))
+(B = cbind(c(4, 3, 35), c(-49, 42, 55), c(13, 3, 26)))
 ```
 
 
-b. In the file [US_Senate_s21.Rmd](https://drive.google.com/file/d/1aQsAZx8v1YzOy3VqDX4ahSDCOhdkPk2D/view?usp=sharing) you will find vectors of the voting record of the Senate in the 109th US Congress (2007-2008). You will see how to take the dot product of the voting record of two different senators. The dot product is always an integer. Explain what it counts. It is the number of something or possibly the difference of two things.
+a. Use R to show that they have the same eigenvectors but different eigenvalues.
 
-c. Use your `cosine_similary` function to find the cosine similarity between every pair of the following senators:
+a. Show that $A B = B A$ (even though we know that, in general, matrices do not commute).
 
-    + Hilary Clinton (D, NY), presidential candidate 2016
-    + John McCain (R, AZ), presidential candidate 2008
-    + Barack Obama (D, IL), president 2008-2016
-    + Susan Collins (R, ME), moderate Republican
+a. Now let $A$ and $B$ be any $n \times n$ matrices which have the same eigenvectors. Prove that $AB = BA$. Hint: use the diagonalization of these two matrices. We will cover diagonalization on Friday and Monday.
 
-Does the cosine similarity pick up on the fact that Senator Collins is a "moderate Republican"?
 
-d. The senate majority leader of the 109th Congress was Bill Frist (R, TN), and the senate minority leader was Harry Reid (D, NV). 
 
-    * Create a function  `classify_senator(senator)` that returns "R" or "D" depending on the cosine similarity of `senator` to `frist` and to `reid`. You will have to write [an "if ... else statement" (here is the syntax)](https://www.tutorialspoint.com/r/r_if_else_statement.htm).
-  
-    * There is a chunk of code in the R file I've given you that gets you started.
+## Rain and Sunshine Revisited
 
-    * Then run the my_classification code that we have given. I dentify any senators that have been *misclassified* using this method, meaning that their votes are more similar to the leader of the opposing party. 
-    
-    * Jim Jeffords (I, VT) was a Republican who became and Independent in 2001 and then caucused with the Democrats. How does your classifier handle Jeffords?
-
-## Orthogonal Diagonalization
-
-(Work on in class on Wednesday June 30)
-
-Recall that a square $n \times n$ matrix is symmetric when $A^{\top} = A$. It is an amazing property that the eigenvectors of a symmetric matrix form an *orthogonal* basis of $\mathbb{R}^n$. In this problem, you will confirm that this holds for the following symmetric matrix,
+On PS4, we encountered the rain-sunshine matrix $A$ below
 $$
-A = 
-\begin{bmatrix}
- 0 &  8 & 10 & -4 \\
- 8 & 4 & 28 & 6 \\
- 10 & 28 & 3 & -4 \\
- -4 & 6 & -4 & -7
-\end{bmatrix}. 
+A = \begin{bmatrix}
+1/2 & 1/10 \\
+1/2 & 9/10 \\
+\end{bmatrix}.
 $$
-```{r,echo=TRUE}
-A = cbind(c(0,8,10,-4),c(8,4,28,6),c(10,28,3,-4),c(-4,6,-4,-7))
-```
+Perform the following calculations **by hand** and show your work.
 
-a. Find the eigenvalues and eigenvectors of $A$.
+a. Find the characteristic polynomial of $A$ and find its eigenvalues. Remember that the characteristic polynomial is the polynomial $f_A(\lambda) = \det(A - \lambda I)$.
 
-b. Let $P$ be the matrix of the eigenvectors output by R: `P = eigen(A)$vectors`. Confirm that these eigenvectors are an orthonormal set using a single matrix calculation.
+a. Find an eigenvector for each eigenvalue and describe the eigenspaces.
 
-c. Let $\mathsf{v} = \begin{bmatrix} 2 & -4 &  -9  & -2 \end{bmatrix}^{\top}$. Find the coordinates of $\mathsf{v}$ in the eigenbasis in 3 different ways:
- 
-    i. Use the *transpose* of $P$. Recall that, in R, the transpose of a matrix is `t(A)`.
-    ii. Augment and row reduce.
-    iii. Use the dot product formula. Note that the command `v1 = P[,1]` will extract the first eigenvector from the matrix `P`.
+a. Diagonalize $A$.
 
+a.  Use your answer to (c) to give a formula for $A^n$ and use this formula to compute $\displaystyle{\lim_{n\to \infty}} A^n$.
 
-d.  Diagonalize $A$ using $P$. To demonstrate this compute both $A= P D P^{-1}$ and $D =P^{-1} A P$.  Congratulations: you have **orthogonally diagonalized** the symmetric matrix $A$!
+a. Write a loop in `R` that computes $A^{100}$. Do this as follows:
+     i. Start with B = A
+     ii. Loop 100 times: at each step in the loop, let B = A %*% B.
 
-**Turn in:** Your R code and the output for each part. 
+Compare the answer that you get to your answer to part (d).
 
 
-## Fibonacci Orthogonality
+## The Square Root of a Matrix?
 
-(Work on in class on Thursday July 1)
+Do this problem **by hand**.
 
-In problem 4.2, you saw that the vector space of Fibonacci vectors $\mathsf{F} \subseteq \mathbb{R}^5$ is a 2-dimensional subspace of $\mathbb{R}^5$. 
+The matrix $A  =\begin{bmatrix} 7 & 2 \\ -4 & 1 \end{bmatrix}$ has characteristic polynomial $c(\lambda) = \lambda^2 - 8 \lambda + 15 = (\lambda -3)(\lambda - 5).$
 
+a. Describe the eigenspaces of $A$.
+a. Diagonalize $A$. We will learn how to do this on Friday.
+a. Find a matrix that makes sense to call $\sqrt{A}$. Then show that when you square this matrix, you really do get matrix $A$.
 
-a. Below is an orthogonal basis of $\mathsf{F}$. Check that the basis vectors $\{\mathsf{f}_1, \mathsf{f}_2\}$ are in $\mathsf{F}$ and are orthogonal.
-$$
-\mathsf{F} = \mathsf{span} \left\{
- \mathsf{f}_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \\ 1 \\ 2 \end{bmatrix}, 
- \mathsf{f}_2 = \begin{bmatrix} -9 \\ 7 \\ -2 \\ 5 \\ 3\end{bmatrix}
- \right\}, \hskip.5in
- \mathsf{v}  =  \begin{bmatrix} 1 \\ 2 \\ 3 \\ 5 \\ 7\end{bmatrix}.\hskip.5in
-$$
-![](images/projectFib.png){width=70%}
+## One or two more coming. 
 
-b. The vector $\mathsf{v}$ above is **not** in $\mathsf{F}$ (check that!). Its **projection** $\mathsf{p}$ onto $\mathsf{F}$ is given by the formula below. Compute $\mathsf{p}$. This is closest approximation of $\mathsf{f}$ with a Fibonacci vector.
-$$
-\mathsf{p} = \frac{ (\mathsf{v} \cdot  \mathsf{f}_1)}{ ( \mathsf{f}_1 \cdot  \mathsf{f}_1)} \mathsf{f}_1 +  \frac{ (\mathsf{v} \cdot  \mathsf{f}_2)}{ ( \mathsf{f}_2 \cdot  \mathsf{f}_2)}  \mathsf{f}_2.
-$$
-This formula requires that the basis be orthogonal.
-
-c. The **residual vector** is the vector $\mathsf{r}  = \mathsf{v} - \mathsf{p}$. Compute $\mathsf{r}$.
-
-d. Show that $\mathsf{r}$ is orthogonal to $\mathsf{f}_1$ and $\mathsf{f}_2$.
-
-d. Compute $||\mathsf{r}||$. This is the distance from $\mathsf{v}$ to $\mathsf{F}$ (i.e., how far $\mathsf{v}$ is from being Fibonacci?).
-
-## Least Squares Solution to $\mathsf{A} x = \mathsf{b}$
-
-(Work on in class on Tuesday July 6)
-
-Find the least-squares solution to the following inconsistent matrix equation $\mathsf{A} x  = \mathsf{b}$. 
-$$
-\left[
-\begin{array}{ccc}
- 1 & 1 & 2 \\
- 1 & 0 & 2 \\
- -1 & 1 & 1 \\
- 1 & 0 & 1 \\
- 1 & 1 & 1 \\
-\end{array}
-\right] \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = 
-\begin{bmatrix} 7 \\  11 \\ -3 \\ 10 \\ 7 \end{bmatrix}. \hskip5in
-$$
-Here are the steps you should follow:
-
-a. Show that this system of equations is inconsistent.
-b. Make the normal equations: $\mathsf{A}^T \mathsf{A} x = \mathsf{A}^T \mathsf{b}$.
-c. Solve the normal equations for $\hat{x}$ (by hand or software).
-d. Get the projection $\hat{\mathsf{b}}$ of $\mathsf{b}$ onto $\mathrm{Col}(\mathsf{A})$ by $\hat{\mathsf{b}} = \mathsf{A} \hat{x}$.
-e. Get the residual $\mathsf{r}  = \mathsf{b} - \hat{\mathsf{b}}$ and compute its length.
-
-
-## Least-Squares Polynomials
-
-(Work on in class on Tuesday July 6)
-
-Here is a quadratic least-squares polynomial fit to some data. Make a cubic, quartic, and quintic fit to this same data. Turn in a plot of each. Compute the length of the residual in each case. Which do you think is the best model of the data?
-
-
-```{r, echo=TRUE}
-x = c(1,2,3,4,5,6)
-y = c(7,2,1,3,7,7)
-(A = cbind(x^0,x,x^2))
-xhat = solve(t(A)%*%A,t(A)%*%y)
-yhat = A %*% xhat
-r = y - yhat
-t(r) %*% r
-```
-
-```{r ps8-quadplot, fig.width=4.5, fig.height=4.5, echo=TRUE}
-#plot the original set of points
-plot(x,y,pch=19,xlim=c(0,7),ylim=c(0,10), main='the best-fit quadratic function')
-# generate points for the fitted line and plot it
-tt = seq(0,7,len=100)  
-lines(tt,xhat[1]+xhat[2]*tt+xhat[3]*tt^2,col='blue')
-# add the residuals to the plot
-for (i in 1:length(x)) {lines(c(x[i],x[i]),c(y[i],yhat[i]), col='red')}
-#add yhat to the plot
-points(x,yhat,pch=19,col='orange')
-#put the original points back on the plot last so we can see them 
-points(x,y,pch=19,col="black")
-grid()
-```
-
-## Fuel Efficiency
-
-(Work on  in class on Wednesday July 7)
-
-
-Below is a classic data set of fuel efficiency in 38 different automobiles.
-```{r}
-MPG=c(16.9,15.5,19.2,18.5,30,27.5,27.2,30.9,20.3,17,21.6,16.2,20.6,20.8,18.6,18.1,17,17.6,16.5,18.2,26.5,21.9,34.1,35.1,27.4,31.5,29.5,28.4,28.8,26.8,33.5,34.2,31.8,37.3,30.5,22,21.5,31.9)
-lbs=c( 3967.6,3689.14,3280.55,3585.4,1961.05,2329.6,2093,2029.3,2575.3,2857.4,2543.45,3103.1,3075.8,2793.7,3294.2,3103.1,3494.4,3389.75,3599.05,3485.3,2352.35,2648.1,1797.25,1742.65,2429.7,1810.9,1942.85,2429.7,2361.45,2457,2325.96,2002,1838.2,1938.3,1992.9,2561.65,2366,1925)
-HP= c(155,142,125,150,68,95,97,75,103,125,115,133,105,85,110,120,130,129,138,135,88,109,65,80,80,71,68,90,115,115,90,70,65,69,78,97,110,71)
-Cyl=c(8,8,8,8,4,4,4,4,5,6,4,6,6,6,6,6,8,8,8,8,4,6,4,4,4,4,4,4,6,6,4,4,4,4,4,6,4,4)
-Car = c("BuickEstateWagon", "FordCountrySquireWagon", "ChevyMalibuWagon", "ChryslerLeBaronWagon", "Chevette", "ToyotaCorona", "Datsun510", "DodgeOmni", "Audi5000", "Volvo240GL", "Saab99GLE", "Peugeot694SL", "BuickCenturySpecial", "MercuryZephyr", "DodgeAspen", "AMCConcordD/L", "ChevyCapriceClassic", "FordLTD", "MercuryGrandMarquis", "DodgeStRegis", "FordMustang4", "FordMustangGhia", "MazdaGLC", "DodgeColt", "AMCSpirit", "VWScirocco", "HondaAccordLX", "BuickSkylark", "ChevyCitation", "OldsOmega", "PontiacPhoenix", "PlymouthHorizon", "Datsun210", "FiatStrada", "VWDasher", "Datsun810", "BMW320i", "VWRabbit")
-df = data.frame(cbind(lbs,HP,Cyl,MPG)) #Convert to data frame
-rownames(df)=Car
-df
-```
-
-a. Fit a linear model of the form
-$$
-mpg = a_0 + a_1 lbs + a_2 HP + a_3 Cyl.
-$$
-Find the coefficients $a_0,a_1,a_2,a_3$ and the length of the residual. If you have taken Stat 155, you can see that we are doing the exact same thing by comparing your results with
-
-```{r}
-cars_lm = lm( MPG ~ lbs + HP + Cyl)
-summary(cars_lm)
-```
-b. Add the cars weight in tons to your model and solve $mpg = a_0 + a_1 (lbs) + a_2 (HP) + a_3 (Cyl) + a_4 (tons).$ Compare the coefficients you get with those that you got in part a. Give a short explanation of what you see using some of the linear algebra language that we have learned in the course. 
-```{r}
-tons =  c(1.98, 1.84, 1.64, 1.79, 0.98, 1.16, 1.05, 1.01, 1.29, 1.43, 1.27, 1.55, 1.54, 1.40, 1.65, 1.55, 1.75, 1.69, 1.80, 1.74, 1.18, 1.32, 0.90, 0.87, 1.21, 0.91,0.97, 1.21, 1.18, 1.23, 1.16, 1.00, 0.92, 0.97, 1.00, 1.28, 1.18, 0.96)
-```
-
-c. The residual vector $\mathsf{r}$ measures the quality of fit of our model. But how do we turn this into a meaningful quantity? One method is to look at the **coefficient of determination**, which is more commonly refered to as the "$R^2$ value." 
-
-* You can see the $R^2$ value of your fit in part (a) under the "Multiple R-squared" output in the linear model summary above. 
-
-* If $\mathsf{y} = [ y_1, y_2, \ldots, y_n ]^{\top}$ is our target vector with least-squares solution $\hat{\mathsf{y}} = A \hat{\mathsf{x}}$ and residual vector is $\mathsf{r} = \mathsf{y} - \hat{\mathsf{y}}$. Let 
-$$
-a = \frac{1}{n} ( y_1 + y_2 + \cdots + y_n)
-$$
-be the average or mean of the entries of target vector $\mathsf{y}$ and let $\mathsf{y}^* = [a, a, \ldots, a]$. (We call this vector "y star", so `ystar` would be a fine name in R.) The $R^2$ value is
-$$
-R^2 = 1 - \frac{\| \mathsf{y} - \hat{\mathsf{y}} \|^2 }{\| \mathsf{y} - \mathsf{y}^* \|^2} = 1 - \frac{\| \mathsf{r} \|^2}{\| \mathsf{y} - \mathsf{y}^* \|^2}.
-$$
-* The $R^2$ value is a number in $[0,1]$. The squared-length $|| \mathsf{y} -\mathsf{y}^*||^2$ is the total variance: that is, how much the data varies from the mean, and $\frac{\| \mathsf{r} \|^2}{\| \mathsf{y} - \mathsf{y}^* \|^2}$ tells us the fraction of the total variance that is explained by our model. Thus, if  $R^2$  is near 1, then our model does a good job at "explaining" the behavior of $\mathsf{y}$ via a linear combination of the columns of $A$. 
-
- *   **To do**: Find the $R^2$ value for our least squares solution to the cars data in part (a). Here are some helpful functions:
-    + `mean(vec)` returns the mean (average) of the entries of the vector `vec`
-    + `rep(a, n)` creates a constant vector of length $n$ where every entry is $a$.
-    + `Norm(vec)` from the `pracma` package returns the magnitude (Euclidean length) of the vector `vec`.
-To learn more, you should take STAT 155: Introduction to Statistical Modeling.
-
-## Fourier Analysis
-
-(Work on in class on Wednesday July 7)
-
-In Fourier analysis one uses trigonometric functions to model oscillatory behavior in data. These methods have important applications in the study of sound or video signals, financial data, medicine, and engineering (to mention just a few). For example, consider the following set of 200 data points.
-```{r,echo=FALSE}
-t = xx = seq(0,19.9,.1)
-y = c(3.407646, 3.656257, 4.567893, 3.692689, 4.650019, 4.180795, 4.220037, 4.842083, 4.600134, 3.695645, 3.739377,
-4.807793, 4.290227, 4.351877, 4.659800, 4.706735, 4.603592, 4.657165, 5.135868, 4.486025, 4.644551, 4.624029,
-5.329163, 5.639380, 5.693772, 4.806000, 5.427808, 5.673742, 5.121300, 5.394885, 4.739374, 5.084819, 5.460250,
-4.578189, 4.612040, 4.534047, 4.201825, 4.290607, 3.887900, 3.349325, 3.660084, 3.200437, 2.490044, 2.720811,
-2.762054, 3.041436, 2.018788, 2.188567, 2.054767, 2.047622, 2.294727, 2.699933, 3.242642, 3.325224, 3.411680,
-2.590417, 3.118911, 2.916444, 3.081886, 4.100586, 4.210242, 3.835767, 3.546563, 4.456711, 3.970233, 4.128838,
-4.774915, 3.610540, 4.395443, 3.764436, 4.407476, 4.243399, 3.684473, 3.779193, 3.815080, 4.567609, 4.576654,
-4.774486, 4.847797, 3.970489, 4.631950, 4.535347, 5.292626, 4.844237, 5.243421, 4.949116, 4.824773, 4.830172,
-5.379016, 5.289537, 5.832770, 4.872205, 4.833122, 4.641696, 4.584196, 5.279393, 4.307142, 4.926093, 3.904820,
-3.748701, 3.460324, 3.726250, 3.636625, 3.896051, 3.505842, 2.723539, 3.432293, 2.788161, 2.873195, 2.347629,
-2.515592, 2.618861, 2.622653, 2.263514, 2.580999, 2.675959, 3.071311, 3.375476, 2.769042, 3.177973, 3.808895,
-3.088136, 3.101224, 3.828743, 4.070292, 4.477982, 3.982855, 4.213733, 4.396489, 4.036487, 4.475438, 4.534266,
-3.885322, 4.555555, 4.776902, 4.577201, 4.374555, 4.184732, 3.960706, 3.885492, 4.246883, 4.885794, 5.117945,
-4.213779, 4.734693, 5.359801, 4.680284, 5.586846, 4.995826, 5.074366, 4.647961, 4.935794, 5.074724, 5.092661,
-4.660553, 5.386633, 5.101599, 5.585815, 4.399249, 4.799980, 4.546865, 4.375893, 4.305302, 3.382458, 3.915698,
-2.980115, 3.711861, 3.260457, 2.493755, 2.267661, 2.994923, 2.447978, 2.093928, 2.379100, 2.836308, 2.904491,
-2.084674, 2.050629, 2.370026, 2.877150, 3.372492, 3.679573, 3.158224, 3.345067, 3.600110, 3.381230, 4.116003,
-3.785123, 4.519719, 3.966509, 3.808330, 4.551462, 3.838009, 3.758539, 3.816730, 4.618030, 3.926753, 4.593788,
-3.894390, 4.779126)
-plot(t,y,col="orange",xlim=c(0,20),ylim=c(2,6),pch=19)
-```
-
-A first Fourier approximation would fit a model of the form 
-$$
-f_1(t) = c_0 + c_1 \sin(t) + c_2 \cos(t).
-$$
-Thus, we make the following matrix (we show here only the first 10 rows; there are 200 rows).
-```{r}
-A = cbind(t^0, sin(t),cos(t))
-A[1:10,]
-```
-
-Now we solve the normal equations 
-```{r}
-(xhat = solve(t(A) %*% A, t(A) %*% y))
-```
-
-and plot the solution
-```{r,echo=FALSE}
-plot(t,y,col="orange",xlim=c(0,20),ylim=c(2,6),pch=19)
-tt = seq(0,20,len=1000)
-yy = xhat[1] + xhat[2]*sin(tt) + xhat[3]*cos(tt)
-points(tt,yy,type='l',col="blue")
-```
-Your task:
-
-a. Update this to add the second Fourier coefficient terms by fitting the following function to the data. Plot your result.
-$$
-f_2(t) = c_0 + c_1 \sin(t) + c_2 \cos(t) + c_3 \sin(2t) + c_4 \cos(2t)
-$$
-b. Compute the length of the residul vector for both the $f_1(t)$ and the $f_2(t)$ model. Which approximation looks better visually. That is, does the second approximation capture more of the shape of the data, or do you think that the first is a better model?
+All will be posted by Friday.

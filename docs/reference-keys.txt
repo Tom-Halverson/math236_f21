@@ -38,6 +38,12 @@ dimension
 a-tetrahedral-basis
 matrix-rank
 a-tale-of-two-bases
+problem-set-7
+rental-cars-revisited
+same-eigenvectors
+rain-and-sunshine-revisited
+the-square-root-of-a-matrix
+one-or-two-more-coming.
 important-definitions
 systems-of-equations
 linear-transformations
