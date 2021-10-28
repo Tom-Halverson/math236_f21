@@ -1,4 +1,4 @@
-tab:unnamed-chunk-8
+tab:unnamed-chunk-4
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -71,6 +71,9 @@ transpose
 identity-matrix
 writing-loops
 matrix-inverses
+eigenvectors
+computing-eigenvectors-and-eigenvalues
+diagonalization-1
 exam-1-review
 overview
 vocabulary-and-concepts
