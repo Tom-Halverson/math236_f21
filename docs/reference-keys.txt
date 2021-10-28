@@ -1,4 +1,4 @@
-tab:unnamed-chunk-4
+tab:unnamed-chunk-8
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -40,10 +40,10 @@ matrix-rank
 a-tale-of-two-bases
 problem-set-7
 rental-cars-revisited
+diagonalization
 same-eigenvectors
 rain-and-sunshine-revisited
 the-square-root-of-a-matrix
-one-or-two-more-coming.
 important-definitions
 systems-of-equations
 linear-transformations

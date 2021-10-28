@@ -186,10 +186,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="7" data-path="problem-set-7.html"><a href="problem-set-7.html"><i class="fa fa-check"></i><b>7</b> Problem Set 7</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="problem-set-7.html"><a href="problem-set-7.html#rental-cars-revisited"><i class="fa fa-check"></i><b>7.1</b> Rental Cars Revisited</a></li>
-<li class="chapter" data-level="7.2" data-path="problem-set-7.html"><a href="problem-set-7.html#same-eigenvectors"><i class="fa fa-check"></i><b>7.2</b> Same Eigenvectors</a></li>
-<li class="chapter" data-level="7.3" data-path="problem-set-7.html"><a href="problem-set-7.html#rain-and-sunshine-revisited"><i class="fa fa-check"></i><b>7.3</b> Rain and Sunshine Revisited</a></li>
-<li class="chapter" data-level="7.4" data-path="problem-set-7.html"><a href="problem-set-7.html#the-square-root-of-a-matrix"><i class="fa fa-check"></i><b>7.4</b> The Square Root of a Matrix?</a></li>
-<li class="chapter" data-level="7.5" data-path="problem-set-7.html"><a href="problem-set-7.html#one-or-two-more-coming."><i class="fa fa-check"></i><b>7.5</b> One or two more coming.</a></li>
+<li class="chapter" data-level="7.2" data-path="problem-set-7.html"><a href="problem-set-7.html#diagonalization"><i class="fa fa-check"></i><b>7.2</b> Diagonalization</a></li>
+<li class="chapter" data-level="7.3" data-path="problem-set-7.html"><a href="problem-set-7.html#same-eigenvectors"><i class="fa fa-check"></i><b>7.3</b> Same Eigenvectors</a></li>
+<li class="chapter" data-level="7.4" data-path="problem-set-7.html"><a href="problem-set-7.html#rain-and-sunshine-revisited"><i class="fa fa-check"></i><b>7.4</b> Rain and Sunshine Revisited</a></li>
+<li class="chapter" data-level="7.5" data-path="problem-set-7.html"><a href="problem-set-7.html#the-square-root-of-a-matrix"><i class="fa fa-check"></i><b>7.5</b> The Square Root of a Matrix?</a></li>
 </ul></li>
 <li class="part"><span><b>II Concepts of Linear Algebra</b></span></li>
 <li class="chapter" data-level="8" data-path="important-definitions.html"><a href="important-definitions.html"><i class="fa fa-check"></i><b>8</b> Important Definitions</a>
@@ -440,11 +440,11 @@ G_4  &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
 <h2><span class="header-section-number">4.5</span> Rental Car</h2>
 <p>I hope to give you some time to work on this in class on Friday Sep 24. Solve this problem using R and turn in a markdown file knitted to html.</p>
 <p>A group of Macalester alumni open a rental car company specializing in renting electric cars. As a start, they have opened offices in St. Paul, Rochester, and Duluth. Through market research they find that of the cars rented in St. Paul, 85% will get returned in St. Paul, 9% will get returned in Rochester, and 6% will get returned in Duluth. Of the cars rented in Rochester, 30% will get returned in St. Paul, 60% will get returned in Rochester, and 10% in Duluth. Of the cars rented in Duluth, 35% will get returned in St. Paul, 5% in Rochester, and 60% in Duluth. This information is represented in the matrix below.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="problem-set-4.html#cb3-1" aria-hidden="true" tabindex="-1"></a>StP <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">85</span>,.<span class="dv">09</span>,.<span class="dv">06</span>)</span>
-<span id="cb3-2"><a href="problem-set-4.html#cb3-2" aria-hidden="true" tabindex="-1"></a>Roch <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">30</span>,.<span class="dv">60</span>,.<span class="dv">10</span>)</span>
-<span id="cb3-3"><a href="problem-set-4.html#cb3-3" aria-hidden="true" tabindex="-1"></a>Dul <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">35</span>,.<span class="dv">05</span>,.<span class="dv">60</span>) </span>
-<span id="cb3-4"><a href="problem-set-4.html#cb3-4" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">cbind</span>(StP,Roch,Dul)</span>
-<span id="cb3-5"><a href="problem-set-4.html#cb3-5" aria-hidden="true" tabindex="-1"></a>M</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="problem-set-4.html#cb4-1" aria-hidden="true" tabindex="-1"></a>StP <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">85</span>,.<span class="dv">09</span>,.<span class="dv">06</span>)</span>
+<span id="cb4-2"><a href="problem-set-4.html#cb4-2" aria-hidden="true" tabindex="-1"></a>Roch <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">30</span>,.<span class="dv">60</span>,.<span class="dv">10</span>)</span>
+<span id="cb4-3"><a href="problem-set-4.html#cb4-3" aria-hidden="true" tabindex="-1"></a>Dul <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">35</span>,.<span class="dv">05</span>,.<span class="dv">60</span>) </span>
+<span id="cb4-4"><a href="problem-set-4.html#cb4-4" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">cbind</span>(StP,Roch,Dul)</span>
+<span id="cb4-5"><a href="problem-set-4.html#cb4-5" aria-hidden="true" tabindex="-1"></a>M</span></code></pre></div>
 <pre><code>##       StP Roch  Dul
 ## [1,] 0.85  0.3 0.35
 ## [2,] 0.09  0.6 0.05

@@ -11,11 +11,12 @@
 * Please feel free to **use RStudio for all row reductions.**
 * You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f21/blob/main/PS7-problem-set-7.Rmd).
 
+
 ## Rental Cars Revisited
 
 Below is the rental car matrix from PS4.5. 
 
-```{r}
+```{r,echo=TRUE}
 StP = c(.85,.09,.06)
 Roch = c(.30,.60,.10)
 Dul = c(.35,.05,.60) 
@@ -34,6 +35,52 @@ d. Compare this with the steady state you found by looping when you worked on th
 x = c(40,35,25)
 for (i in 1:100) {x = M %*% x}
 x
+```
+
+## Diagonalization
+
+a. By hand, find the characteristic polynomial, the eigenvalues, and the eigenvectors of the matrix $A = \begin{bmatrix} 0 & 1 \\ 2 & 1 \end{bmatrix}$. Then diagonalize the matrix $A$ by writing it as a product $A = P D P^{-1}$ where $D$ is diagonal.
+
+b. The matrix $B$ below has characteristic polynomial $f_B(\lambda) = -\lambda ^3+6 \lambda ^2-9 \lambda = -\lambda(\lambda-3)^2$, 
+$$
+B =
+\begin{bmatrix}
+ 2 & -1 & -1 \\
+ -1 & 2 & -1 \\
+ -1 & -1 & 2 \\
+\end{bmatrix}.
+$$
+Use the following information to diagonalize $B$. That is, write it as $B = P D P^{-1}$,with $D$ diagonal. You do not have to find $P^{-1}$.
+$$
+\begin{bmatrix}
+ 2 & -1 & -1 \\
+ -1 & 2 & -1 \\
+ -1 & -1 & 2 \\
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+ 1 & 0 & -1 \\
+ 0 & 1 & -1 \\
+ 0 & 0 & 0 \\
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix}
+ -1 & -1 & -1 \\
+ -1 & -1 & -1 \\
+ -1 & -1 & -1 \\
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+ 1 & 1 & 1 \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0 \\
+\end{bmatrix}
+$$
+
+c. Diagonalize the matrix $C$ using R. You should find a matrix $P$ and compute the diagonal matrix $D = P^{-1} C P$. If you use the function `zapsmall` it will turn any really small numbers into 0.
+```{r,echo=TRUE}
+(C = cbind(c(44, 14, -13), c(10, 49, -2), c(-18, 0, 33)))
 ```
 
 
@@ -90,6 +137,5 @@ a. Describe the eigenspaces of $A$.
 a. Diagonalize $A$. We will learn how to do this on Friday.
 a. Find a matrix that makes sense to call $\sqrt{A}$. Then show that when you square this matrix, you really do get matrix $A$.
 
-## One or two more coming. 
 
-All will be posted by Friday.
+
