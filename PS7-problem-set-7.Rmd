@@ -83,7 +83,7 @@ c. Diagonalize the matrix $C$ using R. You should find a matrix $P$ and compute 
 (C = cbind(c(44, 14, -13), c(10, 49, -2), c(-18, 0, 33)))
 ```
 
-d. Show that the matrix below is not diagonalizable by showing that it does not have a basis of eigenvectors. 
+d. Show that the matrix below is not diagonalizable by showing that it does not have a basis of eigenvectors. Is it invertible?
 $$
 D = \begin{bmatrix}  0 & 1 \\ -1 & 2 \\ \end{bmatrix}.
 $$
