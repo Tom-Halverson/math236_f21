@@ -184,6 +184,19 @@ A = \frac{1}{30}
 $$
 
 
+```{r,echo=TRUE}
+A = 1/30 * cbind(c(31,2),c(4,29)) # the population dynamics matrix
+x0 = c(5,-2) # the inital value
+N = 8  # iterate N=10 times
+X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in
+X[,1] = x0 # the first column is the initial population
+for (i in 2:(N+1)) {  # loopn from 2 to N+1
+  X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i
+}
+X # display the table
+```
+
+
 ```{r, dynsys1, fig.height=7, fig.width=7,echo=TRUE}
 A = 1/30 * cbind(c(31,2),c(4,29))
 trajectory_plot(A, t=30, datamax=5, plotmax=15, numpoints=5)
@@ -199,7 +212,19 @@ We can see that we have slight expansion along $[ 2, 1]^{\top}$ and slight contr
 
 Here is the checkpoint question for today (for which you found a closed-form solution).
 ```{r,echo=TRUE}
-A = 1/110 * cbind(c(97,-8),c(6,123))
+A = 1/110 * cbind(c(97,-8),c(6,123)) # the population dynamics matrix
+x0 = c(1,15) # the inital value
+N = 8  # iterate N=10 times
+X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in
+X[,1] = x0 # the first column is the initial population
+for (i in 2:(N+1)) {  # loop from 2 to N+1
+  X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i
+}
+X # display the table
+```
+
+Here is the eigeninformation:
+```{r,echo=TRUE}
 eigen(A)
 ```
 
