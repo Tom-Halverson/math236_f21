@@ -1,281 +1,154 @@
 
 # Problem Set 8
 
-* Due: Tuesday March 9 by 11:55pm CST. 
-* Upload your solutions to Moodle in a PDF. 
-* Please feel free to **use RStudio for all calculations**, including row reduction, matrix multiplication, eigenvector calculation, inverse matrices.
-* You can download the [Rmd source file  for this problem set](https://github.com/mathbeveridge/math236_f20/blob/main/PS8-problem-set-8.Rmd).
-* Four out of five questions require you to use RStudio. I've provided a [PS8 solution template](https://github.com/mathbeveridge/math236_f20/blob/main/PS8-template.Rmd) if you want to use it.
+* You can download the [Rmd source file  for this problem set](https://github.com/Tom-Halverson/math236_f21/blob/main/PS8-problem-set-8.Rmd).
 
-This problem set covers Sections 6.1 - 6.5 Orthogonality and the explorations on [Voting Patterns in the US Senate][Voting Patterns in the US Senate] and [Least Squares Approximation][Least Squares Approximation].  
 
-```{r}
-require(pracma)
+
+## Matrix Reconstruction
+
+An unknown $3 \times 3$ matrix $M$ has eigenvectors and corresponding eigenvalues:
+$$
+\mathsf{v}_1 = \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}, \  \lambda_1 = 1;
+\qquad
+\mathsf{v}_2 = \begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix},\  \lambda_2 = \frac{9}{10};
+\qquad
+\mathsf{v}_3 = \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix},\  \lambda_3 = 0.
+$$
+
+a. Without using the matrix $M$, compute $M^{10} \mathsf{v}$ where $\mathsf{v} = \begin{bmatrix}7\\3\\4\end{bmatrix}$. (That is, use only the eigen-information.)
+
+a. Describe all vectors $\mathsf{v}$, if there are any, such that $M^{n} \mathsf{v}  \to {\bf 0}$ as $n \to \infty$.
+
+a. Reconstruct $M$ from the information given.
+
+## Coyotes and Roadrunners
+
+This summer, Macalester's Ordway Natural History Study Area will  be stocked with a population of coyotes and roadrunners so that Math 236 students can study real-life predator-prey dynamics. From similar experiments, we expect the predator-prey dynamics to be governed by linear model below. The eigenvalues of the matrix are also given.
+$$
+\begin{bmatrix} \phantom{\Big\vert} r_{t+1}\phantom{\Big\vert}  \\ \phantom{\Big\vert} c_{t+1}\phantom{\Big\vert}  \phantom{\Big\vert} \end{bmatrix}
+=\left[
+\begin{array}{cc}
+\phantom{\Big\vert} \frac{57}{50} & -\frac{6}{50} \\
+\phantom{\Big\vert} \frac{4}{50} & \frac{43}{50} \\
+\end{array}
+\right] \begin{bmatrix} \phantom{\Big\vert} r_t \phantom{\Big\vert}  \\ \phantom{\Big\vert} c_t \phantom{\Big\vert} \end{bmatrix}
+=
+ \begin{bmatrix} \phantom{\Big\vert} 
+\frac{57}{50} r_t -  \frac{6}{50}  c_t \\ \phantom{\Big\vert} \frac{4}{50} r_t +  \frac{43}{50} c_t \end{bmatrix},
+$$
+The eigenvalues and eigenvectors of this matrix are:
+$$
+\begin{array}{lcl}
+\lambda_1 =  \frac{11}{10} =  1.1, & \qquad & \lambda_2 =  \frac{9}{10} = 0.9 \\
+\mathsf{v}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix} &&
+\mathsf{v}_2 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}
+\end{array}
+$$
+
+```{r,echo=TRUE}
+A = cbind(c(57/50,4/50),c(-6/50,43/50))
+eigen(A)
+```
+
+
+a. If $r_0 =  10$ roadrunners and $c_0 = 15$ coyotes are introduced to the area, then give **closed formulas** for the population of coyotes $c_t$ and roadrunners $r_t$ after $t$ years.
+
+a.  In the long-term, in this model, what is the ratio of roadrunners to coyotes?
+
+a. When another college tried the same experiment in their Arboretum, they introduced $r_0 =  5$ roadrunners and $c_0 = 10$ coyotes and both populations died off (as is verified in the computation below). Explain why this happens using the eigenvalues and eigenvectors.
+
+
+```{r,echo=TRUE}
+A = cbind(c(57/50,4/50),c(-6/50,43/50))
+v = c(5,10)
+for (i in 1:100) {v = A %*% v}
+v
 ```
 
 
 
-## Two Orthogonality Properties
+## Hunt Creek
 
-Give rigorous proofs for each of the following problems. Here "rigorous" means that the heart of your explanation must use equations and calculations to explicitly justify any intuitive reasoning that you provide.
+Age-structured population models like we saw in the [Spotted Owl Example](https://tom-halverson.github.io/math236_s21/eigenvectors.html#northern-spotted-owl) are often called **Leslie Matrices**, named after the British ecologist P.H. Leslie. Here is the Leslie Matrix of a population of brook trout in Hunt Creek in Michigan. The population is categorized into 5 age categories: fingerlings (0,1), yearlings (1-2), young adults (2-3), adults (3-4), and adults (4-5). Right now the population is seen to be dying off. 
 
-a. Let $W$ be a subspace of $\mathbb{R}^5$ with orthonormal basis $\mathsf{w}_1, \mathsf{w}_2, \mathsf{w}_3$.  Let $W^{\perp}$ be its orthogonal complement with orthonormal basis $\mathsf{v}_1, \mathsf{v}_2$.  Prove that if $\mathsf{u}$ is in both $W$ and $W^{\perp}$ then $\mathsf{u}$ must be the zero vector. 
-
-b. Let $U$ and $V$ both be $n \times n$ orthogonal matrices. Prove that the matrix $UV$ is also an orthogonal matrix.
-
-
-## Bases for a Subspace and its Orthogonal Complement
-
-Let $W \subset \mathbb{R}^6$ be the set of solutions to
-\begin{align}
-x_1 + x_2 + x_3 + x_4 + x_5 + x_6 &= 0 \\
-x_1 + x_2 - x_3 + x_4 + x_5 - x_6 &= 0 
-\end{align}
-
-a. Find a basis for $W$ by using row reduction on the appropriate matrix.
-b. Use your answer from (a) to find a "human readable" orthogonal basis for $W$ where the entries have integer values.
-c. Find a basis for $W^{\perp}$ without using the Gram-Schmidt process.
-d. Use your answer from (c) to find a "human readable" orthogonal basis for $W^{\perp}$ where the entries have integer values.
-
-**Turn in:** Your code and its output. You must make it clear what your final answers are for each problem. 
-
-## Eigensystem of a Symmetric Matrix
-
-Recall that a square $n \times n$ matrix is symmetric when $A^{\top} = A$. We learned that the eigenvectors of a symmetric matric form an orthogonal basis of $\mathbb{R}^n$. In this problem, you will confirm that this holds for the following symmetric matrix
+The vector $p(t)$ denotes the population at year $t$ broken into the 5 age categories: $$p(t) =  (f (t), y(t), ya(t), a_1(t), a_2(t))^T$$ and the matrix $L$ gives next year's population from this year's population:  $p_{t+1} = L p_t$.  Below is the Leslie matrix for this example.
 
 $$
-A = 
 \begin{bmatrix}
- 0 &  8 & 10 & -4 \\
- 8 & 4 & 28 & 6 \\
- 10 & 28 & 3 & -4 \\
- -4 & 6 & -4 & -7
+f (t+1) \\
+y(t+1) \\
+ya(t+1) \\
+a_1(t+1) \\
+a_2(t+1)
 \end{bmatrix}
-. 
+= \begin{bmatrix}
+0 & 0 & 37 & 64 & 82 \\
+0.06 & 0 & 0 & 0 & 0 \\
+0&0.28 & 0 & 0 & 0  \\
+0&0&0.16& 0 & 0   \\
+0&0&0&0.08& 0    \\
+\end{bmatrix}
+\begin{bmatrix}
+f (t) \\
+y(t) \\
+ya(t) \\
+a_1(t) \\
+a_2(t)
+\end{bmatrix}
+=
+\begin{bmatrix}
+37 ya(t) + 64 a_1(t) + 82 a_2(t) \\
+0.06 f(t) \\
+0.28y(t) \\
+0.16 ya(t) \\
+0.08 a_1(t)
+\end{bmatrix}
 $$
 
-a. Find the eigenvalues and eigenvectors of $A$.
-
-b. Confirm that the eigenvectors returned by R are an orthonormal set. (Pro tip: you can do this in one calculation!)
-
-c. Express the vector $\mathsf{v} = \begin{bmatrix} 2 & -4 &  -9  & -2 \end{bmatrix}^{\top}$ as a linear combination of the eigenvectors. Use the fact that the eigenvectors are orthonormal. (Don't augment and row reduce.)
-
-d.  Let $P$ be the matrix of these normalized, orthogonal eigenvectors.
-Diagonalize $A$ using $P$. Just write out $A = P D P^{-1}$. Congratulations: you have **orthogonally diagonalized** the symmetric matrix $A$!
-
-**Turn in:** Your R code and the output for each part. For parts (c) and (d), you need to make it clear what your final answers are. 
-
-## Modeling Fertility in 1888 Switzerland
-
-RStudio comes with some sample datasets, including `swiss`,  an 1888 dataset of Swiss socio-economic data. In 1888, Switzerland was entering a demographic transition: birth rates were beginning to decrease as the country entered the industrial age. 
-
-The rows correspond to 47 French-speaking provinces. These provinces were at different stages of industrialization.
-There are 6  socio-economic columns, all scaled to the range $[0,100]$. 
-
-* Fertility `fert`: standardized fertility rate
-* Agriculture `agric`: percent of men in agricultural occupations
-* Examination `exam`: percent of draftees receiving highest mark on army examination
-* Education `educ`: percent education beyond primary school for draftees
-* Catholic `cath`: percent Catholic (instead of Protestant)
-* Infant.Mortality `mort`: percent of live births who live less than one year
-
-We want to find the best-fit linear model
-<center>
-fert = $c_1$ + $c_2$ agric + $c_3$ exam + $c_4$ educ + $c_5$ cath + $c_6$ mort.
-</center>
-
-Obviously, *this data set shows its age*. We are attempting to model fertility rates of **women** by using indirect measures about **male occupation and education levels**. This is problematic and would have to be addressed in a thorough analysis. We limit our use of this classic data to illustrate the method of least squares.
-
-a. Model this problem as a least-squares approximation of an inconsistent system $A \mathsf{x} = \mathsf{y}$. Find the least squares solution $\hat{\mathsf{x}}$ and confirm that the residual vector $\mathsf{z}$ is orthogonal to the columns of $A$.
-
-    To get you started, here is some convenient code to get the column vectors of the `swiss` dataset.
-
-```{r echo=TRUE}
-
-fert = swiss[,1]
-agric = swiss[,2]
-exam = swiss[,3]
-educ = swiss[,4]
-cath = swiss[,5]
-mort = swiss[,6]
-
+```{r,echo=TRUE}
+L = cbind(c(0,.06,0,0,0),c(0,0,.28,0,0),c(37,0,0,.16,0),c(64,0,0,0,.08),c(82,0,0,0,0.00))
 ```
 
-**Turn in:** Your code and the output.
+The trout population in the creek is known to be dying off largely due to poisoning by the insecticide rotenone. The model demonstrates this behavior here, as can be seen in the folowing plot, which starts with 200 trout in each age group. *You shouldn't need to edit this plot.*
 
-b. The residual vector $\mathsf{z}$ measures  the quality of fit of our model. But how do we turn this into a meaningful quantity?
-One method is to look at the **coefficient of determination**, which is more commonly refered to as the "$R^2$ value."
-
-    Let $\mathsf{y} = [ y_1, y_2, \ldots, y_n ]^{\top}$ be our target vector with least squares solution $\hat{\mathsf{y}} = A \hat{\mathsf{x}}$ and residual vector $\mathsf{z} = \mathsf{y} - \hat{\mathsf{y}}$. Let 
-$$
-a = \frac{1}{n} ( y_1 + y_2 + \cdots + y_n)
-$$
-    be the average of the entries of target vector $\mathsf{y}$ and let $\mathsf{y}^* = [a, a, \ldots, a]$. (We call this vector "y star", so `ystar` would be a fine name in R.) The $R^2$ value is
-$$
-R^2 = 1 - \frac{\| \mathsf{y} - \hat{\mathsf{y}} \| }{\| \mathsf{y} - \mathsf{y}^* \|} = 1 - \frac{\| \mathsf{z} \|}{\| \mathsf{y} - \mathsf{y}^* \|}.
-$$
-    This is a number in $[0,1]$. If the $R^2$ value is near 1, then our model does a good job at "explaining" the behavior of $\mathsf{y}$ via a linear combination of the columns of $A$. 
-
-    Find the $R^2$ value for our least squares solution to the Swiss data. Here are some helpful functions:
-
-    * `sum(vec)` returns the sum of the entries of the vector `vec`
-    * `length(vec)` returns the number of entries in the vector `vec`
-    * `rep(a, n)` creates a constant vector of length $n$ where every entry is $a$.
-    * `Norm(vec)` from the `pracma` package returns the magnitude (Euclidean length) of the vector `vec`.
-
-    **Turn in:** Your code and the $R^2$ value that you calculated.
-
-
-    **Remark:** There is certainly more to say about ethical use of data, as well as $R^2$ values and fitting models to data. To learn more, you should take STAT 155 Introduction to Statistical Modeling.
-
-
-## Cosine Similarity for US Senators
-
-In high dimensional space $\mathbb{R}^n$ a common measure of similarity between two vectors  is  **cosine similarity**:  the cosine of the angle $\theta$ between the vectors. We calculate this value as follows:
-$$
-\cos(\theta) = \frac{ \mathsf{v} \cdot \mathsf{w}} {\| \mathsf{v}\| \, \|\mathsf{w}\|} = \frac{ \mathsf{v} \cdot \mathsf{w}} {\sqrt{\mathsf{v} \cdot \mathsf{v}} \sqrt{\mathsf{w} \cdot \mathsf{w}}}.
-$$
-This measure has the following nice properties:
-
-* $-1 \le \cos(\theta) \le 1$,
-* $\cos(\theta)$ is close to 1 if $\mathsf{u}$ and $\mathsf{v}$ are closely aligned,
-* $\cos(\theta)$ is close to 0 if  $\mathsf{u}$ and $\mathsf{v}$ are are orthogonal, 
-* $\cos(\theta)$ is close to $-1$ if $\mathsf{u}$ and $\mathsf{v}$ are polar opposites.
-
-Let's use cosine similarity to compare the 99 US Senators (one senate seat was not filled at the time) from the 109th US Congress (2007-2008).
-
-Here is code that loads in the voting records. Each row contains the senator's name, party affiliation, state, and then their record on 46 resolutions. The votes are encoded as a sequence of
-0s, 1s, and -1s, where 1 means a 'aye' vote, -1 means a 'nay' vote, and 0 means the senator abstained. For example, the row corresponding to Joseph Biden is
-<center>
-`biden = ["Biden", "D", "DE", -1, -1, 1, 1, ... , 1, -1]`.
-</center>
-
-
-
-
-```{r, echo=TRUE}
-
-library(readr)
-
-senate.vote.file = "https://raw.github.com/mathbeveridge/math236_f20//main/data/SenateVoting109.csv"
-
-record <- read_csv(senate.vote.file, col_names = TRUE)
-
-clinton = record[record$Name == 'Clinton',]
-collins = record[record$Name == 'Collins',]
-frist = record[record$Name == 'Frist',]
-mccain = record[record$Name == 'McCain',]
-obama = record[record$Name == 'Obama',]
-reid = record[record$Name == 'Reid',]
-
-
-knitr::kable(
-  head(record[,1:10],10), booktabs = TRUE,
-  caption = 'First 10 rows of the 109th US Senate voting records'
-)
-
-
+```{r,echo=TRUE}
+start = c(200,200,200,200,200)  # the starting distribution
+N = 35              # N is the number of iterations
+X = matrix(0,nrow=5,ncol=N)  #  Store the results in a 3 x N matrix called X
+X[,1] = start  # put start in the first column of X
+# loop N times and put your results in X
+for (i in 2:N) {X[,i] = L %*% X[,i-1]}
+# Then plot the results
+t = seq(1,N)  # time
+plot(t,X[1,],type='l',col=1,ylim=c(0,8000),ylab="population",xlab="time (year)",
+     main="Population in Age Group")
+for (i in 1:5) {
+  lines(t,X[i,],col=i)
+  points(t,X[i,],col=i,pch=20,cex=.8)}
+legend(22, 7600, legend=c("Fingerlings (0-1)", "Yearlings  (1-2)", "Young Adults (2-3)","Adults (3-4)","Adults (4-5)"), col=1:5, lty=1)
 ```
 
-a. Your first task is to implement our cosine function.
+a. Give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.
 
-    * `get_vote_cosine_similarity(senator1, senator2)` returns the cosine of the angle between the vote vectors of `get_votes(senator1)` and `get_votes(senator2)`
+b. Compute the eigenvectors and eigenvalues of $L$ and relate what you find to population dynamics. In particular, use the eigen-information to
 
-    **Note:** The R command `length(vec)` returns the number of entries in the vector `vec`. You can get the magnitude (Euclidean length) of vector `vec` using the `pracma` function `Norm(vec)`. 
+* Give the overall population growth rate.
+* Give the limiting age distribution: that is, the long-run distribution of the population into the different age categories. Give your answer as proportions which sum to 1.
 
-    To get you started, we have written the helper function `get_votes(senator)`. This function returns the vote vector for the senator. These are the values in columns 3 to 49.
-    
-    **Turn In:** Your implementation of the function.
-
-
-```{r, echo=TRUE}
+c. You are seeking funding from the Michigan DNR to support a cleanup effort. As part of your proposal, you argue that you believe that such a cleanup will most impact the youngest fish and will improve the survival rate of fingerlings to yearlings. Figure out (by trial and error) how high this survival rate will need to grow in order for the population to stop dying off. Justify your answer with eigenvalues and a plot. You should just be able to duplicate the code for the plot above (after changing the matrix).
 
 
-# returns the vote vector for the senator
-get_votes <- function(senator) {
-  #unlist makes this dataframe row into a regular vector
-  return (unlist(senator[,4:49])) 
-}
+## The Famous Halverson Numbers
 
-# Implement this function!
-# Return the cosine of the angle between the vote vectors 
-# of senator1 and senator2
-get_vote_cosine_similarity <- function(senator1, senator2) {
-  votes1 = get_votes(senator1)
-  votes2 = get_votes(senator2)
-  
-  # your code goes here!
-  # find the cosine of the angle between votes1 and votes2
-  cosine = 1
-  
-  return (cosine)
-}
+In class, we considered the matrix $F$ that generates the Fibonacci numbers and used it to find a formula $f_n$ for the $n$th Fibonacci number. Here you are to follow the same process to find a formula $h_n$ for the nearly-as-famous Halverson numbers. 
 
-```
+The Halverson numbers are defined by $h_0 = 0$, $h_1 = 1$, and $h_n = 3 h_{n-2} +  2 h_{n-1}$.  They start out as $0,1,2,7,20,61,182,547,1640,4921,14762$. 
 
+a. Find a matrix $H$ so that $H \begin{bmatrix} h_{n-1} \\ h_n \end{bmatrix} = \begin{bmatrix} h_{n} \\ h_{n+1} \end{bmatrix}$.
 
-b. Find the cosine of the angles between every pair of the following senators of note:
+b. Find the eigenvalues and eigenvectors of $H$.
 
-    + `clinton`: Hilary Clinton (D, NY), presidential candidate 2016
-    + `mccain`: John McCain (R, AZ), presidential candidate 2008
-    + `obama`: Barack Obama (D, IL), president 2008-2016
-    + `collins`: Susan Collins (R, ME), moderate Republican
+c. Use the eigenvalues and eigenvectors to find a closed-formula for $h_n$.
 
-    Does the cosine similarity pick up on the fact that Senator Collins is a "moderate Republican"?
-  
-
-    **Turn In:** Your code and the output. Comment on the similarities between all pairs of senators.
-
-c. The senate majority leader of the 109th Congress was Bill Frist (R, TN). The senate minority leader was Harry Reid (D, NV). 
-
-    * Create a function  `classify_senator(senator)` that returns "R" or "D" depending on the cosine similarity of `senator` to `frist` and to `reid`.
-You will have to write [an "if ... else statement" (here is the syntax)](https://www.tutorialspoint.com/r/r_if_else_statement.htm).
-
-    * Then run the `classify_all()` function that we have written for you. You will see how many senators are *misclassified*, meaning that their votes are more similar to the leader of the opposing party. 
-
-    **Note:** Your misclassified list will include Jim Jeffords (I, VT), a Republican who became and Independent in 2001 and then caucused with the Democrats. Your classifer correctly aligns the Independent Jeffords with the Democrats.
-
-
-    **Turn In:** Your code and the output. Comment on how many senators are misclassified, as well as their party affiliations.
-
-```{r, echo=TRUE}
-
-
-
-# Implement this function!
-# return "R" if senator is closer to frist
-# return "D" if senator is closer to reid
-classify_senator <- function(senator) {
-
-  # your code goes here!
-  # use the get_vote_cosine_similarity() method to compare senator with frist and reid
-  val = "R"
-  
-  return (val)
-}
-
-# returns a dataframe containing all misclassified senator names
-# and their party affiliations
-classify_all <- function() {
-
-  mismatch = vector()
-  
-  for (i in 1:99) {
-    senator = record[i,]
-    party = classify_senator(senator)
-    if (party !=  record[i,2]) {
-      mismatch = c(mismatch, i)
-    }
-  }
-  
-  record[mismatch,1:2]
-}
-
-
-# Uncomment the next line to classify all senators!
-
-# classify_all()
-
-
-```
-
+d. Show that your formula works to produce $h_{10} = 14762.$

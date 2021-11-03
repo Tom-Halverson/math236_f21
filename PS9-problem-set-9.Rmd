@@ -11,7 +11,55 @@ Download the [Rmd source file  for this problem set](https://raw.githubuserconte
 
 
 Upload a completed, knitted .html version of this file on Moodle. If you have collaborated with others on this assignment (encouraged), please include their names here (no penalty).
+## Glucose-Insulin
 
+**This problem involves [Complex Eigenvalues]. There is a video for this for this coming Monday's class (see Moodle), and there will be time for you to discuss this in breakout rooms on Monday.**
+
+The hormone insulin helps regulate glucose metabolism in your blood. The presene of insulin helps your body absorb excess glucose. Here $G_t$ (glucose) and $H_t$ (insulin) are measured as excess values (in mg per 100 ml of blood) above the steady state. 
+$$
+\begin{bmatrix} G_{t+1} \\ H_{t+1} \end{bmatrix}
+=
+\begin{bmatrix}
+0.9 & -0.4 \\
+0.1 & 0.9 \\
+\end{bmatrix}
+\begin{bmatrix} G_t \\ H_t \end{bmatrix}= 
+\begin{bmatrix} 0.9 G_t - 0.4 H_t \\ 0.1 G_t + 0.9 H_t \end{bmatrix}
+$$
+
+Here is what happens if we start at $(1,0)$ and iterate. That is we start with 1 unit excess glucose. Observe that the system spirals back to the steady state of $(0,0)$.
+```{r,fig.width=6, fig.height=6}
+A = cbind(c(.9,.1),c(-.4,.9))
+start = c(1,0)
+N = 50
+
+X = matrix(0,nrow=2,ncol=N)
+X[,1] = start
+
+for (i in 2:N) {X[,i] = A %*% X[,i-1]}
+plot(X[1,],X[2,],col='blue',xlim=c(-0.4,1.0),ylim=c(-0.4,0.4),xlab='glucose',ylab='insulin',pch=20,cex=1)
+points(start[1],start[2],col="red")
+grid(nx=10,ny=10)
+```
+
+
+
+We can plot the indivdual glucose and insulin coordinates over time. These are the x and y coordinates of the points in the above plot. You see the insulin responding to the excess glucose, and then the glucose being absorbed by the presence of insulin, and so on ...
+
+```{r}
+t = seq(1,N)
+plot(t,X[1,],type='l',col='blue',ylim=c(-1,1),ylab="concentration (mg/ml)",xlab="time(hours)",main="Glucose-Insulin Over Time")
+lines(t,X[2,],col='darkorange')
+legend(10, 0.7, legend=c("Glucose", "Insulin"), col=c("blue", "darkorange"), lty=1)
+```
+
+The key point here is that the spiraling in the (x,y) plane or oscillating in the (x,t) plane corresponds to the presence of *complex eigenvalues*.  Your job is to perform an eigen-analysis of this problem:
+
+a. Use R to find the eigenvalues and eigenvectors.
+
+a. Write out the eigenvalues in the form $\lambda = a \pm b i$ and the eigenvectors in the form $\vec{v} = \vec{u} \pm \vec{w} i.$
+
+a. Use this information to find the scaling factor $|\lambda|$ for this matrix and the angle of rotation $\arctan(b/a)$. Give your answer in degrees. Compare your answers from part (c) to the plots above to confirm that the system is doing what the eigenvalues predict.
 
 ## Subspace Projection
 

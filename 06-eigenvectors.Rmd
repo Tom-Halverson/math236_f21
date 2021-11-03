@@ -109,172 +109,317 @@ eigen(C)
 <!-- ``` -->
 <!-- Notice that this is the *exact same* as the steady-state vector that we got by iterating. The steady-state that this system wants to be in --- with 40.97 cars in St. Paul, 10.31 cars in Rochester, and 8.72 cars in Duluth. It makes sense that a steady-state vector is an eigenvector with eigenvalue $\lambda = 1$. That the system converges to this state is eigen-magic that we will learn about soon. -->
 
+## Dynamical Systems
 
-<!-- ## Northern Spotted Owl -->
+Let $A$ be a square $n \times n$ matrix and let $\mathsf{x}_0 \in \mathbb{R}^n$. A **dynamical system** is a sequence of vectors $\mathsf{x}_0,\mathsf{x}_1,\mathsf{x}_2, \ldots, \mathsf{x}_t, \ldots$ where
+$$
+\mathsf{x}_{t} = A \mathsf{x}_{t-1} = A^t \mathsf{x}_0 \quad \mbox{for} \quad t \geq 1.
+$$
+The sequence $\mathsf{x}_0,\mathsf{x}_1,\mathsf{x}_2, \ldots, \mathsf{x}_t, \ldots$ is called the **trajectory** for initial vector $\mathsf{x}_0$.
 
-<!-- This is the opening example in Chapter 5 of the textbook on page 265. It comes from a 1992 study of the northern spotted owl, which was threatened with extinction due to the loss of forest habitat due to logging in the Pacific Northwest. This is currently a story featured in an NPR Podcast called [Timber Wars](https://www.npr.org/podcasts/906829608/timber-wars). -->
+### Plotting dynamical systems
 
+Here use some special code,  written by Professor Beveridge, that makes helpful plots. 
 
-<!-- ### The Dynamical System -->
+```{r, echo=TRUE}
+get_traj <- function(mat, x0, num) {
+  traj = cbind(x0) 
+  num
+  for (i in 1:num) {
+    traj = cbind(traj, mat %*% traj[,dim(traj)[2]])
+    traj
+  }
+  return(traj)
+}
 
-<!-- The vector -->
-<!-- $$ -->
-<!-- x_n = \begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix} -->
-<!-- $$ -->
-<!-- is an *age-stage* vector in which $j_n, s_n$, and $a_n$ are the number of female owls in the juvenile (up to 1 year), subadult (1-2 year), and adult (over 2 year) age groups in year $n$. -->
+plot_traj <- function(mat, x0, num) {
+  traj = get_traj(mat,x0,num)
+  points(traj[1,],traj[2,], pch=20, col=rainbow(length(traj)))
+}
 
-<!-- The dynamics that take us from one year to the next is given by, the recursive relation $x_{n+1} = A x+n$, where $A$ is the matrix shown here. This is an age-stage matrix model that was published in [*Conservation Biology*](https://www.fs.usda.gov/treesearch/pubs/3519). -->
-<!-- $$ -->
-<!-- \begin{bmatrix} j_{n+1} \\ s_{n+1} \\ a_{n+1} \end{bmatrix} -->
-<!-- =  -->
-<!-- \begin{bmatrix} 0 & 0 & 0.33 \\ 0.18 & 0 & 0 \\ 0 & 0.71 & 0.94 \end{bmatrix} -->
-<!-- \begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix} -->
-<!-- $$ -->
-<!-- If we multiply this system out, we get -->
-<!-- $$ -->
-<!-- \begin{array} {rcl} -->
-<!-- j_{n+1} &=& 0.33 a_n    \\ -->
-<!-- s_{n+1} &=& 0.18 j_n     \\ -->
-<!-- a_{n+1} &=& 0.71 s_n + 0.94 a_n     -->
-<!-- \end{array} -->
-<!-- $$ -->
-<!-- We see that, in this model, 0.33 represents the fertility or *fecundity* rate. That is, it is the proportion of new juveniles next year to adults this year (the proportion of offspring the adult population is producing). The 0.18 is the survival rate from juvenile to subadult, 0.71 is the survival rate from subadult to adult, and 0.94 proportion of adults that survive from one year to the next. -->
+trajectory_plot <- function(mat, t=20, datamax=5, plotmax=10, numpoints=10, showEigenspaces=TRUE) {
+  # initialize plot
+  par(pty = "s")
+  plot(c(0),c(0),type="n",
+       xlim=c(-plotmax,plotmax),ylim=c(-plotmax,plotmax),
+       xlab='x', ylab='y')
+  abline(h=-plotmax:plotmax, v=-plotmax:plotmax, col="gray")
+  mygrid <- expand.grid(x=seq(from = -datamax, by = 2*datamax/numpoints, l = numpoints+1),
+                      y=seq(from =  -datamax, by = 2*datamax/numpoints, l = numpoints+1))
+  for (i in 1:dim(mygrid)[1]) {
+    plot_traj(mat,c(mygrid[i,1],mygrid[i,2]),t)
+  }
+  if (showEigenspaces) {
+    eigen = eigen(mat)
+    v1 = zapsmall(eigen$vectors[,1])
+    v2 = zapsmall(eigen$vectors[,2])
+    if (! class(v1[1]) == "complex") {
+      if (v1[1] == 0) {abline(v=0)} else {
+        abline(a=0,b=v1[2]/v1[1], col="blue")} 
+      if (v2[1] == 0) {abline(v=0)} 
+      else {abline(a=0,b=v2[2]/v2[1], col="blue")
+      }   
+    }
+  }
+}
+```
 
+The code will plot multiple trajectories at once. You specify: 
 
-<!-- To see the dynamics play out over time, we will start with an original population of owls is distributed into age groups as follows. -->
-<!-- $$ -->
-<!-- x_0 = \begin{bmatrix} 100 \\ 76 \\ 502 \end{bmatrix} -->
-<!-- $$ -->
-<!-- We will write a loop to apply the matrix $A$ over and over again. This time we will make a table and store each value in the table. -->
-
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(100,76,502) # the inital value -->
-<!-- N = 10  # iterate N=10 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- X # display the table -->
-<!-- ``` -->
-
-<!-- Having saved the information, we can now plot the data, Note that it appears to support the claim the claim that the owls are threatened with extinction. -->
-<!-- ```{r,echo=TRUE} -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-<!-- Let's run the iteration further. This time, we won't display the table (gets too big), and we will just show the plot of 100 iterations -->
-
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(100,76,502) # the inital value -->
-<!-- N = 100  # iterate N=10 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-
-<!-- They do seem to be dying out.  -->
-
-<!-- ### Eigenanalysis  -->
-
-<!-- Now we check the eigenvectors and eigenvalues to see if they help us understand what is going on.  -->
-
-<!-- ```{r,echo=TRUE} -->
-<!-- eigen(A) -->
-<!-- ``` -->
-
-<!-- The first eigenvalue is $\lambda_1 = 0.98$, and the other two are complex. R always lists the eigenvalues from largest to smallest, so in this case the largets eigenvalue is less than one. That means that in that direction, the population is dying off by 2% each year.  -->
-
-<!-- If we extract the corresponding eigenvector, and scale it to sum to 1, we get -->
-<!-- ```{r,echo=TRUE} -->
-<!-- v1 = eigen(A)$vectors[,1] # get the first eigenvector -->
-<!-- v1 = Re(v1) # drop the imaginary part -->
-<!-- v1/sum(v1)  # scale it to sum to 1 -->
-<!-- ``` -->
-<!-- What this is telling us that as the population dies off, it does so in this eigenvector direction with 24.0% of the population being juveniles, 4.4% subadults, and 71.5% adults.  -->
-
-<!-- The owls were going extinct because of the logging in the Pacific Northwest. Suppose that we make the case that by stopping logging we will increase the survival rate from juvenile to subadult from 0.18 to 0.26 (by improving the habititat the juvinile owls have a better chance of surviving the first year). In this case, the eigenvalues and eigenvectors becomes: -->
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.26,0),c(0,0,.71),c(0.33,0,0.94)) -->
-<!-- eigen(A) -->
-<!-- ``` -->
-
-<!-- Notice that the largest eigenvalue now becomes 1. And if we iterate, we see that the population does not die off (it even grows slightly). -->
-<!-- ```{r} -->
-<!-- A = cbind(c(0,0.26,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(100,76,502) # the inital value -->
-<!-- N = 100  # iterate N=10 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-
-<!-- Finally, we go back to the original system, which is dying out, but start with a totally different age distribution. You can see the non-dominant eigevectors dying out quickly at the beginning and the dominant eigenvector, of eigenvalue 0.98, taking over.  -->
-
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(70,600,8) # the inital value -->
-<!-- N = 20  # iterate N=100 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- ``` -->
+* the matrix A
+* the number of iterations
+* the size of the square where the initial points lie
+* the size of the plot
+* the number of points along the side of the grid
 
 
-<!-- ```{r,echo=TRUE} -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
+### Video Example
+
+Let's start by looking at the example from the video for November 3:
+$$
+A = \frac{1}{30}
+\begin{bmatrix}
+31 & 4 \\ 2 & 29
+\end{bmatrix}.
+$$
+
+
+```{r, dynsys1, fig.height=7, fig.width=7,echo=TRUE}
+A = 1/30 * cbind(c(31,2),c(4,29))
+trajectory_plot(A, t=30, datamax=5, plotmax=15, numpoints=5)
+```
+
+Compare this with the eigenvalues and eigenvectors.
+```{r, echo=TRUE}
+eigen(A)
+```
+We can see that we have slight expansion along $[ 2, 1]^{\top}$ and slight contraction along $[-1,1]$. The long term behavior is an expansion in the direction of $[2, 1]^{\top}$.
+
+### CheckPoint Question for today
+
+Here is the checkpoint question for today (for which you found a closed-form solution).
+```{r,echo=TRUE}
+A = 1/110 * cbind(c(97,-8),c(6,123))
+eigen(A)
+```
+
+And here is the corresponding plot of the dynamical system:
+```{r, dynsys2, fig.height=7, fig.width=7,echo=TRUE}
+A = 1/110 * cbind(c(97,-8),c(6,123))
+trajectory_plot(A, t=10, datamax=15, plotmax=25, numpoints=5)
+```
+
+### Discussion Question 1
+
+In class, we looked at a matrix with eigenvalues 1 and 1/2, and we plotted a trajectory starting at $(8,7)$ by hand. Its eigensystem is shown here:
+
+```{r, dynsys3, fig.height=7, fig.width=7,echo=TRUE}
+A = rbind(c(0.4, 0.4), c(-0.15, 1.1))
+eigen(A)
+```
+
+And here is a trajectory plot
+```{r, dynsys4, fig.height=7, fig.width=7,echo=TRUE}
+trajectory_plot(A, t=30, datamax=10, plotmax=15, numpoints=5)
+```
+
+### Discussion Question 2
+
+Here the  matrix has the same eigenvectors, but now the eigenvalues are 1.0 and 0.9. It's a little easier to see when the smaller eigenvalue converges more slowly.
+
+```{r, dynsys5, fig.height=7, fig.width=7,echo=TRUE}
+A = rbind(c(0.88, 0.08), c(-0.03, 1.02))
+eigen(A)
+trajectory_plot(A, t=30, datamax=10, plotmax=15, numpoints=5)
+```
+
+### Discussion Question 3
+
+Here the  matrix has the same eigenvectors, but now the eigenvalues are 1.1 and 0.9. 
+
+```{r, dynsys6, fig.height=7, fig.width=7,echo=TRUE}
+A = rbind(c(0.86, 0.16), c(-0.06, 1.14))
+eigen(A)
+trajectory_plot(A, t=30, datamax=10, plotmax=15, numpoints=5)
+```
+
+### Discussion Question 4
+
+Finally, here again the  matrix has the same eigenvectors, but now the eigenvalues are 0.99 and 0.9. 
+
+
+```{r, dynsys7, fig.height=7, fig.width=7,echo=TRUE}
+A = rbind(c(0.882, 0.072), c(-0.027, 1.008))
+eigen(A)
+trajectory_plot(A, t=50, datamax=10, plotmax=15, numpoints=5)
+```
 
 
 
-<!-- s -->
+## Northern Spotted Owl
+
+This is the opening example in Chapter 5 of the textbook on page 265. It comes from a 1992 study of the northern spotted owl, which was threatened with extinction due to the loss of forest habitat due to logging in the Pacific Northwest. This is currently a story featured in an NPR Podcast called [Timber Wars](https://www.npr.org/podcasts/906829608/timber-wars).
+
+
+### The Dynamical System
+
+The vector
+$$
+x_n = \begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix}
+$$
+is an *age-stage* vector in which $j_n, s_n$, and $a_n$ are the number of female owls in the juvenile (up to 1 year), subadult (1-2 year), and adult (over 2 year) age groups in year $n$.
+
+The dynamics that take us from one year to the next is given by, the recursive relation $x_{n+1} = A x+n$, where $A$ is the matrix shown here. This is an age-stage matrix model that was published in [*Conservation Biology*](https://www.fs.usda.gov/treesearch/pubs/3519).
+$$
+\begin{bmatrix} j_{n+1} \\ s_{n+1} \\ a_{n+1} \end{bmatrix}
+=
+\begin{bmatrix} 0 & 0 & 0.33 \\ 0.18 & 0 & 0 \\ 0 & 0.71 & 0.94 \end{bmatrix}
+\begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix}
+$$
+If we multiply this system out, we get
+$$
+\begin{array} {rcl}
+j_{n+1} &=& 0.33 a_n    \\
+s_{n+1} &=& 0.18 j_n     \\
+a_{n+1} &=& 0.71 s_n + 0.94 a_n
+\end{array}
+$$
+We see that, in this model, 0.33 represents the fertility or *fecundity* rate. That is, it is the proportion of new juveniles next year to adults this year (the proportion of offspring the adult population is producing). The 0.18 is the survival rate from juvenile to subadult, 0.71 is the survival rate from subadult to adult, and 0.94 proportion of adults that survive from one year to the next.
+
+
+To see the dynamics play out over time, we will start with an original population of owls is distributed into age groups as follows.
+$$
+x_0 = \begin{bmatrix} 100 \\ 76 \\ 502 \end{bmatrix}
+$$
+We will write a loop to apply the matrix $A$ over and over again. This time we will make a table and store each value in the table.
+
+```{r,echo=TRUE}
+A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix
+x0 = c(100,76,502) # the inital value
+N = 10  # iterate N=10 times
+X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in
+X[,1] = x0 # the first column is the initial population
+for (i in 2:(N+1)) {  # loopn from 2 to N+1
+  X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i
+}
+X # display the table
+```
+
+Having saved the information, we can now plot the data, Note that it appears to support the claim the claim that the owls are threatened with extinction.
+```{r,echo=TRUE}
+tot = X[1,] + X[2,] + X[3,]
+t = seq(1,N+1)
+plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population")
+points(t,X[1,],col='blue',pch=20,cex=.8)
+lines(t,X[2,],col='orange')
+points(t,X[2,],col='orange',pch=20,cex=.8)
+lines(t,X[3,],col='red')
+points(t,X[3,],col='red',pch=20,cex=.8)
+points(t,tot,col='black',pch=20,cex=.8)
+lines(t,tot,col='black')
+legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1)
+```
+
+Let's run the iteration further. This time, we won't display the table (gets too big), and we will just show the plot of 100 iterations
+
+```{r,echo=TRUE}
+A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix
+x0 = c(100,76,502) # the inital value
+N = 100  # iterate N times
+X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in
+X[,1] = x0 # the first column is the initial population
+for (i in 2:(N+1)) {  # loopn from 2 to N+1
+  X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i
+}
+tot = X[1,] + X[2,] + X[3,]
+t = seq(1,N+1)
+plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population")
+points(t,X[1,],col='blue',pch=20,cex=.8)
+lines(t,X[2,],col='orange')
+points(t,X[2,],col='orange',pch=20,cex=.8)
+lines(t,X[3,],col='red')
+points(t,X[3,],col='red',pch=20,cex=.8)
+points(t,tot,col='black',pch=20,cex=.8)
+lines(t,tot,col='black')
+legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1)
+```
+
+They do seem to be dying out.
+
+### Eigenanalysis
+
+Now we check the eigenvectors and eigenvalues to see if they help us understand what is going on.
+
+```{r,echo=TRUE}
+eigen(A)
+```
+
+The first eigenvalue is $\lambda_1 = 0.98$, and the other two are complex. R always lists the eigenvalues from largest to smallest, so in this case the largets eigenvalue is less than one. That means that in that direction, the population is dying off by 2% each year.
+
+If we extract the corresponding eigenvector, and scale it to sum to 1, we get
+```{r,echo=TRUE}
+v1 = eigen(A)$vectors[,1] # get the first eigenvector
+v1 = Re(v1) # drop the imaginary part
+v1/sum(v1)  # scale it to sum to 1
+```
+What this is telling us that as the population dies off, it does so in this eigenvector direction with 24.0% of the population being juveniles, 4.4% subadults, and 71.5% adults.
+
+The owls were going extinct because of the logging in the Pacific Northwest. Suppose that we make the case that by stopping logging we will increase the survival rate from juvenile to subadult from 0.18 to 0.26 (by improving the habititat the juvinile owls have a better chance of surviving the first year). In this case, the eigenvalues and eigenvectors becomes:
+```{r,echo=TRUE}
+A = cbind(c(0,0.26,0),c(0,0,.71),c(0.33,0,0.94))
+eigen(A)
+```
+
+Notice that the largest eigenvalue now becomes 1. And if we iterate, we see that the population does not die off (it even grows slightly).
+```{r}
+A = cbind(c(0,0.26,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix
+x0 = c(100,76,502) # the inital value
+N = 100  # iterate N times
+X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in
+X[,1] = x0 # the first column is the initial population
+for (i in 2:(N+1)) {  # loopn from 2 to N+1
+  X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i
+}
+tot = X[1,] + X[2,] + X[3,]
+t = seq(1,N+1)
+plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population")
+points(t,X[1,],col='blue',pch=20,cex=.8)
+lines(t,X[2,],col='orange')
+points(t,X[2,],col='orange',pch=20,cex=.8)
+lines(t,X[3,],col='red')
+points(t,X[3,],col='red',pch=20,cex=.8)
+points(t,tot,col='black',pch=20,cex=.8)
+lines(t,tot,col='black')
+legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1)
+```
+
+Finally, we go back to the original system, which is dying out, but start with a totally different age distribution. You can see the non-dominant eigevectors dying out quickly at the beginning and the dominant eigenvector, of eigenvalue 0.98, taking over.
+
+```{r,echo=TRUE}
+A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix
+x0 = c(70,600,8) # the inital value
+N = 20  # iterate N times
+X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in
+X[,1] = x0 # the first column is the initial population
+for (i in 2:(N+1)) {  # loopn from 2 to N+1
+  X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i
+}
+tot = X[1,] + X[2,] + X[3,]
+```
+
+
+```{r,echo=TRUE}
+t = seq(1,N+1)
+plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population")
+points(t,X[1,],col='blue',pch=20,cex=.8)
+lines(t,X[2,],col='orange')
+points(t,X[2,],col='orange',pch=20,cex=.8)
+lines(t,X[3,],col='red')
+points(t,X[3,],col='red',pch=20,cex=.8)
+points(t,tot,col='black',pch=20,cex=.8)
+lines(t,tot,col='black')
+legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1)
+```
+
+
 

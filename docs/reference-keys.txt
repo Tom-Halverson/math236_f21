@@ -1,4 +1,4 @@
-tab:unnamed-chunk-4
+tab:unnamed-chunk-8
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -74,6 +74,17 @@ matrix-inverses
 eigenvectors
 computing-eigenvectors-and-eigenvalues
 diagonalization-1
+dynamical-systems
+plotting-dynamical-systems
+video-example
+checkpoint-question-for-today
+discussion-question-1
+discussion-question-2
+discussion-question-3
+discussion-question-4
+northern-spotted-owl
+the-dynamical-system
+eigenanalysis
 exam-1-review
 overview
 vocabulary-and-concepts

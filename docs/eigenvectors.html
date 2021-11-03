@@ -236,6 +236,21 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <ul>
 <li class="chapter" data-level="13.1" data-path="eigenvectors.html"><a href="eigenvectors.html#computing-eigenvectors-and-eigenvalues"><i class="fa fa-check"></i><b>13.1</b> Computing Eigenvectors and Eigenvalues</a></li>
 <li class="chapter" data-level="13.2" data-path="eigenvectors.html"><a href="eigenvectors.html#diagonalization-1"><i class="fa fa-check"></i><b>13.2</b> Diagonalization</a></li>
+<li class="chapter" data-level="13.3" data-path="eigenvectors.html"><a href="eigenvectors.html#dynamical-systems"><i class="fa fa-check"></i><b>13.3</b> Dynamical Systems</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="eigenvectors.html"><a href="eigenvectors.html#plotting-dynamical-systems"><i class="fa fa-check"></i><b>13.3.1</b> Plotting dynamical systems</a></li>
+<li class="chapter" data-level="13.3.2" data-path="eigenvectors.html"><a href="eigenvectors.html#video-example"><i class="fa fa-check"></i><b>13.3.2</b> Video Example</a></li>
+<li class="chapter" data-level="13.3.3" data-path="eigenvectors.html"><a href="eigenvectors.html#checkpoint-question-for-today"><i class="fa fa-check"></i><b>13.3.3</b> CheckPoint Question for today</a></li>
+<li class="chapter" data-level="13.3.4" data-path="eigenvectors.html"><a href="eigenvectors.html#discussion-question-1"><i class="fa fa-check"></i><b>13.3.4</b> Discussion Question 1</a></li>
+<li class="chapter" data-level="13.3.5" data-path="eigenvectors.html"><a href="eigenvectors.html#discussion-question-2"><i class="fa fa-check"></i><b>13.3.5</b> Discussion Question 2</a></li>
+<li class="chapter" data-level="13.3.6" data-path="eigenvectors.html"><a href="eigenvectors.html#discussion-question-3"><i class="fa fa-check"></i><b>13.3.6</b> Discussion Question 3</a></li>
+<li class="chapter" data-level="13.3.7" data-path="eigenvectors.html"><a href="eigenvectors.html#discussion-question-4"><i class="fa fa-check"></i><b>13.3.7</b> Discussion Question 4</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="eigenvectors.html"><a href="eigenvectors.html#northern-spotted-owl"><i class="fa fa-check"></i><b>13.4</b> Northern Spotted Owl</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="eigenvectors.html"><a href="eigenvectors.html#the-dynamical-system"><i class="fa fa-check"></i><b>13.4.1</b> The Dynamical System</a></li>
+<li class="chapter" data-level="13.4.2" data-path="eigenvectors.html"><a href="eigenvectors.html#eigenanalysis"><i class="fa fa-check"></i><b>13.4.2</b> Eigenanalysis</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>IV Quiz Review</b></span></li>
 <li class="chapter" data-level="14" data-path="exam-1-review.html"><a href="exam-1-review.html"><i class="fa fa-check"></i><b>14</b> Exam 1 Review</a>
@@ -346,13 +361,13 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <div id="computing-eigenvectors-and-eigenvalues" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> Computing Eigenvectors and Eigenvalues</h2>
 <p>To compute eigenvalues and eigenvectors in <code>R</code> we use the <code>eigen</code> command. For example if our matrix is</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="eigenvectors.html#cb135-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">14</span>,<span class="sc">-</span><span class="dv">20</span>,<span class="sc">-</span><span class="dv">23</span>),<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">19</span>,<span class="dv">19</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="eigenvectors.html#cb136-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">14</span>,<span class="sc">-</span><span class="dv">20</span>,<span class="sc">-</span><span class="dv">23</span>),<span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">19</span>,<span class="dv">19</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]  -14   13   -2
 ## [2,]  -20   19   -2
 ## [3,]  -23   19    1</code></pre>
 <p>Then we compute its eigenvalues and eigenvectors as</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="eigenvectors.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="eigenvectors.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1]  6  3 -3
@@ -364,22 +379,22 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 ## [3,] -0.8017837  0.8164966 0.5773503</code></pre>
 <p>One thing to notice about the eigenvectors is that they are scaled to have length one (they are <strong>unit vectors</strong>). So they often do not look like what we expect. Note for example that the first vector above is a multiple of <span class="math inline">\((1,2,3)^T\)</span>, the second is a multiple of <span class="math inline">\((-1,-1,2)^T\)</span> and the third is a multiple of <span class="math inline">\((1,1,1)^T\)</span>.</p>
 <p>We can extract the eigenvectors and eigenvalues as follows</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="eigenvectors.html#cb139-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
-<span id="cb139-2"><a href="eigenvectors.html#cb139-2" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>vectors</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="eigenvectors.html#cb140-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
+<span id="cb140-2"><a href="eigenvectors.html#cb140-2" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>vectors</span></code></pre></div>
 <p>Then, for example, we can see if a vector is an eigenvector as follows. Here I will check the first eigenvalue and first eigenvector:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="eigenvectors.html#cb140-1" aria-hidden="true" tabindex="-1"></a>lambda1 <span class="ot">=</span> vals[<span class="dv">1</span>]</span>
-<span id="cb140-2"><a href="eigenvectors.html#cb140-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> vecs[,<span class="dv">1</span>]</span>
-<span id="cb140-3"><a href="eigenvectors.html#cb140-3" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> v1</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="eigenvectors.html#cb141-1" aria-hidden="true" tabindex="-1"></a>lambda1 <span class="ot">=</span> vals[<span class="dv">1</span>]</span>
+<span id="cb141-2"><a href="eigenvectors.html#cb141-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> vecs[,<span class="dv">1</span>]</span>
+<span id="cb141-3"><a href="eigenvectors.html#cb141-3" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> v1</span></code></pre></div>
 <pre><code>##           [,1]
 ## [1,] -1.603567
 ## [2,] -3.207135
 ## [3,] -4.810702</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="eigenvectors.html#cb142-1" aria-hidden="true" tabindex="-1"></a>lambda1 <span class="sc">*</span> v1</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="eigenvectors.html#cb143-1" aria-hidden="true" tabindex="-1"></a>lambda1 <span class="sc">*</span> v1</span></code></pre></div>
 <pre><code>## [1] -1.603567 -3.207135 -4.810702</code></pre>
 <p>From this, we see that <span class="math inline">\(A v_1 = \lambda_1 v_1\)</span>.</p>
 <p>Recall that every scalar multiple of an eigenvector is also an eigenvector of that same eigenvalue. The vectors are currently scaled to have length 1. Another useful scaling is to have them sum to 1. You can accomplish this by dividing them by the sum of their entries. For example,</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="eigenvectors.html#cb144-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> v1<span class="sc">/</span><span class="fu">sum</span>(v1)</span>
-<span id="cb144-2"><a href="eigenvectors.html#cb144-2" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="eigenvectors.html#cb145-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> v1<span class="sc">/</span><span class="fu">sum</span>(v1)</span>
+<span id="cb145-2"><a href="eigenvectors.html#cb145-2" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div>
 <pre><code>## [1] 0.1666667 0.3333333 0.5000000</code></pre>
 </div>
 <div id="diagonalization-1" class="section level2" number="13.2">
@@ -388,28 +403,28 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <ol style="list-style-type: lower-alpha">
 <li>Here is the first matrix from the checkpoint question CP-5.3.</li>
 </ol>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="eigenvectors.html#cb146-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="sc">-</span><span class="dv">7</span>),<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="eigenvectors.html#cb147-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="sc">-</span><span class="dv">7</span>),<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   -5    6   -2
 ## [2,]   -6    7   -2
 ## [3,]   -7    8   -2</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="eigenvectors.html#cb148-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
-<span id="cb148-2"><a href="eigenvectors.html#cb148-2" aria-hidden="true" tabindex="-1"></a>vals</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="eigenvectors.html#cb149-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
+<span id="cb149-2"><a href="eigenvectors.html#cb149-2" aria-hidden="true" tabindex="-1"></a>vals</span></code></pre></div>
 <pre><code>## [1]  1.000000e+00 -1.000000e+00 -3.766534e-15</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="eigenvectors.html#cb150-1" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>vectors</span>
-<span id="cb150-2"><a href="eigenvectors.html#cb150-2" aria-hidden="true" tabindex="-1"></a>vecs</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="eigenvectors.html#cb151-1" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>vectors</span>
+<span id="cb151-2"><a href="eigenvectors.html#cb151-2" aria-hidden="true" tabindex="-1"></a>vecs</span></code></pre></div>
 <pre><code>##            [,1]      [,2]       [,3]
 ## [1,] -0.2672612 0.5773503 -0.6666667
 ## [2,] -0.5345225 0.5773503 -0.6666667
 ## [3,] -0.8017837 0.5773503 -0.3333333</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="eigenvectors.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(vecs) <span class="sc">%*%</span> A <span class="sc">%*%</span> vecs</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="eigenvectors.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(vecs) <span class="sc">%*%</span> A <span class="sc">%*%</span> vecs</span></code></pre></div>
 <pre><code>##              [,1]          [,2]          [,3]
 ## [1,] 1.000000e+00  3.355686e-15 -6.554309e-16
 ## [2,] 6.661338e-15 -1.000000e+00  8.881784e-15
 ## [3,] 4.272762e-15 -3.076740e-15  1.776357e-15</code></pre>
 <p>Here, we are diagonalizing <span class="math inline">\(A\)</span> by multiplying <span class="math inline">\(P^{-1} A P = D\)</span> where <span class="math inline">\(P\)</span> is the matrix of eigenvectors and <span class="math inline">\(D\)</span> is the diagonal matrix of eigenvalues.</p>
 <p>We can use <code>zapsmall</code> to round or “zap” very small numbers to 0, and it then looks more like what we are expecting.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="eigenvectors.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zapsmall</span>(<span class="fu">solve</span>(vecs) <span class="sc">%*%</span> A <span class="sc">%*%</span> vecs)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="eigenvectors.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zapsmall</span>(<span class="fu">solve</span>(vecs) <span class="sc">%*%</span> A <span class="sc">%*%</span> vecs)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    0
 ## [2,]    0   -1    0
@@ -417,8 +432,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Now we diagonalize the second matrix from CP-5.3 You will recall that this one has a repeated eigenvalue (algebraic multiplicity 2), but it has a 2-dimensional eigenspace (geometric multiplicity 2), so it is digonalizable.</li>
 </ol>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="eigenvectors.html#cb156-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span>
-<span id="cb156-2"><a href="eigenvectors.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="eigenvectors.html#cb157-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span>
+<span id="cb157-2"><a href="eigenvectors.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(B)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1]  4  4 -2
@@ -428,9 +443,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 ## [1,]  0.9128709 0.0000000 -0.4082483
 ## [2,] -0.1825742 0.8944272 -0.4082483
 ## [3,]  0.3651484 0.4472136  0.8164966</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="eigenvectors.html#cb158-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">=</span> <span class="fu">eigen</span>(B)<span class="sc">$</span>values</span>
-<span id="cb158-2"><a href="eigenvectors.html#cb158-2" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(B)<span class="sc">$</span>vectors</span>
-<span id="cb158-3"><a href="eigenvectors.html#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zapsmall</span>(<span class="fu">solve</span>(vecs) <span class="sc">%*%</span> B <span class="sc">%*%</span> vecs)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="eigenvectors.html#cb159-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">=</span> <span class="fu">eigen</span>(B)<span class="sc">$</span>values</span>
+<span id="cb159-2"><a href="eigenvectors.html#cb159-2" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(B)<span class="sc">$</span>vectors</span>
+<span id="cb159-3"><a href="eigenvectors.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zapsmall</span>(<span class="fu">solve</span>(vecs) <span class="sc">%*%</span> B <span class="sc">%*%</span> vecs)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4    0    0
 ## [2,]    0    4    0
@@ -438,8 +453,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <ol start="3" style="list-style-type: lower-alpha">
 <li>The third matrix from CP-5.3 is not diagonalizable. It has an eigenvalue of algebraic multiplicity 2 and geometric multiplicity 1. Note that it gives the same two eigenvectors for <span class="math inline">\(v_2\)</span> and <span class="math inline">\(v_3\)</span>, because the eigenspace <span class="math inline">\(E_2\)</span> is only 1 dimensional.</li>
 </ol>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="eigenvectors.html#cb160-1" aria-hidden="true" tabindex="-1"></a>C <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb160-2"><a href="eigenvectors.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(C)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="eigenvectors.html#cb161-1" aria-hidden="true" tabindex="-1"></a>C <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb161-2"><a href="eigenvectors.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(C)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 3 2 2
@@ -477,149 +492,315 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <!-- 60*v -->
 <!-- ``` -->
 <!-- Notice that this is the *exact same* as the steady-state vector that we got by iterating. The steady-state that this system wants to be in --- with 40.97 cars in St. Paul, 10.31 cars in Rochester, and 8.72 cars in Duluth. It makes sense that a steady-state vector is an eigenvector with eigenvalue $\lambda = 1$. That the system converges to this state is eigen-magic that we will learn about soon. -->
-<!-- ## Northern Spotted Owl -->
-<!-- This is the opening example in Chapter 5 of the textbook on page 265. It comes from a 1992 study of the northern spotted owl, which was threatened with extinction due to the loss of forest habitat due to logging in the Pacific Northwest. This is currently a story featured in an NPR Podcast called [Timber Wars](https://www.npr.org/podcasts/906829608/timber-wars). -->
-<!-- ### The Dynamical System -->
-<!-- The vector -->
-<!-- $$ -->
-<!-- x_n = \begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix} -->
-<!-- $$ -->
-<!-- is an *age-stage* vector in which $j_n, s_n$, and $a_n$ are the number of female owls in the juvenile (up to 1 year), subadult (1-2 year), and adult (over 2 year) age groups in year $n$. -->
-<!-- The dynamics that take us from one year to the next is given by, the recursive relation $x_{n+1} = A x+n$, where $A$ is the matrix shown here. This is an age-stage matrix model that was published in [*Conservation Biology*](https://www.fs.usda.gov/treesearch/pubs/3519). -->
-<!-- $$ -->
-<!-- \begin{bmatrix} j_{n+1} \\ s_{n+1} \\ a_{n+1} \end{bmatrix} -->
-<!-- =  -->
-<!-- \begin{bmatrix} 0 & 0 & 0.33 \\ 0.18 & 0 & 0 \\ 0 & 0.71 & 0.94 \end{bmatrix} -->
-<!-- \begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix} -->
-<!-- $$ -->
-<!-- If we multiply this system out, we get -->
-<!-- $$ -->
-<!-- \begin{array} {rcl} -->
-<!-- j_{n+1} &=& 0.33 a_n    \\ -->
-<!-- s_{n+1} &=& 0.18 j_n     \\ -->
-<!-- a_{n+1} &=& 0.71 s_n + 0.94 a_n     -->
-<!-- \end{array} -->
-<!-- $$ -->
-<!-- We see that, in this model, 0.33 represents the fertility or *fecundity* rate. That is, it is the proportion of new juveniles next year to adults this year (the proportion of offspring the adult population is producing). The 0.18 is the survival rate from juvenile to subadult, 0.71 is the survival rate from subadult to adult, and 0.94 proportion of adults that survive from one year to the next. -->
-<!-- To see the dynamics play out over time, we will start with an original population of owls is distributed into age groups as follows. -->
-<!-- $$ -->
-<!-- x_0 = \begin{bmatrix} 100 \\ 76 \\ 502 \end{bmatrix} -->
-<!-- $$ -->
-<!-- We will write a loop to apply the matrix $A$ over and over again. This time we will make a table and store each value in the table. -->
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(100,76,502) # the inital value -->
-<!-- N = 10  # iterate N=10 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- X # display the table -->
-<!-- ``` -->
-<!-- Having saved the information, we can now plot the data, Note that it appears to support the claim the claim that the owls are threatened with extinction. -->
-<!-- ```{r,echo=TRUE} -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-<!-- Let's run the iteration further. This time, we won't display the table (gets too big), and we will just show the plot of 100 iterations -->
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(100,76,502) # the inital value -->
-<!-- N = 100  # iterate N=10 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-<!-- They do seem to be dying out.  -->
-<!-- ### Eigenanalysis  -->
-<!-- Now we check the eigenvectors and eigenvalues to see if they help us understand what is going on.  -->
-<!-- ```{r,echo=TRUE} -->
-<!-- eigen(A) -->
-<!-- ``` -->
-<!-- The first eigenvalue is $\lambda_1 = 0.98$, and the other two are complex. R always lists the eigenvalues from largest to smallest, so in this case the largets eigenvalue is less than one. That means that in that direction, the population is dying off by 2% each year.  -->
-<!-- If we extract the corresponding eigenvector, and scale it to sum to 1, we get -->
-<!-- ```{r,echo=TRUE} -->
-<!-- v1 = eigen(A)$vectors[,1] # get the first eigenvector -->
-<!-- v1 = Re(v1) # drop the imaginary part -->
-<!-- v1/sum(v1)  # scale it to sum to 1 -->
-<!-- ``` -->
-<!-- What this is telling us that as the population dies off, it does so in this eigenvector direction with 24.0% of the population being juveniles, 4.4% subadults, and 71.5% adults.  -->
-<!-- The owls were going extinct because of the logging in the Pacific Northwest. Suppose that we make the case that by stopping logging we will increase the survival rate from juvenile to subadult from 0.18 to 0.26 (by improving the habititat the juvinile owls have a better chance of surviving the first year). In this case, the eigenvalues and eigenvectors becomes: -->
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.26,0),c(0,0,.71),c(0.33,0,0.94)) -->
-<!-- eigen(A) -->
-<!-- ``` -->
-<!-- Notice that the largest eigenvalue now becomes 1. And if we iterate, we see that the population does not die off (it even grows slightly). -->
-<!-- ```{r} -->
-<!-- A = cbind(c(0,0.26,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(100,76,502) # the inital value -->
-<!-- N = 100  # iterate N=10 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-<!-- Finally, we go back to the original system, which is dying out, but start with a totally different age distribution. You can see the non-dominant eigevectors dying out quickly at the beginning and the dominant eigenvector, of eigenvalue 0.98, taking over.  -->
-<!-- ```{r,echo=TRUE} -->
-<!-- A = cbind(c(0,0.18,0),c(0,0,.71),c(0.33,0,0.94)) # the population dynamics matrix -->
-<!-- x0 = c(70,600,8) # the inital value -->
-<!-- N = 20  # iterate N=100 times -->
-<!-- X = matrix(0,nrow=nrow(A),ncol=N+1) # initialize an all 0 matrix to store values in -->
-<!-- X[,1] = x0 # the first column is the initial population -->
-<!-- for (i in 2:(N+1)) {  # loopn from 2 to N+1 -->
-<!--   X[,i] = A %*% X[,i-1] # Apply A to column i-1 and put the value in column i -->
-<!-- } -->
-<!-- tot = X[1,] + X[2,] + X[3,] -->
-<!-- ``` -->
-<!-- ```{r,echo=TRUE} -->
-<!-- t = seq(1,N+1) -->
-<!-- plot(t,X[1,],type='l',col='blue',ylim=c(0,1000),ylab="population",xlab="year",main="Spotted Owl Population") -->
-<!-- points(t,X[1,],col='blue',pch=20,cex=.8) -->
-<!-- lines(t,X[2,],col='orange') -->
-<!-- points(t,X[2,],col='orange',pch=20,cex=.8) -->
-<!-- lines(t,X[3,],col='red') -->
-<!-- points(t,X[3,],col='red',pch=20,cex=.8) -->
-<!-- points(t,tot,col='black',pch=20,cex=.8) -->
-<!-- lines(t,tot,col='black') -->
-<!-- legend(8, 1050, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
-<!-- ``` -->
-<!-- s -->
+</div>
+<div id="dynamical-systems" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> Dynamical Systems</h2>
+<p>Let <span class="math inline">\(A\)</span> be a square <span class="math inline">\(n \times n\)</span> matrix and let <span class="math inline">\(\mathsf{x}_0 \in \mathbb{R}^n\)</span>. A <strong>dynamical system</strong> is a sequence of vectors <span class="math inline">\(\mathsf{x}_0,\mathsf{x}_1,\mathsf{x}_2, \ldots, \mathsf{x}_t, \ldots\)</span> where
+<span class="math display">\[
+\mathsf{x}_{t} = A \mathsf{x}_{t-1} = A^t \mathsf{x}_0 \quad \mbox{for} \quad t \geq 1.
+\]</span>
+The sequence <span class="math inline">\(\mathsf{x}_0,\mathsf{x}_1,\mathsf{x}_2, \ldots, \mathsf{x}_t, \ldots\)</span> is called the <strong>trajectory</strong> for initial vector <span class="math inline">\(\mathsf{x}_0\)</span>.</p>
+<div id="plotting-dynamical-systems" class="section level3" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Plotting dynamical systems</h3>
+<p>Here use some special code, written by Professor Beveridge, that makes helpful plots.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="eigenvectors.html#cb163-1" aria-hidden="true" tabindex="-1"></a>get_traj <span class="ot">&lt;-</span> <span class="cf">function</span>(mat, x0, num) {</span>
+<span id="cb163-2"><a href="eigenvectors.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  traj <span class="ot">=</span> <span class="fu">cbind</span>(x0) </span>
+<span id="cb163-3"><a href="eigenvectors.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  num</span>
+<span id="cb163-4"><a href="eigenvectors.html#cb163-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num) {</span>
+<span id="cb163-5"><a href="eigenvectors.html#cb163-5" aria-hidden="true" tabindex="-1"></a>    traj <span class="ot">=</span> <span class="fu">cbind</span>(traj, mat <span class="sc">%*%</span> traj[,<span class="fu">dim</span>(traj)[<span class="dv">2</span>]])</span>
+<span id="cb163-6"><a href="eigenvectors.html#cb163-6" aria-hidden="true" tabindex="-1"></a>    traj</span>
+<span id="cb163-7"><a href="eigenvectors.html#cb163-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb163-8"><a href="eigenvectors.html#cb163-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(traj)</span>
+<span id="cb163-9"><a href="eigenvectors.html#cb163-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb163-10"><a href="eigenvectors.html#cb163-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-11"><a href="eigenvectors.html#cb163-11" aria-hidden="true" tabindex="-1"></a>plot_traj <span class="ot">&lt;-</span> <span class="cf">function</span>(mat, x0, num) {</span>
+<span id="cb163-12"><a href="eigenvectors.html#cb163-12" aria-hidden="true" tabindex="-1"></a>  traj <span class="ot">=</span> <span class="fu">get_traj</span>(mat,x0,num)</span>
+<span id="cb163-13"><a href="eigenvectors.html#cb163-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(traj[<span class="dv">1</span>,],traj[<span class="dv">2</span>,], <span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="fu">rainbow</span>(<span class="fu">length</span>(traj)))</span>
+<span id="cb163-14"><a href="eigenvectors.html#cb163-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb163-15"><a href="eigenvectors.html#cb163-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-16"><a href="eigenvectors.html#cb163-16" aria-hidden="true" tabindex="-1"></a>trajectory_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(mat, <span class="at">t=</span><span class="dv">20</span>, <span class="at">datamax=</span><span class="dv">5</span>, <span class="at">plotmax=</span><span class="dv">10</span>, <span class="at">numpoints=</span><span class="dv">10</span>, <span class="at">showEigenspaces=</span><span class="cn">TRUE</span>) {</span>
+<span id="cb163-17"><a href="eigenvectors.html#cb163-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># initialize plot</span></span>
+<span id="cb163-18"><a href="eigenvectors.html#cb163-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">pty =</span> <span class="st">&quot;s&quot;</span>)</span>
+<span id="cb163-19"><a href="eigenvectors.html#cb163-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>),<span class="at">type=</span><span class="st">&quot;n&quot;</span>,</span>
+<span id="cb163-20"><a href="eigenvectors.html#cb163-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span>plotmax,plotmax),<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span>plotmax,plotmax),</span>
+<span id="cb163-21"><a href="eigenvectors.html#cb163-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&#39;x&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;y&#39;</span>)</span>
+<span id="cb163-22"><a href="eigenvectors.html#cb163-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span>plotmax<span class="sc">:</span>plotmax, <span class="at">v=</span><span class="sc">-</span>plotmax<span class="sc">:</span>plotmax, <span class="at">col=</span><span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb163-23"><a href="eigenvectors.html#cb163-23" aria-hidden="true" tabindex="-1"></a>  mygrid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span>datamax, <span class="at">by =</span> <span class="dv">2</span><span class="sc">*</span>datamax<span class="sc">/</span>numpoints, <span class="at">l =</span> numpoints<span class="sc">+</span><span class="dv">1</span>),</span>
+<span id="cb163-24"><a href="eigenvectors.html#cb163-24" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y=</span><span class="fu">seq</span>(<span class="at">from =</span>  <span class="sc">-</span>datamax, <span class="at">by =</span> <span class="dv">2</span><span class="sc">*</span>datamax<span class="sc">/</span>numpoints, <span class="at">l =</span> numpoints<span class="sc">+</span><span class="dv">1</span>))</span>
+<span id="cb163-25"><a href="eigenvectors.html#cb163-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(mygrid)[<span class="dv">1</span>]) {</span>
+<span id="cb163-26"><a href="eigenvectors.html#cb163-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_traj</span>(mat,<span class="fu">c</span>(mygrid[i,<span class="dv">1</span>],mygrid[i,<span class="dv">2</span>]),t)</span>
+<span id="cb163-27"><a href="eigenvectors.html#cb163-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb163-28"><a href="eigenvectors.html#cb163-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (showEigenspaces) {</span>
+<span id="cb163-29"><a href="eigenvectors.html#cb163-29" aria-hidden="true" tabindex="-1"></a>    eigen <span class="ot">=</span> <span class="fu">eigen</span>(mat)</span>
+<span id="cb163-30"><a href="eigenvectors.html#cb163-30" aria-hidden="true" tabindex="-1"></a>    v1 <span class="ot">=</span> <span class="fu">zapsmall</span>(eigen<span class="sc">$</span>vectors[,<span class="dv">1</span>])</span>
+<span id="cb163-31"><a href="eigenvectors.html#cb163-31" aria-hidden="true" tabindex="-1"></a>    v2 <span class="ot">=</span> <span class="fu">zapsmall</span>(eigen<span class="sc">$</span>vectors[,<span class="dv">2</span>])</span>
+<span id="cb163-32"><a href="eigenvectors.html#cb163-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span> <span class="fu">class</span>(v1[<span class="dv">1</span>]) <span class="sc">==</span> <span class="st">&quot;complex&quot;</span>) {</span>
+<span id="cb163-33"><a href="eigenvectors.html#cb163-33" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v1[<span class="dv">1</span>] <span class="sc">==</span> <span class="dv">0</span>) {<span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>)} <span class="cf">else</span> {</span>
+<span id="cb163-34"><a href="eigenvectors.html#cb163-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span>v1[<span class="dv">2</span>]<span class="sc">/</span>v1[<span class="dv">1</span>], <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)} </span>
+<span id="cb163-35"><a href="eigenvectors.html#cb163-35" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v2[<span class="dv">1</span>] <span class="sc">==</span> <span class="dv">0</span>) {<span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>)} </span>
+<span id="cb163-36"><a href="eigenvectors.html#cb163-36" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span> {<span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span>v2[<span class="dv">2</span>]<span class="sc">/</span>v2[<span class="dv">1</span>], <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb163-37"><a href="eigenvectors.html#cb163-37" aria-hidden="true" tabindex="-1"></a>      }   </span>
+<span id="cb163-38"><a href="eigenvectors.html#cb163-38" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb163-39"><a href="eigenvectors.html#cb163-39" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb163-40"><a href="eigenvectors.html#cb163-40" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The code will plot multiple trajectories at once. You specify:</p>
+<ul>
+<li>the matrix A</li>
+<li>the number of iterations</li>
+<li>the size of the square where the initial points lie</li>
+<li>the size of the plot</li>
+<li>the number of points along the side of the grid</li>
+</ul>
+</div>
+<div id="video-example" class="section level3" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Video Example</h3>
+<p>Let’s start by looking at the example from the video for November 3:
+<span class="math display">\[
+A = \frac{1}{30}
+\begin{bmatrix}
+31 &amp; 4 \\ 2 &amp; 29
+\end{bmatrix}.
+\]</span></p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="eigenvectors.html#cb164-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">30</span> <span class="sc">*</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">31</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">29</span>))</span>
+<span id="cb164-2"><a href="eigenvectors.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">30</span>, <span class="at">datamax=</span><span class="dv">5</span>, <span class="at">plotmax=</span><span class="dv">15</span>, <span class="at">numpoints=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/dynsys1-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>Compare this with the eigenvalues and eigenvectors.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="eigenvectors.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.1 0.9
+## 
+## $vectors
+##           [,1]       [,2]
+## [1,] 0.8944272 -0.7071068
+## [2,] 0.4472136  0.7071068</code></pre>
+<p>We can see that we have slight expansion along <span class="math inline">\([ 2, 1]^{\top}\)</span> and slight contraction along <span class="math inline">\([-1,1]\)</span>. The long term behavior is an expansion in the direction of <span class="math inline">\([2, 1]^{\top}\)</span>.</p>
+</div>
+<div id="checkpoint-question-for-today" class="section level3" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> CheckPoint Question for today</h3>
+<p>Here is the checkpoint question for today (for which you found a closed-form solution).</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="eigenvectors.html#cb167-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">110</span> <span class="sc">*</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">97</span>,<span class="sc">-</span><span class="dv">8</span>),<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">123</span>))</span>
+<span id="cb167-2"><a href="eigenvectors.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.1 0.9
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.2425356 -0.9486833
+## [2,] -0.9701425 -0.3162278</code></pre>
+<p>And here is the corresponding plot of the dynamical system:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="eigenvectors.html#cb169-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">110</span> <span class="sc">*</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">97</span>,<span class="sc">-</span><span class="dv">8</span>),<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">123</span>))</span>
+<span id="cb169-2"><a href="eigenvectors.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">10</span>, <span class="at">datamax=</span><span class="dv">15</span>, <span class="at">plotmax=</span><span class="dv">25</span>, <span class="at">numpoints=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/dynsys2-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="discussion-question-1" class="section level3" number="13.3.4">
+<h3><span class="header-section-number">13.3.4</span> Discussion Question 1</h3>
+<p>In class, we looked at a matrix with eigenvalues 1 and 1/2, and we plotted a trajectory starting at <span class="math inline">\((8,7)\)</span> by hand. Its eigensystem is shown here:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="eigenvectors.html#cb170-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.4</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.15</span>, <span class="fl">1.1</span>))</span>
+<span id="cb170-2"><a href="eigenvectors.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.0 0.5
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.5547002 -0.9701425
+## [2,] -0.8320503 -0.2425356</code></pre>
+<p>And here is a trajectory plot</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="eigenvectors.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">30</span>, <span class="at">datamax=</span><span class="dv">10</span>, <span class="at">plotmax=</span><span class="dv">15</span>, <span class="at">numpoints=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/dynsys4-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="discussion-question-2" class="section level3" number="13.3.5">
+<h3><span class="header-section-number">13.3.5</span> Discussion Question 2</h3>
+<p>Here the matrix has the same eigenvectors, but now the eigenvalues are 1.0 and 0.9. It’s a little easier to see when the smaller eigenvalue converges more slowly.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="eigenvectors.html#cb173-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.88</span>, <span class="fl">0.08</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.03</span>, <span class="fl">1.02</span>))</span>
+<span id="cb173-2"><a href="eigenvectors.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.0 0.9
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.5547002 -0.9701425
+## [2,] -0.8320503 -0.2425356</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="eigenvectors.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">30</span>, <span class="at">datamax=</span><span class="dv">10</span>, <span class="at">plotmax=</span><span class="dv">15</span>, <span class="at">numpoints=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/dynsys5-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="discussion-question-3" class="section level3" number="13.3.6">
+<h3><span class="header-section-number">13.3.6</span> Discussion Question 3</h3>
+<p>Here the matrix has the same eigenvectors, but now the eigenvalues are 1.1 and 0.9.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="eigenvectors.html#cb176-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.86</span>, <span class="fl">0.16</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.06</span>, <span class="fl">1.14</span>))</span>
+<span id="cb176-2"><a href="eigenvectors.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.1 0.9
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.5547002 -0.9701425
+## [2,] -0.8320503 -0.2425356</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="eigenvectors.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">30</span>, <span class="at">datamax=</span><span class="dv">10</span>, <span class="at">plotmax=</span><span class="dv">15</span>, <span class="at">numpoints=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/dynsys6-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="discussion-question-4" class="section level3" number="13.3.7">
+<h3><span class="header-section-number">13.3.7</span> Discussion Question 4</h3>
+<p>Finally, here again the matrix has the same eigenvectors, but now the eigenvalues are 0.99 and 0.9.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="eigenvectors.html#cb179-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.882</span>, <span class="fl">0.072</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.027</span>, <span class="fl">1.008</span>))</span>
+<span id="cb179-2"><a href="eigenvectors.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 0.99 0.90
+## 
+## $vectors
+##            [,1]       [,2]
+## [1,] -0.5547002 -0.9701425
+## [2,] -0.8320503 -0.2425356</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="eigenvectors.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">50</span>, <span class="at">datamax=</span><span class="dv">10</span>, <span class="at">plotmax=</span><span class="dv">15</span>, <span class="at">numpoints=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/dynsys7-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="northern-spotted-owl" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Northern Spotted Owl</h2>
+<p>This is the opening example in Chapter 5 of the textbook on page 265. It comes from a 1992 study of the northern spotted owl, which was threatened with extinction due to the loss of forest habitat due to logging in the Pacific Northwest. This is currently a story featured in an NPR Podcast called <a href="https://www.npr.org/podcasts/906829608/timber-wars">Timber Wars</a>.</p>
+<div id="the-dynamical-system" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> The Dynamical System</h3>
+<p>The vector
+<span class="math display">\[
+x_n = \begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix}
+\]</span>
+is an <em>age-stage</em> vector in which <span class="math inline">\(j_n, s_n\)</span>, and <span class="math inline">\(a_n\)</span> are the number of female owls in the juvenile (up to 1 year), subadult (1-2 year), and adult (over 2 year) age groups in year <span class="math inline">\(n\)</span>.</p>
+<p>The dynamics that take us from one year to the next is given by, the recursive relation <span class="math inline">\(x_{n+1} = A x+n\)</span>, where <span class="math inline">\(A\)</span> is the matrix shown here. This is an age-stage matrix model that was published in <a href="https://www.fs.usda.gov/treesearch/pubs/3519"><em>Conservation Biology</em></a>.
+<span class="math display">\[
+\begin{bmatrix} j_{n+1} \\ s_{n+1} \\ a_{n+1} \end{bmatrix}
+=
+\begin{bmatrix} 0 &amp; 0 &amp; 0.33 \\ 0.18 &amp; 0 &amp; 0 \\ 0 &amp; 0.71 &amp; 0.94 \end{bmatrix}
+\begin{bmatrix} j_n \\ s_n \\ a_n \end{bmatrix}
+\]</span>
+If we multiply this system out, we get
+<span class="math display">\[
+\begin{array} {rcl}
+j_{n+1} &amp;=&amp; 0.33 a_n    \\
+s_{n+1} &amp;=&amp; 0.18 j_n     \\
+a_{n+1} &amp;=&amp; 0.71 s_n + 0.94 a_n
+\end{array}
+\]</span>
+We see that, in this model, 0.33 represents the fertility or <em>fecundity</em> rate. That is, it is the proportion of new juveniles next year to adults this year (the proportion of offspring the adult population is producing). The 0.18 is the survival rate from juvenile to subadult, 0.71 is the survival rate from subadult to adult, and 0.94 proportion of adults that survive from one year to the next.</p>
+<p>To see the dynamics play out over time, we will start with an original population of owls is distributed into age groups as follows.
+<span class="math display">\[
+x_0 = \begin{bmatrix} 100 \\ 76 \\ 502 \end{bmatrix}
+\]</span>
+We will write a loop to apply the matrix <span class="math inline">\(A\)</span> over and over again. This time we will make a table and store each value in the table.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="eigenvectors.html#cb182-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.18</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">71</span>),<span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">0</span>,<span class="fl">0.94</span>)) <span class="co"># the population dynamics matrix</span></span>
+<span id="cb182-2"><a href="eigenvectors.html#cb182-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">76</span>,<span class="dv">502</span>) <span class="co"># the inital value</span></span>
+<span id="cb182-3"><a href="eigenvectors.html#cb182-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">10</span>  <span class="co"># iterate N=10 times</span></span>
+<span id="cb182-4"><a href="eigenvectors.html#cb182-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(A),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>) <span class="co"># initialize an all 0 matrix to store values in</span></span>
+<span id="cb182-5"><a href="eigenvectors.html#cb182-5" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> x0 <span class="co"># the first column is the initial population</span></span>
+<span id="cb182-6"><a href="eigenvectors.html#cb182-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(N<span class="sc">+</span><span class="dv">1</span>)) {  <span class="co"># loopn from 2 to N+1</span></span>
+<span id="cb182-7"><a href="eigenvectors.html#cb182-7" aria-hidden="true" tabindex="-1"></a>  X[,i] <span class="ot">=</span> A <span class="sc">%*%</span> X[,i<span class="dv">-1</span>] <span class="co"># Apply A to column i-1 and put the value in column i</span></span>
+<span id="cb182-8"><a href="eigenvectors.html#cb182-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb182-9"><a href="eigenvectors.html#cb182-9" aria-hidden="true" tabindex="-1"></a>X <span class="co"># display the table</span></span></code></pre></div>
+<pre><code>##      [,1]   [,2]     [,3]     [,4]      [,5]      [,6]     [,7]      [,8]
+## [1,]  100 165.66 173.5272 167.3330 164.27953 161.74110 159.0937 156.47643
+## [2,]   76  18.00  29.8188  31.2349  30.11993  29.57032  29.1134  28.63687
+## [3,]  502 525.84 507.0696 497.8168 490.12454 482.10222 474.1710 466.39127
+##           [,9]     [,10]     [,11]
+## [1,] 153.90912 151.38419 148.90038
+## [2,]  28.16576  27.70364  27.24915
+## [3,] 458.73997 451.21326 443.81005</code></pre>
+<p>Having saved the information, we can now plot the data, Note that it appears to support the claim the claim that the owls are threatened with extinction.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="eigenvectors.html#cb184-1" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">=</span> X[<span class="dv">1</span>,] <span class="sc">+</span> X[<span class="dv">2</span>,] <span class="sc">+</span> X[<span class="dv">3</span>,]</span>
+<span id="cb184-2"><a href="eigenvectors.html#cb184-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,N<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb184-3"><a href="eigenvectors.html#cb184-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,X[<span class="dv">1</span>,],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>),<span class="at">ylab=</span><span class="st">&quot;population&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;year&quot;</span>,<span class="at">main=</span><span class="st">&quot;Spotted Owl Population&quot;</span>)</span>
+<span id="cb184-4"><a href="eigenvectors.html#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">1</span>,],<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb184-5"><a href="eigenvectors.html#cb184-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,X[<span class="dv">2</span>,],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb184-6"><a href="eigenvectors.html#cb184-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">2</span>,],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb184-7"><a href="eigenvectors.html#cb184-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,X[<span class="dv">3</span>,],<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb184-8"><a href="eigenvectors.html#cb184-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">3</span>,],<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb184-9"><a href="eigenvectors.html#cb184-9" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb184-10"><a href="eigenvectors.html#cb184-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb184-11"><a href="eigenvectors.html#cb184-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">8</span>, <span class="dv">1050</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;juvenile&quot;</span>, <span class="st">&quot;subadults&quot;</span>, <span class="st">&quot;adults&quot;</span>,<span class="st">&quot;total&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;black&#39;</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-81-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>Let’s run the iteration further. This time, we won’t display the table (gets too big), and we will just show the plot of 100 iterations</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="eigenvectors.html#cb185-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.18</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">71</span>),<span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">0</span>,<span class="fl">0.94</span>)) <span class="co"># the population dynamics matrix</span></span>
+<span id="cb185-2"><a href="eigenvectors.html#cb185-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">76</span>,<span class="dv">502</span>) <span class="co"># the inital value</span></span>
+<span id="cb185-3"><a href="eigenvectors.html#cb185-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">100</span>  <span class="co"># iterate N times</span></span>
+<span id="cb185-4"><a href="eigenvectors.html#cb185-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(A),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>) <span class="co"># initialize an all 0 matrix to store values in</span></span>
+<span id="cb185-5"><a href="eigenvectors.html#cb185-5" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> x0 <span class="co"># the first column is the initial population</span></span>
+<span id="cb185-6"><a href="eigenvectors.html#cb185-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(N<span class="sc">+</span><span class="dv">1</span>)) {  <span class="co"># loopn from 2 to N+1</span></span>
+<span id="cb185-7"><a href="eigenvectors.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  X[,i] <span class="ot">=</span> A <span class="sc">%*%</span> X[,i<span class="dv">-1</span>] <span class="co"># Apply A to column i-1 and put the value in column i</span></span>
+<span id="cb185-8"><a href="eigenvectors.html#cb185-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb185-9"><a href="eigenvectors.html#cb185-9" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">=</span> X[<span class="dv">1</span>,] <span class="sc">+</span> X[<span class="dv">2</span>,] <span class="sc">+</span> X[<span class="dv">3</span>,]</span>
+<span id="cb185-10"><a href="eigenvectors.html#cb185-10" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,N<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb185-11"><a href="eigenvectors.html#cb185-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,X[<span class="dv">1</span>,],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>),<span class="at">ylab=</span><span class="st">&quot;population&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;year&quot;</span>,<span class="at">main=</span><span class="st">&quot;Spotted Owl Population&quot;</span>)</span>
+<span id="cb185-12"><a href="eigenvectors.html#cb185-12" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">1</span>,],<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb185-13"><a href="eigenvectors.html#cb185-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,X[<span class="dv">2</span>,],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb185-14"><a href="eigenvectors.html#cb185-14" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">2</span>,],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb185-15"><a href="eigenvectors.html#cb185-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,X[<span class="dv">3</span>,],<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb185-16"><a href="eigenvectors.html#cb185-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">3</span>,],<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb185-17"><a href="eigenvectors.html#cb185-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb185-18"><a href="eigenvectors.html#cb185-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb185-19"><a href="eigenvectors.html#cb185-19" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">8</span>, <span class="dv">1050</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;juvenile&quot;</span>, <span class="st">&quot;subadults&quot;</span>, <span class="st">&quot;adults&quot;</span>,<span class="st">&quot;total&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;black&#39;</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-82-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>They do seem to be dying out.</p>
+</div>
+<div id="eigenanalysis" class="section level3" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Eigenanalysis</h3>
+<p>Now we check the eigenvectors and eigenvalues to see if they help us understand what is going on.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="eigenvectors.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1]  0.9835927+0.0000000i -0.0217964+0.2059185i -0.0217964-0.2059185i
+## 
+## $vectors
+##               [,1]                  [,2]                  [,3]
+## [1,] 0.31754239+0i  0.6820937+0.0000000i  0.6820937+0.0000000i
+## [2,] 0.05811107+0i -0.0624124-0.5896338i -0.0624124+0.5896338i
+## [3,] 0.94646180+0i -0.0450520+0.4256233i -0.0450520-0.4256233i</code></pre>
+<p>The first eigenvalue is <span class="math inline">\(\lambda_1 = 0.98\)</span>, and the other two are complex. R always lists the eigenvalues from largest to smallest, so in this case the largets eigenvalue is less than one. That means that in that direction, the population is dying off by 2% each year.</p>
+<p>If we extract the corresponding eigenvector, and scale it to sum to 1, we get</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="eigenvectors.html#cb188-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">eigen</span>(A)<span class="sc">$</span>vectors[,<span class="dv">1</span>] <span class="co"># get the first eigenvector</span></span>
+<span id="cb188-2"><a href="eigenvectors.html#cb188-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">Re</span>(v1) <span class="co"># drop the imaginary part</span></span>
+<span id="cb188-3"><a href="eigenvectors.html#cb188-3" aria-hidden="true" tabindex="-1"></a>v1<span class="sc">/</span><span class="fu">sum</span>(v1)  <span class="co"># scale it to sum to 1</span></span></code></pre></div>
+<pre><code>## [1] 0.24017754 0.04395311 0.71586935</code></pre>
+<p>What this is telling us that as the population dies off, it does so in this eigenvector direction with 24.0% of the population being juveniles, 4.4% subadults, and 71.5% adults.</p>
+<p>The owls were going extinct because of the logging in the Pacific Northwest. Suppose that we make the case that by stopping logging we will increase the survival rate from juvenile to subadult from 0.18 to 0.26 (by improving the habititat the juvinile owls have a better chance of surviving the first year). In this case, the eigenvalues and eigenvectors becomes:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="eigenvectors.html#cb190-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.26</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">71</span>),<span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">0</span>,<span class="fl">0.94</span>))</span>
+<span id="cb190-2"><a href="eigenvectors.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1]  1.0008184+0.0000000i -0.0304092+0.2448335i -0.0304092-0.2448335i
+## 
+## $vectors
+##              [,1]                  [,2]                  [,3]
+## [1,] 0.3121152+0i -0.0754384+0.6073766i -0.0754384-0.6073766i
+## [2,] 0.0810836+0i  0.6450012+0.0000000i  0.6450012+0.0000000i
+## [3,] 0.9465778+0i -0.4436732-0.1119384i -0.4436732+0.1119384i</code></pre>
+<p>Notice that the largest eigenvalue now becomes 1. And if we iterate, we see that the population does not die off (it even grows slightly).
+<img src="math236_handbook_files/figure-html/unnamed-chunk-86-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>Finally, we go back to the original system, which is dying out, but start with a totally different age distribution. You can see the non-dominant eigevectors dying out quickly at the beginning and the dominant eigenvector, of eigenvalue 0.98, taking over.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="eigenvectors.html#cb192-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.18</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">71</span>),<span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">0</span>,<span class="fl">0.94</span>)) <span class="co"># the population dynamics matrix</span></span>
+<span id="cb192-2"><a href="eigenvectors.html#cb192-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">600</span>,<span class="dv">8</span>) <span class="co"># the inital value</span></span>
+<span id="cb192-3"><a href="eigenvectors.html#cb192-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">20</span>  <span class="co"># iterate N times</span></span>
+<span id="cb192-4"><a href="eigenvectors.html#cb192-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(A),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>) <span class="co"># initialize an all 0 matrix to store values in</span></span>
+<span id="cb192-5"><a href="eigenvectors.html#cb192-5" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> x0 <span class="co"># the first column is the initial population</span></span>
+<span id="cb192-6"><a href="eigenvectors.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(N<span class="sc">+</span><span class="dv">1</span>)) {  <span class="co"># loopn from 2 to N+1</span></span>
+<span id="cb192-7"><a href="eigenvectors.html#cb192-7" aria-hidden="true" tabindex="-1"></a>  X[,i] <span class="ot">=</span> A <span class="sc">%*%</span> X[,i<span class="dv">-1</span>] <span class="co"># Apply A to column i-1 and put the value in column i</span></span>
+<span id="cb192-8"><a href="eigenvectors.html#cb192-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb192-9"><a href="eigenvectors.html#cb192-9" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">=</span> X[<span class="dv">1</span>,] <span class="sc">+</span> X[<span class="dv">2</span>,] <span class="sc">+</span> X[<span class="dv">3</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="eigenvectors.html#cb193-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,N<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb193-2"><a href="eigenvectors.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,X[<span class="dv">1</span>,],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>),<span class="at">ylab=</span><span class="st">&quot;population&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;year&quot;</span>,<span class="at">main=</span><span class="st">&quot;Spotted Owl Population&quot;</span>)</span>
+<span id="cb193-3"><a href="eigenvectors.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">1</span>,],<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb193-4"><a href="eigenvectors.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,X[<span class="dv">2</span>,],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb193-5"><a href="eigenvectors.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">2</span>,],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb193-6"><a href="eigenvectors.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,X[<span class="dv">3</span>,],<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb193-7"><a href="eigenvectors.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,X[<span class="dv">3</span>,],<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb193-8"><a href="eigenvectors.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
+<span id="cb193-9"><a href="eigenvectors.html#cb193-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>)</span>
+<span id="cb193-10"><a href="eigenvectors.html#cb193-10" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">8</span>, <span class="dv">1050</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;juvenile&quot;</span>, <span class="st">&quot;subadults&quot;</span>, <span class="st">&quot;adults&quot;</span>,<span class="st">&quot;total&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;black&#39;</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-88-1.png" width="75%" style="display: block; margin: auto;" /></p>
 
+</div>
 </div>
 </div>
 
