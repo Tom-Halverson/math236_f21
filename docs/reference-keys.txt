@@ -1,4 +1,4 @@
-tab:unnamed-chunk-9
+tab:unnamed-chunk-27
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -85,6 +85,7 @@ discussion-question-4
 northern-spotted-owl
 the-dynamical-system
 eigenanalysis
+fibonacci-numbers
 exam-1-review
 overview
 vocabulary-and-concepts

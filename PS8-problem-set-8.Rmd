@@ -141,7 +141,7 @@ c. You are seeking funding from the Michigan DNR to support a cleanup effort. As
 
 ## The Famous Halverson Numbers
 
-In class, we considered the matrix $F$ that generates the Fibonacci numbers and used it to find a formula $f_n$ for the $n$th Fibonacci number. Here you are to follow the same process to find a formula $h_n$ for the nearly-as-famous Halverson numbers. 
+We will look at the Fibonacci example on Monday in class. This is very much like it except that the calculations are easier. In that problem we start with a matrix $F$ that generates the Fibonacci numbers and used it to find a closed-formula formula $f_n$ for the $n$th Fibonacci number. Here you are to follow the same process to find a formula $h_n$ for the nearly-as-famous Halverson numbers. 
 
 The Halverson numbers are defined by $h_0 = 0$, $h_1 = 1$, and $h_n = 3 h_{n-2} +  2 h_{n-1}$.  They start out as $0,1,2,7,20,61,182,547,1640,4921,14762$. 
 

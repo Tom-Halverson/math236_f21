@@ -251,6 +251,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="13.4.1" data-path="eigenvectors.html"><a href="eigenvectors.html#the-dynamical-system"><i class="fa fa-check"></i><b>13.4.1</b> The Dynamical System</a></li>
 <li class="chapter" data-level="13.4.2" data-path="eigenvectors.html"><a href="eigenvectors.html#eigenanalysis"><i class="fa fa-check"></i><b>13.4.2</b> Eigenanalysis</a></li>
 </ul></li>
+<li class="chapter" data-level="13.5" data-path="eigenvectors.html"><a href="eigenvectors.html#fibonacci-numbers"><i class="fa fa-check"></i><b>13.5</b> Fibonacci Numbers</a></li>
 </ul></li>
 <li class="part"><span><b>IV Quiz Review</b></span></li>
 <li class="chapter" data-level="14" data-path="exam-1-review.html"><a href="exam-1-review.html"><i class="fa fa-check"></i><b>14</b> Exam 1 Review</a>
@@ -744,7 +745,7 @@ We will write a loop to apply the matrix <span class="math inline">\(A\)</span> 
 <span id="cb188-9"><a href="eigenvectors.html#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
 <span id="cb188-10"><a href="eigenvectors.html#cb188-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>)</span>
 <span id="cb188-11"><a href="eigenvectors.html#cb188-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">8</span>, <span class="dv">1050</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;juvenile&quot;</span>, <span class="st">&quot;subadults&quot;</span>, <span class="st">&quot;adults&quot;</span>,<span class="st">&quot;total&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;black&#39;</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-84-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-102-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>Let’s run the iteration further. This time, we won’t display the table (gets too big), and we will just show the plot of 100 iterations</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="eigenvectors.html#cb189-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.18</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">71</span>),<span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">0</span>,<span class="fl">0.94</span>)) <span class="co"># the population dynamics matrix</span></span>
 <span id="cb189-2"><a href="eigenvectors.html#cb189-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">76</span>,<span class="dv">502</span>) <span class="co"># the inital value</span></span>
@@ -765,7 +766,7 @@ We will write a loop to apply the matrix <span class="math inline">\(A\)</span> 
 <span id="cb189-17"><a href="eigenvectors.html#cb189-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
 <span id="cb189-18"><a href="eigenvectors.html#cb189-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>)</span>
 <span id="cb189-19"><a href="eigenvectors.html#cb189-19" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">8</span>, <span class="dv">1050</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;juvenile&quot;</span>, <span class="st">&quot;subadults&quot;</span>, <span class="st">&quot;adults&quot;</span>,<span class="st">&quot;total&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;black&#39;</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-85-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-103-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>They do seem to be dying out.</p>
 </div>
 <div id="eigenanalysis" class="section level3" number="13.4.2">
@@ -801,7 +802,7 @@ We will write a loop to apply the matrix <span class="math inline">\(A\)</span> 
 ## [2,] 0.0810836+0i  0.6450012+0.0000000i  0.6450012+0.0000000i
 ## [3,] 0.9465778+0i -0.4436732-0.1119384i -0.4436732+0.1119384i</code></pre>
 <p>Notice that the largest eigenvalue now becomes 1. And if we iterate, we see that the population does not die off (it even grows slightly).
-<img src="math236_handbook_files/figure-html/unnamed-chunk-89-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-107-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>Finally, we go back to the original system, which is dying out, but start with a totally different age distribution. You can see the non-dominant eigevectors dying out quickly at the beginning and the dominant eigenvector, of eigenvalue 0.98, taking over.</p>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="eigenvectors.html#cb196-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.18</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">71</span>),<span class="fu">c</span>(<span class="fl">0.33</span>,<span class="dv">0</span>,<span class="fl">0.94</span>)) <span class="co"># the population dynamics matrix</span></span>
 <span id="cb196-2"><a href="eigenvectors.html#cb196-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">600</span>,<span class="dv">8</span>) <span class="co"># the inital value</span></span>
@@ -822,9 +823,130 @@ We will write a loop to apply the matrix <span class="math inline">\(A\)</span> 
 <span id="cb197-8"><a href="eigenvectors.html#cb197-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)</span>
 <span id="cb197-9"><a href="eigenvectors.html#cb197-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(t,tot,<span class="at">col=</span><span class="st">&#39;black&#39;</span>)</span>
 <span id="cb197-10"><a href="eigenvectors.html#cb197-10" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">8</span>, <span class="dv">1050</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;juvenile&quot;</span>, <span class="st">&quot;subadults&quot;</span>, <span class="st">&quot;adults&quot;</span>,<span class="st">&quot;total&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;black&#39;</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-91-1.png" width="75%" style="display: block; margin: auto;" /></p>
-
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-109-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
+</div>
+<div id="fibonacci-numbers" class="section level2" number="13.5">
+<h2><span class="header-section-number">13.5</span> Fibonacci Numbers</h2>
+<p>In this example, we show how we can use eigenvectors and eigenvalues to find closed formulas for the Fibonacci numbers. The Fibonacci numbers are defined recursively by <span class="math inline">\(f_0 = 0\)</span>, <span class="math inline">\(f_1 = 1\)</span> and <span class="math inline">\(f_{n+1} = f_n + f_{n-1}\)</span> for <span class="math inline">\(n &gt; 1\)</span>. Using this definition, we get the numbers
+<span class="math display">\[
+\begin{array}{c|ccccccccccccc}
+n &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 &amp; 11 &amp; \cdots \\ \hline
+f_n &amp; 0 &amp; 1 &amp; 1 &amp; 2 &amp; 3 &amp; 5 &amp; 8 &amp; 13 &amp; 21 &amp; 34 &amp; 55 &amp; 89 &amp; \cdots
+\end{array}
+\]</span>
+To bring some linear algebra into the picture, consider the matrix
+<span class="math display">\[
+F = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 1 \end{bmatrix},
+\]</span>
+and observe that it takes us from one pair of Fibonacci numbers to the next since it encodes the rule <span class="math inline">\(f_{n+1} = f_n + f_{n-1}\)</span>:
+<span class="math display">\[
+\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 1 \end{bmatrix} 
+\begin{bmatrix} f_{n-1} \\ f_{n} \end{bmatrix} = 
+\begin{bmatrix} f_n \\ f_{n-1} + f_n \end{bmatrix} = 
+\begin{bmatrix} f_n \\ f_{n+1} \end{bmatrix}
+\]</span>
+Thus, the matrix <span class="math inline">\(F\)</span> generates the next Fibonacci numbers. If we start with <span class="math inline">\(\begin{bmatrix} 0 \\ 1 \end{bmatrix}\)</span> and apply <span class="math inline">\(F\)</span> over and over again, it will generate the Fibonacci numbers. You can see that here in R:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="eigenvectors.html#cb198-1" aria-hidden="true" tabindex="-1"></a>F <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># the population dynamics matrix</span></span>
+<span id="cb198-2"><a href="eigenvectors.html#cb198-2" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># the inital value</span></span>
+<span id="cb198-3"><a href="eigenvectors.html#cb198-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">11</span>  <span class="co"># iterate N times</span></span>
+<span id="cb198-4"><a href="eigenvectors.html#cb198-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(F),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>) <span class="co"># initialize an all 0 matrix to store values in</span></span>
+<span id="cb198-5"><a href="eigenvectors.html#cb198-5" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> x0 <span class="co"># the first column is x_1</span></span>
+<span id="cb198-6"><a href="eigenvectors.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(N<span class="sc">+</span><span class="dv">1</span>)) {  <span class="co"># loopn from 2 to N+1</span></span>
+<span id="cb198-7"><a href="eigenvectors.html#cb198-7" aria-hidden="true" tabindex="-1"></a>  X[,i] <span class="ot">=</span> F <span class="sc">%*%</span> X[,i<span class="dv">-1</span>] <span class="co"># Apply A to column i-1 and put the value in column i</span></span>
+<span id="cb198-8"><a href="eigenvectors.html#cb198-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb198-9"><a href="eigenvectors.html#cb198-9" aria-hidden="true" tabindex="-1"></a>X </span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+## [1,]    0    1    1    2    3    5    8   13   21    34    55    89
+## [2,]    1    1    2    3    5    8   13   21   34    55    89   144</code></pre>
+<p>We can use the eigenvectors and eigenvalues to find a closed formula for these numbers, just as we did for the owls and rats problem (and others).</p>
+<p><strong>Step 1</strong> Find the eigenvalues of <span class="math inline">\(F\)</span>.</p>
+<p><span class="math display">\[
+\det\begin{bmatrix} - \lambda &amp; 1 \\ 1 &amp; 1 - \lambda \end{bmatrix}
+= (-\lambda)(1 - \lambda) - 1= \lambda^2 - \lambda - 1.
+\]</span>
+Then we use the quadratic formula to find its roots:
+<span class="math display">\[
+\lambda = \frac{1 \pm \sqrt{1 + 4}}{2} = \frac{1 \pm \sqrt{5}}{2}.
+\]</span>
+If we let
+<span class="math display">\[
+\phi = \frac{1 + \sqrt{5}}{2} \quad\hbox{and}\quad \overline{\phi} = \frac{1 - \sqrt{5}}{2},
+\]</span>
+then <span class="math inline">\(\phi\)</span> is the <a href="https://en.wikipedia.org/wiki/Golden_ratio">golden ratio</a> and <span class="math inline">\(\overline{\phi}\)</span> is its conjugate.</p>
+<p><strong>Step 2</strong> Find the eigenvectors. Because the eigenvalues are a bit complicated this becomes a little tricky. First we will notice some things about the golden ratio that help us out:
+<span class="math display">\[
+\phi + \overline{\phi} =  \frac{1 + \sqrt{5}}{2} + \frac{1 - \sqrt{5}}{2}  = 1, \qquad\hbox{so} \quad 1 - \phi = \overline{\phi}.
+\]</span>
+<span class="math display">\[
+\phi - \overline{\phi} =  \frac{1 + \sqrt{5}}{2} - \frac{1 - \sqrt{5}}{2}  = \sqrt{5}, \qquad\hbox{so} \quad 1 - \phi = \overline{\phi}.
+\]</span>
+<span class="math display">\[
+\phi \overline{\phi} =  \frac{1 + \sqrt{5}}{2}  \frac{1 - \sqrt{5}}{2} = \frac{1 - 5}{4} = -1.
+\]</span>
+<span class="math display">\[
+\phi^2 - \phi - 1 = 0 \qquad\hbox{and}\qquad \overline{\phi}^2 - \overline{\phi} - 1 = 0
+\]</span>
+This last one comes from the fact that both <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\overline{phi}\)</span> are zeros of <span class="math inline">\(\lambda^2 - \lambda -1 = 0\)</span>.</p>
+<p>Now we find the eigenvectors and use some of these properties to help us do the algebra:
+<span class="math display">\[
+\begin{bmatrix} - \phi &amp; 1 \\ 1 &amp; 1 - \phi \end{bmatrix} \rightarrow
+\begin{bmatrix}  1 &amp; 1 - \phi \\ - \phi &amp; 1  \end{bmatrix} \rightarrow
+\begin{bmatrix}  1 &amp; 1 - \phi \\ 0 &amp; \phi - \phi^2 + 1  \end{bmatrix}
+=
+\begin{bmatrix}  1 &amp; \overline{\phi} \\ 0 &amp; 0  \end{bmatrix}
+\quad\Rightarrow\quad v_1 = \begin{bmatrix} -\overline{\phi} \\ 1 \end{bmatrix}.
+\]</span>
+<span class="math display">\[
+\begin{bmatrix} - \overline{\phi} &amp; 1 \\ 1 &amp; 1 - \overline{\phi} \end{bmatrix} \rightarrow
+\begin{bmatrix}  1 &amp; 1 - \overline{\phi} \\ - \overline{\phi} &amp; 1  \end{bmatrix} \rightarrow
+\begin{bmatrix}  1 &amp; 1 - \overline{\phi} \\ 0 &amp; \overline{\phi} - \overline{\phi}^2 + 1  \end{bmatrix}
+=
+\begin{bmatrix}  1 &amp; \phi \\ 0 &amp; 0  \end{bmatrix}
+\quad\Rightarrow\quad v_2 = \begin{bmatrix} -\phi \\ 1 \end{bmatrix}.
+\]</span>
+If we rescale <span class="math inline">\(v_1\)</span> by <span class="math inline">\(\phi\)</span> and <span class="math inline">\(v_2\)</span> by <span class="math inline">\(\overline{\phi}\)</span> then we get some even nicer vectors:
+<span class="math display">\[
+w_1 = \phi \begin{bmatrix} -\overline{\phi} \\ 1 \end{bmatrix}=
+\begin{bmatrix} -\phi\overline{\phi} \\ \phi \end{bmatrix}=
+\begin{bmatrix} 1 \\ \phi \end{bmatrix},
+\qquad
+w_2 = \overline{\phi} \begin{bmatrix} -\phi \\ 1 \end{bmatrix}
+= \begin{bmatrix} -\overline{\phi} \phi \\ \overline{\phi}  \end{bmatrix}
+= \begin{bmatrix} 1 \\ \overline{\phi}  \end{bmatrix}
+\]</span></p>
+<p><strong>Step 3</strong> Express the initial vector in terms of the eigenvectors. You can augment and row reduce or use the inverse to find the coefficients. This uses the fact (from above) that <span class="math inline">\(\phi - \overline{\phi} = \sqrt{15}.\)</span>
+<span class="math display">\[
+\begin{bmatrix} 0 \\ 1  \end{bmatrix} = \frac{1}{\sqrt{5}}
+\begin{bmatrix} 1 \\ \phi  \end{bmatrix} -\frac{1}{\sqrt{5}} \begin{bmatrix} 1 \\ \overline{\phi}  \end{bmatrix}
+\]</span>
+<strong>Step 4</strong> Apply <span class="math inline">\(F^n\)</span>,
+<span class="math display">\[
+\begin{bmatrix} f_{n} \\ f_{n+1} \end{bmatrix} = F^n \begin{bmatrix} 0 \\ 1 \end{bmatrix} 
+= F^n \left(\frac{1}{\sqrt{5}}
+\begin{bmatrix} 1 \\ \phi  \end{bmatrix} -\frac{1}{\sqrt{5}} \begin{bmatrix} 1 \\ \overline{\phi}  \end{bmatrix}\right) 
+ = \frac{1}{\sqrt{5}}
+F^n \begin{bmatrix} 1 \\ \phi  \end{bmatrix} -\frac{1}{\sqrt{5}} F^n \begin{bmatrix} 1 \\ \overline{\phi}  \end{bmatrix} \\
+ = \frac{1}{\sqrt{5}}
+\phi^n \begin{bmatrix} 1 \\ \phi  \end{bmatrix} -\frac{1}{\sqrt{5}} \overline{\phi}^n  \begin{bmatrix} 1 \\ \overline{\phi}  \end{bmatrix} 
+\]</span></p>
+<p><strong>Step 5</strong> Extract a formula for <span class="math inline">\(f_n\)</span> from the first coordinate
+<span class="math display">\[
+f_n = \frac{1}{\sqrt{5}} \phi^n - \frac{1}{\sqrt{5}} \overline{\phi}^n.
+\]</span>
+This is the <em>very famous</em> <a href="https://en.wikipedia.org/wiki/Fibonacci_number#Binet&#39;s_formula">Binet’s Formula</a>. The cool thing is that it comes from eigenvalues and eigenvectors. It’s all linear algebra!</p>
+<p><strong>Step 5</strong> Try it. Let’s see if it works. Here is the golden ratio and its conjugate:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="eigenvectors.html#cb200-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">sqrt</span>(<span class="dv">5</span>))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb200-2"><a href="eigenvectors.html#cb200-2" aria-hidden="true" tabindex="-1"></a>gb <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb200-3"><a href="eigenvectors.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(g,gb)</span></code></pre></div>
+<pre><code>## [1]  1.618034 -0.618034</code></pre>
+<p>Here is the 10th Fibonacci number using the formula:</p>
+<pre><code>## [1] 55</code></pre>
+<p>And is the 58th Fibonacci number</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="eigenvectors.html#cb203-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">58</span></span>
+<span id="cb203-2"><a href="eigenvectors.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)<span class="sc">*</span>g<span class="sc">^</span>n <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)<span class="sc">*</span>gb<span class="sc">^</span>n</span></code></pre></div>
+<pre><code>## [1] 591286729879</code></pre>
+
 </div>
 </div>
 
