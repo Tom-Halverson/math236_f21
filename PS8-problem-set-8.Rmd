@@ -100,14 +100,6 @@ ya(t) \\
 a_1(t) \\
 a_2(t)
 \end{bmatrix}
-=
-\begin{bmatrix}
-37 ya(t) + 64 a_1(t) + 82 a_2(t) \\
-0.06 f(t) \\
-0.28y(t) \\
-0.16 ya(t) \\
-0.08 a_1(t)
-\end{bmatrix}
 $$
 
 ```{r,echo=TRUE}
@@ -133,7 +125,7 @@ for (i in 1:5) {
 legend(22, 7600, legend=c("Fingerlings (0-1)", "Yearlings  (1-2)", "Young Adults (2-3)","Adults (3-4)","Adults (4-5)"), col=1:5, lty=1)
 ```
 
-a. Give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.
+a. By hand, multiply the matrix vector product $L x(t)$ above and use it to give  formulas for $f(t+1), y(t+1), ya(t+1), a_1(t+1), a_2(t+1)$ in terms of $f(t), y(t), ya(t), a_1(t), a_2(t)$. Use these formulas to give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.
 
 b. Compute the eigenvectors and eigenvalues of $L$ and relate what you find to population dynamics. In particular, use the eigen-information to
 
