@@ -1,4 +1,4 @@
-tab:unnamed-chunk-27
+tab:unnamed-chunk-13
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -44,6 +44,11 @@ diagonalization
 same-eigenvectors
 rain-and-sunshine-revisited
 the-square-root-of-a-matrix
+problem-set-8
+matrix-reconstruction
+coyotes-and-roadrunners
+hunt-creek
+halverson-numbers
 important-definitions
 systems-of-equations
 linear-transformations

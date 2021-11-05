@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 12 Linear Dependence | MATH 236: Linear Algebra</title>
+  <title>Section 8 Problem Set 8 | MATH 236: Linear Algebra</title>
   <meta name="description" content="This is the class activity manual for MATH 236 at Macalester College." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 12 Linear Dependence | MATH 236: Linear Algebra" />
+  <meta property="og:title" content="Section 8 Problem Set 8 | MATH 236: Linear Algebra" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Tom-Halverson/math236_f21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 12 Linear Dependence | MATH 236: Linear Algebra" />
+  <meta name="twitter:title" content="Section 8 Problem Set 8 | MATH 236: Linear Algebra" />
   
   <meta name="twitter:description" content="This is the class activity manual for MATH 236 at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="linear-systems-in-r.html"/>
-<link rel="next" href="matrix-multiplication.html"/>
+<link rel="prev" href="problem-set-7.html"/>
+<link rel="next" href="important-definitions.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -363,237 +363,165 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="linear-dependence" class="section level1" number="12">
-<h1><span class="header-section-number">Section 12</span> Linear Dependence</h1>
-<p>In this activity, we will explore linear dependence and independence in the context of solving nonhomogeneous <span class="math inline">\(A x = b\)</span> and homogeneous equations <span class="math inline">\(A x = 0\)</span>. <a href="https://github.com/Tom-Halverson/math236_s21/blob/main/02-linear-dependence.Rmd">Download this Rmd file.</a></p>
-<p>Remember that we will use the <code>pracma</code> package to get the <code>rref</code> function, so we first load it in:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="linear-dependence.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">&quot;pracma&quot;</span>)</span></code></pre></div>
-<div id="example-1-a-7x9-integer-matrix" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Example 1: a 7x9 integer matrix</h2>
-<p>Here is a 7 x 9 coeefficient matrix that we will use. These commands define it and echo it back.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="linear-dependence.html#cb65-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(</span>
-<span id="cb65-2"><a href="linear-dependence.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">1</span>), </span>
-<span id="cb65-3"><a href="linear-dependence.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">5</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>), </span>
-<span id="cb65-4"><a href="linear-dependence.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>,  <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">5</span>), </span>
-<span id="cb65-5"><a href="linear-dependence.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>), </span>
-<span id="cb65-6"><a href="linear-dependence.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">17</span>, <span class="sc">-</span><span class="dv">29</span>,  <span class="dv">8</span>), </span>
-<span id="cb65-7"><a href="linear-dependence.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">3</span>), </span>
-<span id="cb65-8"><a href="linear-dependence.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
-<span id="cb65-9"><a href="linear-dependence.html#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb65-10"><a href="linear-dependence.html#cb65-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">37</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="sc">-</span><span class="dv">27</span>, <span class="sc">-</span><span class="dv">29</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">24</span>))</span>
-<span id="cb65-11"><a href="linear-dependence.html#cb65-11" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-## [1,]    3    5    3    4    0   -4    5    0   37
-## [2,]    0   -5    5   -1   17   -1    3    5  -10
-## [3,]    0    0   -1   -2    3   -5   -4   -3  -27
-## [4,]    1    3    1    0    0   -2   -5   -2  -29
-## [5,]   -2    3   -3   -1  -17   -1   -2   -1    4
-## [6,]   -4    1   -3    2  -29   -4   -3   -5    7
-## [7,]    1    4    5   -3    8    3   -1    0  -24</code></pre>
-<p>And here is a vector b that we hope to use in solving A x = b.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="linear-dependence.html#cb67-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">382</span>, <span class="dv">51</span>, <span class="sc">-</span><span class="dv">321</span>, <span class="sc">-</span><span class="dv">314</span>, <span class="sc">-</span><span class="dv">86</span>, <span class="sc">-</span><span class="dv">170</span>, <span class="sc">-</span><span class="dv">153</span>)</span>
-<span id="cb67-2"><a href="linear-dependence.html#cb67-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
-<pre><code>## [1]  382   51 -321 -314  -86 -170 -153</code></pre>
-<p>You can augment A with b, and call it Ab, using <code>cbind</code>:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="linear-dependence.html#cb69-1" aria-hidden="true" tabindex="-1"></a>Ab <span class="ot">=</span> <span class="fu">cbind</span>(A,b)</span>
-<span id="cb69-2"><a href="linear-dependence.html#cb69-2" aria-hidden="true" tabindex="-1"></a>Ab</span></code></pre></div>
-<pre><code>##                                      b
-## [1,]  3  5  3  4   0 -4  5  0  37  382
-## [2,]  0 -5  5 -1  17 -1  3  5 -10   51
-## [3,]  0  0 -1 -2   3 -5 -4 -3 -27 -321
-## [4,]  1  3  1  0   0 -2 -5 -2 -29 -314
-## [5,] -2  3 -3 -1 -17 -1 -2 -1   4  -86
-## [6,] -4  1 -3  2 -29 -4 -3 -5   7 -170
-## [7,]  1  4  5 -3   8  3 -1  0 -24 -153</code></pre>
-<p>And row reduce using <code>rref</code></p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="linear-dependence.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Ab)</span></code></pre></div>
-<pre><code>##                            b
-## [1,] 1 0 0 0  5 0 0 0 -2   8
-## [2,] 0 1 0 0 -2 0 0 0  2  10
-## [3,] 0 0 1 0  1 0 0 0 -3 -19
-## [4,] 0 0 0 1 -2 0 0 0  3  21
-## [5,] 0 0 0 0  0 1 0 0  0   6
-## [6,] 0 0 0 0  0 0 1 0  6  61
-## [7,] 0 0 0 0  0 0 0 1  0   8</code></pre>
-<div id="solution-to-the-nonhomogeneous-equations-ax-b" class="section level3" number="12.1.1">
-<h3><span class="header-section-number">12.1.1</span> Solution to the nonhomogeneous equations Ax = b</h3>
-<p>Write out the solution to Ax=b in <em>parametric</em> form using the following formatting. You just need to fill in the correct values of the vectors:
+<div id="problem-set-8" class="section level1" number="8">
+<h1><span class="header-section-number">Section 8</span> Problem Set 8</h1>
+<ul>
+<li>You can download the <a href="https://github.com/Tom-Halverson/math236_f21/blob/main/PS8-problem-set-8.Rmd">Rmd source file for this problem set</a>.</li>
+</ul>
+<div id="matrix-reconstruction" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Matrix Reconstruction</h2>
+<p>An unknown <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(M\)</span> has eigenvectors and corresponding eigenvalues:
 <span class="math display">\[
-\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6 \\ x_7 \\ x_8 \\ x_9 \end{bmatrix}
-=
-\begin{bmatrix} 8 \\ 10 \\ -19 \\ 21 \\ 0 \\ 6 \\ 61 \\ 8 \\ 0 \end{bmatrix}
-+ s
-\begin{bmatrix} 
--5 \\ 2 \\ -1 \\ 2 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 
-\end{bmatrix}
-+ t
-\begin{bmatrix} 
-2 \\ -2 \\ 3 \\ -3 \\ 0 \\ 0 \\ -6 \\ 0 \\ 1 
-\end{bmatrix}
+\mathsf{v}_1 = \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}, \  \lambda_1 = 1;
+\qquad
+\mathsf{v}_2 = \begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix},\  \lambda_2 = \frac{9}{10};
+\qquad
+\mathsf{v}_3 = \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix},\  \lambda_3 = 0.
 \]</span></p>
-<p>Describe this solution space (by fixing up this sentence, which is incorrect right now):</p>
-<p>the set of solutions to A x= b is a <em>plane</em> in <span class="math inline">\(\mathbb{R}^9\)</span>.</p>
-</div>
-<div id="solution-to-the-nonhomogeneous-equations-ax-0" class="section level3" number="12.1.2">
-<h3><span class="header-section-number">12.1.2</span> Solution to the nonhomogeneous equations Ax = 0</h3>
-<p>Now, describe the set of solutions to the homogeneous equations A x = 0. Again, you can just edit this:
-<span class="math display">\[
-\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6 \\ x_7 \\ x_8 \\ x_9 \end{bmatrix}
-=
-\begin{bmatrix} p1 \\ p2 \\ p3 \\ p4 \\ p5 \\ p6 \\ p7 \\ p8 \\ p9 \end{bmatrix}
-+ s
-\begin{bmatrix} 
-u1 \\ u2 \\ u3 \\ u4 \\ u5 \\ u6 \\ u7 \\ u8 \\ u9 
-\end{bmatrix}
-+ t
-\begin{bmatrix} 
-v1 \\ v2 \\ v3 \\ v4 \\ v5 \\ v6 \\ v7 \\ v8 \\ v9 
-\end{bmatrix}
-\]</span></p>
-<p>And describe, in words, the geometric relationship between the solutions to Ax=b and Ax=0.</p>
-<p>your answer here</p>
-</div>
-<div id="linearly-dependent-columns" class="section level3" number="12.1.3">
-<h3><span class="header-section-number">12.1.3</span> Linearly dependent columns</h3>
-<p>The columns of the matrix A are <em>linearly dependent.</em> You can see that in rref(A).</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="linear-dependence.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-## [1,]    1    0    0    0    5    0    0    0   -2
-## [2,]    0    1    0    0   -2    0    0    0    2
-## [3,]    0    0    1    0    1    0    0    0   -3
-## [4,]    0    0    0    1   -2    0    0    0    3
-## [5,]    0    0    0    0    0    1    0    0    0
-## [6,]    0    0    0    0    0    0    1    0    6
-## [7,]    0    0    0    0    0    0    0    1    0</code></pre>
-<p>Discuss in your group how you see it. Then write out a dependence relation among the columns by filling in numbers for the weights in this equation</p>
-<p><span class="math display">\[
-0 = 
-c_1 \vec{a}_1 + 
-c_2 \vec{a}_2 +
-c_3 \vec{a}_3 +
-c_4 \vec{a}_4 +
-c_5 \vec{a}_5 +
-c_6 \vec{a}_6 +
-c_7 \vec{a}_7 +
-c_8 \vec{a}_8 +
-c_9 \vec{a}_9.
-\]</span>
-<strong>Challenge</strong>: give a dependency relation that none of the other groups in the class have.</p>
-<p>This is telling us that there is some redundancy in the matrix A. Remove columns from A to get a new matrix M whose columns are <em>linearly independent.</em> You can do this by removing the appropriate columns from the code below:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="linear-dependence.html#cb75-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">=</span> <span class="fu">cbind</span>(    <span class="co"># you need to edit this matrix</span></span>
-<span id="cb75-2"><a href="linear-dependence.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">1</span>), </span>
-<span id="cb75-3"><a href="linear-dependence.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">5</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>), </span>
-<span id="cb75-4"><a href="linear-dependence.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>,  <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">5</span>), </span>
-<span id="cb75-5"><a href="linear-dependence.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>), </span>
-<span id="cb75-6"><a href="linear-dependence.html#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">17</span>, <span class="sc">-</span><span class="dv">29</span>,  <span class="dv">8</span>), </span>
-<span id="cb75-7"><a href="linear-dependence.html#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">3</span>), </span>
-<span id="cb75-8"><a href="linear-dependence.html#cb75-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
-<span id="cb75-9"><a href="linear-dependence.html#cb75-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">0</span>), </span>
-<span id="cb75-10"><a href="linear-dependence.html#cb75-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">37</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="sc">-</span><span class="dv">27</span>, <span class="sc">-</span><span class="dv">29</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">24</span>)</span>
-<span id="cb75-11"><a href="linear-dependence.html#cb75-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb75-12"><a href="linear-dependence.html#cb75-12" aria-hidden="true" tabindex="-1"></a>M</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-## [1,]    3    5    3    4    0   -4    5    0   37
-## [2,]    0   -5    5   -1   17   -1    3    5  -10
-## [3,]    0    0   -1   -2    3   -5   -4   -3  -27
-## [4,]    1    3    1    0    0   -2   -5   -2  -29
-## [5,]   -2    3   -3   -1  -17   -1   -2   -1    4
-## [6,]   -4    1   -3    2  -29   -4   -3   -5    7
-## [7,]    1    4    5   -3    8    3   -1    0  -24</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="linear-dependence.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(M)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-## [1,]    1    0    0    0    5    0    0    0   -2
-## [2,]    0    1    0    0   -2    0    0    0    2
-## [3,]    0    0    1    0    1    0    0    0   -3
-## [4,]    0    0    0    1   -2    0    0    0    3
-## [5,]    0    0    0    0    0    1    0    0    0
-## [6,]    0    0    0    0    0    0    1    0    6
-## [7,]    0    0    0    0    0    0    0    1    0</code></pre>
-<p>Your matrix should now be square (7x7) with linearly independent columns. R has a build in solve command, <code>solve</code>, that works for matrices of this form (i.e., square with linearly independent columns). You can try it here. First you need to un-comment-out the solve command. I have it commented out right now, because it does not work with the matrix M (above) until you remove its redundancies.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="linear-dependence.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solve(M,b)</span></span></code></pre></div>
-<p>Now, you should get a <em>unique</em> solution to the equation M x = b, since M has no free variables, and it should be one of the solutions to the original question A x = b. Which solution is it? That is, which of the many solutions to A x = b are you getting here (forw which values of the paramters?).</p>
-<p>Compare this with trying to use solve on the original equation A x = b with linearly dependent columns. The solve command in the next bit of code is commented out. Delete the comment command and try executing it.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="linear-dependence.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solve(A,b)</span></span></code></pre></div>
-</div>
-</div>
-<div id="a-5-x-6-numerical-matrix" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> A 5 x 6 Numerical Matrix</h2>
-<p>So far, all of the matrices we’ve worked with in this class have integer values. This is only so that the calulations are nice to do by hand. All of our theory works over the real numbers. Here we will look at a real matrix with numerical values, something you might find when dealing with real-world data.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="linear-dependence.html#cb81-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">cbind</span>(</span>
-<span id="cb81-2"><a href="linear-dependence.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.717</span>, <span class="sc">-</span><span class="fl">0.274</span>, <span class="fl">0.365</span>, <span class="fl">0.482</span>, <span class="sc">-</span><span class="fl">0.362</span>), </span>
-<span id="cb81-3"><a href="linear-dependence.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.587</span>, <span class="sc">-</span><span class="fl">0.545</span>, <span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.407</span>, <span class="sc">-</span><span class="fl">0.597</span>), </span>
-<span id="cb81-4"><a href="linear-dependence.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.441</span>, <span class="fl">0.886</span>, <span class="fl">0.784</span>, <span class="sc">-</span><span class="fl">0.831</span>, <span class="sc">-</span><span class="fl">0.594</span>), </span>
-<span id="cb81-5"><a href="linear-dependence.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.923</span>, <span class="sc">-</span><span class="fl">0.466</span>, <span class="fl">0.222</span>, <span class="fl">0.867</span>, <span class="fl">0.493</span>), </span>
-<span id="cb81-6"><a href="linear-dependence.html#cb81-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.42</span>, <span class="sc">-</span><span class="fl">0.745</span>, <span class="sc">-</span><span class="fl">0.02</span>, <span class="sc">-</span><span class="fl">0.44</span>, <span class="fl">0.209</span>), </span>
-<span id="cb81-7"><a href="linear-dependence.html#cb81-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.621</span>, <span class="fl">0.049</span>, <span class="sc">-</span><span class="fl">0.134</span>, <span class="sc">-</span><span class="fl">0.844</span>, <span class="sc">-</span><span class="fl">0.31</span>)</span>
-<span id="cb81-8"><a href="linear-dependence.html#cb81-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb81-9"><a href="linear-dependence.html#cb81-9" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
-<pre><code>##        [,1]   [,2]   [,3]   [,4]   [,5]   [,6]
-## [1,]  0.717  0.587 -0.441  0.923 -0.420  0.621
-## [2,] -0.274 -0.545  0.886 -0.466 -0.745  0.049
-## [3,]  0.365  0.500  0.784  0.222 -0.020 -0.134
-## [4,]  0.482 -0.407 -0.831  0.867 -0.440 -0.844
-## [5,] -0.362 -0.597 -0.594  0.493  0.209 -0.310</code></pre>
-<p>and here is a vector d in <span class="math inline">\(\mathbb{R}^5\)</span>.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="linear-dependence.html#cb83-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">5.886</span>, <span class="sc">-</span><span class="fl">4.001</span>, <span class="fl">3.701</span>, <span class="sc">-</span><span class="fl">6.621</span>, <span class="sc">-</span><span class="fl">2.199</span>)</span>
-<span id="cb83-2"><a href="linear-dependence.html#cb83-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
-<pre><code>## [1]  5.886 -4.001  3.701 -6.621 -2.199</code></pre>
-<p>Try answering some of these questions:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Are the columns of B linearly independent?</li>
-<li>Do the columns of B span <span class="math inline">\(\mathbb{R}^5\)</span>?</li>
-<li>Give the parametric solution to B x = d.</li>
-<li>What is the geometric form of this solution (e.g., a plane in <span class="math inline">\(\mathbb{R}^4\)</span>)?</li>
-<li>Remove redundancies from the columns of B to get a new matrix B2 and use solve to solve the equation B2 x = d. Which of the parametric solutions to you get.</li>
+<li><p>Without using the matrix <span class="math inline">\(M\)</span>, compute <span class="math inline">\(M^{10} \mathsf{v}\)</span> where <span class="math inline">\(\mathsf{v} = \begin{bmatrix}7\\3\\4\end{bmatrix}\)</span>. (That is, use only the eigen-information.)</p></li>
+<li><p>Describe all vectors <span class="math inline">\(\mathsf{v}\)</span>, if there are any, such that <span class="math inline">\(M^{n} \mathsf{v} \to {\bf 0}\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p></li>
+<li><p>Reconstruct <span class="math inline">\(M\)</span> from the information given.</p></li>
 </ol>
 </div>
-<div id="random-matrices" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Random Matrices</h2>
-<p>The following code generates a random 5 x 5 matrix. Every time you enter it, it will give you a new matrix. Use this to try to figure out how likely it is that a random square matrix has linearly dependent columns.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="linear-dependence.html#cb85-1" aria-hidden="true" tabindex="-1"></a>R1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb85-2"><a href="linear-dependence.html#cb85-2" aria-hidden="true" tabindex="-1"></a>R1</span></code></pre></div>
-<pre><code>##            [,1]      [,2]      [,3]      [,4]       [,5]
-## [1,] 0.57622820 0.3007014 0.7519662 0.4668350 0.26737419
-## [2,] 0.26179162 0.8652306 0.7467166 0.4775338 0.68944152
-## [3,] 0.11021287 0.4964102 0.9661193 0.3138925 0.51677246
-## [4,] 0.01771859 0.4128825 0.4512110 0.5491683 0.08379154
-## [5,] 0.72754832 0.2183805 0.9017415 0.1568253 0.49775296</code></pre>
-<p>Try the same using the following code that generates a random 5 x 6 matrix.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="linear-dependence.html#cb87-1" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">6</span>)</span>
-<span id="cb87-2"><a href="linear-dependence.html#cb87-2" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
-<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
-## [1,] 0.1538575 0.5510617 0.8352021 0.2369499 0.8034947 0.1934758
-## [2,] 0.8199509 0.9378273 0.6525240 0.2622267 0.9326018 0.6964373
-## [3,] 0.1895926 0.6910637 0.6973521 0.1250217 0.4911813 0.3563246
-## [4,] 0.3890256 0.7149724 0.2975151 0.5237045 0.1573887 0.7845618
-## [5,] 0.3356119 0.6630994 0.5598121 0.4494663 0.9296028 0.4837634</code></pre>
-<p>Try the same using the following code that generates a random 5 x 4 matrix.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="linear-dependence.html#cb89-1" aria-hidden="true" tabindex="-1"></a>R3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb89-2"><a href="linear-dependence.html#cb89-2" aria-hidden="true" tabindex="-1"></a>R3</span></code></pre></div>
-<pre><code>##           [,1]      [,2]      [,3]       [,4]
-## [1,] 0.4905558 0.2975858 0.1716065 0.11960947
-## [2,] 0.1275765 0.7784524 0.3728357 0.28547806
-## [3,] 0.1485699 0.6379892 0.3626176 0.40275997
-## [4,] 0.5546122 0.4950362 0.2383977 0.46006637
-## [5,] 0.7718390 0.9239648 0.9868841 0.02167495</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="linear-dependence.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(R3)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    0    0    0
-## [2,]    0    1    0    0
-## [3,]    0    0    1    0
-## [4,]    0    0    0    1
-## [5,]    0    0    0    0</code></pre>
-<p>In each of these cases, how likely is it that the columns of the matrix spans all of <span class="math inline">\(\mathbb{R}^4\)</span>?</p>
+<div id="coyotes-and-roadrunners" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Coyotes and Roadrunners</h2>
+<p>This summer, Macalester’s Ordway Natural History Study Area will be stocked with a population of coyotes and roadrunners so that Math 236 students can study real-life predator-prey dynamics. From similar experiments, we expect the predator-prey dynamics to be governed by linear model below. The eigenvalues of the matrix are also given.
+<span class="math display">\[
+\begin{bmatrix} \phantom{\Big\vert} r_{t+1}\phantom{\Big\vert}  \\ \phantom{\Big\vert} c_{t+1}\phantom{\Big\vert}  \phantom{\Big\vert} \end{bmatrix}
+=\left[
+\begin{array}{cc}
+\phantom{\Big\vert} \frac{57}{50} &amp; -\frac{6}{50} \\
+\phantom{\Big\vert} \frac{4}{50} &amp; \frac{43}{50} \\
+\end{array}
+\right] \begin{bmatrix} \phantom{\Big\vert} r_t \phantom{\Big\vert}  \\ \phantom{\Big\vert} c_t \phantom{\Big\vert} \end{bmatrix}
+=
+ \begin{bmatrix} \phantom{\Big\vert} 
+\frac{57}{50} r_t -  \frac{6}{50}  c_t \\ \phantom{\Big\vert} \frac{4}{50} r_t +  \frac{43}{50} c_t \end{bmatrix},
+\]</span>
+The eigenvalues and eigenvectors of this matrix are:
+<span class="math display">\[
+\begin{array}{lcl}
+\lambda_1 =  \frac{11}{10} =  1.1, &amp; \qquad &amp; \lambda_2 =  \frac{9}{10} = 0.9 \\
+\mathsf{v}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix} &amp;&amp;
+\mathsf{v}_2 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}
+\end{array}
+\]</span></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="problem-set-8.html#cb24-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">57</span><span class="sc">/</span><span class="dv">50</span>,<span class="dv">4</span><span class="sc">/</span><span class="dv">50</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span><span class="sc">/</span><span class="dv">50</span>,<span class="dv">43</span><span class="sc">/</span><span class="dv">50</span>))</span>
+<span id="cb24-2"><a href="problem-set-8.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.1 0.9
+## 
+## $vectors
+##           [,1]      [,2]
+## [1,] 0.9486833 0.4472136
+## [2,] 0.3162278 0.8944272</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>If <span class="math inline">\(r_0 = 10\)</span> roadrunners and <span class="math inline">\(c_0 = 15\)</span> coyotes are introduced to the area, then give <strong>closed formulas</strong> for the population of coyotes <span class="math inline">\(c_t\)</span> and roadrunners <span class="math inline">\(r_t\)</span> after <span class="math inline">\(t\)</span> years.</p></li>
+<li><p>In the long-term, in this model, what is the ratio of roadrunners to coyotes?</p></li>
+<li><p>When another college tried the same experiment in their Arboretum, they introduced <span class="math inline">\(r_0 = 5\)</span> roadrunners and <span class="math inline">\(c_0 = 10\)</span> coyotes and both populations died off (as is verified in the computation below). Explain why this happens using the eigenvalues and eigenvectors.</p></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="problem-set-8.html#cb26-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">57</span><span class="sc">/</span><span class="dv">50</span>,<span class="dv">4</span><span class="sc">/</span><span class="dv">50</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span><span class="sc">/</span><span class="dv">50</span>,<span class="dv">43</span><span class="sc">/</span><span class="dv">50</span>))</span>
+<span id="cb26-2"><a href="problem-set-8.html#cb26-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>)</span>
+<span id="cb26-3"><a href="problem-set-8.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {v <span class="ot">=</span> A <span class="sc">%*%</span> v}</span>
+<span id="cb26-4"><a href="problem-set-8.html#cb26-4" aria-hidden="true" tabindex="-1"></a>v</span></code></pre></div>
+<pre><code>##              [,1]
+## [1,] 0.0001328069
+## [2,] 0.0002656140</code></pre>
+</div>
+<div id="hunt-creek" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Hunt Creek</h2>
+<p>Age-structured population models like we saw in the <a href="https://tom-halverson.github.io/math236_s21/eigenvectors.html#northern-spotted-owl">Spotted Owl Example</a> are often called <strong>Leslie Matrices</strong>, named after the British ecologist P.H. Leslie. Here is the Leslie Matrix of a population of brook trout in Hunt Creek in Michigan. The population is categorized into 5 age categories: fingerlings (0,1), yearlings (1-2), young adults (2-3), adults (3-4), and adults (4-5). Right now the population is seen to be dying off.</p>
+<p>The vector <span class="math inline">\(p(t)\)</span> denotes the population at year <span class="math inline">\(t\)</span> broken into the 5 age categories:
+<span class="math display">\[
+p(t) = \begin{bmatrix} f (t) \\ y(t) \\ ya(t) \\ a_1(t) \\ a_2(t) \end{bmatrix}
+\]</span>
+and the matrix <span class="math inline">\(L\)</span> gives next year’s population from this year’s population: <span class="math inline">\(p_{t+1} = L p_t\)</span>. Below is the Leslie matrix for this example.</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+f (t+1) \\
+y(t+1) \\
+ya(t+1) \\
+a_1(t+1) \\
+a_2(t+1)
+\end{bmatrix}
+= \begin{bmatrix}
+0 &amp; 0 &amp; 37 &amp; 64 &amp; 82 \\
+0.06 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0&amp;0.28 &amp; 0 &amp; 0 &amp; 0  \\
+0&amp;0&amp;0.16&amp; 0 &amp; 0   \\
+0&amp;0&amp;0&amp;0.08&amp; 0    \\
+\end{bmatrix}
+\begin{bmatrix}
+f (t) \\
+y(t) \\
+ya(t) \\
+a_1(t) \\
+a_2(t)
+\end{bmatrix}
+=
+\begin{bmatrix}
+37 ya(t) + 64 a_1(t) + 82 a_2(t) \\
+0.06 f(t) \\
+0.28y(t) \\
+0.16 ya(t) \\
+0.08 a_1(t)
+\end{bmatrix}
+\]</span></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="problem-set-8.html#cb28-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,.<span class="dv">06</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">28</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">37</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">16</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">64</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">08</span>),<span class="fu">c</span>(<span class="dv">82</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.00</span>))</span></code></pre></div>
+<p>The trout population in the creek is known to be dying off largely due to poisoning by the insecticide rotenone. The model demonstrates this behavior here, as can be seen in the folowing plot, which starts with 200 trout in each age group. <em>You shouldn’t need to edit this plot.</em></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="problem-set-8.html#cb29-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">200</span>,<span class="dv">200</span>,<span class="dv">200</span>,<span class="dv">200</span>,<span class="dv">200</span>)  <span class="co"># the starting distribution</span></span>
+<span id="cb29-2"><a href="problem-set-8.html#cb29-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">35</span>              <span class="co"># N is the number of iterations</span></span>
+<span id="cb29-3"><a href="problem-set-8.html#cb29-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">5</span>,<span class="at">ncol=</span>N)  <span class="co">#  Store the results in a 3 x N matrix called X</span></span>
+<span id="cb29-4"><a href="problem-set-8.html#cb29-4" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> start  <span class="co"># put start in the first column of X</span></span>
+<span id="cb29-5"><a href="problem-set-8.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># loop N times and put your results in X</span></span>
+<span id="cb29-6"><a href="problem-set-8.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>N) {X[,i] <span class="ot">=</span> L <span class="sc">%*%</span> X[,i<span class="dv">-1</span>]}</span>
+<span id="cb29-7"><a href="problem-set-8.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Then plot the results</span></span>
+<span id="cb29-8"><a href="problem-set-8.html#cb29-8" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,N)  <span class="co"># time</span></span>
+<span id="cb29-9"><a href="problem-set-8.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,X[<span class="dv">1</span>,],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="dv">1</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">8000</span>),<span class="at">ylab=</span><span class="st">&quot;population&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;time (year)&quot;</span>,</span>
+<span id="cb29-10"><a href="problem-set-8.html#cb29-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Population in Age Group&quot;</span>)</span>
+<span id="cb29-11"><a href="problem-set-8.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb29-12"><a href="problem-set-8.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(t,X[i,],<span class="at">col=</span>i)</span>
+<span id="cb29-13"><a href="problem-set-8.html#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(t,X[i,],<span class="at">col=</span>i,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">8</span>)}</span>
+<span id="cb29-14"><a href="problem-set-8.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">22</span>, <span class="dv">7600</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;Fingerlings (0-1)&quot;</span>, <span class="st">&quot;Yearlings  (1-2)&quot;</span>, <span class="st">&quot;Young Adults (2-3)&quot;</span>,<span class="st">&quot;Adults (3-4)&quot;</span>,<span class="st">&quot;Adults (4-5)&quot;</span>), <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-28-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.</p></li>
+<li><p>Compute the eigenvectors and eigenvalues of <span class="math inline">\(L\)</span> and relate what you find to population dynamics. In particular, use the eigen-information to</p></li>
+</ol>
+<ul>
+<li>Give the overall population growth rate.</li>
+<li>Give the limiting age distribution: that is, the long-run distribution of the population in the different age categories. Give your answer as proportions which sum to 1.</li>
+</ul>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>You are seeking funding from the Michigan DNR to support a cleanup effort. As part of your proposal, you argue that you believe that such a cleanup will most impact the youngest fish and will improve the survival rate of fingerlings to yearlings. Figure out (by trial and error) how high this survival rate will need to grow in order for the population to stop dying off. Justify your answer with eigenvalues and a plot. You should be able to duplicate the code for the plot above (after changing the matrix).</li>
+</ol>
+</div>
+<div id="halverson-numbers" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Halverson Numbers</h2>
+<p>We will look at the <a href="https://tom-halverson.github.io/math236_f21/eigenvectors.html#fibonacci-numbers">Fibonacci example</a> on Monday (11/8) in class. This is very much like it except that the calculations are easier. In that problem we start with a matrix <span class="math inline">\(F\)</span> that generates the Fibonacci numbers and used it to find a closed-formula formula <span class="math inline">\(f_n\)</span> for the <span class="math inline">\(n\)</span>th Fibonacci number. Here you are to follow the same process to find a formula <span class="math inline">\(h_n\)</span> for the nearly-as-famous Halverson numbers.</p>
+<p>The Halverson numbers are defined by <span class="math inline">\(h_0 = 0\)</span>, <span class="math inline">\(h_1 = 1\)</span>, and <span class="math inline">\(h_n = 3 h_{n-2} + 2 h_{n-1}\)</span>. They start out as <span class="math inline">\(0,1,2,7,20,61,182,547,1640,4921,14762\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find a matrix <span class="math inline">\(H\)</span> so that <span class="math inline">\(H \begin{bmatrix} h_{n-1} \\ h_n \end{bmatrix} = \begin{bmatrix} h_{n} \\ h_{n+1} \end{bmatrix}\)</span>.</p></li>
+<li><p>Find the eigenvalues and eigenvectors of <span class="math inline">\(H\)</span>.</p></li>
+<li><p>Use the eigenvalues and eigenvectors to find a closed-formula for <span class="math inline">\(h_n\)</span>.</p></li>
+<li><p>Show that your formula works to produce <span class="math inline">\(h_{10} = 14762.\)</span></p></li>
+</ol>
 
 </div>
+</div>
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="linear-systems-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="matrix-multiplication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="problem-set-7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="important-definitions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

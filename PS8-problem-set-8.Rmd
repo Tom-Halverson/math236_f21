@@ -72,7 +72,11 @@ v
 
 Age-structured population models like we saw in the [Spotted Owl Example](https://tom-halverson.github.io/math236_s21/eigenvectors.html#northern-spotted-owl) are often called **Leslie Matrices**, named after the British ecologist P.H. Leslie. Here is the Leslie Matrix of a population of brook trout in Hunt Creek in Michigan. The population is categorized into 5 age categories: fingerlings (0,1), yearlings (1-2), young adults (2-3), adults (3-4), and adults (4-5). Right now the population is seen to be dying off. 
 
-The vector $p(t)$ denotes the population at year $t$ broken into the 5 age categories: $$p(t) =  (f (t), y(t), ya(t), a_1(t), a_2(t))^T$$ and the matrix $L$ gives next year's population from this year's population:  $p_{t+1} = L p_t$.  Below is the Leslie matrix for this example.
+The vector $p(t)$ denotes the population at year $t$ broken into the 5 age categories: 
+$$
+p(t) = \begin{bmatrix} f (t) \\ y(t) \\ ya(t) \\ a_1(t) \\ a_2(t) \end{bmatrix}
+$$ 
+and the matrix $L$ gives next year's population from this year's population:  $p_{t+1} = L p_t$.  Below is the Leslie matrix for this example.
 
 $$
 \begin{bmatrix}
@@ -134,14 +138,14 @@ a. Give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear
 b. Compute the eigenvectors and eigenvalues of $L$ and relate what you find to population dynamics. In particular, use the eigen-information to
 
 * Give the overall population growth rate.
-* Give the limiting age distribution: that is, the long-run distribution of the population into the different age categories. Give your answer as proportions which sum to 1.
+* Give the limiting age distribution: that is, the long-run distribution of the population in the different age categories. Give your answer as proportions which sum to 1.
 
-c. You are seeking funding from the Michigan DNR to support a cleanup effort. As part of your proposal, you argue that you believe that such a cleanup will most impact the youngest fish and will improve the survival rate of fingerlings to yearlings. Figure out (by trial and error) how high this survival rate will need to grow in order for the population to stop dying off. Justify your answer with eigenvalues and a plot. You should just be able to duplicate the code for the plot above (after changing the matrix).
+c. You are seeking funding from the Michigan DNR to support a cleanup effort. As part of your proposal, you argue that you believe that such a cleanup will most impact the youngest fish and will improve the survival rate of fingerlings to yearlings. Figure out (by trial and error) how high this survival rate will need to grow in order for the population to stop dying off. Justify your answer with eigenvalues and a plot. You should be able to duplicate the code for the plot above (after changing the matrix).
 
 
-## The Famous Halverson Numbers
+## Halverson Numbers
 
-We will look at the Fibonacci example on Monday in class. This is very much like it except that the calculations are easier. In that problem we start with a matrix $F$ that generates the Fibonacci numbers and used it to find a closed-formula formula $f_n$ for the $n$th Fibonacci number. Here you are to follow the same process to find a formula $h_n$ for the nearly-as-famous Halverson numbers. 
+We will look at the [Fibonacci example](https://tom-halverson.github.io/math236_f21/eigenvectors.html#fibonacci-numbers) on Monday (11/8) in class. This is very much like it except that the calculations are easier. In that problem we start with a matrix $F$ that generates the Fibonacci numbers and used it to find a closed-formula formula $f_n$ for the $n$th Fibonacci number. Here you are to follow the same process to find a formula $h_n$ for the nearly-as-famous Halverson numbers. 
 
 The Halverson numbers are defined by $h_0 = 0$, $h_1 = 1$, and $h_n = 3 h_{n-2} +  2 h_{n-1}$.  They start out as $0,1,2,7,20,61,182,547,1640,4921,14762$. 
 
