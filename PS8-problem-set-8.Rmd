@@ -72,19 +72,19 @@ v
 
 Age-structured population models like we saw in the [Spotted Owl Example](https://tom-halverson.github.io/math236_s21/eigenvectors.html#northern-spotted-owl) are often called **Leslie Matrices**, named after the British ecologist P.H. Leslie. Here is the Leslie Matrix of a population of brook trout in Hunt Creek in Michigan. The population is categorized into 5 age categories: fingerlings (0,1), yearlings (1-2), young adults (2-3), adults (3-4), and adults (4-5). Right now the population is seen to be dying off. 
 
-The vector $p(t)$ denotes the population at year $t$ broken into the 5 age categories: 
+The vector $p_t$ denotes the population at year $t$ broken into the 5 age categories: 
 $$
-p(t) = \begin{bmatrix} f (t) \\ y(t) \\ ya(t) \\ a_1(t) \\ a_2(t) \end{bmatrix}
+p(t) = \begin{bmatrix} f_t \\ y_t \\ ya_t \\ a1_t \\ a2_t \end{bmatrix}
 $$ 
 and the matrix $L$ gives next year's population from this year's population:  $p_{t+1} = L p_t$.  Below is the Leslie matrix for this example.
 
 $$
 \begin{bmatrix}
-f (t+1) \\
-y(t+1) \\
-ya(t+1) \\
-a_1(t+1) \\
-a_2(t+1)
+f_{t+1} \\
+y_{t+1} \\
+ya_{t+1} \\
+a1_{t+1} \\
+a2_{t+1} \\
 \end{bmatrix}
 = \begin{bmatrix}
 0 & 0 & 37 & 64 & 82 \\
@@ -94,19 +94,11 @@ a_2(t+1)
 0&0&0&0.08& 0    \\
 \end{bmatrix}
 \begin{bmatrix}
-f (t) \\
-y(t) \\
-ya(t) \\
-a_1(t) \\
-a_2(t)
-\end{bmatrix}
-=
-\begin{bmatrix}
-37 ya(t) + 64 a_1(t) + 82 a_2(t) \\
-0.06 f(t) \\
-0.28y(t) \\
-0.16 ya(t) \\
-0.08 a_1(t)
+f_t \\
+y_t \\
+ya_t \\
+a1_t \\
+a2_t
 \end{bmatrix}
 $$
 
@@ -133,7 +125,7 @@ for (i in 1:5) {
 legend(22, 7600, legend=c("Fingerlings (0-1)", "Yearlings  (1-2)", "Young Adults (2-3)","Adults (3-4)","Adults (4-5)"), col=1:5, lty=1)
 ```
 
-a. Give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.
+a. By hand, multiply the matrix vector product $L x(t)$ above and use it to give  formulas for $f_{t+1}, y_{t+1}, ya_{t+1}, a1_{t+1}, a2_{t+1}$ in terms of $f_t, y_t, ya_t, a1_t, a2_t$. Use these formulas to give the meaning of the values 37, 64, 82, 0.06, 0.28, 0.16, 0.08 that appear in this matrix.
 
 b. Compute the eigenvectors and eigenvalues of $L$ and relate what you find to population dynamics. In particular, use the eigen-information to
 
