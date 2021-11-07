@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 tab:unnamed-chunk-51
+=======
+tab:unnamed-chunk-4
+>>>>>>> 89ca33389bf7dde559ac91e13c606ec3c8badbd1
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
