@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-tab:unnamed-chunk-51
-=======
 tab:unnamed-chunk-4
->>>>>>> 89ca33389bf7dde559ac91e13c606ec3c8badbd1
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -95,13 +91,21 @@ northern-spotted-owl
 the-dynamical-system
 eigenanalysis
 fibonacci-numbers
+complex-eigenvalues
+motivating-example
+rotation-dilation-matrices
+example-1
+example-2
+example-3
+general-2x2-matrices-with-complex-eigenvalues
+examples-from-class
+section
+section-1
 exam-1-review
 overview
 vocabulary-and-concepts
 skills
 practice-problems
-section
-section-1
 section-2
 section-3
 section-4
@@ -115,10 +119,10 @@ section-11
 section-12
 section-13
 section-14
-challenge
-solutions-to-practice-problems
 section-15
 section-16
+challenge
+solutions-to-practice-problems
 section-17
 section-18
 section-19
@@ -132,14 +136,14 @@ section-26
 section-27
 section-28
 section-29
+section-30
+section-31
 exam-2-review
 overview-1
 vocabulary-and-concepts-1
 vocabulary-and-concepts-2
 skills-1
 practice-problems-1
-section-30
-section-31
 section-32
 section-33
 section-34
@@ -150,9 +154,9 @@ section-38
 section-39
 section-40
 section-41
-solutions-to-practice-problems-1
 section-42
 section-43
+solutions-to-practice-problems-1
 section-44
 section-45
 section-46
@@ -161,3 +165,5 @@ section-48
 section-49
 section-50
 section-51
+section-52
+section-53
