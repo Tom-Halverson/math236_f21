@@ -6,7 +6,70 @@
 
 Now we will explore what happens if the matrix has complex eigenvalues.
 
-## Rotation-Dilation
+## Motivating Example
+
+Recall the rental car problem that has the following matrix and eigenvectors.
+
+```{r}
+(M = cbind(c(.85,.09,.06),c(.30,.60,.10),c(.35,.05,.60)))
+eigen(M)
+```
+It has complex eigenvalues and eigenvectors. 
+
+$$
+\begin{bmatrix} .85 & .30 & .35 \\ .09 & .60 & .05 \\ .06& .10 & .60 \end{bmatrix}
+\qquad\qquad
+\begin{array}{ccccc}
+\lambda_1 = 1.0, && \lambda_2 = .525+.037i, && \lambda_3 =.525-.037i \\
+\begin{bmatrix} .95 \\ .24 \\ .20 \end{bmatrix} &&
+\begin{bmatrix} ~~.62 + .00i \\ -.31 - .46i \\ -.31+ .46i\end{bmatrix} &&
+\begin{bmatrix} ~~.62 - .00i \\ -.31 + .46i \\ -.31 - .46i\end{bmatrix}
+\end{array}
+$$
+
+We can diagonalize as usual, but it gives us a diagonal matrix with complex eigenvalues. 
+
+$$
+\begin{bmatrix} .85 & .30 & .35 \\ .09 & .60 & .05 \\ .06& .10 & .60 \end{bmatrix}
+= 
+\underbrace{\begin{bmatrix} .95 & .62\!+\!.00i & .62\!-\!.00i \\ .24 & -.31\!-\!.46i & -.31\!+\!.46i \\ .20 & -.31\!+\!46i & -.31\!-\!.46i \end{bmatrix}}_P
+\begin{bmatrix} 1.0 & 0 & 0\\ 0 & .35\!-\!.04i & 0 \\ 0 & 0 & .35\!+\!.04i \end{bmatrix} P^{-1}.
+$$
+
+This diagonalization isn't as usful to us though, since it requires complex eigenvectors that are not in $\mathbb{R}^n$. Our original problem involved real numbers, so we can't extract the information we need from this.
+
+
+Instead, since our eigenvectors are of the form $v = u \pm w i$. We use the real part $u$ and the imaginary part $w$ in our eigenbasis instead. 
+
+```{r}
+vecs = eigen(M)$vectors
+v = Re(vecs[,1])
+u = Re(vecs[,2])
+w = Im(vecs[,2])
+P = cbind(v,w,u)
+zapsmall(solve(P) %*% M %*% P)
+```
+
+This matrix is not diagonal, but it has a nice form. Notice that the real and complex parts of the eigenvalues are in the 2x2 matrix inside.
+$$
+\lambda  = .525 \pm .037i. \hskip6in
+$$
+$$
+\begin{bmatrix} .85 & .30 & .35 \\ .09 & .60 & .05 \\ .06& .10 & .60 \end{bmatrix}
+= 
+\underbrace{\begin{bmatrix} .95 & .00 & .62 \\ .24 & -.46 & -.31 \\
+.20 & .46 & -.31 \end{bmatrix}}_P
+\begin{bmatrix} 1.0 & 0 & 0\\ 0 & .525 & -.037 \\ 0 & .037 & .525 \end{bmatrix} \underbrace{\begin{bmatrix} .72 & .72 & .72 \\ .03 & -1.06 & 1.12 \\
+.51 & -1.10 & -1.10 \end{bmatrix}}_{P^{-1}}
+$$
+Next we explore what 2x2 matrices of the following form do:
+$$
+\begin{bmatrix}  .525 & -.037 \\  .037 & .525 \end{bmatrix}
+=\begin{bmatrix}  a & -b \\  b & a \end{bmatrix},
+\qquad \lambda = a\pm b i.
+$$
+
+## Rotation-Dilation Matrices
 
 First we explore a special case of 2x2 matrices with complex eigenvalues of the following form:
 $$
@@ -290,6 +353,15 @@ lines(c(10*w[1],-10*w[1]),c(10*w[2],-10*w[2]),col="purple")
 grid(nx=10,ny=10)
 ```
 
+We can also view this by looking at a plot of the x and y coordinates over time as the point (x,y) circles around in the xy-plane. Key point: complex eigenvalues lead to oscillating values of the individual coordinates
+
+```{r}
+t = seq(1,N)
+plot(t,X[1,],type='l',col='blue',ylim=c(-3,3),ylab="x and y coordinates",xlab="t (time) ")
+lines(t,X[2,],col='darkorange')
+legend(12, 2.5, legend=c("x", "y"), col=c("blue", "darkorange"), lty=1)
+```
+
 To see precisely what happens, we change to basis $\{\mathsf{w}, \mathsf{u}\}$ where $\mathsf{w}$ and $\mathsf{u}$ are the imaginary and real parts of the eigenvector $\mathsf{v} =\mathsf{u}  +  \mathsf{w} i$. In this case the eigenvalues and eigenvectors are
 $$
 \lambda = 0.985 \pm 0.261 i \qquad \mathsf{v} = 
@@ -321,6 +393,58 @@ vecs = eigen(A)$vectors
 P = cbind(Im(vecs[,1]),Re(vecs[,2]))
 P
 solve(P) %*% A %*% P
+```
+
+## Examples from class
+
+### 
+
+```{r,echo=TRUE}
+(A = cbind(c(.9,.2),c(-.2,.9)))
+(vals=eigen(A)$values)
+Mod(vals)
+Arg(vals)/(2*pi)*360
+```
+```{r,fig.width=5, fig.height=5}
+vecs = eigen(A)$vectors
+u = Re(vecs[,1])
+w = Im(vecs[,1])
+N = 50
+start = c(1,0)
+X = matrix(0,nrow=2,ncol=N)
+X[,1] = start
+for (i in 2:N) {X[,i] = A %*% X[,i-1]}
+
+plot(X[1,],X[2,],col='blue',xlim=c(-1,1),ylim=c(-1,1),xlab='x',ylab='y',pch=20,cex=1)
+points(start[1],start[2],col="red")
+lines(c(10*u[1],-10*u[1]),c(10*u[2],-10*u[2]),col="purple")
+lines(c(10*w[1],-10*w[1]),c(10*w[2],-10*w[2]),col="purple")
+grid(nx=10,ny=10)
+```
+
+### 
+
+```{r,echo=TRUE}
+(A = cbind(c(1.19,.29),c(-.38,.78)))
+(vals=eigen(A)$values)
+Mod(vals)
+Arg(vals)/(2*pi)*360
+```
+```{r,fig.width=5, fig.height=5}
+vecs = eigen(A)$vectors
+u = Re(vecs[,1])
+w = Im(vecs[,1])
+N = 50
+start = c(1,0)
+X = matrix(0,nrow=2,ncol=N)
+X[,1] = start
+for (i in 2:N) {X[,i] = A %*% X[,i-1]}
+
+plot(X[1,],X[2,],col='blue',xlim=c(-3,3),ylim=c(-3,3),xlab='x',ylab='y',pch=20,cex=1)
+points(start[1],start[2],col="red")
+lines(c(10*u[1],-10*u[1]),c(10*u[2],-10*u[2]),col="purple")
+lines(c(10*w[1],-10*w[1]),c(10*w[2],-10*w[2]),col="purple")
+grid(nx=10,ny=10)
 ```
 
 

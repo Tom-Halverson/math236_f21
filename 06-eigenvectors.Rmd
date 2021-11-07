@@ -377,6 +377,9 @@ Now we check the eigenvectors and eigenvalues to see if they help us understand 
 
 ```{r,echo=TRUE}
 eigen(A)
+vals = eigen(A)$values
+vals
+Mod(vals)
 ```
 
 The first eigenvalue is $\lambda_1 = 0.98$, and the other two are complex. R always lists the eigenvalues from largest to smallest, so in this case the largets eigenvalue is less than one. That means that in that direction, the population is dying off by 2% each year.
