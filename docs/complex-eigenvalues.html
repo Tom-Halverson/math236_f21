@@ -275,6 +275,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="15.4.1" data-path="complex-eigenvalues.html"><a href="complex-eigenvalues.html#section"><i class="fa fa-check"></i><b>15.4.1</b> </a></li>
 <li class="chapter" data-level="15.4.2" data-path="complex-eigenvalues.html"><a href="complex-eigenvalues.html#section-1"><i class="fa fa-check"></i><b>15.4.2</b> </a></li>
 </ul></li>
+<li class="chapter" data-level="15.5" data-path="complex-eigenvalues.html"><a href="complex-eigenvalues.html#the-checkpoint-question"><i class="fa fa-check"></i><b>15.5</b> The checkpoint question</a></li>
 </ul></li>
 <li class="part"><span><b>IV Quiz Review</b></span></li>
 <li class="chapter" data-level="16" data-path="exam-1-review.html"><a href="exam-1-review.html"><i class="fa fa-check"></i><b>16</b> Exam 1 Review</a>
@@ -504,12 +505,12 @@ Now, let’s find the <strong>angle of rotation</strong>. We will use the <code>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="complex-eigenvalues.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(.<span class="dv">9</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">2</span><span class="sc">^</span><span class="dv">2</span>)  </span></code></pre></div>
 <pre><code>## [1] 0.9219544</code></pre>
 <p>Now, we observe the trajectory of a single point <span class="math inline">\((0,1)^T\)</span> under this matrix. In this picture you can see that it is contracting and rotating by 12.5 degrees. Note that 360/12.5 is about 29, and it takes 29 applications to go once around the circle. You can count them in the plot below. Furthermore, <span class="math inline">\((0.9219544)^29 =0.095\)</span> and after 29 applications the vector is about 1/10 of its original length.</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-103-1.png" width="75%" style="display: block; margin: auto;" />
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-104-1.png" width="75%" style="display: block; margin: auto;" />
 We can also view this by looking at a plot of the x and y coordinates over time as the point (x,y) circles around in the xy-plane. Key point: complex eigenvalues lead to oscillating values of the individual coordinates</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-104-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-105-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>We can also use <code>trajectory_plot</code> from [Dynamical Systems in 2D] to watch what happens to a whole grid of points under this transformation. It is beautiful!</p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="complex-eigenvalues.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">30</span>, <span class="at">datamax=</span><span class="dv">5</span>, <span class="at">plotmax=</span><span class="dv">5</span>, <span class="at">numpoints=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-106-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-107-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="example-2" class="section level3" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> Example 2</h3>
@@ -537,11 +538,11 @@ We can also view this by looking at a plot of the x and y coordinates over time 
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="complex-eigenvalues.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(v1)  <span class="co"># gives the length of a complex number</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Notice that the dilation factor is 1, which is seen in the following plots. Here are 21 iterations:</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-109-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-110-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>And here are 200 iterations
-<img src="math236_handbook_files/figure-html/unnamed-chunk-110-1.png" width="75%" style="display: block; margin: auto;" /></p>
-<p>And a trajectory plot:
 <img src="math236_handbook_files/figure-html/unnamed-chunk-111-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>And a trajectory plot:
+<img src="math236_handbook_files/figure-html/unnamed-chunk-112-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="example-3" class="section level3" number="15.2.3">
 <h3><span class="header-section-number">15.2.3</span> Example 3</h3>
@@ -566,9 +567,9 @@ We can also view this by looking at a plot of the x and y coordinates over time 
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="complex-eigenvalues.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(v1)  <span class="co"># gives the length of a complex number</span></span></code></pre></div>
 <pre><code>## [1] 1.002846</code></pre>
 <p>We see that the dilation factor is <span class="math inline">\(r = 1.0028\)</span> and the angle of rotation is <span class="math inline">\(9.18\)</span> degrees. Here are 100 iterations.</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-113-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-114-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>And a trajectory plot:
-<img src="math236_handbook_files/figure-html/unnamed-chunk-114-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-115-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="general-2x2-matrices-with-complex-eigenvalues" class="section level2" number="15.3">
@@ -599,9 +600,9 @@ as seen here:</p>
 <pre><code>## [1] 14.84649</code></pre>
 <pre><code>## [1] 1.019019</code></pre>
 <p>A trajectory plot shows us that it is still rotating by 14.8 degrees and dilating by 1.019, but it is taking more of an elliptical pattern.
-<img src="math236_handbook_files/figure-html/unnamed-chunk-117-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-118-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>We can also view this by looking at a plot of the x and y coordinates over time as the point (x,y) circles around in the xy-plane. Key point: complex eigenvalues lead to oscillating values of the individual coordinates</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-118-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-119-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>To see precisely what happens, we change to basis <span class="math inline">\(\{\mathsf{w}, \mathsf{u}\}\)</span> where <span class="math inline">\(\mathsf{w}\)</span> and <span class="math inline">\(\mathsf{u}\)</span> are the imaginary and real parts of the eigenvector <span class="math inline">\(\mathsf{v} =\mathsf{u} + \mathsf{w} i\)</span>. In this case the eigenvalues and eigenvectors are
 <span class="math display">\[
 \lambda = 0.985 \pm 0.261 i \qquad \mathsf{v} = 
@@ -648,7 +649,7 @@ Which we can see using R</p>
 <pre><code>## [1] 0.9219544 0.9219544</code></pre>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="complex-eigenvalues.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
 <pre><code>## [1]  12.52881 -12.52881</code></pre>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-121-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-122-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="section-1" class="section level3" number="15.4.2">
 <h3><span class="header-section-number">15.4.2</span> </h3>
@@ -662,7 +663,30 @@ Which we can see using R</p>
 <pre><code>## [1] 1.019019 1.019019</code></pre>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="complex-eigenvalues.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
 <pre><code>## [1]  14.84649 -14.84649</code></pre>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-123-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-124-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="the-checkpoint-question" class="section level2" number="15.5">
+<h2><span class="header-section-number">15.5</span> The checkpoint question</h2>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="complex-eigenvalues.html#cb271-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1   -1
+## [2,]    1    2</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="complex-eigenvalues.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.5+0.866025i 1.5-0.866025i
+## 
+## $vectors
+##                       [,1]                  [,2]
+## [1,] -0.3535534+0.6123724i -0.3535534-0.6123724i
+## [2,]  0.7071068+0.0000000i  0.7071068+0.0000000i</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="complex-eigenvalues.html#cb275-1" aria-hidden="true" tabindex="-1"></a>vals<span class="ot">=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
+<span id="cb275-2"><a href="complex-eigenvalues.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
+<pre><code>## [1] 1.732051 1.732051</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="complex-eigenvalues.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
+<pre><code>## [1]  30 -30</code></pre>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-126-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <!-- ## A 3D example -->
 <!-- Here is the Northern Spotted Owl matrices from the [Eigenvalues] examples. We saw that it has one real and two complex eigenvalues: -->
 <!-- ```{r} -->
@@ -714,7 +738,6 @@ Which we can see using R</p>
 <!-- legend(8,750, legend=c("juvenile", "subadults", "adults","total"), col=c('blue','orange','red','black'), lty=1) -->
 <!-- ``` -->
 
-</div>
 </div>
 </div>
 

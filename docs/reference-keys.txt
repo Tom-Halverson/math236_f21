@@ -1,4 +1,4 @@
-tab:unnamed-chunk-4
+tab:unnamed-chunk-5
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -101,6 +101,7 @@ general-2x2-matrices-with-complex-eigenvalues
 examples-from-class
 section
 section-1
+the-checkpoint-question
 exam-1-review
 overview
 vocabulary-and-concepts
