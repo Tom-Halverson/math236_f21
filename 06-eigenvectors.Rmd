@@ -514,7 +514,7 @@ $$
 $$
 \phi^2 - \phi - 1 = 0 \qquad\hbox{and}\qquad \overline{\phi}^2 - \overline{\phi} - 1 = 0
 $$
-This last one comes from the fact that both $\phi$ and $\overline{phi}$ are zeros of $\lambda^2 - \lambda -1 = 0$.
+This last one comes from the fact that both $\phi$ and $\overline{\phi}$ are zeros of $\lambda^2 - \lambda -1 = 0$.
 
 Now we find the eigenvectors and use some of these properties to help us do the algebra:
 $$
@@ -576,7 +576,7 @@ c(g,gb)
 ```
 
 Here is the 10th Fibonacci number using the formula:
-```{r}
+```{r,echo=TRUE}
 n = 10
 1/sqrt(5)*g^n - 1/sqrt(5)*gb^n
 ```
