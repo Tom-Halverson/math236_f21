@@ -102,6 +102,17 @@ examples-from-class
 section
 section-1
 the-checkpoint-question
+network-centralities
+graphs-and-networks
+adjacency-matrices
+degree-centrality
+goulds-index
+step-1-add-layovers
+step-2-dynamical-system
+step-4-eigen-analysis
+step-5
+gould-index-summary
+your-turn-the-rise-of-moscow
 exam-1-review
 overview
 vocabulary-and-concepts

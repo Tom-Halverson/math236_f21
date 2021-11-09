@@ -52,3 +52,20 @@ coords = layout_with_fr(g)
 V(g)$label = airports
 plot(g, vertex.color='gray', layout=coords,vertex.frame.color="dodgerblue")
 ```
+```{r}
+B = A + diag(nrow(A))
+B
+```
+
+```{r}
+v=rep(1,nrow(A)) # all 1s vector
+d = A %*% v  # degrees
+p=d/sum(d)   # proportion of degrees
+w = Re(eigen(B)$vectors[,1])
+w = w/sum(w)
+dp = cbind(d,rank(1-d),p,w,round(rank(1-w))) # show d and p together side-by-side in a matrix
+rownames(dp) = airports
+colnames(dp) = c("deg","deg-rank","proportion","eigenvector","eigen-rank")
+dp
+```
+
