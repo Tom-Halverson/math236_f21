@@ -9,6 +9,7 @@ rmd_files: ["index.Rmd",
 "PS6-problem-set-6.Rmd", 
 "PS7-problem-set-7.Rmd", 
 "PS8-problem-set-8.Rmd",
+"PS9-problem-set-9.Rmd",
  "important-defs.Rmd", 
 #"w1-solving-linear-equations.Rmd", 
 #"w2-solution-sets.Rmd", 
@@ -35,7 +36,7 @@ rmd_files: ["index.Rmd",
 # "12-image-compression.Rmd",
 "e1-review.Rmd", 
 "e2-review.Rmd" , 
-# "q3-review.Rmd" , 
+"e3-review.Rmd" , 
 # "q4-review.Rmd"
 ]
 delete_merged_file: true

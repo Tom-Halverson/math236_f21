@@ -1,0 +1,1102 @@
+
+
+# Exam 3 Review
+
+## Overview
+
+Our third exam covers *eigenvectors* and *eigenvalues* and a little bit of *orthogonality*. This covers sections 5.1-5.6 and 6.1-6.2.
+
+The exam will be in the same style as the first two exams:
+
+* I will hand it out right away, even a few minutes early, so you can start right on time.
+* You must turn it in by 9:35 (for the 8:30 class) and  10:45 for the 10:50 class). No exceptions. The next class needs to come in and get started.
+* No calculators are allowed, and none are needed.
+* If row reductions are needed, they will be easy (integer) calculations, and there will not be many.
+* It will be closed book but you can bring a 3" x 5" **note card** with notes written on both sides. These notes should be hand written by you. You do not need to turn in the note card with the exam.
+* There will be some basic calculations, but the problems will focus more on the ideas than on the calculations.
+* I will ask some problems that are very similar to homework problems, Edfinity problems, and examples from class or the videos.
+* I will ask other problems that are somewhat different from things you have done. On these, you are to apply your knowledge in a slightly new setting to demonstrate an even higher mastery of the material.
+* You will be allowed to re-write one problem to earn back half of the points that you lost. This will be due the class period after I hand the exam back.
+* The exam is worth 12% of your course grade as outlined in the [syllabus](https://docs.google.com/document/d/1uE95uWoV994QJ6YyrR7yBMV7MATzYO6XI4xd_q4-sqc).
+
+
+
+The best way to study is to do practice problems. The Exam will have calculation problems (like Edfinity) and more conceptual problems (like the problem sets). Here are some ways to practice:
+
+* Make sure that you have mastered the Vocabulary, Skills and Concepts  listed below.
+* Look over the Edfinity homework assingments
+* Look over and redo the class examples problems.
+* Look at class examples that we didn't get to.
+* Try to resolve the Problem Sets and compare your answers to the solutions.
+* Do the practice problems below. Compare your answers to the solutions.
+
+## Vocabulary, Concepts and Skills
+
+Here are the knowledge and skills you should master by the end of the fifth and sixth weeks.
+
+
+### Skills
+
+* Check whether a given vector $\mathsf{v}$ is an  eigenvector for square matrix $A$.
+* Find the eigenvalues of a matrix $2 \times 2$ matrix by hand, using the  characteristic equation
+* Find the eigenvalues of a triangular matrix by inspection.
+* Given the eigenvalues of matrix $A$, find the eigenvectors by solving $(A - \lambda I) = \mathbf{0}$.
+* Find the eigenvalues and eigenvectors of an  $n \times n$ matrix $A$ by reading RStudio output.
+* Determine whether a matrix is diagonalizable.
+* Factor a diagonalizable $n \times n$ matrix as $A = PDP^{-1}$ where $D$ is a diagonal matrix of eigenvalues and $P$ is the matrix whose columns are the corresponding eigenvectors. You only have to compute $P^{-1}$ in the 2x2 case.
+* Compute matrix powers using the diagonalization.
+* Given the eigenvalues and eigenvectors, factor a $2 \times 2$ matrix with complex eigenvalues as $A = P R P^{-1}$ where $R$ is a  rotation-dilation matrix $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$  and $P = [ \mathsf{w}, \mathsf{u}]$ where $\mathsf{v} = \mathsf{u} + i \mathsf{w}$ is the eigenvector for $\lambda = a + b i$.
+
+* Find the angle of rotation and the scaling factor in a $2 \times 2$ matrix with complex eigenvalues.
+
+* Use the dominant eigenvalue and dominant eigenvector to determine the long-term behavior of a dynamical system.
+
+* Use eigenvalues to investigate a population modeled with a Leslie matrix.
+
+* Give a close-formula for a dynamical system using the eigen decomposition of a matrix
+
+* More coming from the orthogonality sections.
+
+### Vocabulary
+
+I should know and be able to use and explain the following **terms** or **properties**. 
+
+* eigenvalue, eigenvector  and eigenspace
+* characteristic equation
+* diagonalizable matrix
+* similar matrices
+* algebraic multiplicity of an eigenvalue
+* geometric multiplicity of an eigenvalue
+* rotation-dilation matrix
+* discrete dynamical system
+* trajectory
+* dominant eigenvalue  and dominant eigenvector
+* population model
+* Leslie matrix
+
+### Conceptual Thinking
+
+I should understand and be able to explain the following **concepts**:
+
+* An eigenspace of $A$ is a subspace that is fixed under the linear transformation $T(\mathsf{x}) = A \mathsf{x}$.
+* An eigenvalue $\lambda$ with $1 <| \lambda |$ corresponds to expansion.
+* An eigenvalue $\lambda$ with $0 < | \lambda | < 1$ corresponds to contraction.
+* A complex  eigenvalue  corresponds  to a rotation in a 2D subspace.
+* The eigenspace for $\lambda$ is the subspace $E_\lambda = \mathrm{Nul}(A  - \lambda I)$.
+
+* A matrix is not diagonalizable when it has an eigenvalue whose algebraic multiplicity is larger than its geometric multiplicity.
+
+* The long-term behavior of a  dynamical system is determined by its dominant eigenvalue and eigenvector.
+* Population model predicts one of: long term growth, extinction, convergence to a stable population.
+
+
+
+
+## Practice Problems
+
+
+
+###
+
+Consider the $3 \times 3$ matrix
+$$
+A = 
+\left[
+\begin{array}{rrr}
+2 & -1 & 0 \\
+0 & 1 & 0 \\
+-2 & 5 & -2 \\
+\end{array}
+\right]
+$$
+with characteristic equation 
+$$
+p(\lambda) = -(\lambda -1)(\lambda -2)(\lambda +2).
+$$
+Find the eigenvalues and corresponding eigenvectors for $A$.
+
+
+
+
+
+###
+
+Let $A$ be a $2 \times 2$ matrix. We view $A$ as a linear transformation from $\mathbb{R}^2$ to $\mathbb{R}^2$. Describe the eigenvalues for each of the following types of matrices.
+
+a. $A$ maps all of $\mathbb{R}^2$  onto a line through the origin in $\mathbb{R}^2$.
+a. $A$ is a reflection  of $\mathbb{R}^2$ about a line through the origin
+a. $A$ is a reflection  of $\mathbb{R}^2$ through the origin
+a.  $A$ is a horizontal shear of the form d form
+$$
+\begin{bmatrix} 1 & a \\ 0 & 1 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+= \begin{bmatrix} x + a y \\ y \end{bmatrix}
+$$
+a. $A$ is the projection onto the line $y = 5x$.
+
+
+
+
+
+###
+
+Below are the eigenvalues of four different $5 \times 5$ matrices.  For each, decide if the matrix is invertible  and if it is diagonalizable. 
+Answer Yes, No or "Not enough information to determine this." 
+
+
+a. $A$ has eigenvalues $\lambda =  -4, -3,0,1, 2$
+a. $B$ has eigenvalues $\lambda = -3, -1, 1, \sqrt{2}, 8.$
+a. $C$  has eigenvalues $\lambda =  1, 2, 2, 7, 8.$
+a. $D$ has eigenvalues $\lambda =  -1, 0, 3,3, 10$
+
+
+
+###
+
+Here the diagonalization of a matrix:
+ $$
+ \mathsf{A}=\left[
+\begin{array}{ccc}
+ 5 & 2 & -1 \\
+ 2 & 1 & 0 \\
+ -1 & 0 & 1 \\
+\end{array}
+\right] = 
+\left[
+\begin{array}{ccc}
+ -5 & 0 & 1 \\
+ -2 & 1 & -2 \\
+ 1 & 2 & 1 \\
+\end{array}
+\right] \left[
+\begin{array}{ccc}
+ 6 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 0 \\
+\end{array}
+\right]\left[
+\begin{array}{ccc}
+ -\frac{1}{6} & -\frac{1}{15} & \frac{1}{30} \\
+ 0 & \frac{1}{5} & \frac{2}{5} \\
+ \frac{1}{6} & -\frac{1}{3} & \frac{1}{6} \\
+\end{array}
+\right].
+$$
+
+
+a. Is the matrix $\mathsf{A}$  invertible?
+b. Find a nonzero vector in $\mathrm{Nul}(\mathsf{A})$ if one exists.
+c. Find a steady-state vector $\mathsf{v}$ such that $\mathsf{A} \mathsf{v} = \mathsf{v}$ if one exists.
+d. Give the coordinates of $\mathsf{v} = [1,2,3]^T$ in the eigenbasis without row reductions.
+e. Find a formula for $\mathsf{A}^{2021} \mathsf{v}$ if $\mathsf{v} = [1,2,3]^T$ in terms of the eigenbasis.
+
+
+
+
+
+###
+
+The eigensystem of matrix  $A$ is given below.  It has complex eigenvalues. 
+$$
+\begin{bmatrix} 3 & -5 \\ 1 & -1 \end{bmatrix}, \qquad
+\lambda = 1 \pm i,
+\qquad
+v = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \pm \begin{bmatrix} 1 \\ 0 \end{bmatrix} i.
+$$
+a. What angle  does it rotate by? 
+b. What factor does it scale by?
+c. Factor it as $A = P R P^{-1}$ where $R$ is a rotation-dilation matrix.
+
+
+###
+
+Using the matrix $B = \begin{bmatrix} .97 & -.71 \\ .71 & .97 \end{bmatrix}$  and the starting vector $\mathsf{v} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, I plotted the points 
+$$\mathsf{v}, B \mathsf{v}, B^2\mathsf{v}, B^3 \mathsf{v}, \ldots.$$ 
+I saw that these points are, roughly, going around in a circle. 
+
+a. How many multiplications by $B$ does it take to get back around to the positive $x$-axis?   
+
+a. When I come full circle, am I closer to the origin, farther from the origin, or the same distance to the origin?  
+
+###
+
+For each matrix below,  decide if it is diagonalizable.  You do  not need to diagonalize the matrix (though you can!), but you must give a reason for why the matrix is or is not diagonalizable.
+
+a. $A = \begin{bmatrix} 0 & -4 & 2 \\ 2 & -4 & -1 \\ -6 & 4 & 7 \end{bmatrix}$ has eigenvalues $4, -1, 0$.
+
+b. $B = \begin{bmatrix} 3 & -1 & 2 \\ -1 & 3 & 2 \\ 2&2 & 0 \end{bmatrix}$ has eigenvalues $4,4,-2$.
+
+ 
+ 
+ 
+ 
+
+###
+
+Consider the matrix with  eigenvalues and eigenvectors
+$$
+A = \begin{bmatrix} 0.7 & 0.2 \\ 0.3 & 0.8 \end{bmatrix}
+\qquad
+\begin{array}{cc}
+\lambda_1 = 1  & \lambda_2 = .5 \\
+\mathsf{v}_1 = \begin{bmatrix} 2 \\ 3 \end{bmatrix} & \mathsf{v}_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix} 
+\end{array}
+$$
+
+a.  Diagonalize $A$.
+a. What can you say about $\displaystyle{\lim_{n \to \infty}} A^n$?
+a. Give a  formula for $A^n \mathsf{x}_0$ if $\mathsf{x}_0 = \begin{bmatrix} 25 \\ 0 \end{bmatrix}$ in terms of the eigenbasis.
+a. What is $\displaystyle{\lim_{n \to \infty}} A^n \begin{bmatrix} 25 \\ 0 \end{bmatrix}$?
+
+ 
+
+###
+
+The matrix $A$ below has the given eigenvalues and eigenvectors. 
+$$
+A = \left[
+\begin{array}{cc}
+ \frac{1}{2} & \frac{1}{5} \\
+ -\frac{2}{5} & \frac{9}{10} \\
+\end{array}
+\right]
+\qquad
+\begin{array}{c}
+\lambda = .7  \pm .2 i \\
+\mathsf{v} = \begin{bmatrix} \frac{1}{2} \\ 1 \end{bmatrix} \pm   \begin{bmatrix} -\frac{1}{2} \\ 0 \end{bmatrix} i
+\end{array}\hskip5in
+$$ 
+
+a. Factor $A=PRP^{-1}$ where $R$ is a rotation-dilation matrix. 
+a. What is the angle of rotation?
+a. What is the factor of dilation?
+
+ 
+ 
+
+
+###
+
+In a 1962 study of rainfall in Tel Aviv, it was determined that if today is a wet day, then the probability that tomorrow will be wet is 0.662 and the probability that tomorrow it will be dry is 0.338.  If today is a dry day, then the probability that tomorrow is wet is 0.250 and the probability that tomorrow is dry will be 0.75. From this I computed the following:
+$$
+A = \begin{bmatrix} 0.662 & 0.25 \\ 0.338 & 0.75\end{bmatrix};
+\qquad
+\begin{array}{cc}
+ \lambda_1 = 1.0 & \lambda_2 = 0.412 \\
+ \mathsf{v}_1 = \begin{bmatrix}-0.595 \\ -0.804 \end{bmatrix} & \quad \mathsf{v}_2 = \begin{bmatrix}-0.707\\ 0.707 \end{bmatrix}
+ \end{array}
+$$
+
+
+a.  If Monday is a dry day, what is the probability that Wednesday will be wet?
+a.  In the long-run, what is the distribution of wet and dry days?
+
+
+
+
+
+
+###
+
+A population of female bison is split into three groups: juveniles who are
+less than one year old; yearlings between one and two years old; and adults who
+are older than two years. Each year,
+
+     * 80% of the juveniles survive to become yearlings.
+     * 90% of the yearlings survive to become adults.
+     * 80% of the adults survive.
+     * 40% of the adults give birth to a juvenile
+
+Let
+$\mathsf{x}_t = \begin{bmatrix} J_t  \\ Y_t \\ A_t \end{bmatrix}$ be the
+state of the system in year $t$.
+
+a. Find the Leslie matrix $L$ such that $\mathsf{x}_{t+1} = B \mathsf{x}_t.$.
+b. Find the eigenvalues of $L$.
+c. The matrix  $L$ has two complex eigenvalues and  one real eigenvalue. How  do  the complex eigenvectors manifest in the trajectory of a population?
+d. What is the long-term behavior of the herd? Will the size of the herd grow, stablilize  or shrink?  What will be the proportions of juveniles, yearlings and  adults in the herd?
+
+###
+
+Let $A$ and $B$ be $n \times n$ matrices. Suppose that $v$ is an eigenvector of $A$  with eigenvalue $\lambda$ and $v$ is an eigenvector of $B$ with eigenvalue $\mu$ such that $\lambda \not= \mu$. Is $v$ an eigenvector of either of the matrices below? If so give its eigenvalue.
+
+a. $A + B$
+b. $AB$
+
+
+### 
+
+Suppose that $A$ is invertible.
+
+a. Show that if $v$ is an eigenvector of $A$ with eigenvalue $\lambda$, then $v$ is an eigenvector of $A^{-1}$ with eigenvalue $1/\lambda$.
+
+b.  If $A$ is diagonalizable with diagonalization $A = P D P^{-1}$, then show that $A^{-1}$ is diagonalizable and find its diagonalization from that of $A$.
+
+### 
+
+Suppose that $A$ is an $n \times n$ matrix with eigenvector $\vec w$ of eigenvalue 5 and eigenvector $\vec v$ of eigenvalue -3. 
+
+a. Is $\vec v + \vec w$ an eigenvector of $A$, and if so, what is its eigenvalue?
+
+b. Is $2021 \vec v$ an eigenvector of $A$, and if so what is its eigenvalue?
+
+c. Is $\vec w$ an eigenvector of $A^2$, and if so what is its eigenvalue?
+
+d. Is $\vec v$ an eigenvector of $A - 2021 I_n$ and if so, what is its eigenvalue?
+
+
+
+<!-- ### -->
+
+<!-- Let $\mathsf{v} =  \begin{bmatrix}1 \\ -1 \\ 1 \end{bmatrix}$ and $\mathsf{w}= \begin{bmatrix}5 \\ 2 \\ 3 \end{bmatrix}$. -->
+
+
+<!-- a. Find $\| \mathsf{v} \|$ and $\| \mathsf{w} \|$. -->
+
+
+
+<!-- b. Find the distance between $\mathsf{v}$ and $\mathsf{w}$. -->
+
+<!-- c. Find the cosine of the angle between $\mathsf{v}$ and $\mathsf{w}$. -->
+
+<!-- d. Find $\mbox{proj}_{\mathsf{v}} \mathsf{w}$.  -->
+
+<!-- e. Let $W=\mbox{span} (\mathsf{v}, \mathsf{w})$. Use the residual from the previous projection to create an orthonormal basis $\mathsf{u}_1, \mathsf{u}_2$ for $W$ such that $\mathsf{u}_1$ is a vector in the same direction as $\mathsf{v}$. -->
+
+
+<!-- ### -->
+
+<!-- Let $\mathsf{u} \neq 0$ be a vector in $\mathbb{R}^n$. Define the function $T: \mathbb{R}^n \rightarrow \mathbb{R}^n$ by -->
+<!-- $T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}$. Recall that the kernel of $T$ is the subspace $\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}$. Describe  $\mbox{ker}(T)$ as explicitly as you can. -->
+
+
+
+
+<!-- ###  -->
+
+<!--  The vectors $\mathsf{u}_1, \mathsf{u}_2$  form an orthonormal basis of a subspace $W$ of $\mathbb{R}^4$. Find the projection of $\mathsf{v}$ onto $W$ and determine how close $\mathsf{v}$ is to $W$. -->
+<!-- $$ -->
+<!-- \mathsf{u}_1 = \frac{1}{2}\begin{bmatrix} 1\\ -1\\ -1\\ 1 \end{bmatrix}, \quad -->
+<!-- \mathsf{u}_2 =  \frac{1}{2}\begin{bmatrix} 1\\ -1\\ 1\\ -1  \end{bmatrix}, \quad -->
+<!-- \mathsf{v} =  \begin{bmatrix}   2\\ 2\\ 4\\ 2 \end{bmatrix}  -->
+<!-- $$ -->
+
+###
+
+
+
+Consider vectors 
+$\mathsf{v}_1 = \begin{bmatrix} 1 \\ 1 \\-1 \end{bmatrix}$ and 
+$\mathsf{v}_2= \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}$ in $\mathbb{R}^3$.
+Let $W=\mbox{span}(\mathsf{v}_1, \mathsf{v}_2)$.
+
+a.  Show that $\mathsf{v}_1$ and $\mathsf{v}_2$ are orthogonal.
+
+b.  Find a basis for $W^{\perp}$.
+
+<!-- c. Use orthogonal projections to find the representation of  -->
+<!-- $\mathsf{y} = \begin{bmatrix} 8 \\ 0 \\ 2 \end{bmatrix}$ as -->
+<!-- $\mathsf{y} = \hat{\mathsf{y}} + \mathsf{z}$ where -->
+<!-- $\hat{\mathsf{y}} \in W$ and $\mathsf{z} \in W^{\perp}$. -->
+
+
+
+###
+Let $W$ be the span of the vectors
+$$
+\begin{bmatrix}
+1 \\ -2 \\ 1 \\ 0 \\1 
+\end{bmatrix}, \quad
+\begin{bmatrix}
+-1 \\ 3 \\ -1 \\ 1 \\ -1 
+\end{bmatrix}, \quad
+\begin{bmatrix}
+0 \\ 0 \\ 1 \\ 3 \\1 
+\end{bmatrix}, \quad
+\begin{bmatrix}
+0 \\ 2 \\ 0 \\ 0 \\4 
+\end{bmatrix}
+$$
+
+a. Find a basis for $W$. What is the dimension of this subspace?
+b. Find a basis for $W^{\perp}$
+
+
+
+<!-- ### -->
+
+<!-- Consider the system $A \mathsf{x} = \mathsf{b}$ given by -->
+<!-- $$ -->
+<!-- \begin{bmatrix} -->
+<!-- 1 & 1 & 1 \\ -->
+<!-- 1 & 2 & -1 \\ -->
+<!-- 1 & 1 & -1 \\ -->
+<!-- 1 & 2 & 1 -->
+<!-- \end{bmatrix} -->
+<!-- \begin{bmatrix} -->
+<!-- x_1\\ x_2 \\ x_3 -->
+<!-- \end{bmatrix} -->
+<!-- = -->
+<!-- \begin{bmatrix} -->
+<!-- 4\\ 1 \\ -2 \\ -1 -->
+<!-- \end{bmatrix}. -->
+<!-- $$ -->
+
+<!-- a. Show that this system is inconsistent. -->
+<!-- b. Find the projected value $\hat{\mathsf{b}}$,  and the residual $\mathsf{z}$. -->
+<!-- c. How close is your approximate solution to the desired target vector? -->
+
+
+<!-- ### -->
+
+<!-- Here is an inconsistent system of equations: -->
+<!-- $$ -->
+<!-- \begin{bmatrix} 1 & 2 \\ 1 & 2 \\ 1 & -1 \end{bmatrix} -->
+<!--  \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} =  -->
+<!--   \begin{bmatrix} 6\\ 4 \\ -4 \end{bmatrix}  -->
+<!-- $$ -->
+
+<!-- a. State the normal equations for this problem (be sure to do all of the necessary matrix multiplications). -->
+
+<!-- b. Find the least squares solution to the problem. -->
+
+<!-- c. How close is your approximate solution to the desired target vector? -->
+
+
+<!-- ### Watch this!  -->
+
+<!-- The answer to at least one question on Quiz 3 is contained in [this video](https://www.youtube.com/watch?v=O4KCoNvRi6Y). -->
+
+
+
+
+ 
+ 
+## Solutions to Practice Problems
+
+```{r}
+require(pracma)
+```
+
+
+
+
+###
+
+There are three eigenvalues: 1, 2, and  $-2$. We find an eigenvector for each of  them.
+* Eigenvalue  $\lambda = 1$
+$$
+A - I = 
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & 0 & 0 \\
+-2 & 5 & -3 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & 3 & -3 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & 1 & -1 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+1 & 0 & -1 \\
+0 & 1 & -1 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+$$
+So one eigenvector is $[1,1,1]^{\top}$
+
+
+* Eigenvalue $\lambda = 2$
+$$
+A - 2I = 
+\left[
+\begin{array}{rrr}
+0 & -1 & 0 \\
+0 & -1 & 0 \\
+-2 & 5 & -4 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+-2 & 5 & -4 \\
+0 & -1 & 0 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+-2 & 0 & -4 \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+$$
+So one eigenvector is $[-2,0,1]^{\top}$
+  
+* Eigenvalue $\lambda = -2$
+$$
+A - 2I = 
+\left[
+\begin{array}{rrr}
+4 & -1 & 0 \\
+0 & 3 & 0 \\
+-2 & 5 & 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+4 & 0 & 0 \\
+0 & 1 & 0 \\
+-2 & 0 & 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+\end{array}
+\right]
+$$
+So one eigenvector is $[0,0,1]^{\top}$
+
+
+
+
+###
+
+In this problem, we are to think about the geometry of a 2D transformation, and see if we can find any vectors which get re-scaled by the transformation. The direction of these vectors cannot change (other than to flip to the opposite direction).
+
+a. This maps all of $\mathbb{R}^2$ to a line. Therefore it is not one-to-one, nor onto, and so it is not invertible. This means that $\lambda = 0$ is an eigenvalue Any vector that is already on the line must stay on the line, so it is an eigenvector, but we don't know its eigenvalue. Thus, the eigenvalues are $\lambda_1 = 0$ and  $\lambda_2$ we don't know.
+
+
+  
+b. There are two kinds of eigenvectors. Those vectors on the line are fixed, so they are eigenvectors of eigenvalue 1. Vectors that are perpendicular to the line get sent to their negatives, so they are eigenvectors of eigenvalue $-1$. Thus, the eigenvalues are $\lambda_1 = 1$ and  $\lambda_2=-1$.
+
+
+* Perhaps this one is easiest to understand by looking at a particular example. Let's look at a reflection across the $y$-axis. This means that $A [ x, y]^{\top} = [-x, y]^{\top}$. In particular, we have $A [ 1, 0]^{\top} =  [ -x, 0]^{\top} = - [ x, 0]^{\top}$. So $-1$ is an eigenvalue. Meanwhile, we also have $A [ 0, 1]^{\top} =  [ 0, 1]^{\top}$ So 1 is an eigenvalue.
+  
+c. In this transformation, every vector gets sent to its negative. 
+$$
+T\left( \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} \right)
+= \begin{bmatrix} -x_1 \\ -x_2 \end{bmatrix}
+= \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+$$
+This means that every vector is an eigenvector of eigenvalue $-1$. The eigenvalues are $\lambda_1 = \lambda_2=-1$.
+
+d. A horizontal shear (we did not talk about these very much) has a matrix of the form
+$$
+\begin{bmatrix} 1 & a \\ 0 & 1 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix}
+= \begin{bmatrix} x + a y \\ y \end{bmatrix}
+$$
+It fixes the $x$-axis since $(x,0)^\top$ maps to $(x,0)^\top$, but no other directions are fixed. You can see by the fact that the matrix is upper triangluar that the eigenvalues are on the diagonal and are $\lambda_1 = \lambda_2 = 1$. Note: if you calculate, you find that the geometric multiplicity of $\lambda = 1$ is 1 (only the $x$-axis), and this matrix is not diagonalizable. The only eigenspace is the $x$-axis.
+
+
+
+###
+a. $A$ is not invertible because $0$ is an eigenvalue. $A$ is diagonalizable because it have 5 distinct eigenvalues.
+a. $B$ is  invertible because $0$ is not an eigenvalue. $B$ is diagonalizable because it have 5 distinct eigenvalues.
+a. $C$ is  invertible because $0$ is not an eigenvalue. We cannot tell whether $C$ is diagonalizable without more information. The eigenvalue $\lambda=2$ has algebraic multiplicity 2. We need to know whether the geometric multiplicity is 1 or 2.
+a. $D$ is not invertible because $0$ is  an eigenvalue. We cannot tell whether $D$ is diagonalizable without more information. The eigenvalue $\lambda=3$ has algebraic multiplicity 2. We need to know whether the geometric multiplicity is 1 or 2.
+  
+
+###
+
+a. No, $A$ is not invertible because $0$ is an eigenvalue.
+b. $\mathsf{v} = [1, -2, 1]^{\top}$ is an eigenvector for $\lambda=0$. Therefore $\mathsf{v} \in \mbox{Nul}(A)$.
+c. The vector $\mathsf{v} = [0,1,2]^{\top}$ is an eigenvector for $\lambda=1$. So this is a steady-state vector. (However, the dynamical system will not converge to this steady state because $\lambda=6$ is the dominant eigenvalue.)
+d. When $A=P D P^{-1}$, we can find the coordinates of a vector with respect to the eigenbasis via multiplication by $P^{-1}$.
+  
+```{r, echo=TRUE}
+Pinv =cbind(c(-1/6,0,1/6),c(-1/15,1/5,-1/3),c(1/30,2/5,1/6))
+v = c(1,2,3)
+
+Pinv %*% v
+```
+
+So  $[ \mathsf{v}]_{\mathcal{B}} = [-1/5, 8/5, 0]^{\top}$.
+
+
+e. $-\frac{1}{5} \cdot 6^{2020} \cdot \begin{bmatrix} -5 \\ -2 \\ 1 \end{bmatrix}  + \frac{8}{5}  \cdot \begin{bmatrix} 0 \\ 1 \\ 2 \end{bmatrix}$
+  
+  
+
+###
+
+This system scales by $\sqrt{1+1} = \sqrt{2}$ and it rotates by $\tan^{-1} (1/1) = \pi/4$. 
+
+
+###
+
+We have
+$$
+\begin{bmatrix} a & -b \\ b & a \end{bmatrix} = \begin{bmatrix} .97 & -.71\\ .71 & .97 \end{bmatrix} 
+$$
+
+Let's turn to RStudio
+```{r, echo=TRUE}
+a = .97
+b = .71
+
+scale = sqrt(a^2+b^2)
+angle = atan (b/a)
+
+scale
+angle
+
+2 * pi / angle
+```
+
+a. It takes 10 iterations to rotate past the $x$-axis. 
+b. We are further from the origin because $| \lambda| \approx 1.2 > 1$.
+
+
+
+###
+ 
+a. The matrix $A$ is diagonalizable because it has 3 distinct eigenvalues
+b. We must see whether $\lambda=4$ has geometric multiplicty 2 (to match its algebraic multiplicity).
+
+```{r, echo=TRUE}
+rref( cbind(c(-1,-1,2), c(-1,-1,2), c(2,2,-4)))
+```
+
+We see that $B - 4I$ has two free columns, so $\dim ( \mbox{Nul}(B-4I))=2$. This means that $\lambda=4$ has geometric multiplicity 2. Therefore $B$ is diagonalizable.
+
+
+###
+ 
+a. We set $P = \begin{bmatrix} 2 & 1 \\ 3 & -1 \end{bmatrix}$. So
+$$
+P^{-1} =  - \frac{1}{5} \begin{bmatrix} -1 & -1 \\ -3 & 2 \end{bmatrix}
+= \begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix}
+$$
+Or we can find this inverse using RStudio.
+```{r, echo=TRUE}
+A = cbind(c(2,3),c(1,-1))
+solve(A)
+```
+
+Therefore 
+$$
+A = \begin{bmatrix} 0.7 & 0.2 \\ 0.3 & 0.8 \end{bmatrix} = 
+\begin{bmatrix} 2 & 1 \\ 3 & -1 \end{bmatrix}
+\begin{bmatrix} 1 & 0 \\ 0 & 0.5 \end{bmatrix}
+\begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix}
+$$
+
+b. We compute this as follows:
+
+$$
+A^n =  
+\begin{bmatrix} 2 & 1 \\ 3 & -1 \end{bmatrix}
+\begin{bmatrix} 1 & 0 \\ 0 & 0.5 \end{bmatrix}^n
+\begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix}=
+\begin{bmatrix} 2 & 1 \\ 3 & -1 \end{bmatrix}
+\begin{bmatrix} 1^n & 0 \\ 0 & 0.5^n \end{bmatrix}
+\begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix}
+$$
+so
+$$
+\lim_{n\to \infty} A^n = 
+\begin{bmatrix} 2 & 1 \\ 3 & -1 \end{bmatrix}
+\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}
+\begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix}
+=\begin{bmatrix} 0.4 & 0.4 \\ 0.6 & 0.6 \end{bmatrix}
+$$
+
+
+
+c. We need to find the coefficients for $x_0 = [25, 0]^{\top}$.
+
+```{r, echo=TRUE}
+P = cbind(c(2,3), c(1,-1))
+v = c(25,0)
+solve(P,v)
+```
+
+So the formula is
+$$
+5 \begin{bmatrix} 2 \\ 3 \end{bmatrix} + 15 \left( \frac{1}{2}  \right)^n \begin{bmatrix} 1 \\ -1 \end{bmatrix} 
+$$
+
+d. This converges to $5 \begin{bmatrix} 2 \\ 3 \end{bmatrix}$.
+
+
+###
+ 
+a.  We have
+$$
+A = \left[
+\begin{array}{cc}
+ \frac{1}{2} & \frac{1}{5} \\
+ -\frac{2}{5} & \frac{9}{10} \\
+\end{array}
+\right]
+=
+\begin{bmatrix}
+-1/2 & 1/2 \\ 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0.7 & -0.2 \\ 0.2 & 0.7
+\end{bmatrix}
+\begin{bmatrix}
+-2 & 1 \\ 0 & 1
+\end{bmatrix}
+$$
+Here are some R calculations to check the answer for (a) and to find the values for (b) and (c).
+
+```{r, echo=TRUE}
+
+A = cbind(c(1/2,-2/5), c(1/5,9/10))
+A
+eigen(A)
+
+P = cbind(c(-1/2,0),c(1/2,1))
+C = cbind(c(.7,.2),c(-.2,.7))
+Pinv = solve(P)
+
+Pinv
+
+P %*% C %*% Pinv
+
+atan(.2/.7)
+sqrt(.7^2 + .2^2)
+
+```
+
+b. The angle of rotation is $\tan^{-1} (.2/.7) = 0.278$ radians
+c. The dilation factor is $\sqrt{0.49 + 0.04} = \sqrt{0.53} = 0.728$.
+
+
+
+###
+
+Let's use RStudio.
+
+```{r, echo=TRUE}
+A = cbind(c(0.662, 0.338),c(0.25,  0.75))
+A %*% A %*% c(0,1)
+
+v1 = c(-0.595, -0.804 )
+v1/sum(v1)
+```
+
+a. If Monday is dry, then  the probability of a wet Wednesday is $0.353$. The easiest way to calculate this $A^2 \begin{bmatrix} 1 \\ 0 \end{bmatrix}.$
+b. In the long run, $42.5\%$ of days are wet  and $57.5\%$ of days are dry.
+
+
+
+
+###
+
+
+a. Here is the Leslie matrix, as well as some eigensystem computations.
+```{r, echo=TRUE}
+L = cbind(c(0,.8,0),c(0,0,.9),c(.4,0,.8))
+L
+(vals = eigen(L)$values)
+Mod(vals)
+vecs = eigen(L)$vectors
+v = vecs[,1]
+Re(v/sum(v)) # get it to sum to 1 AND remove the 0 imaginary part
+```
+
+b. The eigenvalues are $1.058, -0.129 \pm 0.506 i$.  The complex eigenvalues have length 0.52, so they shrink away pretty quickly.
+c. If we start outside of the span of the dominant eigenvalue, then the trajectory oscillate slightly until it settles into the direction of the dominant eigevector, with an overall growth trend of $1.058$, or $5.8\%$.
+d. The size of the herd grows. The proportions are $[0.227, 0.172, 0.601]$.
+
+###
+
+
+a. $(A + B) v = A v + B v = \lambda v + \mu v = (\lambda + \mu) v$, so yes, $v$ is an eigenvector of $A+B$ of eigenvalue $\lambda + \mu$.
+
+b. $A B v = A (B v) = A (\mu v) = \mu (A v) = \mu \lambda v$, so  yes, $v$ is an eigenvector of $AB$ of eigenvalue $\lambda\mu$.
+
+### 
+
+a. We are given $A v = \lambda v$. Thus,
+
+$$
+\begin{array}{cccl}
+A v & = & \lambda v & \text{given} \\
+A^{-1} A v & = & \lambda A^{-1} v & \text{multiply on the left by $A^{-1}$} \\
+v & = & \lambda A^{-1} v \\
+\frac{1}{\lambda} v & = &  A^{-1} v \\
+\end{array}
+$$
+This shows that $A^{-1} v = \frac{1}{\lambda} v$ so $v$ is an eigenvector of $A^{-1}$ with eigenvalue $\frac{1}{\lambda}$
+
+b. (method 1)  If $A$ is diagonal, then there is a basis $\{v_1, v_2, \ldots, v_n\}$ of eigenvectors of $A$ with eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$. By the previous part, $\{v_1, v_2, \ldots, v_n\}$ are eigenvectors of $A^{-1}$ with eigenvalues $1/\lambda_1, 1/\lambda_2, \ldots, 1/\lambda_n$. Thus $A^{-1}$ has the same eigenbasis, and the diagonalization of $A^{-1}$ is
+$$
+A^{-1} = 
+\underbrace{
+\begin{bmatrix} 
+\vert &\vert &&\vert \\
+v_1 & v_2 & \cdots & v_n \\
+\vert &\vert &&\vert \\
+\end{bmatrix}
+}_P
+\begin{bmatrix} 
+1/\lambda_1 & & & \\
+&  1/\lambda_2 & & \\
+&    & \ddots \\
+& &   &   1/\lambda_n \\
+\end{bmatrix} P^{-1}
+$$
+(method 2) If $A = P D P^{-1}$ then by the fact that the order reverses when computing inverses (the shoes-and-socks property), we have $A^{-1} = (P D P^{-1})^{-1} = (P^{-1})^{-1} D^{-1} P^{-1} = P D^{-1} P^{-1}.$ Furthermore $D^{-1}$ is a diagonal matrix such that
+$$
+\text{if} \qquad D = 
+\begin{bmatrix} 
+\lambda_1 & & &  \\
+&  \lambda_2 & &  \\
+&    & \ddots & \\
+&   &   & \lambda_n \\
+\end{bmatrix}
+\qquad\text{then}\qquad
+D^{-1} = 
+\begin{bmatrix} 
+1/\lambda_1 & & &  \\
+&  1/\lambda_2 & &  \\
+&   & & \ddots & \\
+&   & &  & 1/\lambda_n \\
+\end{bmatrix}
+$$
+Note that $A$ is invertible, 0 is not an eigenvalue, so each $1/\lambda_i$ does not cause division by 0.
+
+ 
+###
+
+We are given that $A w = 5 w$ and $A v = -3 v$.
+
+a. $A (v + w) = A v + A w = -3 v + 5 w \not = \lambda(v + w)$ for any $\lambda$, so $v + w$ is not an eigenvector of $A$. Note: it would be if they had the same eigenvalue.
+
+b. $A (2021 v) = 2021 A v = 2021 (-3) v = (-3) (2021 v)$ so $2021 v$ is an eigenvector also of eigenvalue $-3$.
+
+c. $A^2 w = A (A w) = A (5 w) = 5 (A w) = 5 (5 w) = 25 w$, so $w$ is an eigenvector of $A^2$ of eigenvalue 25.
+
+d. $(A - 20201I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v$, so $v$ is an eigenvector of $(A - 20201I_n)$ of eigenvalue $-2024$.
+
+<!-- ##  -->
+
+<!-- a. -->
+<!-- \begin{align} -->
+<!-- \| \mathsf{v} \| &= \sqrt{ \mathsf{v} \cdot \mathsf{v}} = \sqrt{1+1+1} = \sqrt{3} \\ -->
+<!-- \| \mathsf{w} \| &= \sqrt{ \mathsf{w} \cdot \mathsf{vw}} = \sqrt{25+4+9} = \sqrt{38} \\ -->
+<!-- \end{align} -->
+
+<!-- b. We have $\mathsf{v} - \mathsf{w} = \begin{bmatrix} -4 \\ -3 \\ -2 \end{bmatrix}$ and so -->
+<!-- $$ -->
+<!-- \| \mathsf{v} - \mathsf{w}\|  = \sqrt{16+9+4} = \sqrt{29}  -->
+<!-- $$ -->
+
+<!-- c.  -->
+<!-- $$  -->
+<!-- \cos \theta = \frac{\mathsf{v} \cdot \mathsf{w}}{\| \mathsf{v}  \| \, \|\mathsf{w} \| } -->
+<!-- = \frac{5-2+3}{\sqrt{3} \, \sqrt{38} } = \frac{2\sqrt{3}}{\sqrt{38} } -->
+<!-- $$ -->
+
+
+<!-- d.  -->
+<!-- $$ -->
+<!-- \hat{\mathsf{w}} = \mbox{proj}_{\mathsf{v}} \mathsf{w} = \frac{\mathsf{v} \cdot \mathsf{w}}{ \mathsf{v} \cdot \mathsf{v} } \, \mathsf{v} = \frac{5-2+3}{1+1+1}  \mathsf{v}  = 2 \mathsf{v} =  -->
+<!-- \begin{bmatrix} -->
+<!-- 2 \\ -2 \\ 2  -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+<!-- e. Using $\hat{\mathsf{w}}$ from the previous problem, we know that  -->
+<!-- $$ -->
+<!-- \mathsf{z} = \mathsf{w} - \hat{\mathsf{w}} = \begin{bmatrix} 5 \\ 2 \\ 3 \end{bmatrix}  -  \begin{bmatrix} 2 \\ -2 \\ 2  \end{bmatrix} = -->
+<!-- \begin{bmatrix} 3 \\ 4 \\ 1  \end{bmatrix} -->
+<!-- $$  -->
+<!-- is orthogonal to $\mathsf{v}$.So an orthonormal basis is -->
+<!-- $$ -->
+<!-- \frac{1}{\sqrt{3}} \begin{bmatrix} -->
+<!-- 1 \\ -1 \\ 1 -->
+<!-- \end{bmatrix} \quad \mbox{and} \quad -->
+<!-- \frac{1}{\sqrt{26}} \begin{bmatrix} -->
+<!-- 3 \\ 4 \\ 1 -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+
+<!-- ### -->
+
+<!-- Here are a few ways to describe $\mbox{ker}(T)$. -->
+
+<!-- a. $\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid \mathsf{x} \cdot \mathsf{u} = 0 \}$. -->
+
+<!-- b. $\mbox{ker}(T)$ is the set of vectors that are orthogonal to $\mathsf{u}$. -->
+
+<!-- c. Let $A$ be the $1 \times n$ matrix $\mathsf{u}^{\top}$. Then $\mbox{ker}(T)= \mbox{Nul}(A)$. -->
+
+<!-- ### -->
+
+<!-- We have $\mathsf{u}_1 \cdot \mathsf{v} = 2-2-4+2=-2$ and $\mathsf{u}_1 \cdot \mathsf{v} = 2-2+4-2=2$ so -->
+<!-- $$ -->
+<!-- \hat{\mathsf{v}} = \mbox{proj}_W \mathsf{v} = - \mathsf{u}_1 +  \mathsf{u}_2 =  -->
+<!-- -\frac{1}{2} \begin{bmatrix} -->
+<!-- 1 \\ -1 \\ -1 \\ 1  -->
+<!-- \end{bmatrix} -->
+<!-- + -->
+<!-- \frac{1}{2} -->
+<!-- \begin{bmatrix} -->
+<!-- 1 \\ -1 \\ 1 \\ -1  -->
+<!-- \end{bmatrix} -->
+<!-- = -->
+<!-- \begin{bmatrix} -->
+<!-- 0 \\ 0 \\ 1 \\ -1  -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+<!-- with residual vector  -->
+<!-- $$ -->
+<!-- \mathsf{z} = \mathsf{v} - \hat{\mathsf{v}} -->
+<!-- = \begin{bmatrix} -->
+<!-- 2 \\ 2 \\ 4 \\ 2  -->
+<!-- \end{bmatrix} -->
+<!-- - -->
+<!-- \begin{bmatrix} -->
+<!-- 0 \\ 0 \\ 1 \\ -1  -->
+<!-- \end{bmatrix} -->
+<!-- = -->
+<!-- \begin{bmatrix} -->
+<!-- 2 \\ 2 \\ 3 \\ 3  -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+<!-- and the distance is $\| \mathsf{z} \| = \sqrt{4+4+9+9} = \sqrt{26}$. -->
+
+<!-- ### -->
+
+<!-- a. $\mathsf{v}_1 \cdot \mathsf{v}_2 = 1 +2 - 3 =0$. -->
+
+<!-- b. We must find $\mbox{Nul}(A)$ where  -->
+<!-- $A = \begin{bmatrix} \mathsf{v}_1^{\top} \\ \mathsf{v}_2^{\top}\end{bmatrix}$. -->
+
+<!-- $$ -->
+<!-- \begin{bmatrix} -->
+<!-- 1 & 1 & -1 \\ -->
+<!-- 1 & 2 & 3 -->
+<!-- \end{bmatrix} -->
+<!-- \longrightarrow -->
+<!-- \begin{bmatrix} -->
+<!-- 1 & 1 & -1 \\ -->
+<!-- 0 & 1 & 4 -->
+<!-- \end{bmatrix} -->
+<!-- \longrightarrow -->
+<!-- \begin{bmatrix} -->
+<!-- 1 & 0 & -5 \\ -->
+<!-- 0 & 1 & 4 -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+<!-- so the vector $\begin{bmatrix} 5 \\ -4 \\ 1 \end{bmatrix}$ is a basis for $W^{\perp}$ -->
+
+<!-- c. We have -->
+<!-- \begin{align} -->
+<!-- \hat{\mathsf{y}} &= -->
+<!-- \frac{\mathsf{y} \cdot \mathsf{v_1}}{\mathsf{v_1} \cdot \mathsf{v_1}} \, \mathsf{v_1} + -->
+<!-- \frac{\mathsf{y} \cdot \mathsf{v_2}}{\mathsf{v_2} \cdot \mathsf{v_2}} \, \mathsf{v_2} -->
+<!-- = -->
+<!-- \frac{8-2}{1+1+1} \mathsf{v_1} + \frac{8+6}{1+4+9} \mathsf{v_2} \\ -->
+<!-- &= -->
+<!-- 2\mathsf{v_1} +\mathsf{v_2} -->
+<!-- = \begin{bmatrix} 2 \\ 2 \\ -2 \end{bmatrix} + \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} -->
+<!-- = \begin{bmatrix} 3 \\ 4 \\ 1 \end{bmatrix} -->
+<!-- \end{align} -->
+<!-- and so  -->
+<!-- $$ -->
+<!-- \mathsf{z} = \mathsf{y} - \hat{\mathsf{y}} -->
+<!-- = \begin{bmatrix} 8 \\ 0 \\ 2 \end{bmatrix} - \begin{bmatrix} 3 \\ 4 \\ 1 \end{bmatrix} -->
+<!-- = \begin{bmatrix} 5 \\ -4 \\ 1 \end{bmatrix}. -->
+<!-- $$ -->
+
+<!-- ### -->
+
+<!-- a .We will answer this one using RStudio. -->
+
+<!-- ```{r, echo=TRUE} -->
+
+<!-- A = cbind(c(1,-2,1,0,1), c(-1,3,-1,1,-1), c(0,0,1,3,1), c(0,2,0,0,4)) -->
+<!-- rref(A) -->
+
+<!-- ``` -->
+<!-- So we need all four vectors to span the column space. -->
+
+<!-- b. We obtain a basis for $W^{\perp}$ by finding $\mbox{Nul(A^{\top})}$ So let's row reduce $A^{\top}$ -->
+
+<!-- ```{r, echo=TRUE} -->
+<!-- rref(t(A)) -->
+<!-- ``` -->
+
+<!-- The vector  $\begin{bmatrix} 2 \\ -2 \\ -7 \\ 2 \\ 1\end{bmatrix}$ spans $W^{\perp}$ -->
+
+
+
+<!-- ### -->
+
+<!-- a. -->
+
+<!-- ```{r echo=TRUE} -->
+<!-- A = cbind(c(1,1,1,1), c(1,2,1,2),c(1,-1,-1,1)) -->
+<!-- b  = c(4,1,-2,-1) -->
+<!-- rref(cbind(A,b)) -->
+<!-- ``` -->
+
+<!-- There is a pivot in the last column of this augmented matrix, so this system is inconsistent. -->
+
+<!-- b. -->
+
+<!-- Here is the least squares calculation. -->
+
+<!-- ```{r, echo=TRUE} -->
+<!-- #solve the normal equation -->
+<!-- (xhat = solve(t(A) %*% A, t(A) %*% b)) -->
+
+<!-- # find the projection -->
+<!-- (bhat = A %*% xhat) -->
+
+<!-- # find the residual vector -->
+<!-- (z = b - bhat) -->
+
+<!-- # check that z is orthogonal to Col(A) -->
+<!-- t(A) %*% z -->
+
+<!-- # measure the distance between bhat and b -->
+<!-- sqrt( t(z) %*% z) -->
+
+<!-- ``` -->
+
+<!-- The projection is $\hat{\mathsf{b}} = [2,-1,0,1]^{\top}$.  -->
+<!-- The residual is $\mathsf{z} = [2,2,-2,-2]^{\top}$ -->
+
+<!-- c. The distance of between $\mathsf{b}$ and  $\hat{\mathsf{b}}$ is  -->
+<!-- $$ -->
+<!-- \| = \| \mathsf{z} \| = \sqrt{4+4+4+4} = \sqrt{16} = 4. -->
+<!-- $$ -->
