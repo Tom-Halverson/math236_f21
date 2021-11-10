@@ -321,7 +321,7 @@ $$
 $$
 as seen here:
 
-```{r}
+```{r,echo=TRUE}
 (A = cbind(c(1.19,0.29),c(-.38,.78)))
 eigen(A)
 ```

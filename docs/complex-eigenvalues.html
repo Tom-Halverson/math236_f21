@@ -573,12 +573,12 @@ Now, let’s find the <strong>angle of rotation</strong>. We will use the <code>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="complex-eigenvalues.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(.<span class="dv">9</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">2</span><span class="sc">^</span><span class="dv">2</span>)  </span></code></pre></div>
 <pre><code>## [1] 0.9219544</code></pre>
 <p>Now, we observe the trajectory of a single point <span class="math inline">\((0,1)^T\)</span> under this matrix. In this picture you can see that it is contracting and rotating by 12.5 degrees. Note that 360/12.5 is about 29, and it takes 29 applications to go once around the circle. You can count them in the plot below. Furthermore, <span class="math inline">\((0.9219544)^29 =0.095\)</span> and after 29 applications the vector is about 1/10 of its original length.</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-107-1.png" width="75%" style="display: block; margin: auto;" />
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-108-1.png" width="75%" style="display: block; margin: auto;" />
 We can also view this by looking at a plot of the x and y coordinates over time as the point (x,y) circles around in the xy-plane. Key point: complex eigenvalues lead to oscillating values of the individual coordinates</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-108-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-109-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>We can also use <code>trajectory_plot</code> from [Dynamical Systems in 2D] to watch what happens to a whole grid of points under this transformation. It is beautiful!</p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="complex-eigenvalues.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trajectory_plot</span>(A, <span class="at">t=</span><span class="dv">30</span>, <span class="at">datamax=</span><span class="dv">5</span>, <span class="at">plotmax=</span><span class="dv">5</span>, <span class="at">numpoints=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-110-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-111-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="example-2" class="section level3" number="16.2.2">
 <h3><span class="header-section-number">16.2.2</span> Example 2</h3>
@@ -606,11 +606,11 @@ We can also view this by looking at a plot of the x and y coordinates over time 
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="complex-eigenvalues.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(v1)  <span class="co"># gives the length of a complex number</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Notice that the dilation factor is 1, which is seen in the following plots. Here are 21 iterations:</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-113-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-114-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>And here are 200 iterations
-<img src="math236_handbook_files/figure-html/unnamed-chunk-114-1.png" width="75%" style="display: block; margin: auto;" /></p>
-<p>And a trajectory plot:
 <img src="math236_handbook_files/figure-html/unnamed-chunk-115-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>And a trajectory plot:
+<img src="math236_handbook_files/figure-html/unnamed-chunk-116-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="example-3" class="section level3" number="16.2.3">
 <h3><span class="header-section-number">16.2.3</span> Example 3</h3>
@@ -635,9 +635,9 @@ We can also view this by looking at a plot of the x and y coordinates over time 
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="complex-eigenvalues.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(v1)  <span class="co"># gives the length of a complex number</span></span></code></pre></div>
 <pre><code>## [1] 1.002846</code></pre>
 <p>We see that the dilation factor is <span class="math inline">\(r = 1.0028\)</span> and the angle of rotation is <span class="math inline">\(9.18\)</span> degrees. Here are 100 iterations.</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-117-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-118-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>And a trajectory plot:
-<img src="math236_handbook_files/figure-html/unnamed-chunk-118-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-119-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="general-2x2-matrices-with-complex-eigenvalues" class="section level2" number="16.3">
@@ -653,9 +653,11 @@ It has eigenvalues and eigenvectors
 \begin{bmatrix} 0.000 \\ -0.517 \end{bmatrix} i
 \]</span>
 as seen here:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="complex-eigenvalues.html#cb252-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="fl">1.19</span>,<span class="fl">0.29</span>),<span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">38</span>,.<span class="dv">78</span>)))</span></code></pre></div>
 <pre><code>##      [,1]  [,2]
 ## [1,] 1.19 -0.38
 ## [2,] 0.29  0.78</code></pre>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="complex-eigenvalues.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 0.985+0.2611034i 0.985-0.2611034i
@@ -668,9 +670,9 @@ as seen here:</p>
 <pre><code>## [1] 14.84649</code></pre>
 <pre><code>## [1] 1.019019</code></pre>
 <p>A trajectory plot shows us that it is still rotating by 14.8 degrees and dilating by 1.019, but it is taking more of an elliptical pattern.
-<img src="math236_handbook_files/figure-html/unnamed-chunk-121-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-122-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>We can also view this by looking at a plot of the x and y coordinates over time as the point (x,y) circles around in the xy-plane. Key point: complex eigenvalues lead to oscillating values of the individual coordinates</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-122-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-123-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>To see precisely what happens, we change to basis <span class="math inline">\(\{\mathsf{w}, \mathsf{u}\}\)</span> where <span class="math inline">\(\mathsf{w}\)</span> and <span class="math inline">\(\mathsf{u}\)</span> are the imaginary and real parts of the eigenvector <span class="math inline">\(\mathsf{v} =\mathsf{u} + \mathsf{w} i\)</span>. In this case the eigenvalues and eigenvectors are
 <span class="math display">\[
 \lambda = 0.985 \pm 0.261 i \qquad \mathsf{v} = 
@@ -707,40 +709,40 @@ Which we can see using R</p>
 <h2><span class="header-section-number">16.4</span> Examples from class</h2>
 <div id="section" class="section level3" number="16.4.1">
 <h3><span class="header-section-number">16.4.1</span> </h3>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="complex-eigenvalues.html#cb258-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(.<span class="dv">9</span>,.<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">2</span>,.<span class="dv">9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="complex-eigenvalues.html#cb260-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(.<span class="dv">9</span>,.<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">2</span>,.<span class="dv">9</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]  0.9 -0.2
 ## [2,]  0.2  0.9</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="complex-eigenvalues.html#cb260-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">vals=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="complex-eigenvalues.html#cb262-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">vals=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values)</span></code></pre></div>
 <pre><code>## [1] 0.9+0.2i 0.9-0.2i</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="complex-eigenvalues.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="complex-eigenvalues.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
 <pre><code>## [1] 0.9219544 0.9219544</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="complex-eigenvalues.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="complex-eigenvalues.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
 <pre><code>## [1]  12.52881 -12.52881</code></pre>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-125-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-126-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="section-1" class="section level3" number="16.4.2">
 <h3><span class="header-section-number">16.4.2</span> </h3>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="complex-eigenvalues.html#cb266-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="fl">1.19</span>,.<span class="dv">29</span>),<span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">38</span>,.<span class="dv">78</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="complex-eigenvalues.html#cb268-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="fl">1.19</span>,.<span class="dv">29</span>),<span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">38</span>,.<span class="dv">78</span>)))</span></code></pre></div>
 <pre><code>##      [,1]  [,2]
 ## [1,] 1.19 -0.38
 ## [2,] 0.29  0.78</code></pre>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="complex-eigenvalues.html#cb268-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">vals=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="complex-eigenvalues.html#cb270-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">vals=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values)</span></code></pre></div>
 <pre><code>## [1] 0.985+0.2611034i 0.985-0.2611034i</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="complex-eigenvalues.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="complex-eigenvalues.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
 <pre><code>## [1] 1.019019 1.019019</code></pre>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="complex-eigenvalues.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="complex-eigenvalues.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
 <pre><code>## [1]  14.84649 -14.84649</code></pre>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-127-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-128-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="the-checkpoint-question" class="section level2" number="16.5">
 <h2><span class="header-section-number">16.5</span> The checkpoint question</h2>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="complex-eigenvalues.html#cb274-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="complex-eigenvalues.html#cb276-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1   -1
 ## [2,]    1    2</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="complex-eigenvalues.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="complex-eigenvalues.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 1.5+0.866025i 1.5-0.866025i
@@ -749,12 +751,12 @@ Which we can see using R</p>
 ##                       [,1]                  [,2]
 ## [1,] -0.3535534+0.6123724i -0.3535534-0.6123724i
 ## [2,]  0.7071068+0.0000000i  0.7071068+0.0000000i</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="complex-eigenvalues.html#cb278-1" aria-hidden="true" tabindex="-1"></a>vals<span class="ot">=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
-<span id="cb278-2"><a href="complex-eigenvalues.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="complex-eigenvalues.html#cb280-1" aria-hidden="true" tabindex="-1"></a>vals<span class="ot">=</span><span class="fu">eigen</span>(A)<span class="sc">$</span>values</span>
+<span id="cb280-2"><a href="complex-eigenvalues.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Mod</span>(vals)</span></code></pre></div>
 <pre><code>## [1] 1.732051 1.732051</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="complex-eigenvalues.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="complex-eigenvalues.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Arg</span>(vals)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>pi)<span class="sc">*</span><span class="dv">360</span></span></code></pre></div>
 <pre><code>## [1]  30 -30</code></pre>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-129-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-130-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <!-- ## A 3D example -->
 <!-- Here is the Northern Spotted Owl matrices from the [Eigenvalues] examples. We saw that it has one real and two complex eigenvalues: -->
 <!-- ```{r} -->
