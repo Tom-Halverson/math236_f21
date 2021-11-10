@@ -637,30 +637,30 @@ c_9 \vec{a}_9.
 <p>The following code generates a random 5 x 5 matrix. Every time you enter it, it will give you a new matrix. Use this to try to figure out how likely it is that a random square matrix has linearly dependent columns.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="linear-dependence.html#cb87-1" aria-hidden="true" tabindex="-1"></a>R1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
 <span id="cb87-2"><a href="linear-dependence.html#cb87-2" aria-hidden="true" tabindex="-1"></a>R1</span></code></pre></div>
-<pre><code>##            [,1]      [,2]      [,3]      [,4]      [,5]
-## [1,] 0.48909608 0.5786928 0.4610274 0.4210738 0.5117774
-## [2,] 0.02821983 0.4347161 0.1078584 0.5480543 0.6192529
-## [3,] 0.91713536 0.4624183 0.4385848 0.7251861 0.4559035
-## [4,] 0.43044600 0.2398135 0.6605925 0.9864848 0.6010587
-## [5,] 0.86503481 0.8265764 0.9659835 0.7767781 0.9555353</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]
+## [1,] 0.4064181 0.1536868 0.7621093 0.5111791 0.5260451
+## [2,] 0.5641443 0.1209894 0.5170677 0.6932867 0.1775100
+## [3,] 0.5658889 0.2331840 0.6058064 0.3029472 0.8971028
+## [4,] 0.8226161 0.8609577 0.6450800 0.5761791 0.7894290
+## [5,] 0.0710704 0.9386573 0.7860909 0.5858755 0.3653258</code></pre>
 <p>Try the same using the following code that generates a random 5 x 6 matrix.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="linear-dependence.html#cb89-1" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">6</span>)</span>
 <span id="cb89-2"><a href="linear-dependence.html#cb89-2" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
-<pre><code>##            [,1]      [,2]       [,3]      [,4]      [,5]       [,6]
-## [1,] 0.70529156 0.1167707 0.41093057 0.5493052 0.1213260 0.08454623
-## [2,] 0.36748764 0.6340521 0.02932033 0.6612809 0.9398713 0.67465811
-## [3,] 0.45467964 0.3634069 0.55134418 0.9167378 0.4741137 0.54027337
-## [4,] 0.08965948 0.6269737 0.96887440 0.7453059 0.5646442 0.64486370
-## [5,] 0.23370983 0.4820375 0.20760783 0.1826927 0.8758375 0.41767914</code></pre>
+<pre><code>##           [,1]      [,2]       [,3]      [,4]       [,5]      [,6]
+## [1,] 0.1980285 0.8507115 0.86625555 0.1145561 0.98724177 0.7398888
+## [2,] 0.5085832 0.2310996 0.04523541 0.1369140 0.62990315 0.6967245
+## [3,] 0.2963399 0.9180040 0.19887913 0.3371441 0.51146031 0.8509160
+## [4,] 0.6002804 0.6691570 0.05818836 0.8985420 0.90055078 0.2231888
+## [5,] 0.1265249 0.9992887 0.58928855 0.1180949 0.07582603 0.7850586</code></pre>
 <p>Try the same using the following code that generates a random 5 x 4 matrix.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="linear-dependence.html#cb91-1" aria-hidden="true" tabindex="-1"></a>R3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
 <span id="cb91-2"><a href="linear-dependence.html#cb91-2" aria-hidden="true" tabindex="-1"></a>R3</span></code></pre></div>
-<pre><code>##             [,1]      [,2]      [,3]      [,4]
-## [1,] 0.214668790 0.2557367 0.1686942 0.2939644
-## [2,] 0.168164567 0.1436404 0.1598870 0.6455017
-## [3,] 0.001392522 0.3571274 0.3446480 0.6771269
-## [4,] 0.769150667 0.4980327 0.2773667 0.4522879
-## [5,] 0.940488450 0.3130166 0.3813903 0.8769408</code></pre>
+<pre><code>##            [,1]       [,2]       [,3]       [,4]
+## [1,] 0.54242606 0.22079823 0.30828401 0.91516491
+## [2,] 0.03187827 0.08137817 0.21800433 0.34891029
+## [3,] 0.35578116 0.16981418 0.98363112 0.99233006
+## [4,] 0.27156404 0.34124563 0.01313026 0.03255321
+## [5,] 0.85033967 0.86259724 0.22675766 0.74058685</code></pre>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="linear-dependence.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(R3)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
