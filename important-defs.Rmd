@@ -206,18 +206,18 @@ rank
 
 : The **rank** of the $m \times n$ matrix $A$ is the dimension of the column space of $A$. This is also the number of pivot columns of the matrix.
 
-<!-- eigenvalue and eigenvector -->
+eigenvalue and eigenvector
 
-<!-- : For a square $n \times n$ matrix $A$, the scalar $\lambda \in \mathbb{R}$ is an **eigenvalue** for $A$ when there exists a nonzero vector  $\mathsf{x} \in \mathbb{R}^n$ such that $A \mathsf{x} = \lambda \mathsf{x}$. The nonzero vector $\mathsf{x}$ is the **eigenvector** for eigenvalue $\lambda$. The collection of all of these eigenvalues and eigenvectors is called the **eigensystem** of A. -->
+: For a square $n \times n$ matrix $A$, the scalar $\lambda \in \mathbb{R}$ is an **eigenvalue** for $A$ when there exists a nonzero vector  $\mathsf{x} \in \mathbb{R}^n$ such that $A \mathsf{x} = \lambda \mathsf{x}$. The nonzero vector $\mathsf{x}$ is the **eigenvector** for eigenvalue $\lambda$. The collection of all of these eigenvalues and eigenvectors is called the **eigensystem** of A.
 
 
-<!-- diagonalization -->
+diagonalization
 
-<!-- : A square $n \times n$ matrix is **diagonalizable** when $A = P D P^{-1}$ where $D$ is a diagonal matrix and $P$ is an invertible matrix.  In this case, the eigenvalues of $A$ are the diagonal entries of $D$ and their corresponding eigenvectors are the columns of $P$. -->
+: A square $n \times n$ matrix is **diagonalizable** when $A = P D P^{-1}$ where $D$ is a diagonal matrix and $P$ is an invertible matrix.  In this case, the eigenvalues of $A$ are the diagonal entries of $D$ and their corresponding eigenvectors are the columns of $P$.
 
-<!-- dominant eigenvalue -->
+dominant eigenvalue
 
-<!-- : The eigenvalue $\lambda$ of  the square matrix $A$ is the **dominant eigenvalue** when  $| \lambda | > | \mu |$ where $\mu$ is any other eigenvalue of $A$. The dominant eigenvalue determines the long-term behavior of $A^t$ as $t \rightarrow \infty$. -->
+: The eigenvalue $\lambda$ of  the square matrix $A$ is the **dominant eigenvalue** when  $| \lambda | > | \mu |$ where $\mu$ is any other eigenvalue of $A$. The dominant eigenvalue determines the long-term behavior of $A^t$ as $t \rightarrow \infty$.
 
 <!-- ## Orthogonality -->
 

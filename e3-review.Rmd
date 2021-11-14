@@ -17,7 +17,8 @@ The exam will be in the same style as the first two exams:
 * I will ask some problems that are very similar to homework problems, Edfinity problems, and examples from class or the videos.
 * I will ask other problems that are somewhat different from things you have done. On these, you are to apply your knowledge in a slightly new setting to demonstrate an even higher mastery of the material.
 * You will be allowed to re-write one problem to earn back half of the points that you lost. This will be due the class period after I hand the exam back.
-* The exam is worth 12% of your course grade as outlined in the [syllabus](https://docs.google.com/document/d/1uE95uWoV994QJ6YyrR7yBMV7MATzYO6XI4xd_q4-sqc).
+* As outlined in the syllabus, [syllabus](https://docs.google.com/document/d/1uE95uWoV994QJ6YyrR7yBMV7MATzYO6XI4xd_q4-sqc), in your course grade, 3 semester exams will be weighted 13%+13% + 10% = 36% so that your lowest of the three quizzes counts for 10% and your other two scores count 13%.
+
 
 
 
@@ -344,7 +345,24 @@ c. Is $\vec w$ an eigenvector of $A^2$, and if so what is its eigenvalue?
 
 d. Is $\vec v$ an eigenvector of $A - 2021 I_n$ and if so, what is its eigenvalue?
 
+### 
 
+$A$ is a $2 \times 2$ matrix that sends $v$ to $A v$ as shown in the plot below with its two  eigenspaces $E_{\lambda_1}$ and $E_{\lambda_2}$.
+
+
+a. Estimate, as accurately as possible from the given information, the eigenvalues $\lambda_1$ and $\lambda_2$.
+
+b. Indicate on the plot above where $A^2 v$ will be.
+
+
+c. What happens in the limit: $\displaystyle{\lim_{n\to \infty} }A^n v$?
+
+
+d. If $A^n v = \begin{bmatrix} x_n \\ y_n \end{bmatrix}$ what happens to the ratio $x_n/y_n$ as $n$ grows larger and larger?
+
+
+<center>
+![](images/Eigenplane.png){width=80%}
 
 <!-- ### -->
 

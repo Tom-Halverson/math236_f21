@@ -141,7 +141,7 @@ c. You are seeking funding from the Michigan DNR to support a cleanup effort. As
 
 We will look at the [Fibonacci example](https://tom-halverson.github.io/math236_f21/eigenvectors.html#fibonacci-numbers) on Monday (11/8) in class. This is very much like it except that the calculations are easier. In that problem we start with a matrix $F$ that generates the Fibonacci numbers and used it to find a closed-formula formula $f_n$ for the $n$th Fibonacci number. Here you are to follow the same process to find a formula $h_n$ for the nearly-as-famous Halverson numbers. 
 
-The Halverson numbers are defined by $h_0 = 0$, $h_1 = 1$, and $h_n = 3 h_{n-2} +  2 h_{n-1}$.  They start out as $0,1,2,7,20,61,182,547,1640,4921,14762$. 
+The Halverson numbers are defined by $h_0 = 0$, $h_1 = 1$, and $h_{n+1} =  3 h_{n-1} +  2 h_{n}$.  They start out as $0,1,2,7,20,61,182,547,1640,4921,14762$. 
 
 a. Find a matrix $H$ so that $H \begin{bmatrix} h_{n-1} \\ h_n \end{bmatrix} = \begin{bmatrix} h_{n} \\ h_{n+1} \end{bmatrix}$.
 
