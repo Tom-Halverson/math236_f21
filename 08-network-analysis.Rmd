@@ -145,7 +145,7 @@ eigen(B)
 
 For an adjacency matrix $A$, the dominant eigenvector of $B + I$, scaled to sum to 1, is called **Gould's Index** of network centrality. Here we compute Gould's index.
 
-```{r}
+```{r,echo=TRUE}
 vecs = eigen(B)$vectors
 gould = vecs[,1]           # get the dominant eigenvector
 gould = gould/sum(gould)   # rescale it to sum to 1

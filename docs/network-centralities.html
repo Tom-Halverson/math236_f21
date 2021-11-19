@@ -678,23 +678,27 @@ we know that dynamical systems converge to the <strong>dominant eigenvector</str
 ## [11,] -0.12092951 -0.191135557
 ## [12,]  0.32888356  0.072932167</code></pre>
 <p>For an adjacency matrix <span class="math inline">\(A\)</span>, the dominant eigenvector of <span class="math inline">\(B + I\)</span>, scaled to sum to 1, is called <strong>Gould’s Index</strong> of network centrality. Here we compute Gould’s index.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="network-centralities.html#cb301-1" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(B)<span class="sc">$</span>vectors</span>
+<span id="cb301-2"><a href="network-centralities.html#cb301-2" aria-hidden="true" tabindex="-1"></a>gould <span class="ot">=</span> vecs[,<span class="dv">1</span>]           <span class="co"># get the dominant eigenvector</span></span>
+<span id="cb301-3"><a href="network-centralities.html#cb301-3" aria-hidden="true" tabindex="-1"></a>gould <span class="ot">=</span> gould<span class="sc">/</span><span class="fu">sum</span>(gould)   <span class="co"># rescale it to sum to 1</span></span>
+<span id="cb301-4"><a href="network-centralities.html#cb301-4" aria-hidden="true" tabindex="-1"></a>gould</span></code></pre></div>
 <pre><code>##  [1] 0.07637062 0.14676474 0.07845446 0.11239329 0.14086410 0.06611172
 ##  [7] 0.12998472 0.12280792 0.02083107 0.03349744 0.03349744 0.03842249</code></pre>
 <p>Now we show that the dynamical system is converging to Gould’s index.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="network-centralities.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the dynamical system</span></span>
-<span id="cb302-2"><a href="network-centralities.html#cb302-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">30</span></span>
-<span id="cb302-3"><a href="network-centralities.html#cb302-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(B),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb302-4"><a href="network-centralities.html#cb302-4" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(B))<span class="sc">/</span><span class="fu">nrow</span>(B)</span>
-<span id="cb302-5"><a href="network-centralities.html#cb302-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {  </span>
-<span id="cb302-6"><a href="network-centralities.html#cb302-6" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> B <span class="sc">%*%</span>  X[,i]</span>
-<span id="cb302-7"><a href="network-centralities.html#cb302-7" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> X[,i<span class="sc">+</span><span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(X[,i<span class="sc">+</span><span class="dv">1</span>])</span>
-<span id="cb302-8"><a href="network-centralities.html#cb302-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb302-9"><a href="network-centralities.html#cb302-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb302-10"><a href="network-centralities.html#cb302-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data</span></span>
-<span id="cb302-11"><a href="network-centralities.html#cb302-11" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">=</span> <span class="fu">cbind</span>(X[,<span class="dv">1</span>],X[,<span class="dv">2</span>],X[,<span class="dv">3</span>],X[,<span class="dv">11</span>],X[,<span class="dv">21</span>],gould)</span>
-<span id="cb302-12"><a href="network-centralities.html#cb302-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Y) <span class="ot">=</span> airports</span>
-<span id="cb302-13"><a href="network-centralities.html#cb302-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Y) <span class="ot">=</span> <span class="fu">cbind</span>(<span class="st">&quot;n=0&quot;</span>,<span class="st">&quot;n=1&quot;</span>,<span class="st">&quot;n=2&quot;</span>,<span class="st">&quot;n=10&quot;</span>,<span class="st">&quot;n=20&quot;</span>,<span class="st">&quot;Gould&quot;</span>)</span>
-<span id="cb302-14"><a href="network-centralities.html#cb302-14" aria-hidden="true" tabindex="-1"></a>Y</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="network-centralities.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the dynamical system</span></span>
+<span id="cb303-2"><a href="network-centralities.html#cb303-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb303-3"><a href="network-centralities.html#cb303-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(B),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb303-4"><a href="network-centralities.html#cb303-4" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(B))<span class="sc">/</span><span class="fu">nrow</span>(B)</span>
+<span id="cb303-5"><a href="network-centralities.html#cb303-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {  </span>
+<span id="cb303-6"><a href="network-centralities.html#cb303-6" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> B <span class="sc">%*%</span>  X[,i]</span>
+<span id="cb303-7"><a href="network-centralities.html#cb303-7" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> X[,i<span class="sc">+</span><span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(X[,i<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb303-8"><a href="network-centralities.html#cb303-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb303-9"><a href="network-centralities.html#cb303-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb303-10"><a href="network-centralities.html#cb303-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data</span></span>
+<span id="cb303-11"><a href="network-centralities.html#cb303-11" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">=</span> <span class="fu">cbind</span>(X[,<span class="dv">1</span>],X[,<span class="dv">2</span>],X[,<span class="dv">3</span>],X[,<span class="dv">11</span>],X[,<span class="dv">21</span>],gould)</span>
+<span id="cb303-12"><a href="network-centralities.html#cb303-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Y) <span class="ot">=</span> airports</span>
+<span id="cb303-13"><a href="network-centralities.html#cb303-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Y) <span class="ot">=</span> <span class="fu">cbind</span>(<span class="st">&quot;n=0&quot;</span>,<span class="st">&quot;n=1&quot;</span>,<span class="st">&quot;n=2&quot;</span>,<span class="st">&quot;n=10&quot;</span>,<span class="st">&quot;n=20&quot;</span>,<span class="st">&quot;Gould&quot;</span>)</span>
+<span id="cb303-14"><a href="network-centralities.html#cb303-14" aria-hidden="true" tabindex="-1"></a>Y</span></code></pre></div>
 <pre><code>##            n=0        n=1        n=2       n=10       n=20      Gould
 ## ATL 0.08333333 0.08695652 0.08173077 0.07640399 0.07637073 0.07637062
 ## LAX 0.08333333 0.13043478 0.13942308 0.14675521 0.14676475 0.14676474
@@ -716,16 +720,16 @@ we know that dynamical systems converge to the <strong>dominant eigenvector</str
 <li>the vertices sized by Gould’s Index</li>
 <li>the labels sized by degree centrality</li>
 </ul>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="network-centralities.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">layout=</span>locations, <span class="at">vertex.size=</span><span class="dv">250</span><span class="sc">*</span>gould,<span class="at">vertex.label.cex=</span><span class="dv">8</span><span class="sc">*</span>p, </span>
-<span id="cb304-2"><a href="network-centralities.html#cb304-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>,<span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="network-centralities.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">layout=</span>locations, <span class="at">vertex.size=</span><span class="dv">250</span><span class="sc">*</span>gould,<span class="at">vertex.label.cex=</span><span class="dv">8</span><span class="sc">*</span>p, </span>
+<span id="cb305-2"><a href="network-centralities.html#cb305-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>,<span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span> )</span></code></pre></div>
 <p><img src="math236_handbook_files/figure-html/network6-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>And we show the data containing Gould’s Index and the Degree Centrality. We order the data using the Gould Index and then compare the two. Observe that degree centrality and Gould’s Index do not always agree.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="network-centralities.html#cb305-1" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">cbind</span>(gould,p) </span>
-<span id="cb305-2"><a href="network-centralities.html#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Z)<span class="ot">=</span>airports</span>
-<span id="cb305-3"><a href="network-centralities.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Z)<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;Gould&#39;</span>, <span class="st">&#39;Degree&#39;</span>)</span>
-<span id="cb305-4"><a href="network-centralities.html#cb305-4" aria-hidden="true" tabindex="-1"></a>ii<span class="ot">=</span><span class="fu">order</span>(gould,<span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb305-5"><a href="network-centralities.html#cb305-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> Z[ii,]</span>
-<span id="cb305-6"><a href="network-centralities.html#cb305-6" aria-hidden="true" tabindex="-1"></a>Z</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="network-centralities.html#cb306-1" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">cbind</span>(gould,p) </span>
+<span id="cb306-2"><a href="network-centralities.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Z)<span class="ot">=</span>airports</span>
+<span id="cb306-3"><a href="network-centralities.html#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Z)<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;Gould&#39;</span>, <span class="st">&#39;Degree&#39;</span>)</span>
+<span id="cb306-4"><a href="network-centralities.html#cb306-4" aria-hidden="true" tabindex="-1"></a>ii<span class="ot">=</span><span class="fu">order</span>(gould,<span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb306-5"><a href="network-centralities.html#cb306-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> Z[ii,]</span>
+<span id="cb306-6"><a href="network-centralities.html#cb306-6" aria-hidden="true" tabindex="-1"></a>Z</span></code></pre></div>
 <pre><code>##          Gould     Degree
 ## LAX 0.14676474 0.14705882
 ## DEN 0.14086410 0.14705882
