@@ -56,7 +56,11 @@ Here are the knowledge and skills you should master by the end of the fifth and 
 
 * Give a close-formula for a dynamical system using the eigen decomposition of a matrix
 
-* More coming from the orthogonality sections.
+* Find the length of a vector. Find the distance betwen two vectors. Find the cosine of the angle between two vectors. 
+
+* Find the orthogonal complement of a vector space.
+
+* Find the coordinates of a vector in an orthogonal basis.
 
 ### Vocabulary
 
@@ -515,6 +519,32 @@ $$
 v = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}.
 $$
 
+###
+
+What does the following matrix product tell us?
+$$
+\underbrace{\left[\begin{array}{cccc}
+ 1 & 1 & 2 & 3 \\
+ 8 & 8 & 1 & -6 \\
+ -6 & 5 & 2 & -1 \\
+ 0 & 1 & -2 & 1 \\
+\end{array}\right]}_{A^T}
+\underbrace{\left[\begin{array}{cccc}
+ 1 & 8 & -6 & 0 \\
+ 1 & 8 & 5 & 1 \\
+ 2 & 1 & 2 & -2 \\
+ 3 & -6 & -1 & 1 \\
+\end{array}\right]}_A=
+\left[\begin{array}{cccc}
+ 15 & 0 & 0 & 0 \\
+ 0 & 165 & 0 & 0 \\
+ 0 & 0 & 66 & 0 \\
+ 0 & 0 & 0 & 6 \\
+\end{array}
+\right]
+$$
+Use the dot-product formula to find the coordinates of the vector $v = (1,1,1,1)^T$ with respect to the vectors in the columns of $A$.
+
 ## Solutions to Practice Problems
 
 ```{r}
@@ -946,6 +976,16 @@ d. $(A - 2021I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v$, so $v$ is an e
 
 ###
 
+Will discuss in class on Friday 11/18.
+
+###
+
+Will discuss in class on Friday 11/18.
+
+
+
+###
+
 Put the vectors in the rows of a matrix and row reduce. Then $W$ is the row space of this matrix.
 $$
 \begin{bmatrix}
@@ -1009,6 +1049,26 @@ Thus, the dimension of $W$ is 4 and the dimension of $W^\perp$ is 1 and it is sp
 $$
 W^\perp = span\left\{ \begin{bmatrix} 2 \\ -2 \\ -7 \\ 2 \\ 1 \end{bmatrix}\right\}.
 $$
+
+
+###
+
+Will discuss in class on Friday 11/18.
+
+
+###
+
+Will discuss in class on Friday 11/18.
+
+###
+
+The vector $v$ is a basis for the line $L$ that is spanned by $v$. Make $v$ be the row of a matrix $A$ (a 1x3 matrix) and find its null space.
+
+
+###
+
+The product $A^T A$ being a diagonal matrix tells us that the vectors in the columns of $A$ are orthogonal (but not orthonormal). This means that you can use the nice dot product formula to find the coefficients of $v$ with respects to the basis in the columns of $A$.
+
 
 <!-- ##  -->
 
