@@ -125,15 +125,14 @@ Find the eigenvalues and corresponding eigenvectors for $A$.
 Let $A$ be a $2 \times 2$ matrix. We view $A$ as a linear transformation from $\mathbb{R}^2$ to $\mathbb{R}^2$. Describe the eigenvalues for each of the following types of matrices.
 
 a. $A$ maps all of $\mathbb{R}^2$  onto a line through the origin in $\mathbb{R}^2$.
-a. $A$ is a reflection  of $\mathbb{R}^2$ about a line through the origin
-a. $A$ is a reflection  of $\mathbb{R}^2$ through the origin
+a. $A$ is a reflection  of $\mathbb{R}^2$ over the line $y = x$.
+a. $A$ is a reflection  of $\mathbb{R}^2$ through the origin. That is, it sends $(x,y)$ to $(-x,-y)$.
 a.  $A$ is a horizontal shear of the form d form
 $$
 \begin{bmatrix} 1 & a \\ 0 & 1 \end{bmatrix}
 \begin{bmatrix} x \\ y \end{bmatrix}
 = \begin{bmatrix} x + a y \\ y \end{bmatrix}
 $$
-a. $A$ is the projection onto the line $y = 5x$.
 
 
 
@@ -183,14 +182,11 @@ Here the diagonalization of a matrix:
 \end{array}
 \right].
 $$
-
-
 a. Is the matrix $\mathsf{A}$  invertible?
 b. Find a nonzero vector in $\mathrm{Nul}(\mathsf{A})$ if one exists.
 c. Find a steady-state vector $\mathsf{v}$ such that $\mathsf{A} \mathsf{v} = \mathsf{v}$ if one exists.
 d. Give the coordinates of $\mathsf{v} = [1,2,3]^T$ in the eigenbasis without row reductions.
 e. Find a formula for $\mathsf{A}^{2021} \mathsf{v}$ if $\mathsf{v} = [1,2,3]^T$ in terms of the eigenbasis.
-
 
 
 
@@ -487,9 +483,33 @@ b. Find a basis for $W^{\perp}$
 
 
 
+###
 
- 
- 
+Let $P$ be the vector space of palendromic vectors from Exam 2. See below. Find $P^\perp$.
+
+$$
+P = \left\{\ \begin{bmatrix} a \\ b \\ c \\ b \\ a \end{bmatrix} \quad \mid \quad a,b,c \in \mathbb{R}\ \right\}.
+$$
+
+### 
+
+In the Fibonacci vector space problem, we use the basis below
+$$
+F = span \left\{ \begin{bmatrix} 1 \\ 0 \\ 1 \\ 1 \\ 2  \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 1 \\ 2 \\ 3 \end{bmatrix}\right\}
+$$
+
+a. What is the cosine of the angle between the two basis vectors?
+
+b. What is the distance between the two basis vectors?
+
+
+###
+
+Find a basis for the plane that is orthogonal to the vector 
+$$
+v = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}.
+$$
+
 ## Solutions to Practice Problems
 
 ```{r}
@@ -620,7 +640,6 @@ a. This maps all of $\mathbb{R}^2$ to a line. Therefore it is not one-to-one, no
 b. There are two kinds of eigenvectors. Those vectors on the line are fixed, so they are eigenvectors of eigenvalue 1. Vectors that are perpendicular to the line get sent to their negatives, so they are eigenvectors of eigenvalue $-1$. Thus, the eigenvalues are $\lambda_1 = 1$ and  $\lambda_2=-1$.
 
 
-* Perhaps this one is easiest to understand by looking at a particular example. Let's look at a reflection across the $y$-axis. This means that $A [ x, y]^{\top} = [-x, y]^{\top}$. In particular, we have $A [ 1, 0]^{\top} =  [ -x, 0]^{\top} = - [ x, 0]^{\top}$. So $-1$ is an eigenvalue. Meanwhile, we also have $A [ 0, 1]^{\top} =  [ 0, 1]^{\top}$ So 1 is an eigenvalue.
   
 c. In this transformation, every vector gets sent to its negative. 
 $$
@@ -679,18 +698,14 @@ We have
 $$
 \begin{bmatrix} a & -b \\ b & a \end{bmatrix} = \begin{bmatrix} .97 & -.71\\ .71 & .97 \end{bmatrix} 
 $$
-
 Let's turn to RStudio
 ```{r, echo=TRUE}
 a = .97
 b = .71
 
-scale = sqrt(a^2+b^2)
-angle = atan (b/a)
-
-scale
-angle
-
+(scale = sqrt(a^2+b^2))
+(angle = atan (b/a))
+angle/(2*pi)*360
 2 * pi / angle
 ```
 
@@ -923,6 +938,72 @@ b. $A (2021 v) = 2021 A v = 2021 (-3) v = (-3) (2021 v)$ so $2021 v$ is an eigen
 c. $A^2 w = A (A w) = A (5 w) = 5 (A w) = 5 (5 w) = 25 w$, so $w$ is an eigenvector of $A^2$ of eigenvalue 25.
 
 d. $(A - 20201I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v$, so $v$ is an eigenvector of $(A - 20201I_n)$ of eigenvalue $-2024$.
+
+###
+
+Put the vectors in the rows of a matrix and row reduce. Then $W$ is the row space of this matrix.
+$$
+\begin{bmatrix}
+1 & -2 & 1 & 0 & 1 \\
+-1 & 3 & -1 & 1 & -1 \\
+0 & 0 & 1 & 3 & 1 \\
+0 & 2 & 0 & 0 & 4
+\end{bmatrix}\rightarrow
+\begin{bmatrix}
+1 & -2 & 1 & 0 & 1 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 3 & 1 \\
+0 & 2 & 0 & 0 & 4
+\end{bmatrix}\rightarrow
+\begin{bmatrix}
+1 & -2 & 1 & 0 & 1 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 3 & 1 \\
+0 & 0 & 0 & -2 & 4
+\end{bmatrix}
+$$
+
+$$
+\rightarrow
+\begin{bmatrix}
+1 & -2 & 1 & 0 & 1 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 3 & 1 \\
+0 & 0 & 0 & 1 & -2
+\end{bmatrix}\rightarrow
+\begin{bmatrix}
+1 & -2 & 1 & 0 & 1 \\
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 7 \\
+0 & 0 & 0 & 1 & -2
+\end{bmatrix}\rightarrow
+\begin{bmatrix}
+1 & -2 & 0 & 0 & -6 \\
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 7 \\
+0 & 0 & 0 & 1 & -2
+\end{bmatrix}
+$$
+
+$$
+\rightarrow
+\begin{bmatrix}
+1 & 0 & 0 & 0 & -2 \\
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 7 \\
+0 & 0 & 0 & 1 & -2
+\end{bmatrix}
+$$
+Let's check our work in R:
+```{r}
+A = rbind(c(1,-2,1,0,1),c(-1,3,-1,1,-1),c(0,0,1,3,1),c(0,2,0,0,4))
+rref(A)
+```
+
+Thus, the dimension of $W$ is 4 and the dimension of $W^\perp$ is 1 and it is spanned by the vector below
+$$
+W^\perp = span\left\{ \begin{bmatrix} 2 \\ -2 \\ -7 \\ 2 \\ 1 \end{bmatrix}\right\}.
+$$
 
 <!-- ##  -->
 

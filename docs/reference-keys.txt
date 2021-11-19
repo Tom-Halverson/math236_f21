@@ -206,10 +206,10 @@ section-67
 section-68
 section-69
 section-70
-solutions-to-practice-problems-2
 section-71
 section-72
 section-73
+solutions-to-practice-problems-2
 section-74
 section-75
 section-76
@@ -221,3 +221,7 @@ section-81
 section-82
 section-83
 section-84
+section-85
+section-86
+section-87
+section-88
