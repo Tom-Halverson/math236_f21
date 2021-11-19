@@ -183,14 +183,11 @@ Here the diagonalization of a matrix:
 \end{array}
 \right].
 $$
-
-
 a. Is the matrix $\mathsf{A}$  invertible?
 b. Find a nonzero vector in $\mathrm{Nul}(\mathsf{A})$ if one exists.
 c. Find a steady-state vector $\mathsf{v}$ such that $\mathsf{A} \mathsf{v} = \mathsf{v}$ if one exists.
 d. Give the coordinates of $\mathsf{v} = [1,2,3]^T$ in the eigenbasis without row reductions.
 e. Find a formula for $\mathsf{A}^{2021} \mathsf{v}$ if $\mathsf{v} = [1,2,3]^T$ in terms of the eigenbasis.
-
 
 
 
@@ -487,9 +484,33 @@ b. Find a basis for $W^{\perp}$
 
 
 
+###
 
- 
- 
+Let $P$ be the vector space of palendromic vectors from Exam 2. See below. Find $P^\perp$.
+
+$$
+P = \left\{\ \begin{bmatrix} a \\ b \\ c \\ b \\ a \end{bmatrix} \quad \mid \quad a,b,c \in \mathbb{R}\ \right\}.
+$$
+
+### 
+
+In the Fibonacci vector space problem, we use the basis below
+$$
+F = span \left\{ \begin{bmatrix} 1 \\ 0 \\ 1 \\ 1 \\ 2  \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 1 \\ 2 \\ 3 \end{bmatrix}\right\}
+$$
+
+a. What is the cosine of the angle between the two basis vectors?
+
+b. What is the distance between the two basis vectors?
+
+
+###
+
+Find a basis for the plane that is orthogonal to the vector 
+$$
+v = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}.
+$$
+
 ## Solutions to Practice Problems
 
 ```{r}
@@ -679,18 +700,14 @@ We have
 $$
 \begin{bmatrix} a & -b \\ b & a \end{bmatrix} = \begin{bmatrix} .97 & -.71\\ .71 & .97 \end{bmatrix} 
 $$
-
 Let's turn to RStudio
 ```{r, echo=TRUE}
 a = .97
 b = .71
 
-scale = sqrt(a^2+b^2)
-angle = atan (b/a)
-
-scale
-angle
-
+(scale = sqrt(a^2+b^2))
+(angle = atan (b/a))
+angle/(2*pi)*360
 2 * pi / angle
 ```
 
