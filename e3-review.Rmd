@@ -56,7 +56,11 @@ Here are the knowledge and skills you should master by the end of the fifth and 
 
 * Give a close-formula for a dynamical system using the eigen decomposition of a matrix
 
-* More coming from the orthogonality sections.
+* Find the length of a vector. Find the distance betwen two vectors. Find the cosine of the angle between two vectors. 
+
+* Find the orthogonal complement of a vector space.
+
+* Find the coordinates of a vector in an orthogonal basis.
 
 ### Vocabulary
 
@@ -514,6 +518,32 @@ Find a basis for the plane that is orthogonal to the vector
 $$
 v = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}.
 $$
+
+###
+
+What does the following matrix product tell us?
+$$
+\underbrace{\left[\begin{array}{cccc}
+ 1 & 1 & 2 & 3 \\
+ 8 & 8 & 1 & -6 \\
+ -6 & 5 & 2 & -1 \\
+ 0 & 1 & -2 & 1 \\
+\end{array}\right]}_{A^T}
+\underbrace{\left[\begin{array}{cccc}
+ 1 & 8 & -6 & 0 \\
+ 1 & 8 & 5 & 1 \\
+ 2 & 1 & 2 & -2 \\
+ 3 & -6 & -1 & 1 \\
+\end{array}\right]}_A=
+\left[\begin{array}{cccc}
+ 15 & 0 & 0 & 0 \\
+ 0 & 165 & 0 & 0 \\
+ 0 & 0 & 66 & 0 \\
+ 0 & 0 & 0 & 6 \\
+\end{array}
+\right]
+$$
+Use the dot-product formula to find the coordinates of the vector $v = (1,1,1,1)^T$ with respect to the vectors in the columns of $A$.
 
 ## Solutions to Practice Problems
 
