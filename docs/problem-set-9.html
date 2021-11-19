@@ -468,9 +468,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 \begin{bmatrix} 0.9 G_t - 0.4 H_t \\ 0.1 G_t + 0.9 H_t \end{bmatrix}
 \]</span></p>
 <p>Here is what happens if we start at <span class="math inline">\((1,0)\)</span> and iterate. That is we start with 1 unit excess glucose. Observe that the system spirals back to the steady state of <span class="math inline">\((0,0)\)</span>.
-<img src="math236_handbook_files/figure-html/unnamed-chunk-21-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-69-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>We can plot the indivdual glucose and insulin coordinates over time. These are the x and y coordinates of the points in the above plot. You see the insulin responding to the excess glucose, and then the glucose being absorbed by the presence of insulin, and so on …</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-22-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-70-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>The key point here is that the spiraling in the (x,y) plane or oscillating in the (x,t) plane corresponds to the presence of <em>complex eigenvalues</em>. Your job is to perform an eigen-analysis of this problem:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Use R to find the eigenvalues and eigenvectors of <span class="math inline">\(A\)</span>.</p></li>

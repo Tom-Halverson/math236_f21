@@ -126,7 +126,7 @@ Let $A$ be a $2 \times 2$ matrix. We view $A$ as a linear transformation from $\
 
 a. $A$ maps all of $\mathbb{R}^2$  onto a line through the origin in $\mathbb{R}^2$.
 a. $A$ is a reflection  of $\mathbb{R}^2$ over the line $y = x$.
-a. $A$ is a reflection  of $\mathbb{R}^2$ through the origin. That is, it sends $(x,y)$ to $(-x,-y)$.
+a. $A$ is a reflection  of $\mathbb{R}^2$ through the origin; that is, it sends $(x,y)$ to $(-x,-y)$.
 a.  $A$ is a horizontal shear of the form d form
 $$
 \begin{bmatrix} 1 & a \\ 0 & 1 \end{bmatrix}
@@ -182,10 +182,15 @@ Here the diagonalization of a matrix:
 \end{array}
 \right].
 $$
+
 a. Is the matrix $\mathsf{A}$  invertible?
+
 b. Find a nonzero vector in $\mathrm{Nul}(\mathsf{A})$ if one exists.
+
 c. Find a steady-state vector $\mathsf{v}$ such that $\mathsf{A} \mathsf{v} = \mathsf{v}$ if one exists.
+
 d. Give the coordinates of $\mathsf{v} = [1,2,3]^T$ in the eigenbasis without row reductions.
+
 e. Find a formula for $\mathsf{A}^{2021} \mathsf{v}$ if $\mathsf{v} = [1,2,3]^T$ in terms of the eigenbasis.
 
 
@@ -683,7 +688,7 @@ Pinv %*% v
 So  $[ \mathsf{v}]_{\mathcal{B}} = [-1/5, 8/5, 0]^{\top}$.
 
 
-e. $-\frac{1}{5} \cdot 6^{2020} \cdot \begin{bmatrix} -5 \\ -2 \\ 1 \end{bmatrix}  + \frac{8}{5}  \cdot \begin{bmatrix} 0 \\ 1 \\ 2 \end{bmatrix}$
+e. $-\frac{1}{5} \cdot 6^{2021} \cdot \begin{bmatrix} -5 \\ -2 \\ 1 \end{bmatrix}  + \frac{8}{5}  \cdot \begin{bmatrix} 0 \\ 1 \\ 2 \end{bmatrix}$
   
   
 
@@ -937,7 +942,7 @@ b. $A (2021 v) = 2021 A v = 2021 (-3) v = (-3) (2021 v)$ so $2021 v$ is an eigen
 
 c. $A^2 w = A (A w) = A (5 w) = 5 (A w) = 5 (5 w) = 25 w$, so $w$ is an eigenvector of $A^2$ of eigenvalue 25.
 
-d. $(A - 20201I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v$, so $v$ is an eigenvector of $(A - 20201I_n)$ of eigenvalue $-2024$.
+d. $(A - 2021I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v$, so $v$ is an eigenvector of $(A - 2021I_n)$ of eigenvalue $-2024$.
 
 ###
 

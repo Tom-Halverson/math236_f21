@@ -563,7 +563,7 @@ Find the eigenvalues and corresponding eigenvectors for <span class="math inline
 <ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(A\)</span> maps all of <span class="math inline">\(\mathbb{R}^2\)</span> onto a line through the origin in <span class="math inline">\(\mathbb{R}^2\)</span>.</li>
 <li><span class="math inline">\(A\)</span> is a reflection of <span class="math inline">\(\mathbb{R}^2\)</span> over the line <span class="math inline">\(y = x\)</span>.</li>
-<li><span class="math inline">\(A\)</span> is a reflection of <span class="math inline">\(\mathbb{R}^2\)</span> through the origin. That is, it sends <span class="math inline">\((x,y)\)</span> to <span class="math inline">\((-x,-y)\)</span>.</li>
+<li><span class="math inline">\(A\)</span> is a reflection of <span class="math inline">\(\mathbb{R}^2\)</span> through the origin; that is, it sends <span class="math inline">\((x,y)\)</span> to <span class="math inline">\((-x,-y)\)</span>.</li>
 <li><span class="math inline">\(A\)</span> is a horizontal shear of the form d form
 <span class="math display">\[
 \begin{bmatrix} 1 &amp; a \\ 0 &amp; 1 \end{bmatrix}
@@ -613,12 +613,14 @@ Answer Yes, No or “Not enough information to determine this.”</p>
  \frac{1}{6} &amp; -\frac{1}{3} &amp; \frac{1}{6} \\
 \end{array}
 \right].
-\]</span>
-a. Is the matrix <span class="math inline">\(\mathsf{A}\)</span> invertible?
-b. Find a nonzero vector in <span class="math inline">\(\mathrm{Nul}(\mathsf{A})\)</span> if one exists.
-c. Find a steady-state vector <span class="math inline">\(\mathsf{v}\)</span> such that <span class="math inline">\(\mathsf{A} \mathsf{v} = \mathsf{v}\)</span> if one exists.
-d. Give the coordinates of <span class="math inline">\(\mathsf{v} = [1,2,3]^T\)</span> in the eigenbasis without row reductions.
-e. Find a formula for <span class="math inline">\(\mathsf{A}^{2021} \mathsf{v}\)</span> if <span class="math inline">\(\mathsf{v} = [1,2,3]^T\)</span> in terms of the eigenbasis.</p>
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Is the matrix <span class="math inline">\(\mathsf{A}\)</span> invertible?</p></li>
+<li><p>Find a nonzero vector in <span class="math inline">\(\mathrm{Nul}(\mathsf{A})\)</span> if one exists.</p></li>
+<li><p>Find a steady-state vector <span class="math inline">\(\mathsf{v}\)</span> such that <span class="math inline">\(\mathsf{A} \mathsf{v} = \mathsf{v}\)</span> if one exists.</p></li>
+<li><p>Give the coordinates of <span class="math inline">\(\mathsf{v} = [1,2,3]^T\)</span> in the eigenbasis without row reductions.</p></li>
+<li><p>Find a formula for <span class="math inline">\(\mathsf{A}^{2021} \mathsf{v}\)</span> if <span class="math inline">\(\mathsf{v} = [1,2,3]^T\)</span> in terms of the eigenbasis.</p></li>
+</ol>
 </div>
 <div id="section-58" class="section level3" number="20.3.5">
 <h3><span class="header-section-number">20.3.5</span> </h3>
@@ -1033,7 +1035,7 @@ It fixes the <span class="math inline">\(x\)</span>-axis since <span class="math
 ## [3,]  0.0</code></pre>
 <p>So <span class="math inline">\([ \mathsf{v}]_{\mathcal{B}} = [-1/5, 8/5, 0]^{\top}\)</span>.</p>
 <ol start="5" style="list-style-type: lower-alpha">
-<li><span class="math inline">\(-\frac{1}{5} \cdot 6^{2020} \cdot \begin{bmatrix} -5 \\ -2 \\ 1 \end{bmatrix} + \frac{8}{5} \cdot \begin{bmatrix} 0 \\ 1 \\ 2 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(-\frac{1}{5} \cdot 6^{2021} \cdot \begin{bmatrix} -5 \\ -2 \\ 1 \end{bmatrix} + \frac{8}{5} \cdot \begin{bmatrix} 0 \\ 1 \\ 2 \end{bmatrix}\)</span></li>
 </ol>
 </div>
 <div id="section-78" class="section level3" number="20.4.5">
@@ -1300,7 +1302,7 @@ Note that <span class="math inline">\(A\)</span> is invertible, 0 is not an eige
 <li><p><span class="math inline">\(A (v + w) = A v + A w = -3 v + 5 w \not = \lambda(v + w)\)</span> for any <span class="math inline">\(\lambda\)</span>, so <span class="math inline">\(v + w\)</span> is not an eigenvector of <span class="math inline">\(A\)</span>. Note: it would be if they had the same eigenvalue.</p></li>
 <li><p><span class="math inline">\(A (2021 v) = 2021 A v = 2021 (-3) v = (-3) (2021 v)\)</span> so <span class="math inline">\(2021 v\)</span> is an eigenvector also of eigenvalue <span class="math inline">\(-3\)</span>.</p></li>
 <li><p><span class="math inline">\(A^2 w = A (A w) = A (5 w) = 5 (A w) = 5 (5 w) = 25 w\)</span>, so <span class="math inline">\(w\)</span> is an eigenvector of <span class="math inline">\(A^2\)</span> of eigenvalue 25.</p></li>
-<li><p><span class="math inline">\((A - 20201I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v\)</span>, so <span class="math inline">\(v\)</span> is an eigenvector of <span class="math inline">\((A - 20201I_n)\)</span> of eigenvalue <span class="math inline">\(-2024\)</span>.</p></li>
+<li><p><span class="math inline">\((A - 2021I_n)v = A v - 2021 I_n v = -3 v - 2021 v = -2024 v\)</span>, so <span class="math inline">\(v\)</span> is an eigenvector of <span class="math inline">\((A - 2021I_n)\)</span> of eigenvalue <span class="math inline">\(-2024\)</span>.</p></li>
 </ol>
 </div>
 <div id="section-88" class="section level3" number="20.4.15">
