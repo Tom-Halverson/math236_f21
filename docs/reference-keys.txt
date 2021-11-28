@@ -53,6 +53,16 @@ problem-set-9
 glucose-insulin
 the-rise-of-moscow
 orthogonal-complements
+problem-set-10
+projection-onto-subspace-with-an-orthogonal-basis
+least-squares-projection-onto-subspace-without-an-orthogonal-basis
+pseudoinverse-and-projection
+least-squares-polynomials
+fuel-efficiency
+fourier-analysis
+global-fossil-fuel-emissions
+spectral-decomposition
+svd
 important-definitions
 systems-of-equations
 linear-transformations

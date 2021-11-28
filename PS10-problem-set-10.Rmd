@@ -1,68 +1,72 @@
 
-# Problem Set 9
+# Problem Set 10
 
 ```{r}
 require(pracma)
 ```
 
 
-Download the [Rmd source file  for this problem set](https://raw.githubusercontent.com/Tom-Halverson/math236_s21/main/PS8.Rmd).
+**Due**: Friday December 10, 5PM, the last day of classes. 
+
+Here is an [Rmd Template for PS10](https://drive.google.com/file/d/14z9zseJaE739sOuEKzsp3rm6t3FQd202/view?usp=sharing),
+
+**Important Notes**: 
+
+* This is a long assignment, but I am designing class so that you can get much of it done during class. 
+* In parentheses at the beginning of each problem, I indicate the day in class that we will discuss the material. We may even work on it in class that day.
+* On Friday December 3, most of the class will be dedicated to working on Problems 10.4-10.7.
 
 
+## Projection Onto Subspace (with an orthogonal basis)
 
-Upload a completed, knitted .html version of this file on Moodle. If you have collaborated with others on this assignment (encouraged), please include their names here (no penalty).
-
-## Glucose-Insulin
-
-The hormone insulin helps regulate glucose metabolism in your blood. The presene of insulin helps your body absorb excess glucose. Here $G_t$ (glucose) and $H_t$ (insulin) are measured as excess values (in mg per 100 ml of blood) above the steady state. 
+(Mon 11/29) You can do this one by hand or by R. On Exam 2 you found the basis below for the set of palindromic vectors in $\mathbb{R}^5$. Note that the basis is orthogonal.
 $$
-\begin{bmatrix} G_{t+1} \\ H_{t+1} \end{bmatrix}
-=
-\begin{bmatrix}
-0.9 & -0.4 \\
-0.1 & 0.9 \\
-\end{bmatrix}
-\begin{bmatrix} G_t \\ H_t \end{bmatrix}= 
-\begin{bmatrix} 0.9 G_t - 0.4 H_t \\ 0.1 G_t + 0.9 H_t \end{bmatrix}
+\mathbf{P}  = \left\{ \begin{bmatrix} a \\ b \\ c \\  b \\ a \end{bmatrix} \mid a,b,c \in \mathbb{R} \right\}
+= \mathsf{span}\left\{ 
+\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 1  \end{bmatrix}, 
+\begin{bmatrix} 0 \\ 1 \\ 0 \\ 1 \\ 0  \end{bmatrix}, 
+\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0\\ 0  \end{bmatrix}
+\right\}
 $$
 
-Here is what happens if we start at $(1,0)$ and iterate. That is we start with 1 unit excess glucose. Observe that the system spirals back to the steady state of $(0,0)$.
-```{r,fig.width=6, fig.height=6}
-A = cbind(c(.9,.1),c(-.4,.9))
-start = c(1,0)
-N = 50
+a. The vector $w$ below is not a palindrome. Find the orthogonal projection $\hat w = {proj}_\mathsf{P}(w)$ of $w$ onto $\mathsf{P}$.
+$$
+w= \begin{bmatrix} 5 \\ 4 \\ 3 \\ 4 \\ 6 \end{bmatrix}.
+$$
+b. Compute the residual vector $z = w - \hat w$ and show that it is orthogonal to $\mathsf{P}$.
 
-X = matrix(0,nrow=2,ncol=N)
-X[,1] = start
+c. The vector $w'$ below seems like a good approximation of $w$ by a palindromic vector.
+$$
+w'= \begin{bmatrix} 5 \\ 4 \\ 3 \\ 4 \\ 5 \end{bmatrix}.
+$$
+Find the distance between $w$ and $\hat w$ and $w$ and $w'$ to show that, in fact, $\hat w$ is the better approximation of $w$ by a vector in $\mathsf{P}$.
 
-for (i in 2:N) {X[,i] = A %*% X[,i-1]}
-plot(X[1,],X[2,],col='blue',xlim=c(-0.4,1.0),ylim=c(-0.4,0.4),xlab='glucose',ylab='insulin',pch=20,cex=1)
-points(start[1],start[2],col="red")
-grid(nx=10,ny=10)
-```
+## Least-Squares Projection Onto Subspace (without an orthogonal basis)
 
+(Wed 12/1) On previous assignments we have found bases of the Fibonacci subspace $F$ and the zero-sum space $Z$ of $\mathbb{R}^5$ shown below,
+$$
+F = \left\{ \begin{bmatrix} a \\ b \\ a + b \\ a + 2 b \\ 2 a + 3 b \end{bmatrix} \mid a,b \in \mathbb{R} \right\} = \mathsf{span}\left\{ 
+\begin{bmatrix} 1 \\ 0 \\ 1 \\ 1 \\ 2  \end{bmatrix}, 
+\begin{bmatrix} 0 \\ 1 \\ 1 \\ 2 \\3  \end{bmatrix}
+\right\}. \hskip5in
+$$
+$$
+Z = \left\{ \begin{bmatrix} a \\ b \\ c \\ d \\ e \end{bmatrix} \mid a+b+c+d+e=0 \right\} = \mathsf{span}\left\{ 
+\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \\ -1  \end{bmatrix}, 
+\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \\ -1  \end{bmatrix}, 
+\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ -1  \end{bmatrix},
+\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \\ -1  \end{bmatrix}
+\right\}. \hskip5in
+$$
+Let $v = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \\ 5 \end{bmatrix}$.
 
+a. Find the least-squares projection $\hat v$ of $v$ onto $F$. Find the residual $z$ and show that it is in $F^\perp$. Find the distance from $v$ to $F$. 
 
-We can plot the indivdual glucose and insulin coordinates over time. These are the x and y coordinates of the points in the above plot. You see the insulin responding to the excess glucose, and then the glucose being absorbed by the presence of insulin, and so on ...
+b. Find the least-squares projection $\hat v$ of $v$ onto $Z$. Find the residual $z$ and show that it is in $Z^\perp$. Find the distance from $v$ to $Z$.
 
-```{r}
-t = seq(1,N)
-plot(t,X[1,],type='l',col='blue',ylim=c(-1,1),ylab="concentration (mg/ml)",xlab="time(hours)",main="Glucose-Insulin Over Time")
-lines(t,X[2,],col='darkorange')
-legend(10, 0.7, legend=c("Glucose", "Insulin"), col=c("blue", "darkorange"), lty=1)
-```
+## Pseudoinverse and Projection
 
-The key point here is that the spiraling in the (x,y) plane or oscillating in the (x,t) plane corresponds to the presence of *complex eigenvalues*.  Your job is to perform an eigen-analysis of this problem:
-
-a. Use R to find the eigenvalues and eigenvectors.
-
-a. Write out the eigenvalues in the form $\lambda = a \pm b i$ and the eigenvectors in the form $\vec{v} = \vec{u} \pm \vec{w} i.$
-
-a. Use this information to find the scaling factor $|\lambda|$ for this matrix and the angle of rotation $\arctan(b/a)$. Give your answer in degrees. Compare your answers from part (c) to the plots above to confirm that the system is doing what the eigenvalues predict.
-
-## Subspace Projection
-
-Last week we learned how to project onto a subspace, but our method required that we have an orthogonal basis. Here we will see that our least-squares method allows us to project onto a subspace with any (not-necessarily-orthgoonal) basis. Consider the following subspace of $\mathbb{R}^4$. We can turn it into a least-squares problem by making it the column space of a matrix $A$. That is $W = Col(A)$.
+(Wed 12/1) Consider the following subspace of $\mathbb{R}^4$ and vector $b \in \mathbb{R}^4$,
 $$
 W = span\left\{
 \begin{bmatrix} 1 \\ 2 \\ -1 \\ -2 \end{bmatrix}, 
@@ -71,6 +75,7 @@ W = span\left\{
 \right\}, \hskip.6in
 b = \begin{bmatrix} 9 \\ 5 \\ 5 \\ 8 \end{bmatrix}.
 $$
+If we put the basis vectors into the columns of a matrix $A$, then $W = Col(A)$ is the column space of $A$.
 ```{r}
 (A = cbind(c(1,2,-1,-2),c(1,2,3,4),c(1,0,1,0)))
 b = c(9,5,5,8)
@@ -78,7 +83,7 @@ b = c(9,5,5,8)
 
 
 a. Perform a matrix computation on A to show that the basis is not orthogonal. 
-b. Show that b is not in W. 
+b. Show that b is not in W by augmenting and row reducing.  
 c. Find the least-squares projection of b onto W. Find both $\hat x$ and $\hat b$.
 d. Calculate the residual vector r, show that $r \in W^\perp$, and find $||r||$.
 e. Consider the following derivation from the normal equations:
@@ -107,7 +112,7 @@ g. Find the eigenvalues of $P$. They are nice. Explain (briefly) where the eigen
 
 ## Least-Squares Polynomials
 
-Here is the problem that we discussed in class with a quadratic fit to it. Make a cubic, quartic, and quintic fit to this data. Turn in a plot of each. Comupute the length of the residual in each case. Which do you think is the best model of the data?
+(Wed 12/1 and Fri 12/3) We will make the quadratic fit to this polynomial in class (shown below). Make a cubic, quartic, and quintic fit to this data. Turn in a plot of each. Comupute the length of the residual in each case. Which do you think is the best model of the data?
 
 
 ```{r, echo=TRUE}
@@ -139,7 +144,7 @@ grid()
 
 ## Fuel Efficiency
 
-Below is a classic data set of fuel efficiency in 38 different automobiles.
+(Fri 12/3) Below is a classic data set of fuel efficiency in 38 different automobiles.
 ```{r}
 MPG=c(16.9,15.5,19.2,18.5,30,27.5,27.2,30.9,20.3,17,21.6,16.2,20.6,20.8,18.6,18.1,17,17.6,16.5,18.2,26.5,21.9,34.1,35.1,27.4,31.5,29.5,28.4,28.8,26.8,33.5,34.2,31.8,37.3,30.5,22,21.5,31.9)
 lbs=c( 3967.6,3689.14,3280.55,3585.4,1961.05,2329.6,2093,2029.3,2575.3,2857.4,2543.45,3103.1,3075.8,2793.7,3294.2,3103.1,3494.4,3389.75,3599.05,3485.3,2352.35,2648.1,1797.25,1742.65,2429.7,1810.9,1942.85,2429.7,2361.45,2457,2325.96,2002,1838.2,1938.3,1992.9,2561.65,2366,1925)
@@ -155,18 +160,14 @@ a. Fit a linear model of the form
 $$
 mpg = a_0 + a_1 lbs + a_2 HP + a_3 Cyl.
 $$
-Find the coefficients $a_0,a_1,a_2,a_3$ and the length of the residual. If you have taken Stat 155, you can see that we are doing the exact same thing by comparing your results with
+Find the coefficients $a_0,a_1,a_2,a_3$ and the length of the residual. If you have taken STAT 155, you can see that we are doing the exact same thing by comparing your results with
 
 ```{r}
 cars_lm = lm( MPG ~ lbs + HP + Cyl)
 summary(cars_lm)
 ```
-b. Add the cars weight in tons to your model and solve $mpg = a_0 + a_1 (lbs) + a_2 (HP) + a_3 (Cyl) + a_4 (tons).$ Compare the coefficients you get with those that you got in part a. Give a short explanation of what you see using some of the linear algebra language that we have learned in the course. 
-```{r}
-tons =  c(1.98, 1.84, 1.64, 1.79, 0.98, 1.16, 1.05, 1.01, 1.29, 1.43, 1.27, 1.55, 1.54, 1.40, 1.65, 1.55, 1.75, 1.69, 1.80, 1.74, 1.18, 1.32, 0.90, 0.87, 1.21, 0.91,0.97, 1.21, 1.18, 1.23, 1.16, 1.00, 0.92, 0.97, 1.00, 1.28, 1.18, 0.96)
-```
 
-c. The residual vector $\mathsf{r}$ measures the quality of fit of our model. But how do we turn this into a meaningful quantity? One method is to look at the **coefficient of determination**, which is more commonly refered to as the "$R^2$ value." 
+b. The residual vector $\mathsf{r}$ measures the quality of fit of our model. But how do we turn this into a meaningful quantity? One method is to look at the **coefficient of determination**, which is more commonly refered to as the "$R^2$ value." 
 
 * You can see the $R^2$ value of your fit in part (a) under the "Multiple R-squared" output in the linear model summary above. 
 
@@ -189,7 +190,8 @@ To learn more, you should take STAT 155: Introduction to Statistical Modeling.
 
 ## Fourier Analysis
 
-In Fourier analysis one uses trigonometric functions to model oscillatory behavior in data. These methods have important applications in the study of sound or video signals, financial data, medicine, and engineering (to mention just a few). For example, consider the following set of 200 data points.
+(Fri 12/3) In Fourier analysis one uses trigonometric functions to model oscillatory behavior in data. These methods have important applications in the study of sound or video signals, financial data, medicine, and engineering (to mention just a few). For example, consider the following set of 200 data points.
+
 ```{r,echo=FALSE}
 t = xx = seq(0,19.9,.1)
 y = c(3.407646, 3.656257, 4.567893, 3.692689, 4.650019, 4.180795, 4.220037, 4.842083, 4.600134, 3.695645, 3.739377,
@@ -248,7 +250,7 @@ b. Compute the length of the residul vector for both the $f_1(t)$ and the $f_2(t
 ## Global Fossil Fuel Emissions
 
 
-Below is a plot of global fossil fuel emmissions between 1751 and 1998 measured in megatons of carbon. 
+(Fri 12/3) Below is a plot of global fossil fuel emmissions between 1751 and 1998 measured in megatons of carbon. 
 
 ```{r sqemission, echo=TRUE}
 year=c(1751:1998)
@@ -295,3 +297,12 @@ Run the code below to plot the original data along with your exponential model c
   plot(year,f(year),type="l",lwd=3,ylim=c(0,10000),ylab="emissions", main="best fit exponential function")
   points(year,emissions,pch=20,cex=.7,col="red")
 ```
+
+## Spectral Decomposition
+
+(Mon 12/6) Compute the spectral decomposition of the following symmetric matrix. That is, write it as the sum of rank 1 matrices.
+
+## SVD
+
+(Wed 12/8) Perform a singular value decomposition (SVD) on the following matrix.
+
