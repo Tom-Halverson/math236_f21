@@ -691,7 +691,7 @@ To learn more, you should take STAT 155: Introduction to Statistical Modeling.</
 <div id="fourier-analysis" class="section level2" number="10.6">
 <h2><span class="header-section-number">10.6</span> Fourier Analysis</h2>
 <p>(Fri 12/3) In Fourier analysis one uses trigonometric functions to model oscillatory behavior in data. These methods have important applications in the study of sound or video signals, financial data, medicine, and engineering (to mention just a few). For example, consider the following set of 200 data points.</p>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-36-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-29-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>A first Fourier approximation would fit a model of the form
 <span class="math display">\[
 f_1(t) = c_0 + c_1 \sin(t) + c_2 \cos(t).
@@ -714,7 +714,7 @@ Thus, we make the following matrix (we show here only the first 10 rows; there a
 ## [2,]  1.0207277
 ## [3,] -0.4486618</code></pre>
 <p>and plot the solution
-<img src="math236_handbook_files/figure-html/unnamed-chunk-39-1.png" width="75%" style="display: block; margin: auto;" />
+<img src="math236_handbook_files/figure-html/unnamed-chunk-32-1.png" width="75%" style="display: block; margin: auto;" />
 Your task:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Update this to add the second Fourier coefficient terms by fitting the following function to the data. Plot your result.
@@ -761,7 +761,7 @@ where <span class="math inline">\(d=\log(a)\)</span> and <span class="math inlin
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="problem-set-10.html#cb48-1" aria-hidden="true" tabindex="-1"></a>  f<span class="ot">=</span><span class="cf">function</span>(y){a <span class="sc">*</span> <span class="fu">exp</span>(k<span class="sc">*</span>(y<span class="dv">-1750</span>))}</span>
 <span id="cb48-2"><a href="problem-set-10.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(year,<span class="fu">f</span>(year),<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>),<span class="at">ylab=</span><span class="st">&quot;emissions&quot;</span>, <span class="at">main=</span><span class="st">&quot;best fit exponential function&quot;</span>)</span>
 <span id="cb48-3"><a href="problem-set-10.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(year,emissions,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">cex=</span>.<span class="dv">7</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-41-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-34-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="spectral-decomposition" class="section level2" number="10.8">
 <h2><span class="header-section-number">10.8</span> Spectral Decomposition</h2>
