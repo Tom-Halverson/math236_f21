@@ -98,7 +98,7 @@ From what we see above it gives the *least-squares* solution to $A x = b$. Compu
 
 f. Continuing this story,
 $$
-\hat b = A \hat x \qquad \Longrightarrow \qquad \hat b =  A (A^T A)^{-1} A^T b.
+\hat b = A \hat x \quad \text{and}\quad \hat x = A^+ b \qquad \Longrightarrow \qquad \hat b =  A (A^T A)^{-1} A^T b.
 $$
 The **projection** matrix onto the subspace $W$ is the matrix
 $$
