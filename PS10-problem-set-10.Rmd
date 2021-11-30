@@ -58,7 +58,7 @@ Z = \left\{ \begin{bmatrix} a \\ b \\ c \\ d \\ e \end{bmatrix} \mid a+b+c+d+e=0
 \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \\ -1  \end{bmatrix}
 \right\}. \hskip5in
 $$
-Let $v = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \\ 5 \end{bmatrix}$.
+Let $v = \begin{bmatrix} 8 \\ 6 \\ 13 \\ 19 \\ 27 \end{bmatrix}$.
 
 a. Find the least-squares projection $\hat v$ of $v$ onto $F$. Find the residual $z$ and show that it is in $F^\perp$. Find the distance from $v$ to $F$. 
 
