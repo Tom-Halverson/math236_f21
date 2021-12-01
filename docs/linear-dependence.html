@@ -319,12 +319,17 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="20" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html"><i class="fa fa-check"></i><b>20</b> Least Squares Approximation</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#quick-least-squares-code-we-made-in-class"><i class="fa fa-check"></i><b>20.1</b> Quick Least-Squares Code We Made in Class</a></li>
-<li class="chapter" data-level="20.2" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#more-details-about-least-squares"><i class="fa fa-check"></i><b>20.2</b> More Details About Least Squares</a></li>
-<li class="chapter" data-level="20.3" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example"><i class="fa fa-check"></i><b>20.3</b> Example</a></li>
-<li class="chapter" data-level="20.4" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#template"><i class="fa fa-check"></i><b>20.4</b> Template</a></li>
+<li class="chapter" data-level="20.1" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#least-squares"><i class="fa fa-check"></i><b>20.1</b> Least Squares</a></li>
+<li class="chapter" data-level="20.2" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example"><i class="fa fa-check"></i><b>20.2</b> Example</a></li>
+<li class="chapter" data-level="20.3" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#template"><i class="fa fa-check"></i><b>20.3</b> Template</a></li>
+<li class="chapter" data-level="20.4" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example-from-class-dec-1"><i class="fa fa-check"></i><b>20.4</b> Example from Class: Dec 1</a></li>
 <li class="chapter" data-level="20.5" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-for-a-linear-function"><i class="fa fa-check"></i><b>20.5</b> Fitting for a Linear Function</a></li>
 <li class="chapter" data-level="20.6" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-for-a-quadratic-function"><i class="fa fa-check"></i><b>20.6</b> Fitting for a Quadratic Function</a></li>
+<li class="chapter" data-level="20.7" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#checkpoint-6.5"><i class="fa fa-check"></i><b>20.7</b> Checkpoint 6.5</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#linear-fit"><i class="fa fa-check"></i><b>20.7.1</b> Linear Fit</a></li>
+<li class="chapter" data-level="20.7.2" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#quadratic-fit"><i class="fa fa-check"></i><b>20.7.2</b> Quadratic Fit</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>IV Quiz Review</b></span></li>
 <li class="chapter" data-level="21" data-path="exam-1-review.html"><a href="exam-1-review.html"><i class="fa fa-check"></i><b>21</b> Exam 1 Review</a>
@@ -676,30 +681,30 @@ c_9 \vec{a}_9.
 <p>The following code generates a random 5 x 5 matrix. Every time you enter it, it will give you a new matrix. Use this to try to figure out how likely it is that a random square matrix has linearly dependent columns.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="linear-dependence.html#cb104-1" aria-hidden="true" tabindex="-1"></a>R1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
 <span id="cb104-2"><a href="linear-dependence.html#cb104-2" aria-hidden="true" tabindex="-1"></a>R1</span></code></pre></div>
-<pre><code>##            [,1]       [,2]      [,3]      [,4]      [,5]
-## [1,] 0.09911536 0.43008303 0.2673496 0.9081998 0.6698131
-## [2,] 0.21287244 0.18250762 0.3126603 0.6670321 0.4590010
-## [3,] 0.41452299 0.08164761 0.7119225 0.4954942 0.9359576
-## [4,] 0.31706365 0.93523642 0.6173384 0.2931545 0.4078782
-## [5,] 0.31209256 0.03567112 0.3051004 0.8276311 0.7431949</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]       [,4]       [,5]
+## [1,] 0.8211926 0.2171805 0.5240430 0.32715175 0.06703584
+## [2,] 0.5191588 0.9938722 0.6484405 0.48581576 0.83978437
+## [3,] 0.5030150 0.8840758 0.1980210 0.77865937 0.98205364
+## [4,] 0.1870796 0.3056090 0.4287460 0.08717302 0.09843930
+## [5,] 0.9573260 0.2122504 0.5333003 0.40817077 0.93029765</code></pre>
 <p>Try the same using the following code that generates a random 5 x 6 matrix.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="linear-dependence.html#cb106-1" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">6</span>)</span>
 <span id="cb106-2"><a href="linear-dependence.html#cb106-2" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
-<pre><code>##             [,1]      [,2]       [,3]      [,4]      [,5]        [,6]
-## [1,] 0.634336127 0.9516575 0.07173622 0.5034349 0.7002707 0.009330511
-## [2,] 0.246940142 0.6889373 0.48143899 0.1089072 0.6119079 0.079532170
-## [3,] 0.007171207 0.4243942 0.27134477 0.6785149 0.8023260 0.340178242
-## [4,] 0.903731989 0.3778458 0.64500333 0.8467515 0.1508555 0.994496996
-## [5,] 0.033307435 0.5185083 0.47831231 0.4362144 0.2153251 0.550319762</code></pre>
+<pre><code>##            [,1]      [,2]      [,3]       [,4]       [,5]      [,6]
+## [1,] 0.98003159 0.8970688 0.2329455 0.06094304 0.13352690 0.3572863
+## [2,] 0.07614431 0.3804976 0.8577489 0.74590327 0.96788811 0.2693448
+## [3,] 0.78335931 0.1213619 0.7219239 0.88153815 0.28174735 0.1098333
+## [4,] 0.04706062 0.6674893 0.3801590 0.26168657 0.01627712 0.3641765
+## [5,] 0.81431753 0.3377513 0.4834891 0.90298911 0.76405251 0.7256737</code></pre>
 <p>Try the same using the following code that generates a random 5 x 4 matrix.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="linear-dependence.html#cb108-1" aria-hidden="true" tabindex="-1"></a>R3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">5</span><span class="sc">*</span><span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
 <span id="cb108-2"><a href="linear-dependence.html#cb108-2" aria-hidden="true" tabindex="-1"></a>R3</span></code></pre></div>
-<pre><code>##            [,1]       [,2]      [,3]       [,4]
-## [1,] 0.44663796 0.34576230 0.5545123 0.07874973
-## [2,] 0.72033673 0.91878770 0.6223508 0.94798675
-## [3,] 0.03755522 0.86493964 0.3454537 0.81226689
-## [4,] 0.40171862 0.01231217 0.3714252 0.18428938
-## [5,] 0.22723023 0.09756108 0.1796191 0.88086718</code></pre>
+<pre><code>##             [,1]      [,2]      [,3]         [,4]
+## [1,] 0.003774455 0.6961397 0.3938784 0.0005751511
+## [2,] 0.786466462 0.8599228 0.6065754 0.8371196308
+## [3,] 0.662723692 0.3281391 0.5069878 0.3374073966
+## [4,] 0.866676974 0.4747389 0.6157308 0.5256607113
+## [5,] 0.245169804 0.9726059 0.2081416 0.1462266191</code></pre>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="linear-dependence.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(R3)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0

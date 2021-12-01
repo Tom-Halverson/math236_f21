@@ -1,0 +1,97 @@
+---
+title: "PS-10-2-3-template.Rmd"
+author: "Your Name"
+date: "11/30/2021"
+output: html_document
+---
+
+```{r}
+require('pracma')
+```
+
+## Problem 10.2. Projection onto subspace without orthogonal basis
+
+**a. Fibonacci Subspace**: Insert the R-code here that (i) finds the normal equations, (ii) solves them for xhat, (iii) find the projection vhat, (iv) finds the residual, (v) shows that the residual is in $F^\perp$.
+
+```{r}
+
+```
+
+Then typeset your answer here:
+$$
+\underbrace{\begin{bmatrix} 4\\ -1 \\ 2 \\  1 \\ -2 \end{bmatrix}}_v
+= 
+\underbrace{\begin{bmatrix} V \\ W \\ X \\ Y \\ Z \end{bmatrix}}_{\hat v \in F}
++
+\underbrace{\begin{bmatrix} A \\ B \\ C \\ D \\ E \end{bmatrix}}_{r \in F^\perp}
+$$
+
+**b. Zero-Sum Subspace**: Insert the R-code here that (i) finds the normal equations, (ii) solves them for xhat, (iii) find the projection vhat, (iv) finds the residual, (v) shows that the residual is in $F^\perp$.
+
+```{r}
+
+```
+
+Then typeset your answer here:
+$$
+\underbrace{\begin{bmatrix} 4\\ -1 \\ 2 \\  1 \\ -2 \end{bmatrix}}_v
+= 
+\underbrace{\begin{bmatrix} V \\ W \\ X \\ Y \\ Z \end{bmatrix}}_{\hat v \in Z}
++
+\underbrace{\begin{bmatrix} A \\ B \\ C \\ D \\ E \end{bmatrix}}_{r \in Z^\perp}
+$$
+
+## Problem 10.3 Pseudoinverse and Projection
+
+```{r}
+(A = cbind(c(1,2,-1,-2),c(1,2,3,4),c(1,0,1,0)))
+b = c(9,5,5,8)
+```
+
+a. A is not orthogonal:
+```{r}
+
+```
+
+b. b is not in W = Col(A):
+```{r}
+
+```
+
+c. Least-squares solution
+```{r}
+
+```
+
+d. Residual
+```{r}
+```
+
+e. Pseudoinverse
+```{r}
+```
+
+f. Projection
+
+```{r}
+```
+
+
+g. Projection, cont. 
+
+```{r}
+b2 = c(1,2,3,4)
+```
+
+
+h. Projection, cont.
+
+```{r}
+P %*% P
+P
+```
+
+i. Eigenanalysis:
+```{r}
+eigen(P)
+```
