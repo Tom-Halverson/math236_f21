@@ -1,0 +1,38 @@
+---
+title: "Least-Squares"
+author: "Math 236"
+date: "11/30/2021"
+output: html_document
+---
+
+# Solving Basic Least Squares Problems
+
+```{r}
+require('pracma')
+```
+
+
+```{r}
+A = cbind(c(1,0,1,2),c(2,1,2,1))  # the matrix A
+v = c(3,5,9,9)  # the vector to be projected
+
+# the normal equations (just to look at)
+t(A)%*%A  
+t(A)%*%v
+
+# solve the normal equations
+xhat = solve(t(A)%*%A,t(A)%*%v)  # solve(A,b) solves Ax = b
+xhat
+
+# get the projected vector
+vhat = A %*% xhat
+vhat
+
+# residual and its length
+r = v - vhat
+sqrt(dot(r,r))
+
+# confirming that r is in the orthogonal complement
+t(A) %*% r
+```
+

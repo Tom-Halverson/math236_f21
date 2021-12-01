@@ -6,9 +6,33 @@
 require(pracma)
 ```
 
-## Introduction
+## Quick Least-Squares Code We Made in Class
 
-Let's start with a summary of Least Squares Approximation.
+```{r,echo=TRUE}
+A = cbind(c(1,0,1,2),c(2,1,2,1))  # the matrix A
+v = c(3,5,9,9)  # the vector to be projected
+
+# the normal equations (just to look at)
+t(A)%*%A  
+t(A)%*%v
+
+# solve the normal equations
+xhat = solve(t(A)%*%A,t(A)%*%v)  # solve(A,b) solves Ax = b
+xhat
+
+# get the projected vector
+vhat = A %*% xhat
+vhat
+
+# residual and its length
+r = v - vhat
+sqrt(dot(r,r))
+
+# confirming that r is in the orthogonal complement
+t(A) %*% r
+```
+
+## More Details About Least Squares
 
 **The Why**: Given a matrix $A$ and a vector $\mathsf{b}$ that is not in $W = \mathrm{Col}(A)$, we want to find the "best approximate solution" $\hat{\mathsf{b}} \in W$. In other words, we want to pick the best possible $\hat{\mathsf{b}} \approx \mathsf{b}$ that lies in the column space of $A$.
 
@@ -29,9 +53,7 @@ $$
 \newcommand{\A}{{\mathsf{A}}}
 \newcommand{\b}{{\mathsf{b}}}
 
-## Example 1
-
-Here is an example that we did by hand in class. We now see how to do it in R. 
+## Example
 
 Find the least-squares solution to $\A x = \b$ if
 \begin{equation}

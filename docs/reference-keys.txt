@@ -1,4 +1,6 @@
 tab:unnamed-chunk-4
+eq:inconsistent
+eq:normal
 problem-set-1
 characterize-the-solution-set
 find-the-general-solution
@@ -126,6 +128,17 @@ step-2-dynamical-system
 step-4-eigen-analysis
 step-5-visualize
 gould-index-summary
+geometry-in-mathbbrn
+dot-product
+length-distance-angle
+orthogonal-complement
+least-squares-approximation
+quick-least-squares-code-we-made-in-class
+more-details-about-least-squares
+example
+template
+fitting-for-a-linear-function
+fitting-for-a-quadratic-function
 exam-1-review
 overview
 vocabulary-and-concepts
