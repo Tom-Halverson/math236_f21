@@ -600,33 +600,18 @@ First, for good measure, let’s see if the system is inconsistent</p>
 <span id="cb360-5"><a href="least-squares-approximation.html#cb360-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb360-6"><a href="least-squares-approximation.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="co">#solve the normal equation</span></span>
 <span id="cb360-7"><a href="least-squares-approximation.html#cb360-7" aria-hidden="true" tabindex="-1"></a>(<span class="at">xhat =</span> <span class="fu">solve</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A, <span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span>
-<span id="cb360-8"><a href="least-squares-approximation.html#cb360-8" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1]</span></span>
-<span id="cb360-9"><a href="least-squares-approximation.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    4</span></span>
-<span id="cb360-10"><a href="least-squares-approximation.html#cb360-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   -2</span></span>
+<span id="cb360-8"><a href="least-squares-approximation.html#cb360-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-9"><a href="least-squares-approximation.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
+<span id="cb360-10"><a href="least-squares-approximation.html#cb360-10" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span>
 <span id="cb360-11"><a href="least-squares-approximation.html#cb360-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-12"><a href="least-squares-approximation.html#cb360-12" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
-<span id="cb360-13"><a href="least-squares-approximation.html#cb360-13" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span>
-<span id="cb360-14"><a href="least-squares-approximation.html#cb360-14" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1]</span></span>
-<span id="cb360-15"><a href="least-squares-approximation.html#cb360-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    2</span></span>
-<span id="cb360-16"><a href="least-squares-approximation.html#cb360-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    0</span></span>
-<span id="cb360-17"><a href="least-squares-approximation.html#cb360-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    2</span></span>
-<span id="cb360-18"><a href="least-squares-approximation.html#cb360-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-19"><a href="least-squares-approximation.html#cb360-19" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
-<span id="cb360-20"><a href="least-squares-approximation.html#cb360-20" aria-hidden="true" tabindex="-1"></a>(<span class="at">r =</span> b <span class="sc">-</span> bhat)</span>
-<span id="cb360-21"><a href="least-squares-approximation.html#cb360-21" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1]</span></span>
-<span id="cb360-22"><a href="least-squares-approximation.html#cb360-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   -1</span></span>
-<span id="cb360-23"><a href="least-squares-approximation.html#cb360-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    1</span></span>
-<span id="cb360-24"><a href="least-squares-approximation.html#cb360-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    1</span></span>
-<span id="cb360-25"><a href="least-squares-approximation.html#cb360-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-26"><a href="least-squares-approximation.html#cb360-26" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
-<span id="cb360-27"><a href="least-squares-approximation.html#cb360-27" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> r</span>
-<span id="cb360-28"><a href="least-squares-approximation.html#cb360-28" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1]</span></span>
-<span id="cb360-29"><a href="least-squares-approximation.html#cb360-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    0</span></span>
-<span id="cb360-30"><a href="least-squares-approximation.html#cb360-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    0</span></span>
-<span id="cb360-31"><a href="least-squares-approximation.html#cb360-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-32"><a href="least-squares-approximation.html#cb360-32" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
-<span id="cb360-33"><a href="least-squares-approximation.html#cb360-33" aria-hidden="true" tabindex="-1"></a><span class="fu">dot</span>(r,r)</span>
-<span id="cb360-34"><a href="least-squares-approximation.html#cb360-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code></pre></div>
+<span id="cb360-12"><a href="least-squares-approximation.html#cb360-12" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
+<span id="cb360-13"><a href="least-squares-approximation.html#cb360-13" aria-hidden="true" tabindex="-1"></a>(<span class="at">r =</span> b <span class="sc">-</span> bhat)</span>
+<span id="cb360-14"><a href="least-squares-approximation.html#cb360-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-15"><a href="least-squares-approximation.html#cb360-15" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
+<span id="cb360-16"><a href="least-squares-approximation.html#cb360-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> r</span>
+<span id="cb360-17"><a href="least-squares-approximation.html#cb360-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-18"><a href="least-squares-approximation.html#cb360-18" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
+<span id="cb360-19"><a href="least-squares-approximation.html#cb360-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dot</span>(r,r)</span></code></pre></div>
 </div>
 <div id="example-from-class-dec-1" class="section level2" number="20.4">
 <h2><span class="header-section-number">20.4</span> Example from Class: Dec 1</h2>
