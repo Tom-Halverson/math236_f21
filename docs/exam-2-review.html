@@ -212,9 +212,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="10.4" data-path="problem-set-10.html"><a href="problem-set-10.html#least-squares-polynomials"><i class="fa fa-check"></i><b>10.4</b> Least-Squares Polynomials</a></li>
 <li class="chapter" data-level="10.5" data-path="problem-set-10.html"><a href="problem-set-10.html#fuel-efficiency"><i class="fa fa-check"></i><b>10.5</b> Fuel Efficiency</a></li>
 <li class="chapter" data-level="10.6" data-path="problem-set-10.html"><a href="problem-set-10.html#fourier-analysis"><i class="fa fa-check"></i><b>10.6</b> Fourier Analysis</a></li>
-<li class="chapter" data-level="10.7" data-path="problem-set-10.html"><a href="problem-set-10.html#global-fossil-fuel-emissions"><i class="fa fa-check"></i><b>10.7</b> Global Fossil Fuel Emissions</a></li>
-<li class="chapter" data-level="10.8" data-path="problem-set-10.html"><a href="problem-set-10.html#spectral-decomposition"><i class="fa fa-check"></i><b>10.8</b> Spectral Decomposition</a></li>
-<li class="chapter" data-level="10.9" data-path="problem-set-10.html"><a href="problem-set-10.html#svd"><i class="fa fa-check"></i><b>10.9</b> SVD</a></li>
+<li class="chapter" data-level="10.7" data-path="problem-set-10.html"><a href="problem-set-10.html#spectral-decomposition"><i class="fa fa-check"></i><b>10.7</b> Spectral Decomposition</a></li>
+<li class="chapter" data-level="10.8" data-path="problem-set-10.html"><a href="problem-set-10.html#svd"><i class="fa fa-check"></i><b>10.8</b> SVD</a></li>
 </ul></li>
 <li class="part"><span><b>II Concepts of Linear Algebra</b></span></li>
 <li class="chapter" data-level="11" data-path="important-definitions.html"><a href="important-definitions.html"><i class="fa fa-check"></i><b>11</b> Important Definitions</a>
@@ -906,13 +905,13 @@ and a basis for <span class="math inline">\(\mathrm{Nul}(A)\)</span> is
 </div>
 <div id="section-50" class="section level3" number="22.3.7">
 <h3><span class="header-section-number">22.3.7</span> </h3>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="exam-2-review.html#cb414-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">8</span>))</span>
-<span id="cb414-2"><a href="exam-2-review.html#cb414-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="exam-2-review.html#cb407-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">8</span>))</span>
+<span id="cb407-2"><a href="exam-2-review.html#cb407-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2   -1
 ## [2,]   -1   -1   -1
 ## [3,]   -2    1   -8</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="exam-2-review.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="exam-2-review.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    3
 ## [2,]    0    1   -2
@@ -940,17 +939,17 @@ Then, the desired coordinate vectors are
 \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}_{\mathcal{B}}
 \]</span>
 You can find these vectors by multiplying by <span class="math inline">\(P_\mathcal{B}\)</span> and by augmenting and row reducing as seen here.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="exam-2-review.html#cb418-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb418-2"><a href="exam-2-review.html#cb418-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb418-3"><a href="exam-2-review.html#cb418-3" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">4</span>)</span>
-<span id="cb418-4"><a href="exam-2-review.html#cb418-4" aria-hidden="true" tabindex="-1"></a>A  <span class="sc">%*%</span> w</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="exam-2-review.html#cb411-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span>  <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb411-2"><a href="exam-2-review.html#cb411-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb411-3"><a href="exam-2-review.html#cb411-3" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">4</span>)</span>
+<span id="cb411-4"><a href="exam-2-review.html#cb411-4" aria-hidden="true" tabindex="-1"></a>A  <span class="sc">%*%</span> w</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    0
 ## [2,]   -3
 ## [3,]   -1
 ## [4,]   -1</code></pre>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="exam-2-review.html#cb420-1" aria-hidden="true" tabindex="-1"></a>Av <span class="ot">=</span> <span class="fu">cbind</span>(A,v)</span>
-<span id="cb420-2"><a href="exam-2-review.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Av)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="exam-2-review.html#cb413-1" aria-hidden="true" tabindex="-1"></a>Av <span class="ot">=</span> <span class="fu">cbind</span>(A,v)</span>
+<span id="cb413-2"><a href="exam-2-review.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Av)</span></code></pre></div>
 <pre><code>##              v
 ## [1,] 1 0 0 0 1
 ## [2,] 0 1 0 0 2
@@ -966,8 +965,8 @@ P_{\cal  B}^{-1} =
 0 &amp; 0 &amp; 0 &amp; 1
 \end{bmatrix}
 \]</span></p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="exam-2-review.html#cb422-1" aria-hidden="true" tabindex="-1"></a>Ainv <span class="ot">=</span> <span class="fu">solve</span>(A)</span>
-<span id="cb422-2"><a href="exam-2-review.html#cb422-2" aria-hidden="true" tabindex="-1"></a>Ainv <span class="sc">%*%</span> v</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="exam-2-review.html#cb415-1" aria-hidden="true" tabindex="-1"></a>Ainv <span class="ot">=</span> <span class="fu">solve</span>(A)</span>
+<span id="cb415-2"><a href="exam-2-review.html#cb415-2" aria-hidden="true" tabindex="-1"></a>Ainv <span class="sc">%*%</span> v</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    1
 ## [2,]    2

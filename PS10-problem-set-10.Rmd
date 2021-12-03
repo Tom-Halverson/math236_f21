@@ -247,56 +247,56 @@ $$
 b. Compute the length of the residul vector for both the $f_1(t)$ and the $f_2(t)$ model. Which approximation looks better visually. That is, does the second approximation capture more of the shape of the data, or do you think that the first is a better model?
 
 
-## Global Fossil Fuel Emissions
+<!-- ## Global Fossil Fuel Emissions -->
 
 
-(Fri 12/3) Below is a plot of global fossil fuel emmissions between 1751 and 1998 measured in megatons of carbon. 
+<!-- (Fri 12/3) Below is a plot of global fossil fuel emmissions between 1751 and 1998 measured in megatons of carbon.  -->
 
-```{r sqemission, echo=TRUE}
-year=c(1751:1998)
-emissions = c(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 8, 8, 10, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 12, 13, 14, 14, 14, 14, 14, 15, 16, 16, 17, 17, 18, 18, 18, 24, 23, 23, 24, 24, 25, 29, 29, 30, 31, 33, 34, 36, 37, 39, 43, 43, 46, 47, 50, 54, 54, 57, 59, 69, 71, 76, 77, 78, 83, 91, 95, 97, 104, 112, 119, 122, 130, 135,
-142, 147, 156, 173, 184, 174, 188, 191, 194, 196, 210, 236, 243, 256, 272, 275, 277, 281, 295, 327, 327, 356, 372, 374, 370, 383, 406, 419, 440, 465, 507, 534, 552, 566, 617, 624, 663, 707, 784, 750, 785, 819, 836, 879, 943, 850, 838, 901, 955, 936, 806, 932, 803, 845, 970, 963, 975, 983, 1062, 1065, 1145, 1053, 940, 847, 893, 973, 1027, 1130, 1209, 1142, 1192, 1299, 1334, 1342, 1391, 1383, 1160, 1238, 1392, 1469, 1419, 1630, 1767, 1795, 1841, 1865, 2043, 2177, 2270, 2330, 2463, 2578, 2595, 2701, 2848, 3009, 3146, 3306, 3412, 3588, 3802, 4075, 4227, 4394, 4633, 4641, 4613, 4879, 5018, 5078, 5368, 5297, 5125, 5080, 5067, 5241, 5405, 5573, 5701, 5926, 6035, 6096, 6186, 6089, 6090, 6236, 6378, 6530, 6628, 6608)
-plot(year,emissions,pch=20,cex=.7,col="red")
-```
+<!-- ```{r sqemission, echo=TRUE} -->
+<!-- year=c(1751:1998) -->
+<!-- emissions = c(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 8, 8, 10, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 12, 13, 14, 14, 14, 14, 14, 15, 16, 16, 17, 17, 18, 18, 18, 24, 23, 23, 24, 24, 25, 29, 29, 30, 31, 33, 34, 36, 37, 39, 43, 43, 46, 47, 50, 54, 54, 57, 59, 69, 71, 76, 77, 78, 83, 91, 95, 97, 104, 112, 119, 122, 130, 135, -->
+<!-- 142, 147, 156, 173, 184, 174, 188, 191, 194, 196, 210, 236, 243, 256, 272, 275, 277, 281, 295, 327, 327, 356, 372, 374, 370, 383, 406, 419, 440, 465, 507, 534, 552, 566, 617, 624, 663, 707, 784, 750, 785, 819, 836, 879, 943, 850, 838, 901, 955, 936, 806, 932, 803, 845, 970, 963, 975, 983, 1062, 1065, 1145, 1053, 940, 847, 893, 973, 1027, 1130, 1209, 1142, 1192, 1299, 1334, 1342, 1391, 1383, 1160, 1238, 1392, 1469, 1419, 1630, 1767, 1795, 1841, 1865, 2043, 2177, 2270, 2330, 2463, 2578, 2595, 2701, 2848, 3009, 3146, 3306, 3412, 3588, 3802, 4075, 4227, 4394, 4633, 4641, 4613, 4879, 5018, 5078, 5368, 5297, 5125, 5080, 5067, 5241, 5405, 5573, 5701, 5926, 6035, 6096, 6186, 6089, 6090, 6236, 6378, 6530, 6628, 6608) -->
+<!-- plot(year,emissions,pch=20,cex=.7,col="red") -->
+<!-- ``` -->
 
-The data suggest that the fossil fuel emissions $f$ follow an exponential model with respect to the year $y$:
-$$f = a e^{k(y-1750)},$$
-where $a$ and $k$ are the unknown constants. This model is not linear in the unknowns $a$ and $k$, but (this is a great idea!) it becomes linear if we take the logarithm of both sides. Doing so yields the following linear system:
-$$\log(f)=\log(a)+k(y-1750).$$
+<!-- The data suggest that the fossil fuel emissions $f$ follow an exponential model with respect to the year $y$: -->
+<!-- $$f = a e^{k(y-1750)},$$ -->
+<!-- where $a$ and $k$ are the unknown constants. This model is not linear in the unknowns $a$ and $k$, but (this is a great idea!) it becomes linear if we take the logarithm of both sides. Doing so yields the following linear system: -->
+<!-- $$\log(f)=\log(a)+k(y-1750).$$ -->
 
-* **Note:** This process works for any logarithm, but it is common to use the natural logarithm (use `log()` in R).
-* **Note:** To simplify even further,  we will define `time=year-1750` so that time represents years after 1750. 
+<!-- * **Note:** This process works for any logarithm, but it is common to use the natural logarithm (use `log()` in R). -->
+<!-- * **Note:** To simplify even further,  we will define `time=year-1750` so that time represents years after 1750.  -->
 
-This results in the model
+<!-- This results in the model -->
 
-$$ \log(f)=d+kt,$$
-where $d=\log(a)$ and $t$ is time (since 1750), 
+<!-- $$ \log(f)=d+kt,$$ -->
+<!-- where $d=\log(a)$ and $t$ is time (since 1750),  -->
 
-Your task: Use least-squares projection to find the best fitting exponential function for this data. This will give you the values for $d$ and $k$, and once you know $d$, you can find $a = \exp(d)$. We have started the code for you by defining `x=year-1750` and `y=log(emissions)`.
+<!-- Your task: Use least-squares projection to find the best fitting exponential function for this data. This will give you the values for $d$ and $k$, and once you know $d$, you can find $a = \exp(d)$. We have started the code for you by defining `x=year-1750` and `y=log(emissions)`. -->
 
-```{r, echo=TRUE}
-### your code goes here. 
-# be sure to define d and k and A
-t=year-1750
-y=log(emissions)
-A=cbind(1)  # this isn't right, yet!
-d=1
-k=0
-#####
-# your code above has found b and k
-(a = exp(d))
-k
-```
-
-
-Run the code below to plot the original data along with your exponential model curve $f(t)$. **Note:** This code assumes that you have already defined the values for `k` and `a`. Otherwise, it will not work!
+<!-- ```{r, echo=TRUE} -->
+<!-- ### your code goes here.  -->
+<!-- # be sure to define d and k and A -->
+<!-- t=year-1750 -->
+<!-- y=log(emissions) -->
+<!-- A=cbind(1)  # this isn't right, yet! -->
+<!-- d=1 -->
+<!-- k=0 -->
+<!-- ##### -->
+<!-- # your code above has found b and k -->
+<!-- (a = exp(d)) -->
+<!-- k -->
+<!-- ``` -->
 
 
-```{r, echo=TRUE}
-  f=function(y){a * exp(k*(y-1750))}
-  plot(year,f(year),type="l",lwd=3,ylim=c(0,10000),ylab="emissions", main="best fit exponential function")
-  points(year,emissions,pch=20,cex=.7,col="red")
-```
+<!-- Run the code below to plot the original data along with your exponential model curve $f(t)$. **Note:** This code assumes that you have already defined the values for `k` and `a`. Otherwise, it will not work! -->
+
+
+<!-- ```{r, echo=TRUE} -->
+<!--   f=function(y){a * exp(k*(y-1750))} -->
+<!--   plot(year,f(year),type="l",lwd=3,ylim=c(0,10000),ylab="emissions", main="best fit exponential function") -->
+<!--   points(year,emissions,pch=20,cex=.7,col="red") -->
+<!-- ``` -->
 
 ## Spectral Decomposition
 

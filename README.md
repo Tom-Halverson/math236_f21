@@ -7,7 +7,6 @@ This handbook contains
   - problem sets
   - R explorations
   - weekly learning goals
-  - important definitions
   - review problems and solutions
 
 Enter this command in the R console to build the handbook:

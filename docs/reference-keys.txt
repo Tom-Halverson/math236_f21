@@ -1,4 +1,4 @@
-tab:unnamed-chunk-33
+tab:unnamed-chunk-4
 eq:inconsistent
 eq:normal
 problem-set-1
@@ -62,7 +62,6 @@ pseudoinverse-and-projection
 least-squares-polynomials
 fuel-efficiency
 fourier-analysis
-global-fossil-fuel-emissions
 spectral-decomposition
 svd
 important-definitions
