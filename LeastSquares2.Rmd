@@ -1,0 +1,28 @@
+---
+title: "Least Squares"
+author: "Math 236"
+date: "12/1/2021"
+output: html_document
+---
+
+```{r}
+require('pracma')
+```
+
+```{r}
+A = cbind(c(1,0,1,2),c(2,1,2,1))
+v = c(3,5,9,9)
+# normal equations
+t(A) %*% A
+t(A) %*% v
+# solve the normal equations
+(xhat=solve(t(A) %*% A,t(A) %*% v))
+# compute vhat
+(vhat = A %*% xhat)
+# residual
+(z = v - vhat)
+sqrt(dot(z,z))
+# confirm that z is in the orthogonal complement
+t(A) %*% z
+```
+
