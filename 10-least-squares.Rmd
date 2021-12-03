@@ -135,7 +135,7 @@ sqrt(dot(r,r))
 ```
 
 
-## Fitting for a Linear Function
+## Fitting a Linear Function
 
 Here are some points that we'd like to fit to a linear function $y = a_0 + a_1 x$. 
 
@@ -226,10 +226,10 @@ res=cbind(y,yhat,r)
 colnames(res) = c("y","yhat","r")
 res
 t(A) %*% r
-sqrt(t(r) %*% r)
+t(r) %*% r
 ```
 
-## Fitting for a Quadratic Function
+## Fitting a Quadratic Function
 
 The data we have been working with has a quadratic look to it, so let's try adding an $x^2$ term. That is, we will fit the model $y = a_0 + a_1 x + a_2 x^2$. The equations we want to solve are
 In this case, the linear model that we'd like to solve is:
@@ -303,7 +303,7 @@ res=cbind(y,yhat,r)
 colnames(res) = c("y","yhat","r")
 res
 t(A) %*% r
-sqrt(t(r) %*% r)
+t(r) %*% r
 ```
 
 ## Checkpoint 6.5

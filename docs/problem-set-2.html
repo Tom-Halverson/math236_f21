@@ -323,8 +323,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="20.2" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example"><i class="fa fa-check"></i><b>20.2</b> Example</a></li>
 <li class="chapter" data-level="20.3" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#template"><i class="fa fa-check"></i><b>20.3</b> Template</a></li>
 <li class="chapter" data-level="20.4" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example-from-class-dec-1"><i class="fa fa-check"></i><b>20.4</b> Example from Class: Dec 1</a></li>
-<li class="chapter" data-level="20.5" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-for-a-linear-function"><i class="fa fa-check"></i><b>20.5</b> Fitting for a Linear Function</a></li>
-<li class="chapter" data-level="20.6" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-for-a-quadratic-function"><i class="fa fa-check"></i><b>20.6</b> Fitting for a Quadratic Function</a></li>
+<li class="chapter" data-level="20.5" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-a-linear-function"><i class="fa fa-check"></i><b>20.5</b> Fitting a Linear Function</a></li>
+<li class="chapter" data-level="20.6" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-a-quadratic-function"><i class="fa fa-check"></i><b>20.6</b> Fitting a Quadratic Function</a></li>
 <li class="chapter" data-level="20.7" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#checkpoint-6.5"><i class="fa fa-check"></i><b>20.7</b> Checkpoint 6.5</a>
 <ul>
 <li class="chapter" data-level="20.7.1" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#linear-fit"><i class="fa fa-check"></i><b>20.7.1</b> Linear Fit</a></li>
@@ -503,6 +503,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <img src="images/used-R.jpg" style="width:50.0%" />
 </center></li>
 </ul>
+<pre><code>## Loading required package: pracma</code></pre>
 <p>The Problem Set covers sections 1.3 (vector equations), 1.4 (matrix equations), and 1.5 (parametric solutions and the relationship between homogeneous and nonhomogeneous equations).</p>
 <div id="vector-equation" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Vector Equation</h2>
@@ -518,12 +519,12 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 \mathsf{d} = \begin{bmatrix} 30 \\ 24 \\ 10 \\ 10 \end{bmatrix}.
 \]</span>
 Here are the vectors for you:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="problem-set-2.html#cb1-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb1-2"><a href="problem-set-2.html#cb1-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="problem-set-2.html#cb1-3" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="sc">-</span><span class="dv">4</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb1-4"><a href="problem-set-2.html#cb1-4" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb1-5"><a href="problem-set-2.html#cb1-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">36</span>,<span class="dv">48</span>,<span class="dv">19</span>,<span class="sc">-</span><span class="dv">25</span>)</span>
-<span id="cb1-6"><a href="problem-set-2.html#cb1-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">24</span>,<span class="dv">10</span>,<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="problem-set-2.html#cb2-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="problem-set-2.html#cb2-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="problem-set-2.html#cb2-3" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="sc">-</span><span class="dv">4</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="problem-set-2.html#cb2-4" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb2-5"><a href="problem-set-2.html#cb2-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">36</span>,<span class="dv">48</span>,<span class="dv">19</span>,<span class="sc">-</span><span class="dv">25</span>)</span>
+<span id="cb2-6"><a href="problem-set-2.html#cb2-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">24</span>,<span class="dv">10</span>,<span class="dv">10</span>)</span></code></pre></div>
 </div>
 <div id="matrix-equation" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Matrix Equation</h2>
@@ -542,8 +543,8 @@ Here are the vectors for you:</p>
 \begin{bmatrix} 1 \\ 3 \\ 2\\ 1 \\ 6 \\ -1 \end{bmatrix}
 \]</span>
 Here is the matrix A and the vector b for you:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="problem-set-2.html#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="sc">-</span><span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb2-2"><a href="problem-set-2.html#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="problem-set-2.html#cb3-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="sc">-</span><span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb3-2"><a href="problem-set-2.html#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="rref-for-a-linear-system" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> RREF for a linear system</h2>
@@ -609,7 +610,7 @@ Here is the matrix A and the vector b for you:</p>
 <h2><span class="header-section-number">2.6</span> A Balanced Diet</h2>
 <p>An athlete wants to consume a daily diet of 200 grams of carbohydrates, 60 grams of fats and 160 grams of proteins. Here are some of their favorite foods.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-4">Table 2.1: </span>Food Carb/Fat/Protein (grams)</caption>
+<caption><span id="tab:unnamed-chunk-33">Table 2.1: </span>Food Carb/Fat/Protein (grams)</caption>
 <thead>
 <tr class="header">
 <th align="left">food</th>

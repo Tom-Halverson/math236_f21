@@ -1,0 +1,58 @@
+---
+title: "Big Least Squares line"
+author: "Math 236"
+date: "12/3/2021"
+output: html_document
+---
+
+```{r}
+n = 1000
+x = seq(0,10,by=10/n)
+y = 2 + .6*x -.03*x^2+ rnorm(n+1,0,1)
+plot(x,y,pch=20,ylim=c(-2,8))
+grid()
+```
+```{r, echo=TRUE}
+(A = cbind(x^0,x))
+```
+Solve the normal equations:
+```{r, echo=TRUE}
+t(A) %*% A
+t(A) %*% y
+(xhat = solve(t(A) %*% A,t(A) %*% y))
+```
+
+```{r quadplot2, fig.width=4.5, fig.height=4.5, echo=TRUE}
+
+#plot the original set of points
+plot(x,y,pch=20,xlim=c(0,10),ylim=c(-2,8), main='the best-fit linear function')
+
+# generate points for the fitted line and plot it
+tt = seq(0,10,len=100)  
+lines(tt,xhat[1]+xhat[2]*tt,col='red',lwd=2)
+
+grid()
+```
+
+
+```{r}
+(A = cbind(x^0,x,x^2))
+```
+
+```{r}
+t(A) %*% A
+t(A) %*% y
+(xhat = solve(t(A) %*% A,t(A) %*% y))
+```
+
+```{r quadplot2, fig.width=4.5, fig.height=4.5, echo=TRUE}
+
+#plot the original set of points
+plot(x,y,pch=20,xlim=c(0,10),ylim=c(-2,8), main='the best-fit linear function')
+
+# generate points for the fitted line and plot it
+tt = seq(0,10,len=100)  
+lines(tt,xhat[1]+xhat[2]*tt++xhat[3]*tt^2,col='red',lwd=2)
+
+grid()
+```

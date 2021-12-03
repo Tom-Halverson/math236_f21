@@ -323,8 +323,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="20.2" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example"><i class="fa fa-check"></i><b>20.2</b> Example</a></li>
 <li class="chapter" data-level="20.3" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#template"><i class="fa fa-check"></i><b>20.3</b> Template</a></li>
 <li class="chapter" data-level="20.4" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#example-from-class-dec-1"><i class="fa fa-check"></i><b>20.4</b> Example from Class: Dec 1</a></li>
-<li class="chapter" data-level="20.5" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-for-a-linear-function"><i class="fa fa-check"></i><b>20.5</b> Fitting for a Linear Function</a></li>
-<li class="chapter" data-level="20.6" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-for-a-quadratic-function"><i class="fa fa-check"></i><b>20.6</b> Fitting for a Quadratic Function</a></li>
+<li class="chapter" data-level="20.5" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-a-linear-function"><i class="fa fa-check"></i><b>20.5</b> Fitting a Linear Function</a></li>
+<li class="chapter" data-level="20.6" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#fitting-a-quadratic-function"><i class="fa fa-check"></i><b>20.6</b> Fitting a Quadratic Function</a></li>
 <li class="chapter" data-level="20.7" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#checkpoint-6.5"><i class="fa fa-check"></i><b>20.7</b> Checkpoint 6.5</a>
 <ul>
 <li class="chapter" data-level="20.7.1" data-path="least-squares-approximation.html"><a href="least-squares-approximation.html#linear-fit"><i class="fa fa-check"></i><b>20.7.1</b> Linear Fit</a></li>
@@ -508,10 +508,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <div id="rental-cars-revisited" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Rental Cars Revisited</h2>
 <p>Below is the rental car matrix from PS4.5.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="problem-set-7.html#cb15-1" aria-hidden="true" tabindex="-1"></a>StP <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">85</span>,.<span class="dv">09</span>,.<span class="dv">06</span>)</span>
-<span id="cb15-2"><a href="problem-set-7.html#cb15-2" aria-hidden="true" tabindex="-1"></a>Roch <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">30</span>,.<span class="dv">60</span>,.<span class="dv">10</span>)</span>
-<span id="cb15-3"><a href="problem-set-7.html#cb15-3" aria-hidden="true" tabindex="-1"></a>Dul <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">35</span>,.<span class="dv">05</span>,.<span class="dv">60</span>) </span>
-<span id="cb15-4"><a href="problem-set-7.html#cb15-4" aria-hidden="true" tabindex="-1"></a>(<span class="at">M =</span> <span class="fu">cbind</span>(StP,Roch,Dul))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="problem-set-7.html#cb16-1" aria-hidden="true" tabindex="-1"></a>StP <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">85</span>,.<span class="dv">09</span>,.<span class="dv">06</span>)</span>
+<span id="cb16-2"><a href="problem-set-7.html#cb16-2" aria-hidden="true" tabindex="-1"></a>Roch <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">30</span>,.<span class="dv">60</span>,.<span class="dv">10</span>)</span>
+<span id="cb16-3"><a href="problem-set-7.html#cb16-3" aria-hidden="true" tabindex="-1"></a>Dul <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">35</span>,.<span class="dv">05</span>,.<span class="dv">60</span>) </span>
+<span id="cb16-4"><a href="problem-set-7.html#cb16-4" aria-hidden="true" tabindex="-1"></a>(<span class="at">M =</span> <span class="fu">cbind</span>(StP,Roch,Dul))</span></code></pre></div>
 <pre><code>##       StP Roch  Dul
 ## [1,] 0.85  0.3 0.35
 ## [2,] 0.09  0.6 0.05
@@ -522,9 +522,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li><p>Rescale the eigenvector so that it sums to 1. By using sum(w) you can sum the components of the vector. When the vector sums to 1, you can think of the components as the <em>proportion</em> of cars at each rental company.</p></li>
 <li><p>Compare this with the steady state you found by looping when you worked on this in problem set 4.</p></li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="problem-set-7.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
-<span id="cb17-2"><a href="problem-set-7.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {x <span class="ot">=</span> M <span class="sc">%*%</span> x}</span>
-<span id="cb17-3"><a href="problem-set-7.html#cb17-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="problem-set-7.html#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb18-2"><a href="problem-set-7.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {x <span class="ot">=</span> M <span class="sc">%*%</span> x}</span>
+<span id="cb18-3"><a href="problem-set-7.html#cb18-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 </div>
 <div id="diagonalization" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Diagonalization</h2>
@@ -568,7 +568,7 @@ Use the following information to diagonalize <span class="math inline">\(B\)</sp
 \]</span></p></li>
 <li><p>Diagonalize the matrix <span class="math inline">\(C\)</span> using R. You should find a matrix <span class="math inline">\(P\)</span> and compute the diagonal matrix <span class="math inline">\(D = P^{-1} C P\)</span>. If you use the function <code>zapsmall</code> it will turn any really small numbers into 0.</p></li>
 </ol>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="problem-set-7.html#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">C =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">14</span>, <span class="sc">-</span><span class="dv">13</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">49</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">33</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="problem-set-7.html#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">C =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">14</span>, <span class="sc">-</span><span class="dv">13</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">49</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">33</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   44   10  -18
 ## [2,]   14   49    0
@@ -583,12 +583,12 @@ D = \begin{bmatrix}  0 &amp; 1 \\ -1 &amp; 2 \\ \end{bmatrix}.
 <div id="same-eigenvectors" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Same Eigenvectors</h2>
 <p>Here are two matrices</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="problem-set-7.html#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">29</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">40</span>, <span class="dv">24</span>, <span class="dv">46</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">11</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="problem-set-7.html#cb21-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">29</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">40</span>, <span class="dv">24</span>, <span class="dv">46</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">11</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   -8  -40   10
 ## [2,]    3   24    3
 ## [3,]   29   46   11</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="problem-set-7.html#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">B =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">35</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">49</span>, <span class="dv">42</span>, <span class="dv">55</span>), <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">3</span>, <span class="dv">26</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="problem-set-7.html#cb23-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">B =</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">35</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">49</span>, <span class="dv">42</span>, <span class="dv">55</span>), <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">3</span>, <span class="dv">26</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    4  -49   13
 ## [2,]    3   42    3
