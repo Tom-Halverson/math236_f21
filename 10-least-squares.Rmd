@@ -77,7 +77,7 @@ We can do this in the following nice, single R command
 ```{r,echo=TRUE}
 (xhat = solve(t(A) %*% A, t(A) %*% b))
 ```
-To compute $\hat \b$ we use
+To compute $\hat b$ we use
 ```{r,echo=TRUE}
 (bhat = A %*% xhat)
 ```

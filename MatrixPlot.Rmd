@@ -1,0 +1,95 @@
+---
+title: "image.Rmd"
+author: "Math 236"
+date: "12/5/2021"
+output: html_document
+---
+
+```{r}
+require('plot.matrix')
+```
+
+
+```{r}
+(A= rbind(c(1.6, 0.7, 1.4, 0.3),c(0.7, 1.6, 0.3, 1.4),c(1.4, 0.3, 1.6, 0.7),c(0.3, 1.4, 0.7, 1.6)))
+```
+$$
+\begin{bmatrix} 
+1.6 & 0.7 & 1.4 & 0.3\\ 0.7 & 1.6 & 0.3 & 1.4 \\ 1.4 & 0.3 & 1.6 & 0.7 \\ 0.3 & 1.4 & 0.7 & 1.6 \\
+\end{bmatrix}=
+\begin{bmatrix} 
+a_1 & b_1 & c_1 & c_1\\ a_2 & b_2 & c_2 & d_2 \\ a_3 & b_3 & c_3 & c_3 \\ a_4 & b_4 & c_4 & d_4 \\
+\end{bmatrix}
+\begin{bmatrix} 
+\lambda_1 & 0 & 0 & 0\\ 0 & \lambda_2 & 0 & 0 \\ 0 & 0 & \lambda_3 & 0 \\ 0 & 0 & 0 & \lambda_4 \\
+\end{bmatrix}
+\begin{bmatrix} 
+a_1 & a_2 & a_3 & a_4 \\ b_1 & b_2 & b_3 & b_4  \\ c_1 & c_2 & c_3 & c_4  \\ d_1 & d_2 & d_3 & d_4  \\
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix} 
+1.6 & 0.7 & 1.4 & 0.3\\ 0.7 & 1.6 & 0.3 & 1.4 \\ 1.4 & 0.3 & 1.6 & 0.7 \\ 0.3 & 1.4 & 0.7 & 1.6 \\
+\end{bmatrix}=
+\begin{bmatrix} 
+a_{11} & a_{12} & a_{13} & a_{14} \\ a_{21} & a_{22} & a_{23} & a_{24} \\ a_{31} & a_{32} & a_{33} & a_{34} \\ a_{41} & a_{42} & a_{43} & a_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+b_{11} & b_{12} & b_{13} & b_{14} \\ b_{21} & b_{22} & b_{23} & b_{24} \\ b_{31} & b_{32} & b_{33} & b_{34} \\ b_{41} & b_{42} & b_{43} & b_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+c_{11} & c_{12} & c_{13} & c_{14} \\ c_{21} & c_{22} & c_{23} & c_{24} \\ c_{31} & c_{32} & c_{33} & c_{34} \\ c_{41} & c_{42} & c_{43} & c_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+d_{11} & d_{12} & d_{13} & d_{14} \\ d_{21} & d_{22} & d_{23} & d_{24} \\ d_{31} & d_{32} & d_{33} & d_{34} \\ d_{41} & d_{42} & d_{43} & d_{44} \\
+\end{bmatrix}
+$$
+
+
+```{r}
+eigen(A)
+```
+
+
+```{r}
+vals = eigen(A)$values
+vecs = eigen(A)$vectors
+(A1 = vals[1]*(vecs[,1] %*% t(vecs[,1])))
+(A2 = vals[2]*(vecs[,2] %*% t(vecs[,2])))
+(A3 = vals[3]*(vecs[,3] %*% t(vecs[,3])))
+(A4 = vals[4]*(vecs[,4] %*% t(vecs[,4])))
+```
+
+```{r}
+image(A,col=grey(seq(0, 1, length = 256)))
+```
+```{r}
+par(mfrow=c(2,2)) 
+image(A1,col=grey(seq(-1,1,length=180)))
+image(A2,col=grey(seq(-1,1,length=180)))
+image(A3,col=grey(seq(-1,1,length=180)))
+image(A4,col=grey(seq(-1,1,length=180)))
+```
+A
+
+```{r}
+v = c(1,2,3,5)
+(v1=A1 %*% v)
+(v2=A2 %*% v)
+(v3=A3 %*% v)
+(v4=A4 %*% v)
+v1 + v2 + v3 + v4
+```
+
+```{r}
+A = cbind(c(55, 20, 20), c(20, 58, 67), c(20, 67, 58))
+vecs = eigen(A)$vectors
+vals = eigen(A)$values
+u1 = vecs[,1]
+u1 %*% t(u1)
+vals[1]*u1 %*% t(u1)
+```
+

@@ -22,7 +22,7 @@ t(A) %*% y
 (xhat = solve(t(A) %*% A,t(A) %*% y))
 ```
 
-```{r quadplot2, fig.width=4.5, fig.height=4.5, echo=TRUE}
+```{r, fig.width=4.5, fig.height=4.5, echo=TRUE}
 
 #plot the original set of points
 plot(x,y,pch=20,xlim=c(0,10),ylim=c(-2,8), main='the best-fit linear function')
@@ -45,7 +45,7 @@ t(A) %*% y
 (xhat = solve(t(A) %*% A,t(A) %*% y))
 ```
 
-```{r quadplot2, fig.width=4.5, fig.height=4.5, echo=TRUE}
+```{r, fig.width=4.5, fig.height=4.5, echo=TRUE}
 
 #plot the original set of points
 plot(x,y,pch=20,xlim=c(0,10),ylim=c(-2,8), main='the best-fit linear function')

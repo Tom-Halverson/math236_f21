@@ -182,9 +182,14 @@ $$
 * The $R^2$ value is a number in $[0,1]$. The squared-length $|| \mathsf{y} -\mathsf{y}^*||^2$ is the total variance: that is, how much the data varies from the mean, and $\frac{\| \mathsf{r} \|^2}{\| \mathsf{y} - \mathsf{y}^* \|^2}$ tells us the fraction of the total variance that is explained by our model. Thus, if  $R^2$  is near 1, then our model does a good job at "explaining" the behavior of $\mathsf{y}$ via a linear combination of the columns of $A$. 
 
  *   **To do**: Find the $R^2$ value for our least squares solution to the cars data in part (a). Here are some helpful functions:
-    + `mean(vec)` returns the mean (average) of the entries of the vector `vec`
-    + `rep(a, n)` creates a constant vector of length $n$ where every entry is $a$.
-    + `Norm(vec)` from the `pracma` package returns the magnitude (Euclidean length) of the vector `vec`.
+ 
+
+`mean(vec)` returns the mean (average) of the entries of the vector `vec`
+
+`rep(a, n)` creates a constant vector of length $n$ where every entry is $a$.
+
+`Norm(vec)` from the `pracma` package returns the magnitude (Euclidean length) of the vector `vec`.
+    
 To learn more, you should take STAT 155: Introduction to Statistical Modeling.
 
 
@@ -300,7 +305,70 @@ b. Compute the length of the residul vector for both the $f_1(t)$ and the $f_2(t
 
 ## Spectral Decomposition
 
-(Mon 12/6) Compute the spectral decomposition of the following symmetric matrix. That is, write it as the sum of rank 1 matrices.
+Consider the following **symmetric** $4 \times 4$ matrix 
+$$
+A = \begin{bmatrix} 
+1.6 & 0.7 & 1.4 & 0.3\\ 0.7 & 1.6 & 0.3 & 1.4 \\ 1.4 & 0.3 & 1.6 & 0.7 \\ 0.3 & 1.4 & 0.7 & 1.6 \\
+\end{bmatrix}
+$$
+```{r}
+(A= rbind(c(1.6, 0.7, 1.4, 0.3),c(0.7, 1.6, 0.3, 1.4),c(1.4, 0.3, 1.6, 0.7),c(0.3, 1.4, 0.7, 1.6)))
+```
+
+a. Orthogonally diagonalze $A$ and write it in the form $A = U D U^T$ as shown here. 
+
+$$
+\begin{bmatrix} 
+1.6 & 0.7 & 1.4 & 0.3\\ 0.7 & 1.6 & 0.3 & 1.4 \\ 1.4 & 0.3 & 1.6 & 0.7 \\ 0.3 & 1.4 & 0.7 & 1.6 \\
+\end{bmatrix}=
+\begin{bmatrix} 
+a_1 & b_1 & c_1 & c_1\\ a_2 & b_2 & c_2 & d_2 \\ a_3 & b_3 & c_3 & c_3 \\ a_4 & b_4 & c_4 & d_4 \\
+\end{bmatrix}
+\begin{bmatrix} 
+\lambda_1 & 0 & 0 & 0\\ 0 & \lambda_2 & 0 & 0 \\ 0 & 0 & \lambda_3 & 0 \\ 0 & 0 & 0 & \lambda_4 \\
+\end{bmatrix}
+\begin{bmatrix} 
+a_1 & a_2 & a_3 & a_4 \\ b_1 & b_2 & b_3 & b_4  \\ c_1 & c_2 & c_3 & c_4  \\ d_1 & d_2 & d_3 & d_4  \\
+\end{bmatrix}
+$$
+b. Compute the spectral decomposition $A = \lambda_1 \mathbf{u}_1 \mathbf{u}_1^T +  \lambda_2 \mathbf{u}_2 \mathbf{u}_2^T + \lambda_3 \mathbf{u}_3 \mathbf{u}_3^T+ \lambda_4 \mathbf{u}_4 \mathbf{u}_4^T$ and write the matrix $A$ as the sum of four rank-1 matrices. 
+$$
+\begin{bmatrix} 
+1.6 & 0.7 & 1.4 & 0.3\\ 0.7 & 1.6 & 0.3 & 1.4 \\ 1.4 & 0.3 & 1.6 & 0.7 \\ 0.3 & 1.4 & 0.7 & 1.6 \\
+\end{bmatrix}  =
+\begin{bmatrix} 
+a_{11} & a_{12} & a_{13} & a_{14} \\ a_{21} & a_{22} & a_{23} & a_{24} \\ a_{31} & a_{32} & a_{33} & a_{34} \\ a_{41} & a_{42} & a_{43} & a_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+b_{11} & b_{12} & b_{13} & b_{14} \\ b_{21} & b_{22} & b_{23} & b_{24} \\ b_{31} & b_{32} & b_{33} & b_{34} \\ b_{41} & b_{42} & b_{43} & b_{44} \\
+\end{bmatrix}
+\\
++ \begin{bmatrix} 
+c_{11} & c_{12} & c_{13} & c_{14} \\ c_{21} & c_{22} & c_{23} & c_{24} \\ c_{31} & c_{32} & c_{33} & c_{34} \\ c_{41} & c_{42} & c_{43} & c_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+d_{11} & d_{12} & d_{13} & d_{14} \\ d_{21} & d_{22} & d_{23} & d_{24} \\ d_{31} & d_{32} & d_{33} & d_{34} \\ d_{41} & d_{42} & d_{43} & d_{44} \\
+\end{bmatrix}
+$$
+
+c.  We showed in class that the matrix $P_k  = \mathbf{u}_k \mathbf{u}_k^T$ is the orthogonal projection onto the $k$th eigenspace $E_{\lambda_k}$. Use these matrices to project $v$ (below) onto each eigenspace and then write $v$ as a sum of eigenvectors: $v = v_1 + v_2 + v_3 + v_4$ where $v_i$ is an eigenvector of eigenvalue $\lambda_i$.
+$$
+\begin{array}{cccccccccc}
+v&& v_1 && v_2 && v_3 && v_4 \\
+\begin{bmatrix} 1 \\ 2 \\ 3 \\ 5 \end{bmatrix}
+&=&
+\begin{bmatrix} v_{11} \\ v_{12} \\ v_{13} \\ v_{14} \end{bmatrix}
+&+&
+\begin{bmatrix} v_{21} \\ v_{22} \\ v_{23} \\ v_{24} \end{bmatrix}
+&+&
+\begin{bmatrix} v_{31} \\ v_{32} \\ v_{33} \\ v_{34} \end{bmatrix}
+&+&
+\begin{bmatrix} v_{41} \\ v_{42} \\ v_{43} \\ v_{44} \end{bmatrix}
+\end{array}
+$$
+
 
 ## SVD
 

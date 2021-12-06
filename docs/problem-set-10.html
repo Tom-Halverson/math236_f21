@@ -721,12 +721,12 @@ be the average or mean of the entries of target vector <span class="math inline"
 R^2 = 1 - \frac{\| \mathsf{y} - \hat{\mathsf{y}} \|^2 }{\| \mathsf{y} - \mathsf{y}^* \|^2} = 1 - \frac{\| \mathsf{r} \|^2}{\| \mathsf{y} - \mathsf{y}^* \|^2}.
 \]</span></p></li>
 <li><p>The <span class="math inline">\(R^2\)</span> value is a number in <span class="math inline">\([0,1]\)</span>. The squared-length <span class="math inline">\(|| \mathsf{y} -\mathsf{y}^*||^2\)</span> is the total variance: that is, how much the data varies from the mean, and <span class="math inline">\(\frac{\| \mathsf{r} \|^2}{\| \mathsf{y} - \mathsf{y}^* \|^2}\)</span> tells us the fraction of the total variance that is explained by our model. Thus, if <span class="math inline">\(R^2\)</span> is near 1, then our model does a good job at “explaining” the behavior of <span class="math inline">\(\mathsf{y}\)</span> via a linear combination of the columns of <span class="math inline">\(A\)</span>.</p></li>
-<li><p><strong>To do</strong>: Find the <span class="math inline">\(R^2\)</span> value for our least squares solution to the cars data in part (a). Here are some helpful functions:
-+ <code>mean(vec)</code> returns the mean (average) of the entries of the vector <code>vec</code>
-+ <code>rep(a, n)</code> creates a constant vector of length <span class="math inline">\(n\)</span> where every entry is <span class="math inline">\(a\)</span>.
-+ <code>Norm(vec)</code> from the <code>pracma</code> package returns the magnitude (Euclidean length) of the vector <code>vec</code>.
-To learn more, you should take STAT 155: Introduction to Statistical Modeling.</p></li>
+<li><p><strong>To do</strong>: Find the <span class="math inline">\(R^2\)</span> value for our least squares solution to the cars data in part (a). Here are some helpful functions:</p></li>
 </ul>
+<p><code>mean(vec)</code> returns the mean (average) of the entries of the vector <code>vec</code></p>
+<p><code>rep(a, n)</code> creates a constant vector of length <span class="math inline">\(n\)</span> where every entry is <span class="math inline">\(a\)</span>.</p>
+<p><code>Norm(vec)</code> from the <code>pracma</code> package returns the magnitude (Euclidean length) of the vector <code>vec</code>.</p>
+<p>To learn more, you should take STAT 155: Introduction to Statistical Modeling.</p>
 </div>
 <div id="fourier-analysis" class="section level2" number="10.6">
 <h2><span class="header-section-number">10.6</span> Fourier Analysis</h2>
@@ -828,7 +828,72 @@ f_2(t) = c_0 + c_1 \sin(t) + c_2 \cos(t) + c_3 \sin(2t) + c_4 \cos(2t)
 </div>
 <div id="spectral-decomposition" class="section level2" number="10.7">
 <h2><span class="header-section-number">10.7</span> Spectral Decomposition</h2>
-<p>(Mon 12/6) Compute the spectral decomposition of the following symmetric matrix. That is, write it as the sum of rank 1 matrices.</p>
+<p>Consider the following <strong>symmetric</strong> <span class="math inline">\(4 \times 4\)</span> matrix
+<span class="math display">\[
+A = \begin{bmatrix} 
+1.6 &amp; 0.7 &amp; 1.4 &amp; 0.3\\ 0.7 &amp; 1.6 &amp; 0.3 &amp; 1.4 \\ 1.4 &amp; 0.3 &amp; 1.6 &amp; 0.7 \\ 0.3 &amp; 1.4 &amp; 0.7 &amp; 1.6 \\
+\end{bmatrix}
+\]</span></p>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]  1.6  0.7  1.4  0.3
+## [2,]  0.7  1.6  0.3  1.4
+## [3,]  1.4  0.3  1.6  0.7
+## [4,]  0.3  1.4  0.7  1.6</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Orthogonally diagonalze <span class="math inline">\(A\)</span> and write it in the form <span class="math inline">\(A = U D U^T\)</span> as shown here.</li>
+</ol>
+<p><span class="math display">\[
+\begin{bmatrix} 
+1.6 &amp; 0.7 &amp; 1.4 &amp; 0.3\\ 0.7 &amp; 1.6 &amp; 0.3 &amp; 1.4 \\ 1.4 &amp; 0.3 &amp; 1.6 &amp; 0.7 \\ 0.3 &amp; 1.4 &amp; 0.7 &amp; 1.6 \\
+\end{bmatrix}=
+\begin{bmatrix} 
+a_1 &amp; b_1 &amp; c_1 &amp; c_1\\ a_2 &amp; b_2 &amp; c_2 &amp; d_2 \\ a_3 &amp; b_3 &amp; c_3 &amp; c_3 \\ a_4 &amp; b_4 &amp; c_4 &amp; d_4 \\
+\end{bmatrix}
+\begin{bmatrix} 
+\lambda_1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; \lambda_2 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; \lambda_3 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; \lambda_4 \\
+\end{bmatrix}
+\begin{bmatrix} 
+a_1 &amp; a_2 &amp; a_3 &amp; a_4 \\ b_1 &amp; b_2 &amp; b_3 &amp; b_4  \\ c_1 &amp; c_2 &amp; c_3 &amp; c_4  \\ d_1 &amp; d_2 &amp; d_3 &amp; d_4  \\
+\end{bmatrix}
+\]</span>
+b. Compute the spectral decomposition <span class="math inline">\(A = \lambda_1 \mathbf{u}_1 \mathbf{u}_1^T + \lambda_2 \mathbf{u}_2 \mathbf{u}_2^T + \lambda_3 \mathbf{u}_3 \mathbf{u}_3^T+ \lambda_4 \mathbf{u}_4 \mathbf{u}_4^T\)</span> and write the matrix <span class="math inline">\(A\)</span> as the sum of four rank-1 matrices.
+<span class="math display">\[
+\begin{bmatrix} 
+1.6 &amp; 0.7 &amp; 1.4 &amp; 0.3\\ 0.7 &amp; 1.6 &amp; 0.3 &amp; 1.4 \\ 1.4 &amp; 0.3 &amp; 1.6 &amp; 0.7 \\ 0.3 &amp; 1.4 &amp; 0.7 &amp; 1.6 \\
+\end{bmatrix}  =
+\begin{bmatrix} 
+a_{11} &amp; a_{12} &amp; a_{13} &amp; a_{14} \\ a_{21} &amp; a_{22} &amp; a_{23} &amp; a_{24} \\ a_{31} &amp; a_{32} &amp; a_{33} &amp; a_{34} \\ a_{41} &amp; a_{42} &amp; a_{43} &amp; a_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+b_{11} &amp; b_{12} &amp; b_{13} &amp; b_{14} \\ b_{21} &amp; b_{22} &amp; b_{23} &amp; b_{24} \\ b_{31} &amp; b_{32} &amp; b_{33} &amp; b_{34} \\ b_{41} &amp; b_{42} &amp; b_{43} &amp; b_{44} \\
+\end{bmatrix}
+\\
++ \begin{bmatrix} 
+c_{11} &amp; c_{12} &amp; c_{13} &amp; c_{14} \\ c_{21} &amp; c_{22} &amp; c_{23} &amp; c_{24} \\ c_{31} &amp; c_{32} &amp; c_{33} &amp; c_{34} \\ c_{41} &amp; c_{42} &amp; c_{43} &amp; c_{44} \\
+\end{bmatrix}
++
+\begin{bmatrix} 
+d_{11} &amp; d_{12} &amp; d_{13} &amp; d_{14} \\ d_{21} &amp; d_{22} &amp; d_{23} &amp; d_{24} \\ d_{31} &amp; d_{32} &amp; d_{33} &amp; d_{34} \\ d_{41} &amp; d_{42} &amp; d_{43} &amp; d_{44} \\
+\end{bmatrix}
+\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>We showed in class that the matrix <span class="math inline">\(P_k = \mathbf{u}_k \mathbf{u}_k^T\)</span> is the orthogonal projection onto the <span class="math inline">\(k\)</span>th eigenspace <span class="math inline">\(E_{\lambda_k}\)</span>. Use these matrices to project <span class="math inline">\(v\)</span> (below) onto each eigenspace and then write <span class="math inline">\(v\)</span> as a sum of eigenvectors: <span class="math inline">\(v = v_1 + v_2 + v_3 + v_4\)</span> where <span class="math inline">\(v_i\)</span> is an eigenvector of eigenvalue <span class="math inline">\(\lambda_i\)</span>.
+<span class="math display">\[
+\begin{array}{cccccccccc}
+v&amp;&amp; v_1 &amp;&amp; v_2 &amp;&amp; v_3 &amp;&amp; v_4 \\
+\begin{bmatrix} 1 \\ 2 \\ 3 \\ 5 \end{bmatrix}
+&amp;=&amp;
+\begin{bmatrix} v_{11} \\ v_{12} \\ v_{13} \\ v_{14} \end{bmatrix}
+&amp;+&amp;
+\begin{bmatrix} v_{21} \\ v_{22} \\ v_{23} \\ v_{24} \end{bmatrix}
+&amp;+&amp;
+\begin{bmatrix} v_{31} \\ v_{32} \\ v_{33} \\ v_{34} \end{bmatrix}
+&amp;+&amp;
+\begin{bmatrix} v_{41} \\ v_{42} \\ v_{43} \\ v_{44} \end{bmatrix}
+\end{array}
+\]</span></li>
+</ol>
 </div>
 <div id="svd" class="section level2" number="10.8">
 <h2><span class="header-section-number">10.8</span> SVD</h2>
