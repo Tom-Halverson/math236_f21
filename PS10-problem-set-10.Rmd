@@ -226,7 +226,7 @@ $$
 f_1(t) = c_0 + c_1 \sin(t) + c_2 \cos(t).
 $$
 Thus, we make the following matrix (we show here only the first 10 rows; there are 200 rows).
-```{r}
+```{r,echo=TRUE}
 A = cbind(t^0, sin(t),cos(t))
 A[1:10,]
 ```
