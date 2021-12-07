@@ -507,15 +507,15 @@ x_1 &amp;+&amp; 2x_2 &amp;+&amp; -x_3 &amp;+&amp; -3x_4&amp; =&amp; 6 \\
 \right\}
 \]</span></p>
 <p>We enter the augmented matrix (and echo it back):</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="class-examples.html#cb50-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">4</span>),<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>))</span>
-<span id="cb50-2"><a href="class-examples.html#cb50-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="class-examples.html#cb51-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">4</span>),<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb51-2"><a href="class-examples.html#cb51-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    2    1    1    4
 ## [2,]    1    2   -1   -3    6
 ## [3,]    0    1    1    1    0
 ## [4,]   -1    1   -1   -4   -1</code></pre>
 <p>And then we row reduce it using <code>rref</code>:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="class-examples.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="class-examples.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0    0    1    3
 ## [2,]    0    1    0   -1    1
@@ -555,8 +555,8 @@ x_4 &amp;= free
 \begin{bmatrix} 13 \\ 7 \\ -5 \\ 6  \end{bmatrix}
 \]</span></p>
 <p>Here we enter A and b separately to illustrate (below) how to augment a matrix with a vector.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="class-examples.html#cb54-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb54-2"><a href="class-examples.html#cb54-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">7</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>) <span class="co"># notice that b is a vector and not a matrix.</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="class-examples.html#cb55-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb55-2"><a href="class-examples.html#cb55-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">7</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>) <span class="co"># notice that b is a vector and not a matrix.</span></span></code></pre></div>
 <p>Let’s echo them back to see what they look like</p>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1   -2    1
@@ -565,15 +565,15 @@ x_4 &amp;= free
 ## [4,]    2    1    1</code></pre>
 <pre><code>## [1] 13  7 -5  6</code></pre>
 <p>Now I will augment A with b and call it Ab. The syntax is nice:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="class-examples.html#cb57-1" aria-hidden="true" tabindex="-1"></a>Ab <span class="ot">=</span> <span class="fu">cbind</span>(A,b)</span>
-<span id="cb57-2"><a href="class-examples.html#cb57-2" aria-hidden="true" tabindex="-1"></a>Ab</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="class-examples.html#cb58-1" aria-hidden="true" tabindex="-1"></a>Ab <span class="ot">=</span> <span class="fu">cbind</span>(A,b)</span>
+<span id="cb58-2"><a href="class-examples.html#cb58-2" aria-hidden="true" tabindex="-1"></a>Ab</span></code></pre></div>
 <pre><code>##               b
 ## [1,]  1 -2 1 13
 ## [2,]  1  0 1  7
 ## [3,] -1  1 0 -5
 ## [4,]  2  1 1  6</code></pre>
 <p>And then row reduce.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="class-examples.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Ab)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="class-examples.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Ab)</span></code></pre></div>
 <pre><code>##             b
 ## [1,] 1 0 0  2
 ## [2,] 0 1 0 -3
@@ -585,10 +585,10 @@ x_4 &amp;= free
 \begin{bmatrix} 2 \\ -3 \\ 5  \end{bmatrix}.
 \]</span>
 <strong>Question 2</strong> Can we find a vector d for which A x = d has no solution?</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="class-examples.html#cb61-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb61-2"><a href="class-examples.html#cb61-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># notice that b is a vector and not a matrix.</span></span>
-<span id="cb61-3"><a href="class-examples.html#cb61-3" aria-hidden="true" tabindex="-1"></a>Ad <span class="ot">=</span> <span class="fu">cbind</span>(A,d)</span>
-<span id="cb61-4"><a href="class-examples.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Ad)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="class-examples.html#cb62-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb62-2"><a href="class-examples.html#cb62-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># notice that b is a vector and not a matrix.</span></span>
+<span id="cb62-3"><a href="class-examples.html#cb62-3" aria-hidden="true" tabindex="-1"></a>Ad <span class="ot">=</span> <span class="fu">cbind</span>(A,d)</span>
+<span id="cb62-4"><a href="class-examples.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(Ad)</span></code></pre></div>
 <pre><code>##            d
 ## [1,] 1 0 0 1
 ## [2,] 0 1 0 0

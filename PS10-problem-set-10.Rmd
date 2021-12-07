@@ -372,5 +372,13 @@ $$
 
 ## SVD
 
-(Wed 12/8) Perform a singular value decomposition (SVD) on the following matrix.
+Here is a $5 \times 6$ matrix.
+```{r}
+ (A = rbind(c(1 , 2 , 1 , 1 , 2 , 1 ),c(1 , 2 , 1 , 2 , -1 , 1 ), c(2 , 4 , 2 , 3 , 1 , 2 ), c(3 , -1 , 2 , -1 , -1 , 1 ), c(1 , 1 , 0 , 1 , 1 , 0 )))
+```
 
+a. Use the command `svd(A)` to command to compute the singular value decomposition of $A$. 
+a. In the SVD we know that $A = U \Sigma V^T$. By multiplying by $U^T$ on the left and $V$ on the right we get  $U^T A V = \Sigma$. Extract the vectors $U$ and $V$ from the SVD from part (a) and multiply $U^T A V$ to get $\Sigma$.
+a. Take the square roots of the eigenvectors of $A^T A$ to see that you get the singular values (the square root function is "vectorized" so you can do them all at once).
+a. The matrix $V$ should be the eigenvectors of the matrix $A^T A$. Compute the eigenvectors of $A^T A$ to confirm this. 
+a. Compute the matrix $A_1 + A_2$ where $A_1 = \sigma_1 u_1 v_1^T$ and $A_2 = \sigma_2 u_2 v_2^T$. This is the second singular-value approximation of $A$. Row reduce $A_1 + A_2$ to show that it has rank 2.
