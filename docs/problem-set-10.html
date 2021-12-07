@@ -752,7 +752,7 @@ R^2 = 1 - \frac{\| \mathsf{y} - \hat{\mathsf{y}} \|^2 }{\| \mathsf{y} - \mathsf{
 <span id="cb43-19"><a href="problem-set-10.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="fl">3.785123</span>, <span class="fl">4.519719</span>, <span class="fl">3.966509</span>, <span class="fl">3.808330</span>, <span class="fl">4.551462</span>, <span class="fl">3.838009</span>, <span class="fl">3.758539</span>, <span class="fl">3.816730</span>, <span class="fl">4.618030</span>, <span class="fl">3.926753</span>, <span class="fl">4.593788</span>,</span>
 <span id="cb43-20"><a href="problem-set-10.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="fl">3.894390</span>, <span class="fl">4.779126</span>)</span>
 <span id="cb43-21"><a href="problem-set-10.html#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,y,<span class="at">col=</span><span class="st">&quot;orange&quot;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>),<span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-56-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-29-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>A first Fourier approximation would fit a model of the form
 <span class="math display">\[
 f_1(t) = c_0 + c_1 \sin(t) + c_2 \cos(t).
@@ -781,7 +781,7 @@ Thus, we make the following matrix (we show here only the first 10 rows; there a
 <span id="cb47-2"><a href="problem-set-10.html#cb47-2" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="at">len=</span><span class="dv">1000</span>)</span>
 <span id="cb47-3"><a href="problem-set-10.html#cb47-3" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">=</span> xhat[<span class="dv">1</span>] <span class="sc">+</span> xhat[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">sin</span>(tt) <span class="sc">+</span> xhat[<span class="dv">3</span>]<span class="sc">*</span><span class="fu">cos</span>(tt)</span>
 <span id="cb47-4"><a href="problem-set-10.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(tt,yy,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-59-1.png" width="75%" style="display: block; margin: auto;" />
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-32-1.png" width="75%" style="display: block; margin: auto;" />
 Your task:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Update this to add the second Fourier coefficient terms by fitting the following function to the data. Plot your result.
@@ -836,6 +836,7 @@ A = \begin{bmatrix}
 1.6 &amp; 0.7 &amp; 1.4 &amp; 0.3\\ 0.7 &amp; 1.6 &amp; 0.3 &amp; 1.4 \\ 1.4 &amp; 0.3 &amp; 1.6 &amp; 0.7 \\ 0.3 &amp; 1.4 &amp; 0.7 &amp; 1.6 \\
 \end{bmatrix}
 \]</span></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="problem-set-10.html#cb48-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">1.6</span>, <span class="fl">0.7</span>, <span class="fl">1.4</span>, <span class="fl">0.3</span>),<span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">1.6</span>, <span class="fl">0.3</span>, <span class="fl">1.4</span>),<span class="fu">c</span>(<span class="fl">1.4</span>, <span class="fl">0.3</span>, <span class="fl">1.6</span>, <span class="fl">0.7</span>),<span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">1.4</span>, <span class="fl">0.7</span>, <span class="fl">1.6</span>)))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]  1.6  0.7  1.4  0.3
 ## [2,]  0.7  1.6  0.3  1.4
