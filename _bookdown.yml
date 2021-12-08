@@ -39,6 +39,7 @@ rmd_files: ["index.Rmd",
 "e1-review.Rmd", 
 "e2-review.Rmd" , 
 "e3-review.Rmd" , 
+"final-review.Rmd" ,
 # "q4-review.Rmd"
 ]
 delete_merged_file: true

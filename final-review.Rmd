@@ -1,32 +1,88 @@
 
 
-# Quiz 4 Review
+# Final Exam Review
 
 
 ## Overview
 
-Our fourth quiz has two goals
+The Final Exam has two goals
 
-1. It will cover the new material from Sections 6.1-6.5.
-2. It will have some comprehensive material. 
+1. It will cover the new material from Sections 6.1-6.5 (Orthogonality) and 7.1 (Symmetric Matrices) and 7.4 (SVD).
 
-The comprehensive material will not be tricky. My goal is to be sure that you understand the fundamentals of the course. 
+2. It will have some comprehensive material. The comprehensive material will not be tricky. My goal is to be sure that you understand the fundamentals of the course. 
 
+Here are some important guidelines about the final:
 
-The best way to study is to do practice problems. The Quiz will have calculation problems (like Edfinity) and more conceptual problems (like the problem sets). Here are some ways to practice:
+* Date and Time: Thursday, December 16, 4:00-6:00 PM.
+* Location: OLRI 100 and OLRI 150
+* Length: 2 hours, but I do not plan to make the exam twice as long as a midterm. Maybe 1.5 as long but give you twice as much time.
+* Cheatsheet: you can bring a full sheet of paper (8.5" x 11") with notes on both sides. 
+* As in the past, I will focus on the ideas more than the computations. But there will be some computations. 
+
+To prepare:
 
 * Make sure that you have mastered the Vocabulary, Skills and Concepts  listed below.
-* Look over the Edfinity homework assingments
-* Do practice problems from the Edfinity Practice assignments. These allow you to "Practice Similar" by generating new variations of the same problem.
-* Redo the Jamboard problems
-* Try to resolve the Problem Sets and compare your answers to the solutions.
-* Do the practice problems below. Compare your answers to the solutions.
+* Think about how the ideas fit together: typically, the hardest part is to figure what needs to be done.
+* Look at all of the problems we discussed in class. Practice doing many of them.
+* Look over the Edfinity homework assignments
 
 ## Vocabulary, Concepts and Skills
 
-See the [Week 7-8 Learning Goals](week-7-8-learning-goals) for the list of vocabulary, concepts and skills.
+### Orthogonality 
 
-## Comprehensive Review
+
+I should be able to do the following **tasks**:
+
+* Find the length of a vector
+* Find the distance between two vectors
+* Normalize a vector
+* Find the cosine of the angle between two vectors
+* Find the orthogonal projection of one vector onto another
+* Find the orthogonal projection of one vector onto a subspace (using an orthogonal basis)
+* Find the orthogonal complement of a subspace
+* Find the least squares approximation for an inconsistent system
+* Formulate a least-squares fitting problem as an inconsistent linear system $A \mathsf{x} = \mathsf{b}$
+* Orthogonally diagonalize a symmetric matrix as $A=PDP^{\top}$.
+* You will not have to compute an SVD.
+
+### Vocabulary
+
+I should know and be able to use and explain the following **terms** or **properties**. 
+
+* dot product of two vectors $\mathsf{v} \cdot \mathsf{w} = \mathsf{v}^{\top} \mathsf{w}$  (aka scalar product, inner product)
+* length (magnitude) of a vector
+* angle between vectors
+* normalize
+* unit vector
+* orthogonal vectors
+* orthogonal complement of a subspace
+* orthogonal projection
+* orthogonal basis
+* orthonormal basis
+* normal equations for a least squares approximation
+* least squares solution
+* residual vector
+* symmetric matrix
+* orthogonally diagonalizable
+* outer product of two vectors $\mathsf{v} \, \mathsf{w}^{\top}$
+* spectral decomposition of a symmetric matrix
+
+### Conceptual Thinking
+
+I should understand and be able to explain the following **concepts**:
+
+* The dot product gives an algebraic encoding of the geometry (lengths and angles) of $\mathbb{R}^n$
+* If two vectors are orthogonal, then they are perpendicular, or one of them is the zero vector
+* An orthogonal projection is a linear transformation
+* The row space of a matrix is orthogonal to its nullspace
+* The inverse of orthogonal matrix $A$ is the transpose $A^{\top}$
+* Cosine similarity is a useful way to compare vectors, especially in high-dimensional vector spaces.
+* The residual vector measures the quality of fit of a least squares solution
+* The outer product $\mathsf{v}\,  \mathsf{w}^{\top}$ is a square matrix with rank 1
+* The least-squares project onto a subspace: normal equations, predicted, residual. 
+* Decomposition of a vector $v = w + z$ with $w \in W$ and $z in W^\perp$.
+
+### Comprehensive Review
 
 Here are some terms and ideas that you should know:
 
@@ -54,7 +110,7 @@ Here are some terms and ideas that you should know:
 * Orthogonal projection, least squares solutions.
 
 
-## Skills
+### Skills
 
 * Form an augmented matrix and reduce a matrix or augmented matrix into row echelon or reduced row echelon form. Determine whether a given matrix is in either of those forms. Determine whether a particular form of a matrix is a possible row echelon or reduced echelon form.
 *
@@ -96,8 +152,6 @@ Let $\mathsf{v} =  \begin{bmatrix}1 \\ -1 \\ 1 \end{bmatrix}$ and $\mathsf{w}= \
 
 a. Find $\| \mathsf{v} \|$ and $\| \mathsf{w} \|$.
 
-
-
 b. Find the distance between $\mathsf{v}$ and $\mathsf{w}$.
 
 c. Find the cosine of the angle between $\mathsf{v}$ and $\mathsf{w}$.
@@ -109,15 +163,14 @@ e. Let $W=\mbox{span} (\mathsf{v}, \mathsf{w})$. Use the residual from the previ
 
 ###
 
-Let $\mathsf{u} \neq 0$ be a vector in $\mathbb{R}^n$. Define the function $T: \mathbb{R}^n \rightarrow \mathbb{R}^n$ by
-$T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}$. Recall that the kernel of $T$ is the subspace $\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}$. Describe  $\mbox{ker}(T)$ as explicitly as you can.
-
-
+For a subspace $W \subseteq \mathbb{R}^n$, define the function 
+$T: \mathbb{R}^n \rightarrow \mathbb{R}^n$ by
+$T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}$. Recall that the null space of $T$ is the subspace $\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}$. Describe  $\mbox{ker}(T)$ as explicitly as you can.
 
 
 ### 
 
- The vectors $\mathsf{u}_1, \mathsf{u}_2$  form an orthonormal basis of a subspace $W$ of $\mathbb{R}^4$. Find the projection of $\mathsf{v}$ onto $W$ and determine how close $\mathsf{v}$ is to $W$.
+The vectors $\mathsf{u}_1, \mathsf{u}_2$  form an orthonormal basis of a subspace $W$ of $\mathbb{R}^4$. Find the projection of $\mathsf{v}$ onto $W$ and determine how close $\mathsf{v}$ is to $W$.
 $$
 \mathsf{u}_1 = \frac{1}{2}\begin{bmatrix} 1\\ -1\\ -1\\ 1 \end{bmatrix}, \quad
 \mathsf{u}_2 =  \frac{1}{2}\begin{bmatrix} 1\\ -1\\ 1\\ -1  \end{bmatrix}, \quad
@@ -125,8 +178,6 @@ $$
 $$
 
 ###
-
-
 
 Consider vectors 
 $\mathsf{v}_1 = \begin{bmatrix} 1 \\ 1 \\-1 \end{bmatrix}$ and 
@@ -207,35 +258,41 @@ c. How close is your approximate solution to the desired target vector?
 
 
 
-###
-According to the [COVID Tracking Project](https://covidtracking.com/), Minnesota had $54,463$ positive COVID-19 cases between March 6 and 31 July, 2020. As of 16 December, 2020, that count has reached $386,412$. 
-
-The vector `covid.mn` lists the total number of new COVID-19 cases in Minnesota between August 1, 2020 and December 16, 2020 (on top of the previously reported $54,463$).
- 
-
-```{r, echo=TRUE}
-
-covid.start = 54463
-
-covid.mn = c(725, 1484, 2097, 2699, 3316, 4177, 4722, 5638, 6435, 7053, 7376, 7840, 8530, 9260, 9950, 10689, 11253, 11598, 12155, 12845, 13670, 14404, 15121, 15835, 16244, 16773, 17927, 18777, 19794, 20726, 21401, 21892, 22622, 23660, 24503, 25417, 26124, 26762, 27145, 27405, 27786, 28253, 29125, 29848, 30486, 30888, 31350, 32259, 33344, 34258, 35554, 36479, 36959, 37637, 38549, 39726, 41196, 42271, 43175, 43984, 44671, 45737, 46903, 48324, 49363, 50336, 51277, 52188, 53459, 54849, 56365, 57805, 58976, 60111, 61480, 62643, 64933, 66627, 68349, 69976, 71068, 72128, 73689, 75400, 77659, 79339, 80909, 83073, 84981, 87848, 91002, 94009, 96209, 99157, 102633, 106460, 110402, 115844, 120491, 126399, 130325, 135218, 140107, 147332, 152876, 161565, 169118, 176555, 182486, 187580, 195443, 202237, 208489, 215694, 222037, 228453, 234840, 234840, 240538, 249560, 258506, 264300, 267849, 273014, 279163, 284510, 290818, 296399, 301689, 304740, 309256, 312755, 316505, 320935, 324360, 327378, 329701, 331949)
-
-```
-a. Find the best fitting exponential function $f(t) = a e^{k t}$ for the number of  COVID-19 cases in Minnesota since 31 July, 2020. Here $t$ is the number of days since 31 July.
-
-
-b. Run the following code to plot your function. This code assumes that your least squares solution is given by `xhat`. Does it look like a good fit?
-
-```{r}
-xhat = c(0,0)  #this is wrong
-a = exp(xhat[1])
-k = xhat[2]
-x = 0:(length(covid.mn)-1)
-
-f=function(y){a * exp(k*(y))}
-
-plot(x,f(x)+ covid.start,type="l",lwd=3,ylab="new positive COVID-19 cases", xlab="days since July 31, 2020", main="best fit exponential function")
-points(x,covid.mn + covid.start,pch=20,cex=.7,col="red")
-```
+<!-- ### --> <!-- According to the [COVID Tracking
+Project](https://covidtracking.com/), Minnesota had $54,463$ positive COVID-19
+cases between March 6 and 31 July, 2020. As of 16 December, 2020, that count has
+reached $386,412$.  -->
+<!-- The vector `covid.mn` lists the total number of new COVID-19 cases in
+Minnesota between August 1, 2020 and December 16, 2020 (on top of the previously
+reported $54,463$). -->
+<!-- ```{r, echo=TRUE} -->
+<!-- covid.start = 54463 -->
+<!-- covid.mn = c(725, 1484, 2097, 2699, 3316, 4177, 4722, 5638, 6435, 7053,
+7376, 7840, 8530, 9260, 9950, 10689, 11253, 11598, 12155, 12845, 13670, 14404,
+15121, 15835, 16244, 16773, 17927, 18777, 19794, 20726, 21401, 21892, 22622,
+23660, 24503, 25417, 26124, 26762, 27145, 27405, 27786, 28253, 29125, 29848,
+30486, 30888, 31350, 32259, 33344, 34258, 35554, 36479, 36959, 37637, 38549,
+39726, 41196, 42271, 43175, 43984, 44671, 45737, 46903, 48324, 49363, 50336,
+51277, 52188, 53459, 54849, 56365, 57805, 58976, 60111, 61480, 62643, 64933,
+66627, 68349, 69976, 71068, 72128, 73689, 75400, 77659, 79339, 80909, 83073,
+84981, 87848, 91002, 94009, 96209, 99157, 102633, 106460, 110402, 115844,
+120491, 126399, 130325, 135218, 140107, 147332, 152876, 161565, 169118, 176555,
+182486, 187580, 195443, 202237, 208489, 215694, 222037, 228453, 234840, 234840,
+240538, 249560, 258506, 264300, 267849, 273014, 279163, 284510, 290818, 296399,
+301689, 304740, 309256, 312755, 316505, 320935, 324360, 327378, 329701, 331949)
+-->
+<!-- ``` --> <!-- a. Find the best fitting exponential function $f(t) = a e^{k
+t}$ for the number of  COVID-19 cases in Minnesota since 31 July, 2020. Here $t$
+is the number of days since 31 July. -->
+<!-- b. Run the following code to plot your function. This code assumes that
+your least squares solution is given by `xhat`. Does it look like a good fit?
+-->
+<!-- ```{r} --> <!-- xhat = c(0,0)  #this is wrong --> <!-- a = exp(xhat[1]) -->
+<!-- k = xhat[2] --> <!-- x = 0:(length(covid.mn)-1) -->
+<!-- f=function(y){a * exp(k*(y))} -->
+<!-- plot(x,f(x)+ covid.start,type="l",lwd=3,ylab="new positive COVID-19 cases",
+xlab="days since July 31, 2020", main="best fit exponential function") --> <!--
+points(x,covid.mn + covid.start,pch=20,cex=.7,col="red") --> <!-- ``` -->
 
 
 
@@ -326,7 +383,7 @@ Decide if the statement is **T** = True or **F** = False, or  **I**  = there is 
 
 ### Watch this! 
 
-The answer to at least one question on Quiz 4 is contained in [this video](https://www.youtube.com/watch?v=O4KCoNvRi6Y).
+The answer to at least one question on the final exam is contained in [this video](https://www.youtube.com/watch?v=O4KCoNvRi6Y).
 
 ## Solutions to Practice Problems
 
@@ -559,38 +616,15 @@ t(r)%*%r
 sqrt(t(r)%*%r)
 ```
 
-###
-a. 
-
-```{r echo=TRUE}
-
-
-x = 1:length(covid.mn)
-y = log(covid.mn)
-
-A = cbind(x^0, x)
-
-(xhat = solve(t(A) %*% A, t(A) %*% y))
-
-
-
-
-
-```
-
-b.
-
-```{r q4-covid, echo=TRUE}
-a = exp(xhat[1])
-k = xhat[2]
-f=function(y){a * exp(k*(y))}
-
-plot(x,f(x)+ covid.start,type="l",lwd=3,ylab="new positive COVID-19 cases", xlab="days since July 31, 2020", main="best fit exponential function")
-points(x,covid.mn + covid.start,pch=20,cex=.7,col="red")
-
-```
-
-The curve is a pretty good fit (unfortunately?). However, it does look like the additional restrictions of the last two weeks are slowing the COVID spread.
+<!-- ### -->
+<!-- a. ```{r echo=TRUE} x = 1:length(covid.mn) y = log(covid.mn) A = cbind(x^0, x) -->
+<!-- (xhat = solve(t(A) %*% A, t(A) %*% y)) ``` b. ```{r q4-covid, echo=TRUE} a = -->
+<!-- exp(xhat[1]) k = xhat[2] f=function(y){a * exp(k*(y))} plot(x,f(x)+ -->
+<!-- covid.start,type="l",lwd=3,ylab="new positive COVID-19 cases", xlab="days since -->
+<!-- July 31, 2020", main="best fit exponential function") points(x,covid.mn + -->
+<!-- covid.start,pch=20,cex=.7,col="red") ``` The curve is a pretty good fit -->
+<!-- (unfortunately?). However, it does look like the additional restrictions of the -->
+<!-- last two weeks are slowing the COVID spread. -->
 
 ###
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 18 Network Centralities | MATH 236: Linear Algebra</title>
+  <title>Section 25 Final Exam Review | MATH 236: Linear Algebra</title>
   <meta name="description" content="This is the class activity manual for MATH 236 at Macalester College." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 18 Network Centralities | MATH 236: Linear Algebra" />
+  <meta property="og:title" content="Section 25 Final Exam Review | MATH 236: Linear Algebra" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Tom-Halverson/math236_f21" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 18 Network Centralities | MATH 236: Linear Algebra" />
+  <meta name="twitter:title" content="Section 25 Final Exam Review | MATH 236: Linear Algebra" />
   
   <meta name="twitter:description" content="This is the class activity manual for MATH 236 at Macalester College." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="complex-eigenvalues.html"/>
-<link rel="next" href="geometry-in-mathbbrn.html"/>
+<link rel="prev" href="exam-3-review.html"/>
+
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -535,311 +535,625 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="network-centralities" class="section level1" number="18">
-<h1><span class="header-section-number">Section 18</span> Network Centralities</h1>
-<p><a href="https://github.com/Tom-Halverson/math236_mod5/blob/main/NetworkCentrality.Rmd">Download this Rmd file</a>. You can cut and paste it into an Rmd file.</p>
-<p>In this example, we will use a package called <code>igraph</code>. To install it, you need to go to the packages window (bottom right), choose <code>install</code>, and search for and install <code>igraph</code> from the packages window.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="network-centralities.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code></pre></div>
-<div id="graphs-and-networks" class="section level2" number="18.1">
-<h2><span class="header-section-number">18.1</span> Graphs and Networks</h2>
-<p>Graphs consists of <strong>vertices</strong> and the <strong>edges</strong> between them. These edges are used to model connections in a wide array of applications, including but not limited to, physical, biological, social, and information networks.</p>
-<div id="adjacency-matrices" class="section level3" number="18.1.1">
-<h3><span class="header-section-number">18.1.1</span> Adjacency Matrices</h3>
-<p>Matrices are used to represent graphs and networks in a very direct way: we place a 1 in position <span class="math inline">\((i,j)\)</span> of the <strong>adjacency matrix</strong> <span class="math inline">\(A\)</span> of the graph <span class="math inline">\(G\)</span>, if there is an edge from vertex <span class="math inline">\(i\)</span> to vertex <span class="math inline">\(j\)</span> in <span class="math inline">\(G\)</span>. Here is the adjacency matrix we will use today.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="network-centralities.html#cb304-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">rbind</span>( <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb304-2"><a href="network-centralities.html#cb304-2" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
-##  [1,]    0    1    0    1    0    0    0    0    1     0     0     0
-##  [2,]    1    0    1    1    1    0    1    0    0     0     0     0
-##  [3,]    0    1    0    0    1    0    0    0    0     0     0     0
-##  [4,]    1    1    0    0    0    1    0    1    0     0     0     0
-##  [5,]    0    1    1    0    0    0    1    1    0     0     0     1
-##  [6,]    0    0    0    1    0    0    1    0    0     0     0     0
-##  [7,]    0    1    0    0    1    1    0    1    0     0     0     0
-##  [8,]    0    0    0    1    1    0    1    0    0     1     1     0
-##  [9,]    1    0    0    0    0    0    0    0    0     0     0     0
-## [10,]    0    0    0    0    0    0    0    1    0     0     0     0
-## [11,]    0    0    0    0    0    0    0    1    0     0     0     0
-## [12,]    0    0    0    0    1    0    0    0    0     0     0     0</code></pre>
-<p>We make a graph from the adjacency matrix using the code below. Observe that there is an edge from vertex <span class="math inline">\(i\)</span> to vertex <span class="math inline">\(j\)</span> if and only if there is a 1 in position <span class="math inline">\((i,j)\)</span> in the matrix.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="network-centralities.html#cb306-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">=</span><span class="fu">graph_from_adjacency_matrix</span>(A,<span class="at">mode=</span><span class="st">&#39;undirected&#39;</span>)</span>
-<span id="cb306-2"><a href="network-centralities.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>, <span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/network1-1.png" width="75%" style="display: block; margin: auto;" /></p>
-<p>This network is the route map of a small airline. Here we will add the locations of the vertices, add vertex labels, and change the vertex size:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="network-centralities.html#cb307-1" aria-hidden="true" tabindex="-1"></a>locations <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">0</span>),<span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">7</span>),<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">15</span>),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">12</span>),<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">10</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">12</span>,<span class="dv">15</span>),<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">6</span>),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>,<span class="dv">12</span>),<span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">4</span>),<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">13</span>))</span>
-<span id="cb307-2"><a href="network-centralities.html#cb307-2" aria-hidden="true" tabindex="-1"></a>airports <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;ATL&quot;</span>,<span class="st">&quot;LAX&quot;</span>,<span class="st">&quot;ORD&quot;</span>,<span class="st">&quot;MSP&quot;</span>,<span class="st">&quot;DEN&quot;</span>,<span class="st">&quot;JFK&quot;</span>,<span class="st">&quot;SFO&quot;</span>,<span class="st">&quot;SEA&quot;</span>,<span class="st">&quot;PHL&quot;</span>,<span class="st">&quot;PDX&quot;</span>,<span class="st">&quot;MDW&quot;</span>,<span class="st">&quot;LGA&quot;</span>)</span>
-<span id="cb307-3"><a href="network-centralities.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>label <span class="ot">=</span> airports</span>
-<span id="cb307-4"><a href="network-centralities.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g,<span class="at">vertex.size=</span><span class="dv">20</span>, <span class="at">layout=</span>locations, <span class="at">vertex.label.cex=</span><span class="fl">0.85</span>, <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>, <span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/network2-1.png" width="75%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="degree-centrality" class="section level2" number="18.2">
-<h2><span class="header-section-number">18.2</span> Degree Centrality</h2>
-<p>If we are considering placing an office in one of our airport locations, we may want to chose the most <strong>central</strong> hub for that office. It turns out that there are many interesting <strong>centrality measures</strong> for networks. We will talk about two of them today.</p>
-<p>The simplest measure centrality is the <strong>degree</strong> of the vertex, or the number of edges connected to that vertex. We calculate the degree centralities from the adjacency matrix as follows.</p>
+<div id="final-exam-review" class="section level1" number="25">
+<h1><span class="header-section-number">Section 25</span> Final Exam Review</h1>
+<div id="overview-3" class="section level2" number="25.1">
+<h2><span class="header-section-number">25.1</span> Overview</h2>
+<p>The Final Exam has two goals</p>
 <ol style="list-style-type: decimal">
-<li>Make a vector <span class="math inline">\(\mathsf{v}\)</span> of all 1’s and multiply <span class="math inline">\(\mathsf{d} = A\mathsf{v}\)</span> to get the vector of degrees.</li>
-<li>Divide the vector <span class="math inline">\(\mathsf{p}\)</span> by the sum of its entries to get the <strong>degree</strong> proportions. The result is a <strong>normalized vector</strong> <span class="math inline">\(\mathsf{p}\)</span> whose entries sum to 1. Each entry of vector <span class="math inline">\(\mathsf{p}\)</span> represents to <em>proportion</em> of edges incident with the corresponding vertex.</li>
+<li><p>It will cover the new material from Sections 6.1-6.5 (Orthogonality) and 7.1 (Symmetric Matrices) and 7.4 (SVD).</p></li>
+<li><p>It will have some comprehensive material. The comprehensive material will not be tricky. My goal is to be sure that you understand the fundamentals of the course.</p></li>
 </ol>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="network-centralities.html#cb308-1" aria-hidden="true" tabindex="-1"></a>v<span class="ot">=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(A)) <span class="co"># all 1s vector</span></span>
-<span id="cb308-2"><a href="network-centralities.html#cb308-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> A <span class="sc">%*%</span> v  <span class="co"># degrees</span></span>
-<span id="cb308-3"><a href="network-centralities.html#cb308-3" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span>d<span class="sc">/</span><span class="fu">sum</span>(d)   <span class="co"># proportion of degrees</span></span>
-<span id="cb308-4"><a href="network-centralities.html#cb308-4" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">cbind</span>(d,p) <span class="co"># show d and p together side-by-side in a matrix</span></span>
-<span id="cb308-5"><a href="network-centralities.html#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Z) <span class="ot">=</span> airports</span>
-<span id="cb308-6"><a href="network-centralities.html#cb308-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Z) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;deg&quot;</span>,<span class="st">&quot;proportion&quot;</span>)</span>
-<span id="cb308-7"><a href="network-centralities.html#cb308-7" aria-hidden="true" tabindex="-1"></a>ii<span class="ot">=</span><span class="fu">order</span>(d,<span class="at">decreasing=</span><span class="cn">TRUE</span>) <span class="co"># sort from largest to smallest</span></span>
-<span id="cb308-8"><a href="network-centralities.html#cb308-8" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> Z[ii,]</span>
-<span id="cb308-9"><a href="network-centralities.html#cb308-9" aria-hidden="true" tabindex="-1"></a>Z</span></code></pre></div>
-<pre><code>##     deg proportion
-## LAX   5 0.14705882
-## DEN   5 0.14705882
-## SEA   5 0.14705882
-## MSP   4 0.11764706
-## SFO   4 0.11764706
-## ATL   3 0.08823529
-## ORD   2 0.05882353
-## JFK   2 0.05882353
-## PHL   1 0.02941176
-## PDX   1 0.02941176
-## MDW   1 0.02941176
-## LGA   1 0.02941176</code></pre>
-<p>Now we create a <em>data visualization</em> that plots the size of each vertex according to the vector <span class="math inline">\(p\)</span>. The larger vertices have more edges connected to them.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="network-centralities.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">layout=</span>locations, <span class="at">vertex.size=</span><span class="dv">250</span><span class="sc">*</span>p,<span class="at">vertex.label.cex=</span><span class="fl">0.65</span>, <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>, <span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/network7-1.png" width="75%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="goulds-index" class="section level2" number="18.3">
-<h2><span class="header-section-number">18.3</span> Gould’s Index</h2>
-<p>Gould’s Index is a measure of centrality that uses the dominant eigenvector of a matrix. It was introduced by geographer P. R. Gould in 1967 to analyze the geographical features on maps. We will build up Gould’s Index step-by-step so that we can understand what it measures.</p>
-<div id="step-1-add-layovers" class="section level3" number="18.3.1">
-<h3><span class="header-section-number">18.3.1</span> Step 1: Add Layovers</h3>
-<p>The first step is typically to add the identity matrix to the adjancency matrix <span class="math inline">\(A\)</span> to get a new matrix
-<span class="math display">\[
-B = A + I.
-\]</span>
-The <span class="math inline">\(n \times n\)</span> identity matrix in <code>R</code> is obtained by using <code>diag(n)</code>. Adding the identity gives a connection from a vertex to itself. This <strong>loop edge</strong> corresponds to staying at the current city during a layover.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="network-centralities.html#cb311-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">B =</span> A <span class="sc">+</span> <span class="fu">diag</span>(<span class="fu">nrow</span>(A)))</span></code></pre></div>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
-##  [1,]    1    1    0    1    0    0    0    0    1     0     0     0
-##  [2,]    1    1    1    1    1    0    1    0    0     0     0     0
-##  [3,]    0    1    1    0    1    0    0    0    0     0     0     0
-##  [4,]    1    1    0    1    0    1    0    1    0     0     0     0
-##  [5,]    0    1    1    0    1    0    1    1    0     0     0     1
-##  [6,]    0    0    0    1    0    1    1    0    0     0     0     0
-##  [7,]    0    1    0    0    1    1    1    1    0     0     0     0
-##  [8,]    0    0    0    1    1    0    1    1    0     1     1     0
-##  [9,]    1    0    0    0    0    0    0    0    1     0     0     0
-## [10,]    0    0    0    0    0    0    0    1    0     1     0     0
-## [11,]    0    0    0    0    0    0    0    1    0     0     1     0
-## [12,]    0    0    0    0    1    0    0    0    0     0     0     1</code></pre>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="network-centralities.html#cb313-1" aria-hidden="true" tabindex="-1"></a>g2<span class="ot">=</span><span class="fu">graph_from_adjacency_matrix</span>(B,<span class="at">mode=</span><span class="st">&#39;undirected&#39;</span>)</span>
-<span id="cb313-2"><a href="network-centralities.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g2)<span class="sc">$</span>label <span class="ot">=</span> airports</span>
-<span id="cb313-3"><a href="network-centralities.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g2, <span class="at">layout=</span>locations, <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>, <span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/networkB-1.png" width="75%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="step-2-dynamical-system" class="section level3" number="18.3.2">
-<h3><span class="header-section-number">18.3.2</span> Step 2: Dynamical System</h3>
-<p>Starting with the all 1’s vector <span class="math inline">\(\mathsf{v}_0\)</span> create the dynamical system
-<span class="math display">\[
-\mathsf{v}_0, \quad  
-\mathsf{v}_1 = B \mathsf{v}_0,  \quad 
-\mathsf{v}_2 = B \mathsf{v}_1,  \quad
-\mathsf{v}_3 = B \mathsf{v}_2,  \quad \ldots , \quad
-\mathsf{v}_n  = B \mathsf{v}_{n-1}.
-\]</span>
-Here we calculate <span class="math inline">\(\mathsf{v}_1, \ldots, \mathsf{v}_{10}\)</span> using a loop:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="network-centralities.html#cb314-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">10</span> </span>
-<span id="cb314-2"><a href="network-centralities.html#cb314-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(B),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>) <span class="co"># make a a table of 0s</span></span>
-<span id="cb314-3"><a href="network-centralities.html#cb314-3" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(B))              <span class="co"># put v0 in first column</span></span>
-<span id="cb314-4"><a href="network-centralities.html#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {                  <span class="co"># loop N times</span></span>
-<span id="cb314-5"><a href="network-centralities.html#cb314-5" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> B <span class="sc">%*%</span>  X[,i]   <span class="co"># apply B to the ith column and make it the (i+1)st column      </span></span>
-<span id="cb314-6"><a href="network-centralities.html#cb314-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb314-7"><a href="network-centralities.html#cb314-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(X) <span class="ot">=</span> airports</span>
-<span id="cb314-8"><a href="network-centralities.html#cb314-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(X) <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb314-9"><a href="network-centralities.html#cb314-9" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
-<pre><code>##     0 1  2   3   4    5     6     7      8       9      10
-## ATL 1 4 17  76 347 1603  7442 34638 161411  752642 3510616
-## LAX 1 6 29 139 650 3044 14211 66352 309652 1445058 6743119
-## ORD 1 3 15  72 343 1614  7567 35389 165336  771972 3603377
-## MSP 1 5 24 109 507 2349 10936 50930 237450 1107376 5165837
-## DEN 1 6 28 132 621 2909 13611 63595 296984 1386347 6470458
-## JFK 1 3 13  63 294 1377  6418 29939 139617  651292 3038392
-## SFO 1 5 26 122 576 2692 12585 58748 274225 1279724 5971890
-## SEA 1 6 26 120 551 2563 11923 55591 259246 1209469 5642972
-## PHL 1 2  6  23  99  446  2049  9491  44129  205540  958182
-## PDX 1 2  8  34 154  705  3268 15191  70782  330028 1539497
-## MDW 1 2  8  34 154  705  3268 15191  70782  330028 1539497
-## LGA 1 2  8  36 168  789  3698 17309  80904  377888 1764235</code></pre>
-<p><strong>Discuss with your group:</strong> Each of the entries of the vector <span class="math inline">\(\mathsf{v}_{t}\)</span> in the columns of the table above corresponds to “a trip of length <span class="math inline">\(t\)</span>.” What kinds of trips do the entries of <span class="math inline">\(\mathsf{v}_{t}\)</span> count? To figure this out, compare the table of vectors with the picture of the network with layovers. Figure out the maning of the <span class="math inline">\(t=1\)</span> column, then the <span class="math inline">\(t = 2\)</span> column, and so on. Why does the rule <span class="math inline">\(\mathsf{v}_t = B \mathsf{v}_{t-1}\)</span> leads to this result?</p>
-<p><strong>Normalize</strong>: These numbers get big fast! Let’s normalize by dividing by the sum each time. By doing this, the vectors will always be proportions which sum to 1. See the table below. What do the entries in this table tell us?</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="network-centralities.html#cb316-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">10</span> </span>
-<span id="cb316-2"><a href="network-centralities.html#cb316-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(B),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb316-3"><a href="network-centralities.html#cb316-3" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(B))</span>
-<span id="cb316-4"><a href="network-centralities.html#cb316-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(N<span class="sc">+</span><span class="dv">1</span>)) {  </span>
-<span id="cb316-5"><a href="network-centralities.html#cb316-5" aria-hidden="true" tabindex="-1"></a>   X[,i] <span class="ot">=</span> B <span class="sc">%*%</span>  X[,i<span class="dv">-1</span>]</span>
-<span id="cb316-6"><a href="network-centralities.html#cb316-6" aria-hidden="true" tabindex="-1"></a>   X[,i] <span class="ot">=</span> X[,i]<span class="sc">/</span><span class="fu">sum</span>(X[,i])</span>
-<span id="cb316-7"><a href="network-centralities.html#cb316-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb316-8"><a href="network-centralities.html#cb316-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(X) <span class="ot">=</span> airports</span>
-<span id="cb316-9"><a href="network-centralities.html#cb316-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(X) <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb316-10"><a href="network-centralities.html#cb316-10" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
-<pre><code>##     0          1          2          3          4          5          6
-## ATL 1 0.08695652 0.08173077 0.07916667 0.07773297 0.07708213 0.07674064
-## LAX 1 0.13043478 0.13942308 0.14479167 0.14560932 0.14637430 0.14654141
-## ORD 1 0.06521739 0.07211538 0.07500000 0.07683692 0.07761108 0.07802962
-## MSP 1 0.10869565 0.11538462 0.11354167 0.11357527 0.11295441 0.11277017
-## DEN 1 0.13043478 0.13461538 0.13750000 0.13911290 0.13988267 0.14035431
-## JFK 1 0.06521739 0.06250000 0.06562500 0.06586022 0.06621466 0.06618132
-## SFO 1 0.10869565 0.12500000 0.12708333 0.12903226 0.12944797 0.12977438
-## SEA 1 0.13043478 0.12500000 0.12500000 0.12343190 0.12324485 0.12294795
-## PHL 1 0.04347826 0.02884615 0.02395833 0.02217742 0.02144643 0.02112894
-## PDX 1 0.04347826 0.03846154 0.03541667 0.03449821 0.03390075 0.03369906
-## MDW 1 0.04347826 0.03846154 0.03541667 0.03449821 0.03390075 0.03369906
-## LGA 1 0.04347826 0.03846154 0.03750000 0.03763441 0.03793999 0.03813315
-##              7          8          9         10
-## ATL 0.07657108 0.07647933 0.07643081 0.07640399
-## LAX 0.14667834 0.14671848 0.14674567 0.14675521
-## ORD 0.07823125 0.07833906 0.07839377 0.07842281
-## MSP 0.11258632 0.11250792 0.11245405 0.11242772
-## DEN 0.14058369 0.14071617 0.14078356 0.14082110
-## JFK 0.06618343 0.06615295 0.06613871 0.06612665
-## SFO 0.12986887 0.12993256 0.12995600 0.12997042
-## SEA 0.12288997 0.12283525 0.12282160 0.12281194
-## PHL 0.02098089 0.02090908 0.02087259 0.02085358
-## PDX 0.03358136 0.03353774 0.03351435 0.03350515
-## MDW 0.03358136 0.03353774 0.03351435 0.03350515
-## LGA 0.03826343 0.03833372 0.03837453 0.03839628</code></pre>
-</div>
-<div id="step-4-eigen-analysis" class="section level3" number="18.3.3">
-<h3><span class="header-section-number">18.3.3</span> Step 4: Eigen-analysis</h3>
-<p>We see that the vectors are converging to a common direction, and
-we know that dynamical systems converge to the <strong>dominant eigenvector</strong> (if there is one). We can see below that there is a dominant eigenvector in this case.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="network-centralities.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(B)</span></code></pre></div>
-<pre><code>## eigen() decomposition
-## $values
-##  [1]  4.66618847  2.64207538  2.41909839  1.80037113  1.27260439  1.00000000
-##  [7]  1.00000000  0.49835918  0.02718633 -0.67732874 -0.92557189 -1.72298263
-## 
-## $vectors
-##              [,1]        [,2]        [,3]         [,4]        [,5]          [,6]
-##  [1,] -0.23401334  0.57249329 -0.03677166  0.289569576 -0.11347970  0.000000e+00
-##  [2,] -0.44971357  0.23508235  0.28327135 -0.009053428  0.29280642  2.626816e-16
-##  [3,] -0.24039858 -0.04730698  0.44304618  0.102332378  0.42192015 -1.576610e-16
-##  [4,] -0.34439328  0.35635470 -0.30954196 -0.120977575  0.09253829  4.851644e-01
-##  [5,] -0.43163295 -0.31276398  0.34545477  0.090957309 -0.17778914  1.198948e-16
-##  [6,] -0.20257820  0.10572025 -0.24645181 -0.612347635 -0.18646435 -5.005332e-18
-##  [7,] -0.39829657 -0.18275409 -0.04019741 -0.369127791 -0.14336929 -4.851644e-01
-##  [8,] -0.37630557 -0.32813461 -0.43931838  0.235004528  0.03236396 -1.021498e-16
-##  [9,] -0.06383014  0.34864008 -0.02591199  0.361794131 -0.41627977 -4.851644e-01
-## [10,] -0.10264218 -0.19982920 -0.30957570  0.293619448  0.11872135 -1.709709e-01
-## [11,] -0.10264218 -0.19982920 -0.30957570  0.293619448  0.11872135  1.709709e-01
-## [12,] -0.11773343 -0.19046871  0.24343257  0.113643916 -0.65218735  4.851644e-01
-##                [,7]        [,8]        [,9]         [,10]       [,11]
-##  [1,]  0.000000e+00  0.17344569  0.19570619  6.653425e-01  0.08742351
-##  [2,]  1.203957e-16  0.27532162  0.33415547 -4.571765e-01 -0.14917762
-##  [3,] -4.434216e-17 -0.59911594 -0.08232149  1.379670e-01  0.40635541
-##  [4,]  1.208947e-01 -0.01657232 -0.32336571 -2.621537e-01  0.02623868
-##  [5,]  1.395385e-16  0.02521939 -0.25407199  2.257605e-01 -0.63328894
-##  [6,] -9.291441e-17 -0.52296040  0.18953651  1.563407e-01 -0.22162883
-##  [7,] -1.208947e-01  0.27891061  0.13898200 -8.104161e-05  0.40052356
-##  [8,] -3.393381e-17  0.08250644 -0.40482358  7.521122e-02  0.23285847
-##  [9,] -1.208947e-01 -0.34575674 -0.20117541 -3.966679e-01 -0.04540132
-## [10,]  6.861261e-01 -0.16447314  0.41613681 -4.483988e-02 -0.12092951
-## [11,] -6.861261e-01 -0.16447314  0.41613681 -4.483988e-02 -0.12092951
-## [12,]  1.208947e-01 -0.05027381  0.26117231 -1.345953e-01  0.32888356
-##              [,12]
-##  [1,]  0.026476499
-##  [2,]  0.397124122
-##  [3,] -0.072909426
-##  [4,] -0.459495824
-##  [5,] -0.198593023
-##  [6,]  0.307139725
-##  [7,] -0.376840313
-##  [8,]  0.520458800
-##  [9,] -0.009723345
-## [10,] -0.191135557
-## [11,] -0.191135557
-## [12,]  0.072932167</code></pre>
-<p>For an adjacency matrix <span class="math inline">\(A\)</span>, the dominant eigenvector of <span class="math inline">\(B + I\)</span>, scaled to sum to 1, is called <strong>Gould’s Index</strong> of network centrality. Here we compute Gould’s index.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="network-centralities.html#cb320-1" aria-hidden="true" tabindex="-1"></a>vecs <span class="ot">=</span> <span class="fu">eigen</span>(B)<span class="sc">$</span>vectors</span>
-<span id="cb320-2"><a href="network-centralities.html#cb320-2" aria-hidden="true" tabindex="-1"></a>gould <span class="ot">=</span> vecs[,<span class="dv">1</span>]           <span class="co"># get the dominant eigenvector</span></span>
-<span id="cb320-3"><a href="network-centralities.html#cb320-3" aria-hidden="true" tabindex="-1"></a>gould <span class="ot">=</span> gould<span class="sc">/</span><span class="fu">sum</span>(gould)   <span class="co"># rescale it to sum to 1</span></span>
-<span id="cb320-4"><a href="network-centralities.html#cb320-4" aria-hidden="true" tabindex="-1"></a>gould</span></code></pre></div>
-<pre><code>##  [1] 0.07637062 0.14676474 0.07845446 0.11239329 0.14086410 0.06611172 0.12998472
-##  [8] 0.12280792 0.02083107 0.03349744 0.03349744 0.03842249</code></pre>
-<p>Now we show that the dynamical system is converging to Gould’s index.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="network-centralities.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the dynamical system</span></span>
-<span id="cb322-2"><a href="network-centralities.html#cb322-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">30</span></span>
-<span id="cb322-3"><a href="network-centralities.html#cb322-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="fu">nrow</span>(B),<span class="at">ncol=</span>N<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb322-4"><a href="network-centralities.html#cb322-4" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(B))<span class="sc">/</span><span class="fu">nrow</span>(B)</span>
-<span id="cb322-5"><a href="network-centralities.html#cb322-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {  </span>
-<span id="cb322-6"><a href="network-centralities.html#cb322-6" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> B <span class="sc">%*%</span>  X[,i]</span>
-<span id="cb322-7"><a href="network-centralities.html#cb322-7" aria-hidden="true" tabindex="-1"></a>   X[,i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> X[,i<span class="sc">+</span><span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(X[,i<span class="sc">+</span><span class="dv">1</span>])</span>
-<span id="cb322-8"><a href="network-centralities.html#cb322-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb322-9"><a href="network-centralities.html#cb322-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-10"><a href="network-centralities.html#cb322-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data</span></span>
-<span id="cb322-11"><a href="network-centralities.html#cb322-11" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">=</span> <span class="fu">cbind</span>(X[,<span class="dv">1</span>],X[,<span class="dv">2</span>],X[,<span class="dv">3</span>],X[,<span class="dv">11</span>],X[,<span class="dv">21</span>],gould)</span>
-<span id="cb322-12"><a href="network-centralities.html#cb322-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Y) <span class="ot">=</span> airports</span>
-<span id="cb322-13"><a href="network-centralities.html#cb322-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Y) <span class="ot">=</span> <span class="fu">cbind</span>(<span class="st">&quot;n=0&quot;</span>,<span class="st">&quot;n=1&quot;</span>,<span class="st">&quot;n=2&quot;</span>,<span class="st">&quot;n=10&quot;</span>,<span class="st">&quot;n=20&quot;</span>,<span class="st">&quot;Gould&quot;</span>)</span>
-<span id="cb322-14"><a href="network-centralities.html#cb322-14" aria-hidden="true" tabindex="-1"></a>Y</span></code></pre></div>
-<pre><code>##            n=0        n=1        n=2       n=10       n=20      Gould
-## ATL 0.08333333 0.08695652 0.08173077 0.07640399 0.07637073 0.07637062
-## LAX 0.08333333 0.13043478 0.13942308 0.14675521 0.14676475 0.14676474
-## ORD 0.08333333 0.06521739 0.07211538 0.07842281 0.07845441 0.07845446
-## MSP 0.08333333 0.10869565 0.11538462 0.11242772 0.11239338 0.11239329
-## DEN 0.08333333 0.13043478 0.13461538 0.14082110 0.14086400 0.14086410
-## JFK 0.08333333 0.06521739 0.06250000 0.06612665 0.06611175 0.06611172
-## SFO 0.08333333 0.10869565 0.12500000 0.12997042 0.12998468 0.12998472
-## SEA 0.08333333 0.13043478 0.12500000 0.12281194 0.12280789 0.12280792
-## PHL 0.08333333 0.04347826 0.02884615 0.02085358 0.02083114 0.02083107
-## PDX 0.08333333 0.04347826 0.03846154 0.03350515 0.03349742 0.03349744
-## MDW 0.08333333 0.04347826 0.03846154 0.03350515 0.03349742 0.03349744
-## LGA 0.08333333 0.04347826 0.03846154 0.03839628 0.03842243 0.03842249</code></pre>
-</div>
-<div id="step-5-visualize" class="section level3" number="18.3.4">
-<h3><span class="header-section-number">18.3.4</span> Step 5: Visualize</h3>
-<p>Now let’s plot the network with:</p>
+<p>Here are some important guidelines about the final:</p>
 <ul>
-<li>the vertices sized by Gould’s Index</li>
-<li>the labels sized by degree centrality</li>
+<li>Date and Time: Thursday, December 16, 4:00-6:00 PM.</li>
+<li>Location: OLRI 100 and OLRI 150</li>
+<li>Length: 2 hours, but I do not plan to make the exam twice as long as a midterm. Maybe 1.5 as long but give you twice as much time.</li>
+<li>Cheatsheet: you can bring a full sheet of paper (8.5" x 11") with notes on both sides.</li>
+<li>As in the past, I will focus on the ideas more than the computations. But there will be some computations.</li>
 </ul>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="network-centralities.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g, <span class="at">layout=</span>locations, <span class="at">vertex.size=</span><span class="dv">250</span><span class="sc">*</span>gould,<span class="at">vertex.label.cex=</span><span class="dv">8</span><span class="sc">*</span>p, </span>
-<span id="cb324-2"><a href="network-centralities.html#cb324-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color=</span><span class="st">&#39;tan1&#39;</span>,<span class="at">vertex.frame.color=</span><span class="st">&quot;dodgerblue&quot;</span> )</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/network6-1.png" width="75%" style="display: block; margin: auto;" /></p>
-<p>And we show the data containing Gould’s Index and the Degree Centrality. We order the data using the Gould Index and then compare the two. Observe that degree centrality and Gould’s Index do not always agree.</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="network-centralities.html#cb325-1" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">cbind</span>(gould,p) </span>
-<span id="cb325-2"><a href="network-centralities.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Z)<span class="ot">=</span>airports</span>
-<span id="cb325-3"><a href="network-centralities.html#cb325-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Z)<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;Gould&#39;</span>, <span class="st">&#39;Degree&#39;</span>)</span>
-<span id="cb325-4"><a href="network-centralities.html#cb325-4" aria-hidden="true" tabindex="-1"></a>ii<span class="ot">=</span><span class="fu">order</span>(gould,<span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb325-5"><a href="network-centralities.html#cb325-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> Z[ii,]</span>
-<span id="cb325-6"><a href="network-centralities.html#cb325-6" aria-hidden="true" tabindex="-1"></a>Z</span></code></pre></div>
-<pre><code>##          Gould     Degree
-## LAX 0.14676474 0.14705882
-## DEN 0.14086410 0.14705882
-## SFO 0.12998472 0.11764706
-## SEA 0.12280792 0.14705882
-## MSP 0.11239329 0.11764706
-## ORD 0.07845446 0.05882353
-## ATL 0.07637062 0.08823529
-## JFK 0.06611172 0.05882353
-## LGA 0.03842249 0.02941176
-## PDX 0.03349744 0.02941176
-## MDW 0.03349744 0.02941176
-## PHL 0.02083107 0.02941176</code></pre>
-<p><strong>Discuss with your group:</strong> Degree centrality and Gould’s Index give different rankings. Look at the table and observe that:</p>
+<p>To prepare:</p>
 <ul>
-<li>LAX, DEN and SEA have the same degree centrality. However LAX and DEN have higher Gould Index than SEA.</li>
-<li>SFO has lower degree centrality than SEA, but higher Gould centrality! So these two centralities give different rankings.</li>
-<li>Why does the Gould Index value SFO more than SEA?</li>
-<li>Find another pair of cities where the rankings of degree centrality and Gould’s Index differ. Look at the plot of the network and explain why this is the case.</li>
+<li>Make sure that you have mastered the Vocabulary, Skills and Concepts listed below.</li>
+<li>Think about how the ideas fit together: typically, the hardest part is to figure what needs to be done.</li>
+<li>Look at all of the problems we discussed in class. Practice doing many of them.</li>
+<li>Look over the Edfinity homework assignments</li>
 </ul>
 </div>
-<div id="gould-index-summary" class="section level3" number="18.3.5">
-<h3><span class="header-section-number">18.3.5</span> Gould Index Summary</h3>
-<p>Now that we understand what Gould’s Index means, let’s summarize how to find the Gould Index values for an adjacency matrix <span class="math inline">\(A\)</span>.</p>
-<ol style="list-style-type: decimal">
-<li>Create the matrix <span class="math inline">\(B = A+I\)</span>.</li>
-<li>Find the dominant eigenvector <span class="math inline">\(\mathbf{v}\)</span> of <span class="math inline">\(B\)</span>.</li>
-<li>Normalize the values of <span class="math inline">\(\mathbf{v}\)</span> so that the entries sum to 1.</li>
+<div id="vocabulary-concepts-and-skills-1" class="section level2" number="25.2">
+<h2><span class="header-section-number">25.2</span> Vocabulary, Concepts and Skills</h2>
+<div id="orthogonality" class="section level3" number="25.2.1">
+<h3><span class="header-section-number">25.2.1</span> Orthogonality</h3>
+<p>I should be able to do the following <strong>tasks</strong>:</p>
+<ul>
+<li>Find the length of a vector</li>
+<li>Find the distance between two vectors</li>
+<li>Normalize a vector</li>
+<li>Find the cosine of the angle between two vectors</li>
+<li>Find the orthogonal projection of one vector onto another</li>
+<li>Find the orthogonal projection of one vector onto a subspace (using an orthogonal basis)</li>
+<li>Find the orthogonal complement of a subspace</li>
+<li>Find the least squares approximation for an inconsistent system</li>
+<li>Formulate a least-squares fitting problem as an inconsistent linear system <span class="math inline">\(A \mathsf{x} = \mathsf{b}\)</span></li>
+<li>Orthogonally diagonalize a symmetric matrix as <span class="math inline">\(A=PDP^{\top}\)</span>.</li>
+<li>You will not have to compute an SVD.</li>
+</ul>
+</div>
+<div id="vocabulary-1" class="section level3" number="25.2.2">
+<h3><span class="header-section-number">25.2.2</span> Vocabulary</h3>
+<p>I should know and be able to use and explain the following <strong>terms</strong> or <strong>properties</strong>.</p>
+<ul>
+<li>dot product of two vectors <span class="math inline">\(\mathsf{v} \cdot \mathsf{w} = \mathsf{v}^{\top} \mathsf{w}\)</span> (aka scalar product, inner product)</li>
+<li>length (magnitude) of a vector</li>
+<li>angle between vectors</li>
+<li>normalize</li>
+<li>unit vector</li>
+<li>orthogonal vectors</li>
+<li>orthogonal complement of a subspace</li>
+<li>orthogonal projection</li>
+<li>orthogonal basis</li>
+<li>orthonormal basis</li>
+<li>normal equations for a least squares approximation</li>
+<li>least squares solution</li>
+<li>residual vector</li>
+<li>symmetric matrix</li>
+<li>orthogonally diagonalizable</li>
+<li>outer product of two vectors <span class="math inline">\(\mathsf{v} \, \mathsf{w}^{\top}\)</span></li>
+<li>spectral decomposition of a symmetric matrix</li>
+</ul>
+</div>
+<div id="conceptual-thinking-1" class="section level3" number="25.2.3">
+<h3><span class="header-section-number">25.2.3</span> Conceptual Thinking</h3>
+<p>I should understand and be able to explain the following <strong>concepts</strong>:</p>
+<ul>
+<li>The dot product gives an algebraic encoding of the geometry (lengths and angles) of <span class="math inline">\(\mathbb{R}^n\)</span></li>
+<li>If two vectors are orthogonal, then they are perpendicular, or one of them is the zero vector</li>
+<li>An orthogonal projection is a linear transformation</li>
+<li>The row space of a matrix is orthogonal to its nullspace</li>
+<li>The inverse of orthogonal matrix <span class="math inline">\(A\)</span> is the transpose <span class="math inline">\(A^{\top}\)</span></li>
+<li>Cosine similarity is a useful way to compare vectors, especially in high-dimensional vector spaces.</li>
+<li>The residual vector measures the quality of fit of a least squares solution</li>
+<li>The outer product <span class="math inline">\(\mathsf{v}\, \mathsf{w}^{\top}\)</span> is a square matrix with rank 1</li>
+<li>The least-squares project onto a subspace: normal equations, predicted, residual.</li>
+<li>Decomposition of a vector <span class="math inline">\(v = w + z\)</span> with <span class="math inline">\(w \in W\)</span> and <span class="math inline">\(z in W^\perp\)</span>.</li>
+</ul>
+</div>
+<div id="comprehensive-review" class="section level3" number="25.2.4">
+<h3><span class="header-section-number">25.2.4</span> Comprehensive Review</h3>
+<p>Here are some terms and ideas that you should know:</p>
+<ul>
+<li>Pivot position.</li>
+<li>Elementary row operations.</li>
+<li>Ways to compute and think about <span class="math inline">\(A v\)</span> in both words and symbols.</li>
+<li>Linear combination.</li>
+<li><span class="math inline">\(Span(v_1, . . . , v_k).\)</span> In particular, you should be able to visualize <span class="math inline">\(Span(v)\)</span>, <span class="math inline">\(Span(u,v)\)</span> and give geometric interpretations of these sets in <span class="math inline">\(\mathbb{R}^2\)</span> or <span class="math inline">\(\mathbb{R}^3\)</span>.</li>
+<li>Linearly independent and linearly dependent.</li>
+<li>Linear transformation.</li>
+<li>Domain, codomain, image, range, onto, and one-to-one.</li>
+<li>The transpose of a matrix, the inverse of a matrix, invertible matrix.</li>
+<li>Subspace.</li>
+<li>Null space, column space, and row space of a matrix.</li>
+<li>Kernel and range of a linear transformation.</li>
+<li>Basis and dimension.</li>
+<li>Rank.</li>
+<li>Eigenvalue, eigenvector, eigenspace.</li>
+<li>Characteristic polynomial and characteristic equation.</li>
+<li>Diagonalizable matrix.</li>
+<li>Dot product, length of a vector, angle between vectors, cosine similarity</li>
+<li>Orthogonal vectors, orthogonal spaces.</li>
+<li>Orthogonal complement of a subspace.</li>
+<li>Orthogonal basis, orthonormal basis, orthogonal matrix.</li>
+<li>Orthogonal projection, least squares solutions.</li>
+</ul>
+</div>
+<div id="skills-3" class="section level3" number="25.2.5">
+<h3><span class="header-section-number">25.2.5</span> Skills</h3>
+<ul>
+<li><p>Form an augmented matrix and reduce a matrix or augmented matrix into row echelon or reduced row echelon form. Determine whether a given matrix is in either of those forms. Determine whether a particular form of a matrix is a possible row echelon or reduced echelon form.</p></li>
+<li><p>Determine whether a system is consistent and if it has a unique solution. Write the general solution in parametric vector form. Describe the set of solutions geometrically.</p></li>
+<li><p>Interpret a system of equations as (i) a vector equation (ii) a matrix equation.</p></li>
+<li><p>Determine when a vector is in a subset spanned by specified vectors.
+Exhibit a vector as a linear combination of specified vectors.
+Determine whether a specified vector is in the range of a linear transformation.</p></li>
+<li><p>Determine whether the columns of an <span class="math inline">\(m \times n\)</span> matrix span <span class="math inline">\(\mathbb{R}^m\)</span>.
+Determine whether the columns are linearly independent.</p></li>
+<li><p>Compute a matrix-vector product, and interpret it as a linear combination of the columns of <span class="math inline">\(A\)</span>. Use linearity of matrix multiplication to compute <span class="math inline">\(A(u + v)\)</span> or <span class="math inline">\(A(c u)\)</span>.</p></li>
+<li><p>Find the matrix of a linear transformation.</p></li>
+<li><p>Determine whether a transformation is linear.
+Determine whether a linear transformation <span class="math inline">\(T( x)=A x\)</span> is one-to-one or onto, using the properties of the matrix <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Determine whether a subset of vectors is a subspace.</p></li>
+<li><p>Determine whether a set of vectors is linearly independent and whether it is a basis for some subspace or vector space. Find a basis for a vector space, or for the null space or column space of a matrix, or for the kernel or range of a linear transformation. Find the dimension of a vector space or subspace. Find the dimension of the null space (number of free variables) and column space (number of pivot columns) of a matrix.</p></li>
+<li><p>Find and interpret the rank of a matrix.</p></li>
+<li><p>Calculate the characteristic equation, eigenvalues, and eigenvectors of a square matrix. Find eigenvectors for a specific eigenvalue. Check if a vector is an eigenvector of a given matrix.</p></li>
+<li><p>Determine whether a square matrix is diagonalizable. Factor a diagonalizable matrix into <span class="math inline">\(A=PDP^{-1}\)</span>, where <span class="math inline">\(D\)</span> is a diagonal matrix.</p></li>
+<li><p>Use eigenvalues and eigenvectors to analyze the long-term behavior of discrete dynamical systems.</p></li>
+<li><p>Find the length of a vector, the distance between two vectors, or the angle between two vectors.</p></li>
+<li><p>Determine whether a set of vectors are orthogonal. Determine whether a vector is orthogonal to a subspace or whether two subspaces are orthogonal, by checking whether their basis vectors are orthogonal.</p></li>
+<li><p>Find the orthogonal projection of (i) one vector onto another vector, or (ii) one vector onto a subspace (using an orthogonal basis for the subspace). Find the distance between a vector and a space (by computing the residual).</p></li>
+<li><p>Set up the matrix equation to find the ``best-fitting’’ function to a set of data using least squares. Interpret the normal equations <span class="math inline">\(A^{\top}A x = A^{\top}b\)</span>. Find the least squares approximation by solving the normal equations <span class="math inline">\(\hat{x}=(A^{\top}A)^{-1}A^{\top}b\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div id="practice-problems-3" class="section level2" number="25.3">
+<h2><span class="header-section-number">25.3</span> Practice Problems</h2>
+<div id="section-96" class="section level3" number="25.3.1">
+<h3><span class="header-section-number">25.3.1</span> </h3>
+<p>Let <span class="math inline">\(\mathsf{v} = \begin{bmatrix}1 \\ -1 \\ 1 \end{bmatrix}\)</span> and <span class="math inline">\(\mathsf{w}= \begin{bmatrix}5 \\ 2 \\ 3 \end{bmatrix}\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find <span class="math inline">\(\| \mathsf{v} \|\)</span> and <span class="math inline">\(\| \mathsf{w} \|\)</span>.</p></li>
+<li><p>Find the distance between <span class="math inline">\(\mathsf{v}\)</span> and <span class="math inline">\(\mathsf{w}\)</span>.</p></li>
+<li><p>Find the cosine of the angle between <span class="math inline">\(\mathsf{v}\)</span> and <span class="math inline">\(\mathsf{w}\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(\mbox{proj}_{\mathsf{v}} \mathsf{w}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(W=\mbox{span} (\mathsf{v}, \mathsf{w})\)</span>. Use the residual from the previous projection to create an orthonormal basis <span class="math inline">\(\mathsf{u}_1, \mathsf{u}_2\)</span> for <span class="math inline">\(W\)</span> such that <span class="math inline">\(\mathsf{u}_1\)</span> is a vector in the same direction as <span class="math inline">\(\mathsf{v}\)</span>.</p></li>
 </ol>
+</div>
+<div id="section-97" class="section level3" number="25.3.2">
+<h3><span class="header-section-number">25.3.2</span> </h3>
+<p>For a subspace <span class="math inline">\(W \subseteq \mathbb{R}^n\)</span>, define the function
+<span class="math inline">\(T: \mathbb{R}^n \rightarrow \mathbb{R}^n\)</span> by
+<span class="math inline">\(T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}\)</span>. Recall that the null space of <span class="math inline">\(T\)</span> is the subspace <span class="math inline">\(\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}\)</span>. Describe <span class="math inline">\(\mbox{ker}(T)\)</span> as explicitly as you can.</p>
+</div>
+<div id="section-98" class="section level3" number="25.3.3">
+<h3><span class="header-section-number">25.3.3</span> </h3>
+<p>The vectors <span class="math inline">\(\mathsf{u}_1, \mathsf{u}_2\)</span> form an orthonormal basis of a subspace <span class="math inline">\(W\)</span> of <span class="math inline">\(\mathbb{R}^4\)</span>. Find the projection of <span class="math inline">\(\mathsf{v}\)</span> onto <span class="math inline">\(W\)</span> and determine how close <span class="math inline">\(\mathsf{v}\)</span> is to <span class="math inline">\(W\)</span>.
+<span class="math display">\[
+\mathsf{u}_1 = \frac{1}{2}\begin{bmatrix} 1\\ -1\\ -1\\ 1 \end{bmatrix}, \quad
+\mathsf{u}_2 =  \frac{1}{2}\begin{bmatrix} 1\\ -1\\ 1\\ -1  \end{bmatrix}, \quad
+\mathsf{v} =  \begin{bmatrix}   2\\ 2\\ 4\\ 2 \end{bmatrix} 
+\]</span></p>
+</div>
+<div id="section-99" class="section level3" number="25.3.4">
+<h3><span class="header-section-number">25.3.4</span> </h3>
+<p>Consider vectors
+<span class="math inline">\(\mathsf{v}_1 = \begin{bmatrix} 1 \\ 1 \\-1 \end{bmatrix}\)</span> and
+<span class="math inline">\(\mathsf{v}_2= \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}\)</span> in <span class="math inline">\(\mathbb{R}^3\)</span>.
+Let <span class="math inline">\(W=\mbox{span}(\mathsf{v}_1, \mathsf{v}_2)\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show that <span class="math inline">\(\mathsf{v}_1\)</span> and <span class="math inline">\(\mathsf{v}_2\)</span> are orthogonal.</p></li>
+<li><p>Find a basis for <span class="math inline">\(W^{\perp}\)</span>.</p></li>
+<li><p>Use orthogonal projections to find the representation of
+<span class="math inline">\(\mathsf{y} = \begin{bmatrix} 8 \\ 0 \\ 2 \end{bmatrix}\)</span> as
+<span class="math inline">\(\mathsf{y} = \hat{\mathsf{y}} + \mathsf{z}\)</span> where
+<span class="math inline">\(\hat{\mathsf{y}} \in W\)</span> and <span class="math inline">\(\mathsf{z} \in W^{\perp}\)</span>.</p></li>
+</ol>
+</div>
+<div id="section-100" class="section level3" number="25.3.5">
+<h3><span class="header-section-number">25.3.5</span> </h3>
+<p>Let <span class="math inline">\(W\)</span> be the span of the vectors
+<span class="math display">\[
+\begin{bmatrix}
+1 \\ -2 \\ 1 \\ 0 \\1 
+\end{bmatrix}, \quad
+\begin{bmatrix}
+-1 \\ 3 \\ -1 \\ 1 \\ -1 
+\end{bmatrix}, \quad
+\begin{bmatrix}
+0 \\ 0 \\ 1 \\ 3 \\1 
+\end{bmatrix}, \quad
+\begin{bmatrix}
+0 \\ 2 \\ 0 \\ 0 \\4 
+\end{bmatrix}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Find a basis for <span class="math inline">\(W\)</span>. What is the dimension of this subspace?</li>
+<li>Find a basis for <span class="math inline">\(W^{\perp}\)</span></li>
+</ol>
+</div>
+<div id="section-101" class="section level3" number="25.3.6">
+<h3><span class="header-section-number">25.3.6</span> </h3>
+<p>Consider the system <span class="math inline">\(A \mathsf{x} = \mathsf{b}\)</span> given by
+<span class="math display">\[
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; -1 \\
+1 &amp; 1 &amp; -1 \\
+1 &amp; 2 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\ x_2 \\ x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+4\\ 1 \\ -2 \\ -1
+\end{bmatrix}.
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Show that this system is inconsistent.</li>
+<li>Find the projected value <span class="math inline">\(\hat{\mathsf{b}}\)</span>, and the residual <span class="math inline">\(\mathsf{z}\)</span>.</li>
+<li>How close is your approximate solution to the desired target vector?</li>
+</ol>
+</div>
+<div id="section-102" class="section level3" number="25.3.7">
+<h3><span class="header-section-number">25.3.7</span> </h3>
+<p>Here is an inconsistent system of equations:
+<span class="math display">\[
+\begin{bmatrix} 1 &amp; 2 \\ 1 &amp; 2 \\ 1 &amp; -1 \end{bmatrix}
+ \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = 
+  \begin{bmatrix} 6\\ 4 \\ -4 \end{bmatrix} 
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>State the normal equations for this problem (be sure to do all of the necessary matrix multiplications).</p></li>
+<li><p>Find the least squares solution to the problem.</p></li>
+<li><p>How close is your approximate solution to the desired target vector?</p></li>
+</ol>
+<!-- ### -->
+<!-- According to the [COVID Tracking
+Project](https://covidtracking.com/), Minnesota had $54,463$ positive COVID-19
+cases between March 6 and 31 July, 2020. As of 16 December, 2020, that count has
+reached $386,412$.  -->
+<!-- The vector `covid.mn` lists the total number of new COVID-19 cases in
+Minnesota between August 1, 2020 and December 16, 2020 (on top of the previously
+reported $54,463$). -->
+<!-- ```{r, echo=TRUE} -->
+<!-- covid.start = 54463 -->
+<!-- covid.mn = c(725, 1484, 2097, 2699, 3316, 4177, 4722, 5638, 6435, 7053,
+7376, 7840, 8530, 9260, 9950, 10689, 11253, 11598, 12155, 12845, 13670, 14404,
+15121, 15835, 16244, 16773, 17927, 18777, 19794, 20726, 21401, 21892, 22622,
+23660, 24503, 25417, 26124, 26762, 27145, 27405, 27786, 28253, 29125, 29848,
+30486, 30888, 31350, 32259, 33344, 34258, 35554, 36479, 36959, 37637, 38549,
+39726, 41196, 42271, 43175, 43984, 44671, 45737, 46903, 48324, 49363, 50336,
+51277, 52188, 53459, 54849, 56365, 57805, 58976, 60111, 61480, 62643, 64933,
+66627, 68349, 69976, 71068, 72128, 73689, 75400, 77659, 79339, 80909, 83073,
+84981, 87848, 91002, 94009, 96209, 99157, 102633, 106460, 110402, 115844,
+120491, 126399, 130325, 135218, 140107, 147332, 152876, 161565, 169118, 176555,
+182486, 187580, 195443, 202237, 208489, 215694, 222037, 228453, 234840, 234840,
+240538, 249560, 258506, 264300, 267849, 273014, 279163, 284510, 290818, 296399,
+301689, 304740, 309256, 312755, 316505, 320935, 324360, 327378, 329701, 331949)
+-->
+<!-- ``` -->
+<!-- a. Find the best fitting exponential function $f(t) = a e^{k
+t}$ for the number of  COVID-19 cases in Minnesota since 31 July, 2020. Here $t$
+is the number of days since 31 July. -->
+<!-- b. Run the following code to plot your function. This code assumes that
+your least squares solution is given by `xhat`. Does it look like a good fit?
+-->
+<!-- ```{r} -->
+<!-- xhat = c(0,0)  #this is wrong -->
+<!-- a = exp(xhat[1]) -->
+<!-- k = xhat[2] -->
+<!-- x = 0:(length(covid.mn)-1) -->
+<!-- f=function(y){a * exp(k*(y))} -->
+<!-- plot(x,f(x)+ covid.start,type="l",lwd=3,ylab="new positive COVID-19 cases",
+xlab="days since July 31, 2020", main="best fit exponential function") -->
+<!--
+points(x,covid.mn + covid.start,pch=20,cex=.7,col="red") -->
+<!-- ``` -->
+</div>
+<div id="one-to-one-and-onto" class="section level3" number="25.3.8">
+<h3><span class="header-section-number">25.3.8</span> One-to-one and Onto</h3>
+<p>Here is a matrix <span class="math inline">\(A\)</span> and its reduced row echelon form <span class="math inline">\(B\)</span>
+<span class="math display">\[
+A = \begin{bmatrix}
+   1  &amp;  3  &amp; -3  &amp;  1  &amp;  0 \\
+    2  &amp;  1  &amp;  0  &amp;  6 &amp;   5 \\
+   3  &amp;  3  &amp; -3  &amp;  6  &amp;  3 \\
+  -1  &amp;  4  &amp; -3  &amp; -3  &amp; -1
+\end{bmatrix}
+\qquad \longrightarrow \qquad
+B = \begin{bmatrix}
+    1 &amp;   0  &amp;  0 &amp; 2.5 &amp; 1.5 \\
+    0  &amp;  1  &amp;  0 &amp; 1.0 &amp; 2.0 \\
+  0  &amp; 0  &amp;  1 &amp; 1.5 &amp; 2.5 \\
+   0  &amp;  0  &amp;  0 &amp; 0.0 &amp; 0.0
+\end{bmatrix}.
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find a basis for <span class="math inline">\(\mbox{Nul}(A)\)</span> and <span class="math inline">\(\mbox{Col}(A)\)</span>.</p></li>
+<li><p>Is the linear transformation <span class="math inline">\(T(\mathsf{x}) = A \mathsf{x}\)</span> one-to-one? Onto?</p></li>
+</ol>
+</div>
+<div id="a-4x5-matrix" class="section level3" number="25.3.9">
+<h3><span class="header-section-number">25.3.9</span> A 4x5 Matrix</h3>
+<p><span class="math inline">\(\mathsf{A}\)</span> is a <span class="math inline">\(4 \times 5\)</span> matrix and <span class="math inline">\(b \in \mathbb{R}^4\)</span>. The augmented matrix <span class="math inline">\([\,\mathsf{A}\mid b\,]\)</span> row reduces as shown here.
+<span class="math display">\[
+[\,\mathsf{A}\mid b\,] = 
+\left[
+\begin{array}{ccccc|c}
+ \vert &amp; \vert &amp; \vert &amp; \vert &amp; \vert &amp;\vert\\
+ v_1 &amp; v_2 &amp;  v_3 &amp;  v_4 &amp;  v_5 &amp; b\\
+ \vert &amp; \vert &amp; \vert &amp; \vert &amp; \vert &amp;\vert\\
+ \end{array}
+\right] 
+  \longrightarrow
+\left[
+\begin{array}{rrrrr|r}
+ 1 &amp; 0 &amp; 2 &amp; 0 &amp; -1 &amp;1\\
+ 0 &amp; 1 &amp; -1 &amp; 0 &amp; -1 &amp;1\\
+ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp;-2\\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+ \end{array}
+\right]  
+\]</span>
+a. Give all of the solutions to o <span class="math inline">\(\mathsf{A} x = b\)</span> in parametric form.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Give a dependence relation among the columns of <span class="math inline">\(\mathsf{A}\)</span>.</p></li>
+<li><p>These true-false questions refer to the coefficient matrix <span class="math inline">\(\mathsf{A}\)</span> above. Decide if the statement is <strong>T</strong> = True or <strong>F</strong> = False. No justification necessary.</p></li>
+</ol>
+<ul>
+<li><span class="math inline">\(\mathsf{A} x = b\)</span> has a solution for all <span class="math inline">\(b \in \mathbb{R}^4\)</span>.</li>
+<li>The columns of <span class="math inline">\(\mathsf{A}\)</span> span <span class="math inline">\(\mathbb{R}^4\)</span>.</li>
+<li>If <span class="math inline">\(\mathsf{A} x = b\)</span> has a solution, then it has infinitely many solutions.</li>
+<li>The linear transformation <span class="math inline">\(x \mapsto \mathsf{A} x\)</span> is one-to-one</li>
+<li>The linear transformation <span class="math inline">\(x \mapsto \mathsf{A} x\)</span> is onto</li>
+</ul>
+</div>
+<div id="a-x-b" class="section level3" number="25.3.10">
+<h3><span class="header-section-number">25.3.10</span> A x = b</h3>
+<p>Suppose that <span class="math inline">\({\mathsf{A}}\)</span> is an <span class="math inline">\(n \times n\)</span> matrix and that <span class="math inline">\(\vec{\mathsf{x}}_1\)</span> and <span class="math inline">\(\vec{\mathsf{x}}_2\)</span> are two solutions to <span class="math inline">\({\mathsf{A}}x = \mathsf{b}\)</span> with <span class="math inline">\(\mathsf{b}\not= \vec{\mathbf{0}}\)</span> and <span class="math inline">\(\vec{\mathsf{x}}_1 \not= \vec{\mathsf{x}}_2\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Give a nonzero solution to <span class="math inline">\({\mathsf{A}}\vec{\mathsf{x}}= \vec{\mathbf{0}}\)</span>.</p></li>
+<li><p>Give a solution to <span class="math inline">\({\mathsf{A}}\vec{\mathsf{x}}= \mathsf{b}\)</span> that no one else in the class has.</p></li>
+</ol>
+<p>Decide if the statement is <strong>T</strong> = True or <strong>F</strong> = False, or <strong>I</strong> = there is not enough information to know.</p>
+<ul>
+<li>The equation <span class="math inline">\({\mathsf{A}}x = \vec{\mathsf{y}}\)</span> has a solution for all <span class="math inline">\(\vec{\mathsf{y}}\in \mathbb{R}^n\)</span></li>
+<li><span class="math inline">\(\lambda = 0\)</span> is an eigenvalue of <span class="math inline">\({\mathsf{A}}\)</span></li>
+<li><span class="math inline">\({\mathsf{A}}\)</span> is invertible</li>
+<li><span class="math inline">\({\mathsf{A}}\)</span> is diagonalizable</li>
+</ul>
+</div>
+<div id="watch-this" class="section level3" number="25.3.11">
+<h3><span class="header-section-number">25.3.11</span> Watch this!</h3>
+<p>The answer to at least one question on the final exam is contained in <a href="https://www.youtube.com/watch?v=O4KCoNvRi6Y">this video</a>.</p>
+</div>
+</div>
+<div id="solutions-to-practice-problems-3" class="section level2" number="25.4">
+<h2><span class="header-section-number">25.4</span> Solutions to Practice Problems</h2>
+<div id="section-103" class="section level3" number="25.4.1">
+<h3><span class="header-section-number">25.4.1</span> </h3>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math display">\[\begin{align}
+\| \mathsf{v} \| &amp;= \sqrt{ \mathsf{v} \cdot \mathsf{v}} = \sqrt{1+1+1} = \sqrt{3} \\
+\| \mathsf{w} \| &amp;= \sqrt{ \mathsf{w} \cdot \mathsf{vw}} = \sqrt{25+4+9} = \sqrt{38} \\
+\end{align}\]</span></p></li>
+<li><p>We have <span class="math inline">\(\mathsf{v} - \mathsf{w} = \begin{bmatrix} -4 \\ -3 \\ -2 \end{bmatrix}\)</span> and so
+<span class="math display">\[
+\| \mathsf{v} - \mathsf{w}\|  = \sqrt{16+9+4} = \sqrt{29} 
+\]</span></p></li>
+<li><p><span class="math display">\[ 
+\cos \theta = \frac{\mathsf{v} \cdot \mathsf{w}}{\| \mathsf{v}  \| \, \|\mathsf{w} \| }
+= \frac{5-2+3}{\sqrt{3} \, \sqrt{38} } = \frac{2\sqrt{3}}{\sqrt{38} }
+\]</span></p></li>
+<li><p><span class="math display">\[
+\hat{\mathsf{w}} = \mbox{proj}_{\mathsf{v}} \mathsf{w} = \frac{\mathsf{v} \cdot \mathsf{w}}{ \mathsf{v} \cdot \mathsf{v} } \, \mathsf{v} = \frac{5-2+3}{1+1+1}  \mathsf{v}  = 2 \mathsf{v} = 
+\begin{bmatrix}
+2 \\ -2 \\ 2 
+\end{bmatrix}
+\]</span></p></li>
+<li><p>Using <span class="math inline">\(\hat{\mathsf{w}}\)</span> from the previous problem, we know that
+<span class="math display">\[
+\mathsf{z} = \mathsf{w} - \hat{\mathsf{w}} = \begin{bmatrix} 5 \\ 2 \\ 3 \end{bmatrix}  -  \begin{bmatrix} 2 \\ -2 \\ 2  \end{bmatrix} =
+\begin{bmatrix} 3 \\ 4 \\ 1  \end{bmatrix}
+\]</span>
+is orthogonal to <span class="math inline">\(\mathsf{v}\)</span>.So an orthonormal basis is
+<span class="math display">\[
+\frac{1}{\sqrt{3}} \begin{bmatrix}
+1 \\ -1 \\ 1
+\end{bmatrix} \quad \mbox{and} \quad
+\frac{1}{\sqrt{26}} \begin{bmatrix}
+3 \\ 4 \\ 1
+\end{bmatrix}
+\]</span></p></li>
+</ol>
+</div>
+<div id="section-104" class="section level3" number="25.4.2">
+<h3><span class="header-section-number">25.4.2</span> </h3>
+<p>Here are a few ways to describe <span class="math inline">\(\mbox{ker}(T)\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid \mathsf{x} \cdot \mathsf{u} = 0 \}\)</span>.</p></li>
+<li><p><span class="math inline">\(\mbox{ker}(T)\)</span> is the set of vectors that are orthogonal to <span class="math inline">\(\mathsf{u}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(A\)</span> be the <span class="math inline">\(1 \times n\)</span> matrix <span class="math inline">\(\mathsf{u}^{\top}\)</span>. Then <span class="math inline">\(\mbox{ker}(T)= \mbox{Nul}(A)\)</span>.</p></li>
+</ol>
+</div>
+<div id="section-105" class="section level3" number="25.4.3">
+<h3><span class="header-section-number">25.4.3</span> </h3>
+<p>We have <span class="math inline">\(\mathsf{u}_1 \cdot \mathsf{v} = 2-2-4+2=-2\)</span> and <span class="math inline">\(\mathsf{u}_1 \cdot \mathsf{v} = 2-2+4-2=2\)</span> so
+<span class="math display">\[
+\hat{\mathsf{v}} = \mbox{proj}_W \mathsf{v} = - \mathsf{u}_1 +  \mathsf{u}_2 = 
+-\frac{1}{2} \begin{bmatrix}
+1 \\ -1 \\ -1 \\ 1 
+\end{bmatrix}
++
+\frac{1}{2}
+\begin{bmatrix}
+1 \\ -1 \\ 1 \\ -1 
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 0 \\ 1 \\ -1 
+\end{bmatrix}
+\]</span>
+with residual vector
+<span class="math display">\[
+\mathsf{z} = \mathsf{v} - \hat{\mathsf{v}}
+= \begin{bmatrix}
+2 \\ 2 \\ 4 \\ 2 
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 \\ 0 \\ 1 \\ -1 
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 \\ 2 \\ 3 \\ 3 
+\end{bmatrix}
+\]</span>
+and the distance is <span class="math inline">\(\| \mathsf{z} \| = \sqrt{4+4+9+9} = \sqrt{26}\)</span>.</p>
+</div>
+<div id="section-106" class="section level3" number="25.4.4">
+<h3><span class="header-section-number">25.4.4</span> </h3>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\mathsf{v}_1 \cdot \mathsf{v}_2 = 1 +2 - 3 =0\)</span>.</p></li>
+<li><p>We must find <span class="math inline">\(\mbox{Nul}(A)\)</span> where
+<span class="math inline">\(A = \begin{bmatrix} \mathsf{v}_1^{\top} \\ \mathsf{v}_2^{\top}\end{bmatrix}\)</span>.</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{bmatrix}
+1 &amp; 1 &amp; -1 \\
+1 &amp; 2 &amp; 3
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+1 &amp; 1 &amp; -1 \\
+0 &amp; 1 &amp; 4
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+1 &amp; 0 &amp; -5 \\
+0 &amp; 1 &amp; 4
+\end{bmatrix}
+\]</span>
+so the vector <span class="math inline">\(\begin{bmatrix} 5 \\ -4 \\ 1 \end{bmatrix}\)</span> is a basis for <span class="math inline">\(W^{\perp}\)</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>We have
+<span class="math display">\[\begin{align}
+\hat{\mathsf{y}} &amp;=
+\frac{\mathsf{y} \cdot \mathsf{v_1}}{\mathsf{v_1} \cdot \mathsf{v_1}} \, \mathsf{v_1} +
+\frac{\mathsf{y} \cdot \mathsf{v_2}}{\mathsf{v_2} \cdot \mathsf{v_2}} \, \mathsf{v_2}
+=
+\frac{8-2}{1+1+1} \mathsf{v_1} + \frac{8+6}{1+4+9} \mathsf{v_2} \\
+&amp;=
+2\mathsf{v_1} +\mathsf{v_2}
+= \begin{bmatrix} 2 \\ 2 \\ -2 \end{bmatrix} + \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}
+= \begin{bmatrix} 3 \\ 4 \\ 1 \end{bmatrix}
+\end{align}\]</span>
+and so
+<span class="math display">\[
+\mathsf{z} = \mathsf{y} - \hat{\mathsf{y}}
+= \begin{bmatrix} 8 \\ 0 \\ 2 \end{bmatrix} - \begin{bmatrix} 3 \\ 4 \\ 1 \end{bmatrix}
+= \begin{bmatrix} 5 \\ -4 \\ 1 \end{bmatrix}.
+\]</span></li>
+</ol>
+</div>
+<div id="section-107" class="section level3" number="25.4.5">
+<h3><span class="header-section-number">25.4.5</span> </h3>
+<p>a .We will answer this one using RStudio.</p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="final-exam-review.html#cb483-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4</span>))</span>
+<span id="cb483-2"><a href="final-exam-review.html#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1
+## [5,]    0    0    0    0</code></pre>
+<p>So we need all four vectors to span the column space.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>We obtain a basis for <span class="math inline">\(W^{\perp}\)</span> by finding <span class="math inline">\(\mbox{Nul(A^{\top})}\)</span> So let’s row reduce <span class="math inline">\(A^{\top}\)</span></li>
+</ol>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="final-exam-review.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">t</span>(A))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0   -2
+## [2,]    0    1    0    0    2
+## [3,]    0    0    1    0    7
+## [4,]    0    0    0    1   -2</code></pre>
+<p>The vector <span class="math inline">\(\begin{bmatrix} 2 \\ -2 \\ -7 \\ 2 \\ 1\end{bmatrix}\)</span> spans <span class="math inline">\(W^{\perp}\)</span></p>
+</div>
+<div id="section-108" class="section level3" number="25.4.6">
+<h3><span class="header-section-number">25.4.6</span> </h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="final-exam-review.html#cb487-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb487-2"><a href="final-exam-review.html#cb487-2" aria-hidden="true" tabindex="-1"></a>b  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb487-3"><a href="final-exam-review.html#cb487-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A,b))</span></code></pre></div>
+<pre><code>##            b
+## [1,] 1 0 0 0
+## [2,] 0 1 0 0
+## [3,] 0 0 1 0
+## [4,] 0 0 0 1</code></pre>
+<p>There is a pivot in the last column of this augmented matrix, so this system is inconsistent.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<p>Here is the least squares calculation.</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="final-exam-review.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="co">#solve the normal equation</span></span>
+<span id="cb489-2"><a href="final-exam-review.html#cb489-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">xhat =</span> <span class="fu">solve</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A, <span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    2
+## [2,]   -1
+## [3,]    1</code></pre>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="final-exam-review.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
+<span id="cb491-2"><a href="final-exam-review.html#cb491-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span></code></pre></div>
+<pre><code>##               [,1]
+## [1,]  2.000000e+00
+## [2,] -1.000000e+00
+## [3,]  6.661338e-16
+## [4,]  1.000000e+00</code></pre>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="final-exam-review.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
+<span id="cb493-2"><a href="final-exam-review.html#cb493-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> b <span class="sc">-</span> bhat)</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    2
+## [2,]    2
+## [3,]   -2
+## [4,]   -2</code></pre>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="final-exam-review.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
+<span id="cb495-2"><a href="final-exam-review.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> z</span></code></pre></div>
+<pre><code>##               [,1]
+## [1,] -8.881784e-16
+## [2,]  0.000000e+00
+## [3,]  0.000000e+00</code></pre>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="final-exam-review.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
+<span id="cb497-2"><a href="final-exam-review.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="fu">t</span>(z) <span class="sc">%*%</span> z)</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    4</code></pre>
+<p>The projection is <span class="math inline">\(\hat{\mathsf{b}} = [2,-1,0,1]^{\top}\)</span>.
+The residual is <span class="math inline">\(\mathsf{z} = [2,2,-2,-2]^{\top}\)</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The distance of between <span class="math inline">\(\mathsf{b}\)</span> and <span class="math inline">\(\hat{\mathsf{b}}\)</span> is
+<span class="math display">\[
+\| = \| \mathsf{z} \| = \sqrt{4+4+4+4} = \sqrt{16} = 4.
+\]</span></li>
+</ol>
+</div>
+<div id="section-109" class="section level3" number="25.4.7">
+<h3><span class="header-section-number">25.4.7</span> </h3>
+<p>Can be done by hand or by R:</p>
+<pre><code>##      [,1] [,2]
+## [1,]    3    3
+## [2,]    3    9</code></pre>
+<pre><code>##      [,1]
+## [1,]    6
+## [2,]   24</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>The normal equations are
+<span class="math display">\[
+\begin{bmatrix} 3 &amp; 3 \\ 3 &amp; 9 \end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2  \end{bmatrix} = 
+\begin{bmatrix} 6 \\ 24  \end{bmatrix}
+\]</span></li>
+<li>The least squares solution is</li>
+</ol>
+<pre><code>##      [,1]
+## [1,]   -1
+## [2,]    3</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>How close?</li>
+</ol>
+<pre><code>##      [,1]
+## [1,]    2</code></pre>
+<pre><code>##          [,1]
+## [1,] 1.414214</code></pre>
+<!-- ### -->
+<!-- a. ```{r echo=TRUE} x = 1:length(covid.mn) y = log(covid.mn) A = cbind(x^0, x) -->
+<!-- (xhat = solve(t(A) %*% A, t(A) %*% y)) ``` b. ```{r q4-covid, echo=TRUE} a = -->
+<!-- exp(xhat[1]) k = xhat[2] f=function(y){a * exp(k*(y))} plot(x,f(x)+ -->
+<!-- covid.start,type="l",lwd=3,ylab="new positive COVID-19 cases", xlab="days since -->
+<!-- July 31, 2020", main="best fit exponential function") points(x,covid.mn + -->
+<!-- covid.start,pch=20,cex=.7,col="red") ``` The curve is a pretty good fit -->
+<!-- (unfortunately?). However, it does look like the additional restrictions of the -->
+<!-- last two weeks are slowing the COVID spread. -->
+</div>
+<div id="section-110" class="section level3" number="25.4.8">
+<h3><span class="header-section-number">25.4.8</span> </h3>
+<p>4x5 matrix: solution coming</p>
+</div>
+<div id="section-111" class="section level3" number="25.4.9">
+<h3><span class="header-section-number">25.4.9</span> </h3>
+<p>Ax = b: solution coming</p>
+</div>
+<div id="section-112" class="section level3" number="25.4.10">
+<h3><span class="header-section-number">25.4.10</span> </h3>
+<p>I hope you enjoyed the video.</p>
 
 </div>
 </div>
@@ -849,8 +1163,8 @@ we know that dynamical systems converge to the <strong>dominant eigenvector</str
           </div>
         </div>
       </div>
-<a href="complex-eigenvalues.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="geometry-in-mathbbrn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exam-3-review.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
