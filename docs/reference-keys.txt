@@ -1,4 +1,4 @@
-tab:unnamed-chunk-25
+tab:unnamed-chunk-11
 eq:inconsistent
 eq:normal
 problem-set-1
@@ -141,6 +141,9 @@ fitting-a-quadratic-function
 checkpoint-6.5
 linear-fit
 quadratic-fit
+svd-and-image-compression
+example-4
+image-compression
 exam-1-review
 overview
 vocabulary-and-concepts
