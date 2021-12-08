@@ -373,7 +373,7 @@ $$
 ## SVD
 
 Here is a $5 \times 6$ matrix. For this problem see the section [SVD and Image Compression].
-```{r}
+```{r,echo=TRUE}
  (A = rbind(c(1 , 2 , 1 , 1 , 2 , 1 ),c(1 , 2 , 1 , 2 , -1 , 1 ), c(2 , 4 , 2 , 3 , 1 , 2 ), c(3 , -1 , 2 , -1 , -1 , 1 ), c(1 , 1 , 0 , 1 , 1 , 0 )))
 ```
 
