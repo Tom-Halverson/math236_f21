@@ -58,14 +58,14 @@ library(jpeg)
 ```
 
 We will use the cameraman image, which is a famous photo from image and signal processing.
-```{r}
+```{r,echo=TRUE}
 where = "https://www.macalester.edu/~dshuman1/data/cameraman_small.jpg"
 img = readJPEG(readBin(where,"raw",1e6))
 dim(img)
 ```
 
 The matrix `img` is a 256 x 256 matrix with each entry representing the grayscale value of a single pixel. So to store the image, we need to store 65,536 floating point numbers. We can plot it with the following function: 
-```{r fig.width=6, fig.height=6}
+```{r fig.width=6, fig.height=6,echo=TRUE}
 imPlot = function(img,...) {
   plot(1:2, type='n',xlab=" ",ylab= " ",...)
   rasterImage(img, 1.0, 1.0, 2.0, 2.0)

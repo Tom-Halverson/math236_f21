@@ -757,7 +757,7 @@ R^2 = 1 - \frac{\| \mathsf{y} - \hat{\mathsf{y}} \|^2 }{\| \mathsf{y} - \mathsf{
 <span id="cb43-19"><a href="problem-set-10.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="fl">3.785123</span>, <span class="fl">4.519719</span>, <span class="fl">3.966509</span>, <span class="fl">3.808330</span>, <span class="fl">4.551462</span>, <span class="fl">3.838009</span>, <span class="fl">3.758539</span>, <span class="fl">3.816730</span>, <span class="fl">4.618030</span>, <span class="fl">3.926753</span>, <span class="fl">4.593788</span>,</span>
 <span id="cb43-20"><a href="problem-set-10.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="fl">3.894390</span>, <span class="fl">4.779126</span>)</span>
 <span id="cb43-21"><a href="problem-set-10.html#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,y,<span class="at">col=</span><span class="st">&quot;orange&quot;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>),<span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-36-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-29-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>A first Fourier approximation would fit a model of the form
 <span class="math display">\[
 f_1(t) = c_0 + c_1 \sin(t) + c_2 \cos(t).
@@ -786,7 +786,7 @@ Thus, we make the following matrix (we show here only the first 10 rows; there a
 <span id="cb47-2"><a href="problem-set-10.html#cb47-2" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="at">len=</span><span class="dv">1000</span>)</span>
 <span id="cb47-3"><a href="problem-set-10.html#cb47-3" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">=</span> xhat[<span class="dv">1</span>] <span class="sc">+</span> xhat[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">sin</span>(tt) <span class="sc">+</span> xhat[<span class="dv">3</span>]<span class="sc">*</span><span class="fu">cos</span>(tt)</span>
 <span id="cb47-4"><a href="problem-set-10.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(tt,yy,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-39-1.png" width="75%" style="display: block; margin: auto;" />
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-32-1.png" width="75%" style="display: block; margin: auto;" />
 Your task:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Update this to add the second Fourier coefficient terms by fitting the following function to the data. Plot your result.
@@ -864,7 +864,7 @@ a_1 &amp; b_1 &amp; c_1 &amp; c_1\\ a_2 &amp; b_2 &amp; c_2 &amp; d_2 \\ a_3 &am
 a_1 &amp; a_2 &amp; a_3 &amp; a_4 \\ b_1 &amp; b_2 &amp; b_3 &amp; b_4  \\ c_1 &amp; c_2 &amp; c_3 &amp; c_4  \\ d_1 &amp; d_2 &amp; d_3 &amp; d_4  \\
 \end{bmatrix}
 \]</span>
-b. Compute the spectral decomposition <span class="math inline">\(A = \lambda_1 \mathbf{u}_1 \mathbf{u}_1^T + \lambda_2 \mathbf{u}_2 \mathbf{u}_2^T + \lambda_3 \mathbf{u}_3 \mathbf{u}_3^T+ \lambda_4 \mathbf{u}_4 \mathbf{u}_4^T\)</span> and write the matrix <span class="math inline">\(A\)</span> as the sum of four rank-1 matrices.
+b. Compute the spectral decomposition <span class="math inline">\(A = \lambda_1 \mathbf{u}_1 \mathbf{u}_1^T + \lambda_2 \mathbf{u}_2 \mathbf{u}_2^T + \lambda_3 \mathbf{u}_3 \mathbf{u}_3^T+ \lambda_4 \mathbf{u}_4 \mathbf{u}_4^T\)</span> and write the matrix <span class="math inline">\(A\)</span> as the sum of four rank-1 matrices. <strong>NOTE</strong>: <span style="color:red"> you can just compute these matrices in R. You don’t need to write them out our typeset them. I realize it is a lot of busy work.</span>
 <span class="math display">\[
 \begin{bmatrix} 
 1.6 &amp; 0.7 &amp; 1.4 &amp; 0.3\\ 0.7 &amp; 1.6 &amp; 0.3 &amp; 1.4 \\ 1.4 &amp; 0.3 &amp; 1.6 &amp; 0.7 \\ 0.3 &amp; 1.4 &amp; 0.7 &amp; 1.6 \\
@@ -905,7 +905,7 @@ v&amp;&amp; v_1 &amp;&amp; v_2 &amp;&amp; v_3 &amp;&amp; v_4 \\
 </div>
 <div id="svd" class="section level2" number="10.8">
 <h2><span class="header-section-number">10.8</span> SVD</h2>
-<p>Here is a <span class="math inline">\(5 \times 6\)</span> matrix.</p>
+<p>Here is a <span class="math inline">\(5 \times 6\)</span> matrix. For this problem see the section <a href="svd-and-image-compression.html#svd-and-image-compression">SVD and Image Compression</a>.</p>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
 ## [1,]    1    2    1    1    2    1
 ## [2,]    1    2    1    2   -1    1
@@ -915,7 +915,7 @@ v&amp;&amp; v_1 &amp;&amp; v_2 &amp;&amp; v_3 &amp;&amp; v_4 \\
 <ol style="list-style-type: lower-alpha">
 <li>Use the command <code>svd(A,nv=ncol(A))</code> to command to compute the singular value decomposition of <span class="math inline">\(A\)</span>.</li>
 <li>Take the square roots of the eigenvectors of <span class="math inline">\(A^T A\)</span> to see that you get the singular values (the square root function is “vectorized” so you can do them all at once).</li>
-<li>The matrix <span class="math inline">\(V\)</span> should be the eigenvectors of the matrix <span class="math inline">\(A^T A\)</span>. Compute the eigenvectors of <span class="math inline">\(A^T A\)</span> to confirm this. (NOTE: in <code>svd</code> R gives only)</li>
+<li>The matrix <span class="math inline">\(V\)</span> should be the eigenvectors of the matrix <span class="math inline">\(A^T A\)</span>. Compute the eigenvectors of <span class="math inline">\(A^T A\)</span> to confirm this.</li>
 <li>Compute the matrix <span class="math inline">\(A_1 + A_2\)</span> where <span class="math inline">\(A_1 = \sigma_1 u_1 v_1^T\)</span> and <span class="math inline">\(A_2 = \sigma_2 u_2 v_2^T\)</span>. This is the second singular-value approximation of <span class="math inline">\(A\)</span>. Row reduce <span class="math inline">\(A_1 + A_2\)</span> to show that it has rank 2.</li>
 </ol>
 

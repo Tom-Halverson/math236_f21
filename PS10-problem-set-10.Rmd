@@ -331,7 +331,7 @@ a_1 & b_1 & c_1 & c_1\\ a_2 & b_2 & c_2 & d_2 \\ a_3 & b_3 & c_3 & c_3 \\ a_4 & 
 a_1 & a_2 & a_3 & a_4 \\ b_1 & b_2 & b_3 & b_4  \\ c_1 & c_2 & c_3 & c_4  \\ d_1 & d_2 & d_3 & d_4  \\
 \end{bmatrix}
 $$
-b. Compute the spectral decomposition $A = \lambda_1 \mathbf{u}_1 \mathbf{u}_1^T +  \lambda_2 \mathbf{u}_2 \mathbf{u}_2^T + \lambda_3 \mathbf{u}_3 \mathbf{u}_3^T+ \lambda_4 \mathbf{u}_4 \mathbf{u}_4^T$ and write the matrix $A$ as the sum of four rank-1 matrices. 
+b. Compute the spectral decomposition $A = \lambda_1 \mathbf{u}_1 \mathbf{u}_1^T +  \lambda_2 \mathbf{u}_2 \mathbf{u}_2^T + \lambda_3 \mathbf{u}_3 \mathbf{u}_3^T+ \lambda_4 \mathbf{u}_4 \mathbf{u}_4^T$ and write the matrix $A$ as the sum of four rank-1 matrices. **NOTE**: <span style="color:red"> you can just compute these matrices in R. You don't need to write them out our typeset them. I realize it is a lot of busy work.</span>
 $$
 \begin{bmatrix} 
 1.6 & 0.7 & 1.4 & 0.3\\ 0.7 & 1.6 & 0.3 & 1.4 \\ 1.4 & 0.3 & 1.6 & 0.7 \\ 0.3 & 1.4 & 0.7 & 1.6 \\
@@ -372,12 +372,12 @@ $$
 
 ## SVD
 
-Here is a $5 \times 6$ matrix.
+Here is a $5 \times 6$ matrix. For this problem see the section [SVD and Image Compression].
 ```{r}
  (A = rbind(c(1 , 2 , 1 , 1 , 2 , 1 ),c(1 , 2 , 1 , 2 , -1 , 1 ), c(2 , 4 , 2 , 3 , 1 , 2 ), c(3 , -1 , 2 , -1 , -1 , 1 ), c(1 , 1 , 0 , 1 , 1 , 0 )))
 ```
 
 a. Use the command `svd(A,nv=ncol(A))` to command to compute the singular value decomposition of $A$. 
 a. Take the square roots of the eigenvectors of $A^T A$ to see that you get the singular values (the square root function is "vectorized" so you can do them all at once).
-a. The matrix $V$ should be the eigenvectors of the matrix $A^T A$. Compute the eigenvectors of $A^T A$ to confirm this. (NOTE: in `svd` R gives only)
+a. The matrix $V$ should be the eigenvectors of the matrix $A^T A$. Compute the eigenvectors of $A^T A$ to confirm this. 
 a. Compute the matrix $A_1 + A_2$ where $A_1 = \sigma_1 u_1 v_1^T$ and $A_2 = \sigma_2 u_2 v_2^T$. This is the second singular-value approximation of $A$. Row reduce $A_1 + A_2$ to show that it has rank 2.
