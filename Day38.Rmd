@@ -1,0 +1,70 @@
+---
+title: "Problem 10.7"
+author: "Math 236"
+date: "12/7/2021"
+output: html_document
+---
+
+```{r}
+(A= rbind(c(1.6, 0.7, 1.4, 0.3),c(0.7, 1.6, 0.3, 1.4),c(1.4, 0.3, 1.6, 0.7),c(0.3, 1.4, 0.7, 1.6)))
+```
+
+```{r}
+eigen(A)
+```
+```{r}
+U=eigen(A)$vectors
+vals = eigen(A)$values
+u1 = U[,1]
+(P1 = u1 %*%t( u1))
+(A1 = vals[1]*P1)
+```
+
+```{r}
+P1 %*% P1
+v = c(1,2,3,5)
+(v1 = P1 %*% v)
+A %*% v1
+```
+
+##  SVD
+
+```{r}
+ (A = rbind(c(1 , 2 , 1 , 1 , 2 , 1 ),c(1 , 2 , 1 , 2 , -1 , 1 ), c(2 , 4 , 2 , 3 , 1 , 2 ), c(3 , -1 , 2 , -1 , -1 , 1 ), c(1 , 1 , 0 , 1 , 1 , 0 )))
+```
+```{r}
+(AtA = t(A)%*%A)
+(vals=zapsmall(eigen(AtA)$values))
+(sing = sqrt(vals))
+(V = eigen(AtA)$vectors)
+```
+
+```{r}
+u1 = 1/sing[1]*A%*%V[,1]
+u2 = 1/sing[2]*A%*%V[,2]
+u3 = 1/sing[3]*A%*%V[,3]
+u4 = 1/sing[4]*A%*%V[,4]
+```
+
+```{r}
+A
+zapsmall(t(U) %*% A %*% V)
+```
+
+```{r}
+svd(A,nv=ncol(A))
+```
+
+```{r}
+U = svd(A)$u
+V = svd(A)$v
+zapsmall(t(U) %*% A %*% V)
+u1 = U[,1]
+v1 = V[,1]
+(A1=sing[1]*(u1%*%t(v1)))
+(A2=sing[2]*(U[,2]%*%t(V[,2])))
+A1+A2
+A
+rref(A1+A2)
+```
+
