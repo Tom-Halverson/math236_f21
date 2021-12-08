@@ -7,7 +7,7 @@
 
 The Final Exam has two goals
 
-1. It will cover the new material from Sections 6.1-6.5 (Orthogonality) and 7.1 (Symmetric Matrices) and 7.4 (SVD).
+1. It will cover the new material from Sections 6.1-6.5 (Orthogonality) and 7.1 (Symmetric Matrices).
 
 2. It will have some comprehensive material. The comprehensive material will not be tricky. My goal is to be sure that you understand the fundamentals of the course. 
 
