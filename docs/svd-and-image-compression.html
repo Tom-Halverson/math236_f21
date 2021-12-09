@@ -608,9 +608,9 @@ A = \sigma_1 \mathsf{u}_1 \mathsf{v}_1^{\top} + \sigma_2 \mathsf{u}_2 \mathsf{v}
 <span id="cb413-3"><a href="svd-and-image-compression.html#cb413-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rasterImage</span>(img, <span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">2.0</span>)</span>
 <span id="cb413-4"><a href="svd-and-image-compression.html#cb413-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb413-5"><a href="svd-and-image-compression.html#cb413-5" aria-hidden="true" tabindex="-1"></a><span class="fu">imPlot</span>(img,<span class="at">main=</span><span class="st">&quot;Cameraman Image&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-194-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-235-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>Here are the singular values of the image
-<img src="math236_handbook_files/figure-html/unnamed-chunk-195-1.png" width="75%" style="display: block; margin: auto;" /><img src="math236_handbook_files/figure-html/unnamed-chunk-195-2.png" width="75%" style="display: block; margin: auto;" /></p>
+<img src="math236_handbook_files/figure-html/unnamed-chunk-236-1.png" width="75%" style="display: block; margin: auto;" /><img src="math236_handbook_files/figure-html/unnamed-chunk-236-2.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>The following code is used to choose only the first <span class="math inline">\(k\)</span> singular values in the spectral decomposition.</p>
 <div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="svd-and-image-compression.html#cb414-1" aria-hidden="true" tabindex="-1"></a>SVDApprox <span class="ot">=</span> <span class="cf">function</span>(A,<span class="at">k =</span> <span class="fu">floor</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">*</span><span class="fu">min</span>(<span class="fu">nrow</span>(A),<span class="fu">ncol</span>(A)))) {</span>
 <span id="cb414-2"><a href="svd-and-image-compression.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  foo <span class="ot">=</span> <span class="fu">svd</span>(A)</span>
@@ -633,23 +633,23 @@ A = \sigma_1 \mathsf{u}_1 \mathsf{v}_1^{\top} + \sigma_2 \mathsf{u}_2 \mathsf{v}
 <span id="cb414-19"><a href="svd-and-image-compression.html#cb414-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>And here we show the singular value approximation with increasing numbers of singular values:</p>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="svd-and-image-compression.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">1</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="svd-and-image-compression.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">2</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-2.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-2.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="svd-and-image-compression.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">3</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-3.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-3.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="svd-and-image-compression.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">4</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-4.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-4.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="svd-and-image-compression.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">5</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-5.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-5.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="svd-and-image-compression.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">10</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-6.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-6.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="svd-and-image-compression.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">25</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-7.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-7.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="svd-and-image-compression.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">50</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-8.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-8.png" width="75%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="svd-and-image-compression.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">approxImg</span>(img,<span class="dv">100</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-197-9.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-238-9.png" width="75%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

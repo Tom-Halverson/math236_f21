@@ -796,7 +796,7 @@ R^2 = 1 - \frac{\| \mathsf{y} - \hat{\mathsf{y}} \|^2 }{\| \mathsf{y} - \mathsf{
 <span id="cb43-19"><a href="problem-set-10.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="fl">3.785123</span>, <span class="fl">4.519719</span>, <span class="fl">3.966509</span>, <span class="fl">3.808330</span>, <span class="fl">4.551462</span>, <span class="fl">3.838009</span>, <span class="fl">3.758539</span>, <span class="fl">3.816730</span>, <span class="fl">4.618030</span>, <span class="fl">3.926753</span>, <span class="fl">4.593788</span>,</span>
 <span id="cb43-20"><a href="problem-set-10.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="fl">3.894390</span>, <span class="fl">4.779126</span>)</span>
 <span id="cb43-21"><a href="problem-set-10.html#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,y,<span class="at">col=</span><span class="st">&quot;orange&quot;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>),<span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-29-1.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-70-1.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>A first Fourier approximation would fit a model of the form
 <span class="math display">\[
 f_1(t) = c_0 + c_1 \sin(t) + c_2 \cos(t).
@@ -825,7 +825,7 @@ Thus, we make the following matrix (we show here only the first 10 rows; there a
 <span id="cb47-2"><a href="problem-set-10.html#cb47-2" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="at">len=</span><span class="dv">1000</span>)</span>
 <span id="cb47-3"><a href="problem-set-10.html#cb47-3" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">=</span> xhat[<span class="dv">1</span>] <span class="sc">+</span> xhat[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">sin</span>(tt) <span class="sc">+</span> xhat[<span class="dv">3</span>]<span class="sc">*</span><span class="fu">cos</span>(tt)</span>
 <span id="cb47-4"><a href="problem-set-10.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(tt,yy,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="math236_handbook_files/figure-html/unnamed-chunk-32-1.png" width="75%" style="display: block; margin: auto;" />
+<p><img src="math236_handbook_files/figure-html/unnamed-chunk-73-1.png" width="75%" style="display: block; margin: auto;" />
 Your task:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Update this to add the second Fourier coefficient terms by fitting the following function to the data. Plot your result.
@@ -956,7 +956,7 @@ v&amp;&amp; v_1 &amp;&amp; v_2 &amp;&amp; v_3 &amp;&amp; v_4 \\
 <li>Use the command <code>svd(A,nv=ncol(A))</code> to command to compute the singular value decomposition of <span class="math inline">\(A\)</span>.</li>
 <li>The SVD tells us that <span class="math inline">\(A = U \Sigma V^T\)</span>. Multiplying by <span class="math inline">\(U^T\)</span> on the left and <span class="math inline">\(V\)</span> on the right gives us <span class="math inline">\(U^T A V = \Sigma\)</span>. Compute this matrix <span class="math inline">\(\Sigma\)</span> by extracting <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> from the previous part and multiplying <span class="math inline">\(U^T A V\)</span>.</li>
 <li>Take the square roots of the eigenvectors of <span class="math inline">\(A^T A\)</span> to see that you get the singular values (the square root function is “vectorized” so you can do them all at once).</li>
-<li>The matrix <span class="math inline">\(V\)</span> should be the eigenvectors of the matrix <span class="math inline">\(A^T A\)</span>. Compute the eigenvectors of <span class="math inline">\(A^T A\)</span> to confirm this.</li>
+<li>The matrix <span class="math inline">\(V\)</span> should be the eigenvectors of the matrix <span class="math inline">\(A^T A\)</span>. Compute the eigenvectors of <span class="math inline">\(A^T A\)</span> to confirm this. <strong>NOTE</strong>: <span style="color:red"> The last eigenspace <span class="math inline">\(E_0\)</span> is two dimensional so there is not a single eigen-direction. There are many sets of orthgonal vectors for this two dimensional space and the svd command does not give the same ones as what you get here. Both are correct.</span></li>
 <li>Compute the matrix <span class="math inline">\(A_1 + A_2\)</span> where <span class="math inline">\(A_1 = \sigma_1 u_1 v_1^T\)</span> and <span class="math inline">\(A_2 = \sigma_2 u_2 v_2^T\)</span>. This is the second singular-value approximation of <span class="math inline">\(A\)</span>. Row reduce <span class="math inline">\(A_1 + A_2\)</span> to show that it has rank 2.</li>
 </ol>
 

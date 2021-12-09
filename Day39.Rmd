@@ -9,44 +9,65 @@ output: html_document
 ```{r}
 (A= rbind(c(1.6, 0.7, 1.4, 0.3),c(0.7, 1.6, 0.3, 1.4),c(1.4, 0.3, 1.6, 0.7),c(0.3, 1.4, 0.7, 1.6)))
 ```
-
 ```{r}
-eigen(A)
-vecs = eigen(A)$vectors
+vecs=eigen(A)$vectors
 vals = eigen(A)$values
 u1 = vecs[,1]
 (P1 = u1 %*% t(u1))
+P1 %*% P1
 (A1 = vals[1]*P1)
 v = c(1,2,3,5)
-(v1 = P1 %*% v)
+(v1 = P1%*% v)
+eigen(A)
 ```
+
+
+
 ## Problem 10.8
 
 ```{r}
  (A = rbind(c(1 , 2 , 1 , 1 , 2 , 1 ),c(1 , 2 , 1 , 2 , -1 , 1 ), c(2 , 4 , 2 , 3 , 1 , 2 ), c(3 , -1 , 2 , -1 , -1 , 1 ), c(1 , 1 , 0 , 1 , 1 , 0 )))
 ```
-
 ```{r}
 svd(A,nv=ncol(A))
-U = svd(A,nv=ncol(A))$u
-V = svd(A,nv=ncol(A))$v
+```
+
+```{r}
+decomp=svd(A,nv=ncol(A))
+U = decomp$u
+V = decomp$v
+sings = decomp$d
 zapsmall(t(U) %*% A %*% V)
 ```
+
 ```{r}
 AtA = t(A) %*% A
-vals=zapsmall(eigen(AtA)$values)
-sqrt(vals)
+sqrt(zapsmall(eigen(AtA)$values))
 eigen(AtA)$vectors
 ```
+
 ```{r}
-v1 = V[,1]
-v2 = V[,2]
 u1 = U[,1]
 u2 = U[,2]
-sings = svd(A)$d
-A1 = sings[1]* u1%*%t(v1)
-A2 = sings[2]* u2 %*% t(v2)
-A1 + A2
+v1 = V[,1]
+v2 = V[,2]
+A1 = sings[1] * u1 %*% t(v1)
+A2 = sings[2] * u2 %*% t(v2)
+A1
+A2
+A1+A2
 A
 rref(A1+A2)
 ```
+
+
+
+
+
+
+
+
+
+
+
+
