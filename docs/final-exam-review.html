@@ -1028,8 +1028,8 @@ and so
 <div id="section-107" class="section level3" number="25.4.5">
 <h3><span class="header-section-number">25.4.5</span> </h3>
 <p>a .We will answer this one using RStudio.</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="final-exam-review.html#cb484-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4</span>))</span>
-<span id="cb484-2"><a href="final-exam-review.html#cb484-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="final-exam-review.html#cb485-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4</span>))</span>
+<span id="cb485-2"><a href="final-exam-review.html#cb485-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -1040,7 +1040,7 @@ and so
 <ol start="2" style="list-style-type: lower-alpha">
 <li>We obtain a basis for <span class="math inline">\(W^{\perp}\)</span> by finding <span class="math inline">\(\mbox{Nul(A^{\top})}\)</span> So let’s row reduce <span class="math inline">\(A^{\top}\)</span></li>
 </ol>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="final-exam-review.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">t</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="final-exam-review.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">t</span>(A))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0    0    0   -2
 ## [2,]    0    1    0    0    2
@@ -1053,9 +1053,9 @@ and so
 <ol style="list-style-type: lower-alpha">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="final-exam-review.html#cb488-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb488-2"><a href="final-exam-review.html#cb488-2" aria-hidden="true" tabindex="-1"></a>b  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb488-3"><a href="final-exam-review.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A,b))</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="final-exam-review.html#cb489-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb489-2"><a href="final-exam-review.html#cb489-2" aria-hidden="true" tabindex="-1"></a>b  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb489-3"><a href="final-exam-review.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A,b))</span></code></pre></div>
 <pre><code>##            b
 ## [1,] 1 0 0 0
 ## [2,] 0 1 0 0
@@ -1066,34 +1066,34 @@ and so
 <li></li>
 </ol>
 <p>Here is the least squares calculation.</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="final-exam-review.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co">#solve the normal equation</span></span>
-<span id="cb490-2"><a href="final-exam-review.html#cb490-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">xhat =</span> <span class="fu">solve</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A, <span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="final-exam-review.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co">#solve the normal equation</span></span>
+<span id="cb491-2"><a href="final-exam-review.html#cb491-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">xhat =</span> <span class="fu">solve</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A, <span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    2
 ## [2,]   -1
 ## [3,]    1</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="final-exam-review.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
-<span id="cb492-2"><a href="final-exam-review.html#cb492-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="final-exam-review.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
+<span id="cb493-2"><a href="final-exam-review.html#cb493-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span></code></pre></div>
 <pre><code>##               [,1]
 ## [1,]  2.000000e+00
 ## [2,] -1.000000e+00
 ## [3,]  6.661338e-16
 ## [4,]  1.000000e+00</code></pre>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="final-exam-review.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
-<span id="cb494-2"><a href="final-exam-review.html#cb494-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> b <span class="sc">-</span> bhat)</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="final-exam-review.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
+<span id="cb495-2"><a href="final-exam-review.html#cb495-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> b <span class="sc">-</span> bhat)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    2
 ## [2,]    2
 ## [3,]   -2
 ## [4,]   -2</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="final-exam-review.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
-<span id="cb496-2"><a href="final-exam-review.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> z</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="final-exam-review.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
+<span id="cb497-2"><a href="final-exam-review.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> z</span></code></pre></div>
 <pre><code>##               [,1]
 ## [1,] -8.881784e-16
 ## [2,]  0.000000e+00
 ## [3,]  0.000000e+00</code></pre>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="final-exam-review.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
-<span id="cb498-2"><a href="final-exam-review.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="fu">t</span>(z) <span class="sc">%*%</span> z)</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="final-exam-review.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
+<span id="cb499-2"><a href="final-exam-review.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="fu">t</span>(z) <span class="sc">%*%</span> z)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    4</code></pre>
 <p>The projection is <span class="math inline">\(\hat{\mathsf{b}} = [2,-1,0,1]^{\top}\)</span>.
