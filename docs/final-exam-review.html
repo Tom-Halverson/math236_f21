@@ -499,7 +499,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="25.3.8" data-path="final-exam-review.html"><a href="final-exam-review.html#one-to-one-and-onto"><i class="fa fa-check"></i><b>25.3.8</b> One-to-one and Onto</a></li>
 <li class="chapter" data-level="25.3.9" data-path="final-exam-review.html"><a href="final-exam-review.html#a-4x5-matrix"><i class="fa fa-check"></i><b>25.3.9</b> A 4x5 Matrix</a></li>
 <li class="chapter" data-level="25.3.10" data-path="final-exam-review.html"><a href="final-exam-review.html#a-x-b"><i class="fa fa-check"></i><b>25.3.10</b> A x = b</a></li>
-<li class="chapter" data-level="25.3.11" data-path="final-exam-review.html"><a href="final-exam-review.html#watch-this"><i class="fa fa-check"></i><b>25.3.11</b> Watch this!</a></li>
+<li class="chapter" data-level="25.3.11" data-path="final-exam-review.html"><a href="final-exam-review.html#spectral-decomposition-1"><i class="fa fa-check"></i><b>25.3.11</b> Spectral Decomposition</a></li>
+<li class="chapter" data-level="25.3.12" data-path="final-exam-review.html"><a href="final-exam-review.html#watch-this"><i class="fa fa-check"></i><b>25.3.12</b> Watch this!</a></li>
 </ul></li>
 <li class="chapter" data-level="25.4" data-path="final-exam-review.html"><a href="final-exam-review.html#solutions-to-practice-problems-3"><i class="fa fa-check"></i><b>25.4</b> Solutions to Practice Problems</a>
 <ul>
@@ -513,6 +514,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="25.4.8" data-path="final-exam-review.html"><a href="final-exam-review.html#section-110"><i class="fa fa-check"></i><b>25.4.8</b> </a></li>
 <li class="chapter" data-level="25.4.9" data-path="final-exam-review.html"><a href="final-exam-review.html#section-111"><i class="fa fa-check"></i><b>25.4.9</b> </a></li>
 <li class="chapter" data-level="25.4.10" data-path="final-exam-review.html"><a href="final-exam-review.html#section-112"><i class="fa fa-check"></i><b>25.4.10</b> </a></li>
+<li class="chapter" data-level="25.4.11" data-path="final-exam-review.html"><a href="final-exam-review.html#section-113"><i class="fa fa-check"></i><b>25.4.11</b> </a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -633,7 +635,6 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li>The transpose of a matrix, the inverse of a matrix, invertible matrix.</li>
 <li>Subspace.</li>
 <li>Null space, column space, and row space of a matrix.</li>
-<li>Kernel and range of a linear transformation.</li>
 <li>Basis and dimension.</li>
 <li>Rank.</li>
 <li>Eigenvalue, eigenvector, eigenspace.</li>
@@ -662,7 +663,7 @@ Determine whether the columns are linearly independent.</p></li>
 <li><p>Determine whether a transformation is linear.
 Determine whether a linear transformation <span class="math inline">\(T( x)=A x\)</span> is one-to-one or onto, using the properties of the matrix <span class="math inline">\(A\)</span>.</p></li>
 <li><p>Determine whether a subset of vectors is a subspace.</p></li>
-<li><p>Determine whether a set of vectors is linearly independent and whether it is a basis for some subspace or vector space. Find a basis for a vector space, or for the null space or column space of a matrix, or for the kernel or range of a linear transformation. Find the dimension of a vector space or subspace. Find the dimension of the null space (number of free variables) and column space (number of pivot columns) of a matrix.</p></li>
+<li><p>Determine whether a set of vectors is linearly independent and whether it is a basis for some subspace or vector space. Find a basis for a vector space, or for the null space or column space of a matrix. Find the dimension of a vector space or subspace. Find the dimension of the null space (number of free variables) and column space (number of pivot columns) of a matrix.</p></li>
 <li><p>Find and interpret the rank of a matrix.</p></li>
 <li><p>Calculate the characteristic equation, eigenvalues, and eigenvectors of a square matrix. Find eigenvectors for a specific eigenvalue. Check if a vector is an eigenvector of a given matrix.</p></li>
 <li><p>Determine whether a square matrix is diagonalizable. Factor a diagonalizable matrix into <span class="math inline">\(A=PDP^{-1}\)</span>, where <span class="math inline">\(D\)</span> is a diagonal matrix.</p></li>
@@ -691,7 +692,7 @@ Determine whether a linear transformation <span class="math inline">\(T( x)=A x\
 <h3><span class="header-section-number">25.3.2</span> </h3>
 <p>For a subspace <span class="math inline">\(W \subseteq \mathbb{R}^n\)</span>, define the function
 <span class="math inline">\(T: \mathbb{R}^n \rightarrow \mathbb{R}^n\)</span> by
-<span class="math inline">\(T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}\)</span>. Recall that the null space of <span class="math inline">\(T\)</span> is the subspace <span class="math inline">\(\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}\)</span>. Describe <span class="math inline">\(\mbox{ker}(T)\)</span> as explicitly as you can.</p>
+<span class="math inline">\(T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}\)</span>. Recall that the null space of <span class="math inline">\(T\)</span> is the subspace <span class="math inline">\(\mbox{Nul}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}\)</span>. Describe <span class="math inline">\(\mbox{Nul}(T)\)</span> as explicitly as you can.</p>
 </div>
 <div id="section-98" class="section level3" number="25.3.3">
 <h3><span class="header-section-number">25.3.3</span> </h3>
@@ -762,6 +763,30 @@ x_1\\ x_2 \\ x_3
 <li>Find the projected value <span class="math inline">\(\hat{\mathsf{b}}\)</span>, and the residual <span class="math inline">\(\mathsf{z}\)</span>.</li>
 <li>How close is your approximate solution to the desired target vector?</li>
 </ol>
+<p>NOTE: this is too much computation to give you to do by hand on the final. I could help out by also giving the following computations:</p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="final-exam-review.html#cb484-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb484-2"><a href="final-exam-review.html#cb484-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb484-3"><a href="final-exam-review.html#cb484-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A,b))</span></code></pre></div>
+<pre><code>##            b
+## [1,] 1 0 0 0
+## [2,] 0 1 0 0
+## [3,] 0 0 1 0
+## [4,] 0 0 0 1</code></pre>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="final-exam-review.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    4    6    0
+## [2,]    6   10    0
+## [3,]    0    0    4</code></pre>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="final-exam-review.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> b</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    4
+## [2,]    6
+## [3,]    6</code></pre>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="final-exam-review.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A,<span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0  1.0
+## [2,]    0    1    0  0.0
+## [3,]    0    0    1  1.5</code></pre>
 </div>
 <div id="section-102" class="section level3" number="25.3.7">
 <h3><span class="header-section-number">25.3.7</span> </h3>
@@ -892,8 +917,17 @@ a. Give all of the solutions to o <span class="math inline">\(\mathsf{A} x = b\)
 <li><span class="math inline">\({\mathsf{A}}\)</span> is diagonalizable</li>
 </ul>
 </div>
-<div id="watch-this" class="section level3" number="25.3.11">
-<h3><span class="header-section-number">25.3.11</span> Watch this!</h3>
+<div id="spectral-decomposition-1" class="section level3" number="25.3.11">
+<h3><span class="header-section-number">25.3.11</span> Spectral Decomposition</h3>
+<p>The eigenvalues of the <strong>symmetric</strong> matrix <span class="math inline">\(A\)</span> below are 4 and 2.
+<span class="math display">\[
+A  = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}
+\]</span>
+a. Orthogonally diagonalize <span class="math inline">\(A\)</span>.
+b. Write <span class="math inline">\(A\)</span> as the sum of two rank 1 matrices.</p>
+</div>
+<div id="watch-this" class="section level3" number="25.3.12">
+<h3><span class="header-section-number">25.3.12</span> Watch this!</h3>
 <p>The answer to at least one question on the final exam is contained in <a href="https://www.youtube.com/watch?v=O4KCoNvRi6Y">this video</a>.</p>
 </div>
 </div>
@@ -938,11 +972,11 @@ is orthogonal to <span class="math inline">\(\mathsf{v}\)</span>.So an orthonorm
 </div>
 <div id="section-104" class="section level3" number="25.4.2">
 <h3><span class="header-section-number">25.4.2</span> </h3>
-<p>Here are a few ways to describe <span class="math inline">\(\mbox{ker}(T)\)</span>.</p>
+<p>Here are a few ways to describe <span class="math inline">\(\mbox{Nul}(T)\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid \mathsf{x} \cdot \mathsf{u} = 0 \}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mbox{ker}(T)\)</span> is the set of vectors that are orthogonal to <span class="math inline">\(\mathsf{u}\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(A\)</span> be the <span class="math inline">\(1 \times n\)</span> matrix <span class="math inline">\(\mathsf{u}^{\top}\)</span>. Then <span class="math inline">\(\mbox{ker}(T)= \mbox{Nul}(A)\)</span>.</p></li>
+<li><p><span class="math inline">\(\mbox{Nul}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid \mathsf{x} \cdot \mathsf{u} = 0 \}\)</span>.</p></li>
+<li><p><span class="math inline">\(\mbox{Nul}(T)\)</span> is the set of vectors that are orthogonal to <span class="math inline">\(\mathsf{u}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(A\)</span> be the <span class="math inline">\(1 \times n\)</span> matrix <span class="math inline">\(\mathsf{u}^{\top}\)</span>. Then <span class="math inline">\(\mbox{Nul}(T)= \mbox{Nul}(A)\)</span>.</p></li>
 </ol>
 </div>
 <div id="section-105" class="section level3" number="25.4.3">
@@ -1028,8 +1062,8 @@ and so
 <div id="section-107" class="section level3" number="25.4.5">
 <h3><span class="header-section-number">25.4.5</span> </h3>
 <p>a .We will answer this one using RStudio.</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="final-exam-review.html#cb485-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4</span>))</span>
-<span id="cb485-2"><a href="final-exam-review.html#cb485-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="final-exam-review.html#cb492-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4</span>))</span>
+<span id="cb492-2"><a href="final-exam-review.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(A)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -1040,7 +1074,7 @@ and so
 <ol start="2" style="list-style-type: lower-alpha">
 <li>We obtain a basis for <span class="math inline">\(W^{\perp}\)</span> by finding <span class="math inline">\(\mbox{Nul(A^{\top})}\)</span> So let’s row reduce <span class="math inline">\(A^{\top}\)</span></li>
 </ol>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="final-exam-review.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">t</span>(A))</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="final-exam-review.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">t</span>(A))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    0    0    0   -2
 ## [2,]    0    1    0    0    2
@@ -1053,9 +1087,9 @@ and so
 <ol style="list-style-type: lower-alpha">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="final-exam-review.html#cb489-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb489-2"><a href="final-exam-review.html#cb489-2" aria-hidden="true" tabindex="-1"></a>b  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb489-3"><a href="final-exam-review.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A,b))</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="final-exam-review.html#cb496-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb496-2"><a href="final-exam-review.html#cb496-2" aria-hidden="true" tabindex="-1"></a>b  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb496-3"><a href="final-exam-review.html#cb496-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rref</span>(<span class="fu">cbind</span>(A,b))</span></code></pre></div>
 <pre><code>##            b
 ## [1,] 1 0 0 0
 ## [2,] 0 1 0 0
@@ -1066,34 +1100,34 @@ and so
 <li></li>
 </ol>
 <p>Here is the least squares calculation.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="final-exam-review.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co">#solve the normal equation</span></span>
-<span id="cb491-2"><a href="final-exam-review.html#cb491-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">xhat =</span> <span class="fu">solve</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A, <span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="final-exam-review.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co">#solve the normal equation</span></span>
+<span id="cb498-2"><a href="final-exam-review.html#cb498-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">xhat =</span> <span class="fu">solve</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> A, <span class="fu">t</span>(A) <span class="sc">%*%</span> b))</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    2
 ## [2,]   -1
 ## [3,]    1</code></pre>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="final-exam-review.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
-<span id="cb493-2"><a href="final-exam-review.html#cb493-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="final-exam-review.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the projection</span></span>
+<span id="cb500-2"><a href="final-exam-review.html#cb500-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">bhat =</span> A <span class="sc">%*%</span> xhat)</span></code></pre></div>
 <pre><code>##               [,1]
 ## [1,]  2.000000e+00
 ## [2,] -1.000000e+00
 ## [3,]  6.661338e-16
 ## [4,]  1.000000e+00</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="final-exam-review.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
-<span id="cb495-2"><a href="final-exam-review.html#cb495-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> b <span class="sc">-</span> bhat)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="final-exam-review.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the residual vector</span></span>
+<span id="cb502-2"><a href="final-exam-review.html#cb502-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">z =</span> b <span class="sc">-</span> bhat)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    2
 ## [2,]    2
 ## [3,]   -2
 ## [4,]   -2</code></pre>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="final-exam-review.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
-<span id="cb497-2"><a href="final-exam-review.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> z</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="final-exam-review.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that z is orthogonal to Col(A)</span></span>
+<span id="cb504-2"><a href="final-exam-review.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A) <span class="sc">%*%</span> z</span></code></pre></div>
 <pre><code>##               [,1]
 ## [1,] -8.881784e-16
 ## [2,]  0.000000e+00
 ## [3,]  0.000000e+00</code></pre>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="final-exam-review.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
-<span id="cb499-2"><a href="final-exam-review.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="fu">t</span>(z) <span class="sc">%*%</span> z)</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="final-exam-review.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="co"># measure the distance between bhat and b</span></span>
+<span id="cb506-2"><a href="final-exam-review.html#cb506-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="fu">t</span>(z) <span class="sc">%*%</span> z)</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    4</code></pre>
 <p>The projection is <span class="math inline">\(\hat{\mathsf{b}} = [2,-1,0,1]^{\top}\)</span>.
@@ -1107,7 +1141,7 @@ The residual is <span class="math inline">\(\mathsf{z} = [2,2,-2,-2]^{\top}\)</s
 </div>
 <div id="section-109" class="section level3" number="25.4.7">
 <h3><span class="header-section-number">25.4.7</span> </h3>
-<p>Can be done by hand or by R:</p>
+<p>Here is the answer in R, <em>but be sure that you can do these by hand</em>:</p>
 <pre><code>##      [,1] [,2]
 ## [1,]    3    3
 ## [2,]    3    9</code></pre>
@@ -1153,6 +1187,54 @@ The residual is <span class="math inline">\(\mathsf{z} = [2,2,-2,-2]^{\top}\)</s
 </div>
 <div id="section-112" class="section level3" number="25.4.10">
 <h3><span class="header-section-number">25.4.10</span> </h3>
+<p><span class="math display">\[
+\left[
+\begin{array}{cc}
+ 3 &amp; 1 \\
+ 1 &amp; 3 \\
+\end{array}
+\right] = 
+\left[
+\begin{array}{cc}
+ \frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{2}} \\
+ \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+ 4 &amp; 0 \\
+ 0 &amp; 2 \\
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+ \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\
+ -\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\
+\end{array}
+\right]
+\]</span>
+<span class="math display">\[
+\left[
+\begin{array}{cc}
+ 3 &amp; 1 \\
+ 1 &amp; 3 \\
+\end{array}\right]
+= 
+\left[
+\begin{array}{cc}
+ 2 &amp; 2 \\
+ 2 &amp; 2 \\
+\end{array}\right]
++
+\left[
+\begin{array}{cc}
+ 1 &amp; -1 \\
+ -1 &amp; 1 \\
+\end{array}\right]
+\]</span></p>
+</div>
+<div id="section-113" class="section level3" number="25.4.11">
+<h3><span class="header-section-number">25.4.11</span> </h3>
 <p>I hope you enjoyed the video.</p>
 
 </div>

@@ -2,6 +2,10 @@
 
 # Final Exam Review
 
+```{r}
+require('pracma')
+```
+
 
 ## Overview
 
@@ -97,7 +101,6 @@ Here are some terms and ideas that you should know:
 * The transpose of a matrix, the inverse of a matrix, invertible matrix.
 * Subspace.
 * Null space, column space, and row space of a matrix.
-* Kernel and range of a linear transformation.
 * Basis and dimension. 
 * Rank.
 * Eigenvalue, eigenvector, eigenspace.
@@ -130,7 +133,7 @@ Compute a matrix-vector product, and interpret it as a linear combination of the
 * Determine whether a transformation is linear.
 Determine whether a linear transformation $T( x)=A x$ is one-to-one or onto, using the properties of the matrix $A$.
 * Determine whether a subset of vectors is a subspace.
-* Determine whether a set of vectors is linearly independent and whether it is a basis for some subspace or vector space. Find a basis for a vector space, or for the null space or column space of a matrix, or for the kernel or range of a linear transformation. Find the dimension of a vector space or subspace. Find the dimension of the null space (number of free variables) and column space (number of pivot columns) of a matrix.
+* Determine whether a set of vectors is linearly independent and whether it is a basis for some subspace or vector space. Find a basis for a vector space, or for the null space or column space of a matrix. Find the dimension of a vector space or subspace. Find the dimension of the null space (number of free variables) and column space (number of pivot columns) of a matrix.
 * Find and interpret the rank of a matrix.
 * Calculate the characteristic equation, eigenvalues, and eigenvectors of a square matrix. Find eigenvectors for a specific eigenvalue. Check if a vector is an eigenvector of a given matrix.
 * Determine whether a square matrix is diagonalizable. Factor a diagonalizable matrix into $A=PDP^{-1}$, where $D$ is a diagonal matrix.
@@ -165,7 +168,7 @@ e. Let $W=\mbox{span} (\mathsf{v}, \mathsf{w})$. Use the residual from the previ
 
 For a subspace $W \subseteq \mathbb{R}^n$, define the function 
 $T: \mathbb{R}^n \rightarrow \mathbb{R}^n$ by
-$T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}$. Recall that the null space of $T$ is the subspace $\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}$. Describe  $\mbox{ker}(T)$ as explicitly as you can.
+$T(\mathsf{x}) = \mbox{proj}_{\mathsf{u}} \mathsf{x}$. Recall that the null space of $T$ is the subspace $\mbox{Nul}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid T(x) = \mathbf{0} \}$. Describe  $\mbox{Nul}(T)$ as explicitly as you can.
 
 
 ### 
@@ -239,6 +242,17 @@ $$
 a. Show that this system is inconsistent.
 b. Find the projected value $\hat{\mathsf{b}}$,  and the residual $\mathsf{z}$.
 c. How close is your approximate solution to the desired target vector?
+
+NOTE: this is too much computation to give you to do by hand on the final. I could help out by also giving the following computations:
+
+```{r,echo=TRUE}
+A = cbind(c(1,1,1,1),c(1,2,1,2),c(1,-1,-1,1))
+b = c(4,1,-2,1)
+rref(cbind(A,b))
+t(A) %*% A
+t(A) %*% b
+rref(cbind(t(A) %*% A,t(A) %*% b))
+```
 
 
 ###
@@ -379,7 +393,14 @@ Decide if the statement is **T** = True or **F** = False, or  **I**  = there is 
 + $\A$ is invertible
 + $\A$ is diagonalizable
 
+### Spectral Decomposition
 
+The eigenvalues of the **symmetric** matrix $A$ below are 4 and 2. 
+$$
+A  = \begin{bmatrix} 3 & 1 \\ 1 & 3 \end{bmatrix}
+$$
+a. Orthogonally diagonalize $A$.
+b. Write $A$ as the sum of two rank 1 matrices.
 
 ### Watch this! 
 
@@ -435,13 +456,13 @@ $$
 
 ###
 
- Here are a few ways to describe $\mbox{ker}(T)$.
+ Here are a few ways to describe $\mbox{Nul}(T)$.
  
-a. $\mbox{ker}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid \mathsf{x} \cdot \mathsf{u} = 0 \}$.
+a. $\mbox{Nul}(T) = \{ \mathsf{x} \in \mathbb{R}^n \mid \mathsf{x} \cdot \mathsf{u} = 0 \}$.
     
-b. $\mbox{ker}(T)$ is the set of vectors that are orthogonal to $\mathsf{u}$.
+b. $\mbox{Nul}(T)$ is the set of vectors that are orthogonal to $\mathsf{u}$.
     
-c. Let $A$ be the $1 \times n$ matrix $\mathsf{u}^{\top}$. Then $\mbox{ker}(T)= \mbox{Nul}(A)$.
+c. Let $A$ be the $1 \times n$ matrix $\mathsf{u}^{\top}$. Then $\mbox{Nul}(T)= \mbox{Nul}(A)$.
 
 
 ###
@@ -589,7 +610,7 @@ $$
 
 ###
 
-Can be done by hand or by R:
+Here is the answer in R, *but be sure that you can do these by hand*:
 ```{r}
 A = cbind(c(1,1,1),c(2,2,-1))
 b = c(6,4,-4)
@@ -633,6 +654,55 @@ sqrt(t(r)%*%r)
 ###
 
 Ax = b: solution coming
+
+### 
+
+$$
+\left[
+\begin{array}{cc}
+ 3 & 1 \\
+ 1 & 3 \\
+\end{array}
+\right] = 
+\left[
+\begin{array}{cc}
+ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+ 4 & 0 \\
+ 0 & 2 \\
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+ -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\end{array}
+\right]
+$$
+$$
+\left[
+\begin{array}{cc}
+ 3 & 1 \\
+ 1 & 3 \\
+\end{array}\right]
+= 
+\left[
+\begin{array}{cc}
+ 2 & 2 \\
+ 2 & 2 \\
+\end{array}\right]
++
+\left[
+\begin{array}{cc}
+ 1 & -1 \\
+ -1 & 1 \\
+\end{array}\right]
+$$
+
 
 ###
 

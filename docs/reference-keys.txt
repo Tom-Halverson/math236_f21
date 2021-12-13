@@ -1,4 +1,4 @@
-tab:unnamed-chunk-4
+tab:unnamed-chunk-7
 eq:inconsistent
 eq:normal
 problem-set-1
@@ -279,6 +279,7 @@ section-102
 one-to-one-and-onto
 a-4x5-matrix
 a-x-b
+spectral-decomposition-1
 watch-this
 solutions-to-practice-problems-3
 section-103
@@ -291,3 +292,4 @@ section-109
 section-110
 section-111
 section-112
+section-113
